@@ -42,7 +42,7 @@ public class Tile : MonoBehaviour {
 		if (target == this){
 			return available - pointsRequired;
 		}
-		if (y%2 == 1){
+		/*if (y%2 == 1){
 			return Mathf.Max (world.map[x-1,y].movePoints (available - pointsRequired,target),
 				world.map[x+1,y].movePoints (available - pointsRequired,target),
 				world.map[x,y+1].movePoints (available - pointsRequired,target),
@@ -57,7 +57,16 @@ public class Tile : MonoBehaviour {
 				world.map[x-1,y+1].movePoints (available - pointsRequired,target),
 				world.map[x,y-1].movePoints (available - pointsRequired,target),
 				world.map[x-1,y-1].movePoints (available - pointsRequired,target));
-		}
+		}*/
+		
+		return Mathf.Max (
+				world.map[x-1,y].movePoints (available - pointsRequired,target),
+				world.map[x+1,y].movePoints (available - pointsRequired,target),
+				world.map[x-1,y+1].movePoints (available - pointsRequired,target),
+				world.map[x+1,y-1].movePoints (available - pointsRequired,target),
+				world.map[x,y-1].movePoints (available - pointsRequired,target),
+				world.map[x,y+1].movePoints (available - pointsRequired,target));
+		
 		Debug.LogWarning ("problem in pathfinding algorithm");
 		return -2;
 		

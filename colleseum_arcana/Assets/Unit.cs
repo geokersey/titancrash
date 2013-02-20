@@ -18,7 +18,7 @@ public class Unit : MonoBehaviour {
 	void Update () {
 		availableMovePoints = startingMovePoints;// + world.map[x,y].pointsRequired;
 		
-		if (Input.GetKeyDown("a")){
+		/*if (Input.GetKeyDown("a")){
 			x -= 1;
 		}
 		if (Input.GetKeyDown("d")){
@@ -41,8 +41,8 @@ public class Unit : MonoBehaviour {
 		if (Input.GetKeyDown("z")){
 			y -= 1;
 			x -= y%2;
-		}
-		transform.position =  new Vector3((float)(x+(.5*(y%2))),0f,(float)y);
+		}*/
+		transform.position =  new Vector3((float)(x+(.5*y)),0f,(float)y);
 			
 	
 		
@@ -53,7 +53,7 @@ public class Unit : MonoBehaviour {
 		if (temp >= 0){
 			x = target.x;
 			y = target.y;
-			transform.position =  new Vector3((float)(x+(.5*(y%2))),0f,(float)y);
+			transform.position =  new Vector3((float)(x+(.5*y)),0f,(float)y);
 			availableMovePoints = temp;
 		}
 	}
