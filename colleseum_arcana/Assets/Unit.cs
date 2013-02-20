@@ -3,14 +3,15 @@ using System.Collections;
 
 public class Unit : MonoBehaviour {
 	public Grid world;
-	int x = 1;
-	int y = 1;
+	public int x = 1;
+	public int y = 1;
 	public int startingMovePoints = 3;
 	int availableMovePoints = 3;
 	//float wait = 0;
 	// Use this for initialization
 	void Start () {
 		availableMovePoints = startingMovePoints;// + world.map[x,y].pointsRequired;
+		world.map[x,y].occupyer = this;
 	
 	}
 	
@@ -55,6 +56,7 @@ public class Unit : MonoBehaviour {
 			y = target.y;
 			transform.position =  new Vector3((float)(x+(.5*y)),0f,(float)y);
 			availableMovePoints = temp;
+			world.map[x,y].occupyer = this;
 		}
 	}
 }

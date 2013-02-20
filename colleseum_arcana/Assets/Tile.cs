@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour {
 	public int y;
 	public int terrain = 0;
 	public int owner;
-	public Unit Selected;
+	//public Unit Selected;
 	public Unit lastSelected;
 	public int minPoints;
 	public int pointsRequired;
@@ -75,8 +75,20 @@ public class Tile : MonoBehaviour {
 		
 		
 	}
-	public void OnMouseDown (){
+	public void OnMouseOver (){
 		//int temp = movePoints(selected.availableMovePoints + pointsRequired,
-		Selected.goTo(this);
+		if (Input.GetMouseButton (0)){
+			if(world.selected!=null){
+				world.selected.deselect();}
+			world.selected = this;
+			//instantiat GUI
+			
+		}
+		if (Input.GetMouseButtonUp (1)&&this!=world.selected&&world.selected.occupyer!=null){
+			world.selected.occupyer.goTo(this);
+		}
+	}
+	public void deselect(){
+		//destroy GUI
 	}
 }
