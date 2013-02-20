@@ -81,11 +81,16 @@ public class Tile : MonoBehaviour {
 			if(world.selected!=null){
 				world.selected.deselect();}
 			world.selected = this;
+			world.highlight.transform.position = transform.position;
 			//instantiat GUI
 			
 		}
 		if (Input.GetMouseButtonUp (1)&&this!=world.selected&&world.selected.occupyer!=null){
-			world.selected.occupyer.goTo(this);
+			if (world.selected.occupyer.goTo(this)){
+				world.selected.deselect();
+				world.selected = this;
+				world.highlight.transform.position = transform.position;
+			}
 		}
 	}
 	public void deselect(){

@@ -11,10 +11,11 @@ public class Grid : MonoBehaviour {
 	public Tile prefab2;
 	public Tile[,] map;
 	public Tile selected;
+	public ParticleSystem highlight;
 	//public player active;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		size = (radius*2)+1;
 		map = new Tile[size,size];
 		for (int i = 0; i < size; ++i){
@@ -44,6 +45,8 @@ public class Grid : MonoBehaviour {
 			}
 		}
 	
+	}
+	void Start () {
 	}
 	
 	// Update is called once per frame

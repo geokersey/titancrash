@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\Building.cs" />
      <Compile Include="Assets\Grid.cs" />
+     <Compile Include="Assets\Player.cs" />
      <Compile Include="Assets\Tile.cs" />
      <Compile Include="Assets\Unit.cs" />
   </ItemGroup>

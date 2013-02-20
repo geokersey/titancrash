@@ -49,7 +49,7 @@ public class Unit : MonoBehaviour {
 		
 	
 	}
-	public void goTo(Tile target){
+	public bool goTo(Tile target){
 		int temp = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target);
 		if (temp >= 0){
 			x = target.x;
@@ -57,6 +57,8 @@ public class Unit : MonoBehaviour {
 			transform.position =  new Vector3((float)(x+(.5*y)),0f,(float)y);
 			availableMovePoints = temp;
 			world.map[x,y].occupyer = this;
+			return true;
 		}
+		return false;
 	}
 }
