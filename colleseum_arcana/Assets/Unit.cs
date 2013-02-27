@@ -5,6 +5,7 @@ public class Unit : MonoBehaviour {
 	public Grid world;
 	public int x = 1;
 	public int y = 1;
+	public int owner;
 	public int startingMovePoints = 3;
 	int availableMovePoints = 3;
 	//float wait = 0;
@@ -50,6 +51,9 @@ public class Unit : MonoBehaviour {
 	
 	}
 	public bool goTo(Tile target){
+		if (owner != world.activePlayer){
+			return false;
+		}
 		int temp = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target);
 		if (temp >= 0){
 			x = target.x;

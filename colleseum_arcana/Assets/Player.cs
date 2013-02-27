@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	public Grid world;
 	public float height = 10;
+	public bool active = false;
 	// Use this for initialization
 	void Start () {
 		transform.position = world.map[world.radius, world.radius].transform.position + new Vector3(0, height, 0);
@@ -12,7 +13,11 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate (Input.GetAxis ("Horizontal"),0,Input.GetAxis ("Vertical"));
+		
+	}
 	
+	public void activate (){
+		active = true;
+		//camera stuff
 	}
 }

@@ -4,6 +4,7 @@ using System.Collections;
 public class Grid : MonoBehaviour {
 	
 	int size;
+	public int numPlayers = 2;
 	public int radius = 1;
 	public Tile prefabWall;
 	public Tile prefab0;
@@ -12,10 +13,20 @@ public class Grid : MonoBehaviour {
 	public Tile[,] map;
 	public Tile selected;
 	public ParticleSystem highlight;
-	//public player active;
-
+	public Player playerPrefab;
+	public Player[] players;
+	public int activePlayer = 0;
+	float minTurnTime;
+	public Cameracontrol camera;
 	// Use this for initialization
 	void Awake () {
+		players = new Player[numPlayers];
+		for (int i = 0; i <numPlayers; ++i){
+			players[i] = (Player)Instantiate(playerPrefab, new Vector3(radius, radius, 0), new Quaternion (0,0,0,0));
+			//instantiate and initialize
+		}
+		activePlayer = 0;
+		players[0].activate();
 		size = (radius*2)+1;
 		map = new Tile[size,size];
 		for (int i = 0; i < size; ++i){
@@ -46,11 +57,28 @@ public class Grid : MonoBehaviour {
 		}
 	
 	}
+	
+	public bool endTurn(){
+		if (minTurnTime < 0){
+			activePlayer = (activePlayer +1)% numPlayers;
+			players[activePlayer].activate();
+			minTurnTime = 2;
+			camera.transform.position = players[activePlayer].transform.position;
+			Debug.Log("turn ended");
+			return true;
+			
+		}
+		return false;
+	}
 	void Start () {
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		minTurnTime -= Time.deltaTime;
+		if (Input.GetKey ("space")){
+			endTurn();
+		}
 	
 	}
 	
