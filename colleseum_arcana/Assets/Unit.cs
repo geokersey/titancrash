@@ -7,6 +7,7 @@ public class Unit : MonoBehaviour {
 	public int y = 1;
 	public int owner;
 	public int startingMovePoints = 3;
+	public int sight = 5;
 	int availableMovePoints = 3;
 	//float wait = 0;
 	// Use this for initialization
@@ -54,15 +55,27 @@ public class Unit : MonoBehaviour {
 		if (owner != world.activePlayer){
 			return false;
 		}
-		int temp = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target);
-		if (temp >= 0){
+		Pair temp = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target, this);
+		if (temp.first >= 0){
 			x = target.x;
 			y = target.y;
 			transform.position =  new Vector3((float)(x+(.5*y)),0f,(float)y);
-			availableMovePoints = temp;
+			availableMovePoints = temp.first;
 			world.map[x,y].occupyer = this;
 			return true;
 		}
 		return false;
+	}
+	public void see(int _x, int _y){
+		for (int i = -sight; i<= sight; ++i){
+			if (i+_x>0 && i+_x<world.size){
+				for (int j = -sight; j<= sight; ++j){
+					if (j+_y>0 && j+_y<world.size){
+						world.map[i+_x,j+_y].gameObject.layer = 9;
+					}
+				}
+			}
+		}
+			
 	}
 }

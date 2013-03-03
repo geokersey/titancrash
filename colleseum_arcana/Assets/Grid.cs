@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Grid : MonoBehaviour {
 	
-	int size;
+	public int size;
 	public int numPlayers = 2;
 	public int radius = 1;
 	public Tile prefabWall;
@@ -65,6 +65,26 @@ public class Grid : MonoBehaviour {
 			minTurnTime = 2;
 			camera.transform.position = players[activePlayer].transform.position;
 			Debug.Log("turn ended");
+			for (int i = 0; i<size; ++i){
+				for (int j = 0; j<size; ++j){
+					map[i,j].gameObject.layer = 8;
+						
+				}
+			}
+			for (int i = 0; i<size; ++i){
+				for (int j = 0; j<size; ++j){
+					if (map[i,j].owner == activePlayer){
+						//Debug.Log ("should see" +i.ToString()+", "+j.ToString());
+						map[i,j].gameObject.layer = 9;
+						if (map[i,j].occupyer != null){
+							//Debug.Log ("occupied");
+							//[i,j].occupyer.see(i,j);
+						}
+					}
+					
+						
+				}
+			}
 			return true;
 			
 		}
