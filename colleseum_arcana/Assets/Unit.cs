@@ -55,16 +55,23 @@ public class Unit : MonoBehaviour {
 		if (owner != world.activePlayer){
 			return false;
 		}
-		Pair temp = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target, this);
-		if (temp.first >= 0){
+		Path temp = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target, this);
+		if (temp.pointsRemaining >= 0){
+			world.map[x,y].occupyer = null;
 			x = target.x;
 			y = target.y;
 			transform.position =  new Vector3((float)(x+(.5*y)),0f,(float)y);
-			availableMovePoints = temp.first;
+			availableMovePoints = temp.pointsRemaining;
 			world.map[x,y].occupyer = this;
 			return true;
 		}
 		return false;
+	}
+	public int move(Path steps){
+		for (int i = 0; i<steps.path.Count; ++i){
+			
+		}
+		return steps.pointsRemaining;
 	}
 	public void see(int _x, int _y){
 		for (int i = -sight; i<= sight; ++i){

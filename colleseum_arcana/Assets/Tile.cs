@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public struct Pair{
-	public int first;
-	public System.Collections.Generic.List<Tile> second;
-	public Pair(int x, System.Collections.Generic.List<Tile> y){
-		first = x;
-		second = y;
+public struct Path{
+	public int pointsRemaining;
+	public System.Collections.Generic.List<Tile> path;
+	public Unit defender;
+	public Path(int x, System.Collections.Generic.List<Tile> p, Unit d){
+		pointsRemaining = x;
+		path = p;
+		defender = d;
 	}
 	
 }
@@ -44,31 +46,47 @@ public class Tile : MonoBehaviour {
 		//}
 		//badbadbad
 	}
-	public Pair movePoints (int available, Tile target, Unit mover){
+	public Path movePoints (int available, Tile target, Unit mover){
 		System.Collections.Generic.List<Tile> temp = new System.Collections.Generic.List<Tile>();
 		//Tuple returnVal = new Tuple <int, ArrayList>();
 		if (terrain == -1){
 			//return -1;
-			return new Pair(-1,temp);
+			return new Path(-1,temp, null);
 		}
-		if (target != this && available <= pointsRequired){
-			//return -1;
-			return new Pair(-1,temp);
-		}
-		if (this.occupyer != null && this.occupyer != mover){
-			return new Pair(-1,temp);
-		}
-		
-		if (target == this && available < pointsRequired){
-			//return 0;
-			temp.Add (this);
-			return new Pair(0,temp);
+		if(target != this){
+			if (available <= pointsRequired){
+				//return -1;
+				return new Path(-1,temp, null);
+			}
+			if (this.occupyer != null && this.owner != world.activePlayer && this.occupyer != mover){
+				return new Path(-1,temp, null);
+			}
+			
 		}
 		if (target == this){
-			//return available - pointsRequired;
-			temp.Add(this);
-			return new Pair(available -pointsRequired,temp);
+			if (this.occupyer != null && this.owner != world.activePlayer){
+				temp.Add (this);
+				return new Path(Mathf.Max (0, available-pointsRequired), temp, this.occupyer);
+			}
+			if (this.occupyer != null){
+				return new Path (-1, temp, null);
+			}
+			return new Path(Mathf.Max (0, available-pointsRequired), temp, null);
 		}
+		
+		
+			/*if (target == this && available < pointsRequired){
+				//return 0;
+				temp.Add (this);
+				return new Path(0,temp, false);
+			}
+			if (target == this){
+				//return available - pointsRequired;
+				temp.Add(this);
+				return new Path(available -pointsRequired,temp, false);
+				
+			}*/
+		//}
 		/*if (y%2 == 1){
 			return Mathf.Max (world.map[x-1,y].movePoints (available - pointsRequired,target),
 				world.map[x+1,y].movePoints (available - pointsRequired,target),
@@ -86,28 +104,31 @@ public class Tile : MonoBehaviour {
 				world.map[x-1,y-1].movePoints (available - pointsRequired,target));
 		}*/
 		
-		Pair max = world.map[x-1,y].movePoints (available - pointsRequired,target, mover);
-		Pair current = world.map[x+1,y].movePoints (available - pointsRequired,target, mover);
-		if(current.first>max.first){
+		Path max = world.map[x-1,y].movePoints (available - pointsRequired,target, mover);
+		Path current = world.map[x+1,y].movePoints (available - pointsRequired,target, mover);
+		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
 		current = world.map[x-1,y+1].movePoints (available - pointsRequired,target, mover);
-		if(current.first>max.first){
+		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
 		current = world.map[x+1,y-1].movePoints (available - pointsRequired,target, mover);
-		if(current.first>max.first){
+		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
 		current = world.map[x,y-1].movePoints (available - pointsRequired,target, mover);
-		if(current.first>max.first){
+		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
 		current = world.map[x,y+1].movePoints (available - pointsRequired,target, mover);
-		if(current.first>max.first){
+		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
-		max.second.Add (this);
+		if (max.defender != null && max.path.Count == 1 && this.occupyer != null && this.occupyer != mover){
+			return new Path(-1,temp, null);
+		}
+		max.path.Add (this);
 		return max;
 		
 		/*return Mathf.Max (
