@@ -10,6 +10,26 @@ public class Grid : MonoBehaviour {
 	public Tile prefab0;
 	public Tile prefab1;
 	public Tile prefab2;
+	
+	public Unit tinyAirPrefab;
+	public Unit smallAirPrefab;
+	public Unit mediumAirPrefab;
+	public Unit largeAirPrefab;
+	public Unit tinyEarthPrefab;
+	public Unit smallEarthPrefab;
+	public Unit mediumEarthPrefab;
+	public Unit largeEarthPrefab;
+	public Unit tinyFirePrefab;
+	public Unit smallFirePrefab;
+	public Unit mediumFirePrefab;
+	public Unit largeFirePrefab;
+	public Unit tinyWaterPrefab;
+	public Unit smallWaterPrefab;
+	public Unit mediumWaterPrefab;
+	public Unit largeWaterPrefab;
+	
+	public SummoningFont summoningFont;
+	
 	public Tile[,] map;
 	public Tile selected;
 	public ParticleSystem highlight;
@@ -38,20 +58,20 @@ public class Grid : MonoBehaviour {
 				}*/
 				if (Mathf.Abs(radius - i) >= radius || Mathf.Abs(radius - j) >= radius || Mathf.Abs(radius*2 -(i+j)) >= radius){ 
 					map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j), new Quaternion (0,0,0,0));
-					map[i,j].init (i,j,-1);
+					map[i,j].init (i,j,-1, false);
 				}
 					
 				else if (r == 0){
 					map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j)),0f,(float)j), new Quaternion (0,0,0,0));
-					map[i,j].init (i,j,0);
+					map[i,j].init (i,j,0, false);
 				}
 				else if (r == 1){
 					map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j)),0f,(float)j), new Quaternion (0,0,0,0));
-					map[i,j].init (i,j,1);
+					map[i,j].init (i,j,1, false);
 				}
 				else{
 					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j), new Quaternion (0,0,0,0));
-					map[i,j].init (i,j,2);
+					map[i,j].init (i,j,2, true);
 				}
 			}
 		}

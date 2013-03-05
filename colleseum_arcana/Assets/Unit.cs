@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Unit : MonoBehaviour {
 	public Grid world;
+	public int hp;
+	public int atk;
+	public int def;
 	public int x = 1;
 	public int y = 1;
 	public int owner;
@@ -72,6 +75,47 @@ public class Unit : MonoBehaviour {
 			
 		}
 		return steps.pointsRemaining;
+	}
+	void fight(Unit attacker, Unit defender)
+	{
+		//This is an implementation of Geo's current damage calculations. The compiler
+		//didn't like floats so I used doubles instead
+		double atkdmg = 1.5 * attacker.atk - defender.def;
+		
+		if (atkdmg < 1)
+		{
+			defender.hp--;
+		}
+		else
+		{
+			int temp = (int)atkdmg;
+			double t2 = atkdmg - temp;
+			
+			if (t2 >= 0.5)
+			{
+				temp++;
+			}
+			
+			defender.hp -= temp;
+		}
+		
+		double defdmg = 0.75 * defender.def - 0.25 * attacker.def;
+		
+		if (defdmg < 1)
+		{
+			attacker.hp--;
+		}
+		else
+		{
+			int temp = (int)defdmg;
+			double t2 = defdmg - temp;
+			
+			if (t2 >= 0.5)
+			{
+				temp++;
+			}
+			attacker.hp -= temp;
+		}
 	}
 	public void see(int _x, int _y){
 		for (int i = -sight; i<= sight; ++i){

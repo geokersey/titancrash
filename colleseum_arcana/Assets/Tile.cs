@@ -19,21 +19,22 @@ public class Tile : MonoBehaviour {
 	public int terrain = 0;
 	public int owner;
 	public bool visible;
+	public bool hasFont;
 	//public Unit Selected;
 	public int pointsRequired;
 	public Unit occupyer;
-	public Building building;
 	
 	// Use this for initialization
 	void Start () {
 	
 	}
-	public void init(int x_, int y_, int terr){
+	public void init(int x_, int y_, int terr, bool hasFoont_){
 		
 		x = x_;
 		y = y_;
 		terrain = terr;
 		pointsRequired = terr + 1;
+		hasFont = hasFoont_;
 	}
 	
 	// Update is called once per frame
@@ -154,10 +155,18 @@ public class Tile : MonoBehaviour {
 			if(world.selected!=null){
 				world.selected.deselect();}
 			world.selected = this;
+			if (occupyer == null && hasFont){
+				world.summoningFont.show ();
+				// = Instantiate (sFontPrefab);
+				//sFont.init(world);
+			}
+			else{
+				world.summoningFont.hide ();
+			}
 			world.highlight.transform.position = transform.position;
 			//instantiat GUI
-			
 		}
+		
 		if (Input.GetMouseButtonUp (1)&&this!=world.selected&&world.selected.occupyer!=null){
 			if (world.selected.occupyer.goTo(this)){
 				world.selected.deselect();
