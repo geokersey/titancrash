@@ -11,6 +11,8 @@ public class Unit : MonoBehaviour {
 	int availableMovePoints = 3;
 	//float wait = 0;
 	// Use this for initialization
+		
+	
 	void Start () {
 		availableMovePoints = startingMovePoints;// + world.map[x,y].pointsRequired;
 		world.map[x,y].occupyer = this;

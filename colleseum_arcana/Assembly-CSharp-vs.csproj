@@ -47,9 +47,15 @@
      <Compile Include="Assets\Building.cs" />
      <Compile Include="Assets\Cameracontrol.cs" />
      <Compile Include="Assets\Grid.cs" />
+     <Compile Include="Assets\NewBehaviourScript.cs" />
      <Compile Include="Assets\Player.cs" />
+     <Compile Include="Assets\SummoningFont.cs" />
      <Compile Include="Assets\Tile.cs" />
      <Compile Include="Assets\Unit.cs" />
+     <Compile Include="Assets\main.cs" />
+ <Reference Include="Assembly-UnityScript-firstpass">
+ <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
