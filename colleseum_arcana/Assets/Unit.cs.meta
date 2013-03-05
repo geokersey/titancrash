@@ -2,7 +2,24 @@ fileFormatVersion: 2
 guid: e322015483485a24583edb282fe8d608
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - monsterInst: {instanceID: 0}
+  - a1: {fileID: 400000, guid: 5fb37211778af1d42bf11117c48b2e6f, type: 2}
+  - a2: {fileID: 400000, guid: 88841f5435d1c1e4e8b23316c334ab48, type: 2}
+  - a3: {fileID: 400000, guid: d4121bbe4823c294db4fdf63bf283f92, type: 2}
+  - a4: {fileID: 400000, guid: f03c2e580105cbd429faf2fe388e3b83, type: 2}
+  - e1: {fileID: 400000, guid: 2a0123030f8d2904b88851a209d00bd9, type: 2}
+  - e2: {fileID: 400000, guid: f6058511325e63e45878e00c8fcf587d, type: 2}
+  - e3: {fileID: 400000, guid: 7fe9e91e1e4b0f34d9a8aebbbeca466a, type: 2}
+  - e4: {fileID: 400000, guid: 78459e60351739a41aeaea1d318a3e48, type: 2}
+  - f1: {fileID: 400000, guid: 21a2d3d7b754e3f4a909018cb29179c2, type: 2}
+  - f2: {fileID: 400000, guid: 586a9b48d27195440945d5518d1b7050, type: 2}
+  - f3: {fileID: 400000, guid: 294df35ad6f6d1e4597c21a233f57ec7, type: 2}
+  - f4: {fileID: 400000, guid: 312e804bdff424b4784d9b9f2df990f9, type: 2}
+  - w1: {fileID: 400000, guid: 31723c0e362aafa43bf616317f1ae8a9, type: 2}
+  - w2: {fileID: 400000, guid: 16d78752163e77840a49ead0618e0299, type: 2}
+  - w3: {fileID: 400000, guid: 9a188af3e35dc904b89284dfb728735c, type: 2}
+  - w4: {fileID: 400000, guid: 478b17df87d18654494963dc69514b76, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
