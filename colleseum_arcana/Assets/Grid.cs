@@ -124,6 +124,14 @@ public class Grid : MonoBehaviour {
 						//Debug.Log ("should see" +i.ToString()+", "+j.ToString());
 						map[i,j].gameObject.layer = 9;
 						if (map[i,j].occupyer != null){
+							if (map[i, j].occupyer.owner == 0)
+							{
+								p0--;
+							}
+							else if (map[i, j].occupyer.owner == 1)
+							{
+								p1--;
+							}
 							//Debug.Log ("occupied");
 							//[i,j].occupyer.see(i,j);
 						}
