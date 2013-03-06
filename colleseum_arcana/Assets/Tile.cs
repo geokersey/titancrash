@@ -20,6 +20,7 @@ public class Tile : MonoBehaviour {
 	public int owner = -1;
 	public bool visible;
 	public bool hasFont;
+	public bool hasRes;
 	//public Unit Selected;
 	public int pointsRequired;
 	public Unit occupyer;
@@ -28,13 +29,14 @@ public class Tile : MonoBehaviour {
 	void Start () {
 	
 	}
-	public void init(int x_, int y_, int terr, bool hasFoont_){
+	public void init(int x_, int y_, int terr, bool hasFoont_, bool hasRes_){
 		
 		x = x_;
 		y = y_;
 		terrain = terr;
 		pointsRequired = terr + 1;
 		hasFont = hasFoont_;
+		hasRes = hasRes_;
 	}
 	
 	// Update is called once per frame
@@ -156,12 +158,12 @@ public class Tile : MonoBehaviour {
 				world.selected.deselect();}
 			world.selected = this;
 			if (occupyer == null && hasFont && owner == world.activePlayer){
-				world.summoningFont.show ();
+				world.summoningFont.show();
 				// = Instantiate (sFontPrefab);
 				//sFont.init(world);
 			}
 			else{
-				world.summoningFont.hide ();
+				world.summoningFont.hide();
 			}
 			world.highlight.transform.position = transform.position;
 			//instantiat GUI

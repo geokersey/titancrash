@@ -75,20 +75,20 @@ public class Grid : MonoBehaviour {
 				}*/
 				if (Mathf.Abs(radius - i) >= radius || Mathf.Abs(radius - j) >= radius || Mathf.Abs(radius*2 -(i+j)) >= radius){ 
 					map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j), new Quaternion (0,0,0,0));
-					map[i,j].init (i,j,-1, false);
+					map[i,j].init (i,j,-1, false, false);
 				}
 					
 				else if (r == 0){
 					map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j)),0f,(float)j), new Quaternion (0,0,0,0));
-					map[i,j].init (i,j,0, false);
+					map[i,j].init (i,j,0, false, false);
 				}
 				else if (r == 1){
 					map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j)),0f,(float)j), new Quaternion (0,0,0,0));
-					map[i,j].init (i,j,1, false);
+					map[i,j].init (i,j,1, false, true);
 				}
 				else{
 					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j), new Quaternion (0,0,0,0));
-					map[i,j].init (i,j,2, true);
+					map[i,j].init (i,j,2, true, false);
 				}
 			}
 		}
@@ -96,6 +96,8 @@ public class Grid : MonoBehaviour {
 	}
 	
 	public bool endTurn(){
+		int p0 = 0;
+		int p1 = 0;
 		if (minTurnTime < 0){
 			activePlayer = (activePlayer +1)% numPlayers;
 			players[activePlayer].activate();
@@ -105,7 +107,15 @@ public class Grid : MonoBehaviour {
 			for (int i = 0; i<size; ++i){
 				for (int j = 0; j<size; ++j){
 					map[i,j].gameObject.layer = 8;
-						
+					
+					if (map[i, j].owner == 0 && map[i, j].hasRes)
+					{
+						p0 += 2;
+					}
+					else if (map[i, j].owner == 1 && map[i, j].hasRes)
+					{
+						p1 += 2;
+					}
 				}
 			}
 			for (int i = 0; i<size; ++i){
@@ -122,6 +132,8 @@ public class Grid : MonoBehaviour {
 						
 				}
 			}
+			players[0].res = p0;
+			players[1].res = p1;
 			return true;
 			
 		}
@@ -139,4 +151,9 @@ public class Grid : MonoBehaviour {
 	
 	}
 	
+	void OnGUI()
+	{
+		GUI.Box(new Rect(1250, 0, 100, 25), "Player 1: " + players[0].res);
+		GUI.Box(new Rect(1250, 30, 100, 25), "Player 2: " + players[1].res);
+	}
 }
