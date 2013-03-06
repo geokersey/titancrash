@@ -112,6 +112,15 @@ public class Unit : MonoBehaviour {
 		}
 		if (steps.defender == null){
 			//Debug.Log ("no enemy to fight");
+			if (steps.path[0].hasRes)
+			{
+				if (steps.path[0].owner >= 0)
+				{
+					world.players[steps.path[0].owner].res -= 2;
+				}
+				steps.path[0].owner = owner;
+				world.players[owner].res += 2;
+			}
 			return true;
 		}
 		else if (fight(this, steps.defender)){
