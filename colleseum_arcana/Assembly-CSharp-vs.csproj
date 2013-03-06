@@ -44,13 +44,16 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Building.cs" />
-     <Compile Include="Assets\CameraControl.cs" />
-     <Compile Include="Assets\Grid.cs" />
-     <Compile Include="Assets\Player.cs" />
-     <Compile Include="Assets\SummoningFont.cs" />
-     <Compile Include="Assets\Tile.cs" />
-     <Compile Include="Assets\Unit.cs" />
+     <Compile Include="Assets\Scripts\Building.cs" />
+     <Compile Include="Assets\Scripts\Fireball.cs" />
+     <Compile Include="Assets\Scripts\Grid.cs" />
+     <Compile Include="Assets\Scripts\MoveCamera.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\SpellManager.cs" />
+     <Compile Include="Assets\Scripts\SummoningFont.cs" />
+     <Compile Include="Assets\Scripts\Tile.cs" />
+     <Compile Include="Assets\Scripts\Unit.cs" />
+     <Compile Include="Assets\Scripts\ZoomCamera.cs" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
