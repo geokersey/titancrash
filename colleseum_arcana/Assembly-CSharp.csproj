@@ -45,12 +45,16 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Building.cs" />
-     <Compile Include="Assets\Cameracontrol.cs" />
+     <Compile Include="Assets\CameraControl.cs" />
      <Compile Include="Assets\Grid.cs" />
      <Compile Include="Assets\Player.cs" />
      <Compile Include="Assets\SummoningFont.cs" />
      <Compile Include="Assets\Tile.cs" />
      <Compile Include="Assets\Unit.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{60B9C5BD-A8B5-7A51-7CEE-ED9FB0C36341}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

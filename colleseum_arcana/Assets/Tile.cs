@@ -17,7 +17,7 @@ public class Tile : MonoBehaviour {
 	public int x;
 	public int y;
 	public int terrain = 0;
-	public int owner;
+	public int owner = -1;
 	public bool visible;
 	public bool hasFont;
 	//public Unit Selected;
@@ -155,7 +155,7 @@ public class Tile : MonoBehaviour {
 			if(world.selected!=null){
 				world.selected.deselect();}
 			world.selected = this;
-			if (occupyer == null && hasFont){
+			if (occupyer == null && hasFont && owner == world.activePlayer){
 				world.summoningFont.show ();
 				// = Instantiate (sFontPrefab);
 				//sFont.init(world);

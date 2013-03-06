@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	public Grid world;
 	public float height = 10;
-	public bool active = false;
+	public bool isActive = false;
 	// Use this for initialization
 	void Start () {
 		transform.position = world.map[world.radius, world.radius].transform.position + new Vector3(0, height, 0);
@@ -17,7 +17,7 @@ public class Player : MonoBehaviour {
 	}
 	
 	public void activate (){
-		active = true;
+		isActive = true;
 		//camera stuff
 	}
 }

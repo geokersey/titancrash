@@ -11,22 +11,39 @@ public class Grid : MonoBehaviour {
 	public Tile prefab1;
 	public Tile prefab2;
 	
-	public Unit tinyAirPrefab;
-	public Unit smallAirPrefab;
-	public Unit mediumAirPrefab;
-	public Unit largeAirPrefab;
-	public Unit tinyEarthPrefab;
-	public Unit smallEarthPrefab;
-	public Unit mediumEarthPrefab;
-	public Unit largeEarthPrefab;
-	public Unit tinyFirePrefab;
-	public Unit smallFirePrefab;
-	public Unit mediumFirePrefab;
-	public Unit largeFirePrefab;
-	public Unit tinyWaterPrefab;
-	public Unit smallWaterPrefab;
-	public Unit mediumWaterPrefab;
-	public Unit largeWaterPrefab;
+	public Unit tinyAirPrefab0;
+	public Unit smallAirPrefab0;
+	public Unit mediumAirPrefab0;
+	public Unit largeAirPrefab0;
+	public Unit tinyEarthPrefab0;
+	public Unit smallEarthPrefab0;
+	public Unit mediumEarthPrefab0;
+	public Unit largeEarthPrefab0;
+	public Unit tinyFirePrefab0;
+	public Unit smallFirePrefab0;
+	public Unit mediumFirePrefab0;
+	public Unit largeFirePrefab0;
+	public Unit tinyWaterPrefab0;
+	public Unit smallWaterPrefab0;
+	public Unit mediumWaterPrefab0;
+	public Unit largeWaterPrefab0;
+	
+	public Unit tinyAirPrefab1;
+	public Unit smallAirPrefab1;
+	public Unit mediumAirPrefab1;
+	public Unit largeAirPrefab1;
+	public Unit tinyEarthPrefab1;
+	public Unit smallEarthPrefab1;
+	public Unit mediumEarthPrefab1;
+	public Unit largeEarthPrefab1;
+	public Unit tinyFirePrefab1;
+	public Unit smallFirePrefab1;
+	public Unit mediumFirePrefab1;
+	public Unit largeFirePrefab1;
+	public Unit tinyWaterPrefab1;
+	public Unit smallWaterPrefab1;
+	public Unit mediumWaterPrefab1;
+	public Unit largeWaterPrefab1;
 	
 	public SummoningFont summoningFont;
 	
@@ -37,7 +54,7 @@ public class Grid : MonoBehaviour {
 	public Player[] players;
 	public int activePlayer = 0;
 	float minTurnTime;
-	public Cameracontrol camera;
+	public CameraControl cam;
 	// Use this for initialization
 	void Awake () {
 		players = new Player[numPlayers];
@@ -83,7 +100,7 @@ public class Grid : MonoBehaviour {
 			activePlayer = (activePlayer +1)% numPlayers;
 			players[activePlayer].activate();
 			minTurnTime = 2;
-			camera.transform.position = players[activePlayer].transform.position;
+			cam.transform.position = players[activePlayer].transform.position;
 			Debug.Log("turn ended");
 			for (int i = 0; i<size; ++i){
 				for (int j = 0; j<size; ++j){
