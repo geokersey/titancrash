@@ -163,6 +163,7 @@ public class Tile : MonoBehaviour {
 	public void OnMouseOver (){
 		//int temp = movePoints(selected.availableMovePoints + pointsRequired,
 		if (Input.GetMouseButton (0)){
+//			Debug.Log (x.ToString ()+" , "+y.ToString ());
 			if(world.selected!=null){
 				world.selected.deselect();}
 			world.selected = this;
@@ -194,18 +195,16 @@ public class Tile : MonoBehaviour {
 			}*/
 		}
 	}
-	/*public void see(){
-		gameObject.layer = 10;
-		if (occupyer != null){
-			occupyer.see();
-			//Debug.Log ("seeing things");
-		}
-	}*/
 	public void deselect(){
+		if (this.occupyer != null){
+			this.occupyer.selected = false;
+		}
 		//destroy GUI
 	}
 	public void choose(){
+		if (this.occupyer != null){
+			this.occupyer.selected = true;
+		}
 		//show GUI
 	}
 }
-

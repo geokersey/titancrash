@@ -59,8 +59,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 				
 			}
@@ -91,8 +90,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -122,8 +120,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -153,8 +150,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -184,8 +180,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -215,8 +210,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -246,8 +240,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -277,8 +270,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -309,8 +301,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -341,8 +332,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -372,8 +362,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -403,8 +392,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -434,8 +422,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -465,8 +452,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -496,8 +482,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 			
@@ -527,8 +512,7 @@ public class SummoningFont : MonoBehaviour {
 						world.players[1].res--;
 					}
 				}
-				world.selected.occupyer.x = world.selected.x;
-				world.selected.occupyer.y = world.selected.y;
+				world.selected.occupyer.init(world.selected.x, world.selected.y, world);
 				hide();
 			}
 		}

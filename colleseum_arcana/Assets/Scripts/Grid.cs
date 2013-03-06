@@ -6,6 +6,9 @@ public class Grid : MonoBehaviour {
 	public int size;
 	public int numPlayers = 2;
 	public int radius = 1;
+	public int x0, y0;
+	public int x1, y1;
+	
 	public Tile prefabWall;
 	public Tile prefab0;
 	public Tile prefab1;
@@ -55,11 +58,13 @@ public class Grid : MonoBehaviour {
 	public int activePlayer = 0;
 	float minTurnTime;
 	public GameObject cam;
+	bool unitsAlive = true;
+	int turn = 0;
 	// Use this for initialization
 	void Awake () {
 		players = new Player[numPlayers];
 		for (int i = 0; i <numPlayers; ++i){
-			players[i] = (Player)Instantiate(playerPrefab, new Vector3(radius, radius, 0), new Quaternion (0,0,0,0));
+			players[i] = (Player)Instantiate(playerPrefab, new Vector3(radius, radius, 0), Quaternion.Euler(0,i*180,0));
 			//instantiate and initialize
 		}
 		activePlayer = 0;
@@ -68,82 +73,118 @@ public class Grid : MonoBehaviour {
 		map = new Tile[size,size];
 		for (int i = 0; i < size; ++i){
 			for (int j = 0; j < size; ++j){
-				int r = Random.Range (0,3);
-				/*if (i == 0 || j == 0 || i == size-1 || j== size-1){
-					map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j), new Quaternion (0,0,0,0));
-					map[i,j].init (i,j,-1);
-				}*/
-				if (Mathf.Abs(radius - i) >= radius || Mathf.Abs(radius - j) >= radius || Mathf.Abs(radius*2 -(i+j)) >= radius){ 
-					map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-					map[i,j].init (i,j,-1, false, false);
-				}
-					
-				else if (r == 0){
-					map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-					map[i,j].init (i,j,0, false, false);
-				}
-				else if (r == 1){
-					map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-					map[i,j].init (i,j,1, false, true);
-				}
-				else{
+				if(i == x0 && j == y0){
 					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
 					map[i,j].init (i,j,2, true, false);
+					map[i,j].owner = 0;
+					map[i,j].occupyer = (Unit)Instantiate (tinyAirPrefab0,map[i,j].transform.position, Quaternion.Euler(0,30,0));
+					map[i,j].occupyer.init(i,j,this);
+				}
+				else if(i == x1 && j == y1){
+					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
+					map[i,j].init (i,j,2, true, false);
+					map[i,j].owner = 1;
+					map[i,j].occupyer = (Unit)Instantiate (tinyAirPrefab1,map[i,j].transform.position, Quaternion.Euler(0,30,0));
+					map[i,j].occupyer.init(i,j,this);
+				}
+					else{
+					int r = Random.Range (0,3);
+					/*if (i == 0 || j == 0 || i == size-1 || j== size-1){
+						map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j), new Quaternion (0,0,0,0));
+						map[i,j].init (i,j,-1);
+					}*/
+					if (Mathf.Abs(radius - i) >= radius || Mathf.Abs(radius - j) >= radius || Mathf.Abs(radius*2 -(i+j)) >= radius){ 
+						map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
+						map[i,j].init (i,j,-1, false, false);
+					}
+						
+					else if (r == 0){
+						map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
+						map[i,j].init (i,j,0, false, false);
+					}
+					else if (r == 1){
+						map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
+						map[i,j].init (i,j,1, false, true);
+					}
+					else{
+						map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
+						map[i,j].init (i,j,2, true, false);
+					}
 				}
 			}
 		}
-	
 	}
 	
 	public bool endTurn(){
-		int p0 = 0;
-		int p1 = 0;
+		//Debug.Log ("spacebar "+minTurnTime.ToString ());
 		if (minTurnTime < 0){
+			unitsAlive = false;
 			activePlayer = (activePlayer +1)% numPlayers;
 			players[activePlayer].activate();
-			minTurnTime = 2;
+			minTurnTime = 1;
 			cam.transform.position = players[activePlayer].transform.position;
-			Debug.Log("turn ended");
-			for (int i = 0; i<size; ++i){
+			Debug.Log("turn ended "+turn.ToString ());
+			turn++;
+			summoningFont.hide ();
+			
+			/*for (int i = 0; i<size; ++i){
 				for (int j = 0; j<size; ++j){
 					map[i,j].gameObject.layer = 8;
-					
-					if (map[i, j].owner == 0 && map[i, j].hasRes)
-					{
-						p0 += 2;
-					}
-					else if (map[i, j].owner == 1 && map[i, j].hasRes)
-					{
-						p1 += 2;
-					}
 				}
-			}
-			for (int i = 0; i<size; ++i){
-				for (int j = 0; j<size; ++j){
-					if (map[i,j].owner == activePlayer){
-						//Debug.Log ("should see" +i.ToString()+", "+j.ToString());
-						map[i,j].gameObject.layer = 9;
-						if (map[i,j].occupyer != null){
-							if (map[i, j].occupyer.owner == 0)
-							{
-								p0--;
-							}
-							else if (map[i, j].occupyer.owner == 1)
-							{
-								p1--;
-							}
-							//Debug.Log ("occupied");
-							//[i,j].occupyer.see(i,j);
+			}*/
+			if(activePlayer == 0)
+			{
+				for (int i = 0; i<size; ++i){
+					for (int j = 0; j<size; ++j){
+						if(map[i,j].occupyer!=null&&map[i,j].owner==1){
+							unitsAlive = true;
+							map[i,j].occupyer.beginTurn();
 						}
+						if (map[i,j].gameObject.tag == "visible1"||map[i,j].gameObject.tag == "range"){
+							map[i,j].gameObject.tag = "Untagged";
+							map[i,j].gameObject.layer = 8;
+						}
+						if (map[i,j].gameObject.tag == "visible0"||map[i,j].owner ==activePlayer){
+							map[i,j].gameObject.layer = 9;
+							map[i,j].gameObject.tag = "visible0";
+							if (map[i,j].occupyer != null){
+								map[i,j].occupyer.see(i,j);
+								//Debug.Log(activePlayer);
+							}
+						}	
+							
 					}
-					
-						
 				}
 			}
-			players[0].res = p0;
-			players[1].res = p1;
-			return true;
-			
+			else if (activePlayer == 1)
+			{
+				for (int i = 0; i<size; ++i){
+					for (int j = 0; j<size; ++j){
+						if(map[i,j].occupyer!=null&&map[i,j].owner==0){
+							unitsAlive = true;
+							map[i,j].occupyer.beginTurn();
+						}
+						if (map[i,j].gameObject.tag == "visible0"||map[i,j].gameObject.tag == "range"){
+							map[i,j].gameObject.tag = "Untagged";
+							map[i,j].gameObject.layer = 8;
+						}
+						if (map[i,j].gameObject.tag == "visible1"||map[i,j].owner ==activePlayer){
+							map[i,j].gameObject.layer = 9;
+							map[i,j].gameObject.tag = "visible1";
+							if (map[i,j].occupyer != null){
+								map[i,j].occupyer.see(i,j);
+								//Debug.Log(activePlayer);
+							}
+						}
+						
+							
+					}
+				}
+			}
+			if (!unitsAlive){
+				Debug.Log ("gameOver, player "+(1-activePlayer).ToString ()+" has no more units");
+			}
+			return true;	
 		}
 		return false;
 	}
