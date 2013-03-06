@@ -54,14 +54,17 @@ public class Tile : MonoBehaviour {
 		//Tuple returnVal = new Tuple <int, ArrayList>();
 		if (terrain == -1){
 			//return -1;
+			//Debug.Log ("terrain = -1");
 			return new Path(-1,temp, null);
 		}
 		if(target != this){
 			if (available <= pointsRequired){
 				//return -1;
+				//Debug.Log ("out of move points");
 				return new Path(-1,temp, null);
 			}
 			if (this.occupyer != null && this.owner != world.activePlayer && this.occupyer != mover){
+				//Debug.Log("enemy unit in the way");
 				return new Path(-1,temp, null);
 			}
 			
@@ -69,11 +72,15 @@ public class Tile : MonoBehaviour {
 		if (target == this){
 			if (this.occupyer != null && this.owner != world.activePlayer){
 				temp.Add (this);
+				//Debug.Log ("attacking");
 				return new Path(Mathf.Max (0, available-pointsRequired), temp, this.occupyer);
 			}
 			if (this.occupyer != null){
+				//Debug.Log ("can't move onto own player");
 				return new Path (-1, temp, null);
 			}
+			//Debug.Log ("moving to empty space");
+			temp.Add (this);
 			return new Path(Mathf.Max (0, available-pointsRequired), temp, null);
 		}
 		
@@ -129,9 +136,11 @@ public class Tile : MonoBehaviour {
 			max = current;
 		}
 		if (max.defender != null && max.path.Count == 1 && this.occupyer != null && this.occupyer != mover){
+			//Debug.Log ("enemy on target, this space occupied");
 			return new Path(-1,temp, null);
 		}
 		max.path.Add (this);
+		//Debug.Log ("intermediate space");
 		return max;
 		
 		/*return Mathf.Max (
@@ -143,7 +152,7 @@ public class Tile : MonoBehaviour {
 				world.map[x,y+1].movePoints (available - pointsRequired,target));
 				*/
 		
-		//Debug.LogWarning ("problem in pathfinding algorithm");
+		////Debug.LogWarning ("problem in pathfinding algorithm");
 		//return -2;
 		
 		
@@ -157,35 +166,46 @@ public class Tile : MonoBehaviour {
 			if(world.selected!=null){
 				world.selected.deselect();}
 			world.selected = this;
+			world.selected.choose ();
 			if (occupyer == null && hasFont && owner == world.activePlayer){
-				world.summoningFont.show();
+				world.summoningFont.show ();
 				// = Instantiate (sFontPrefab);
 				//sFont.init(world);
 			}
 			else{
-				world.summoningFont.hide();
+				world.summoningFont.hide ();
 			}
 			world.highlight.transform.position = transform.position;
 			//instantiat GUI
 		}
 		
 		if (Input.GetMouseButtonUp (1)&&this!=world.selected&&world.selected.occupyer!=null){
-			if (world.selected.occupyer.goTo(this)){
+			Tile temp = world.selected.occupyer.goTo(this);
+			world.selected.deselect();
+			world.selected = temp;
+			world.selected.choose();
+			world.highlight.transform.position = temp.transform.position;
+			//temp.owner = world.activePlayer;
+			/*if (world.selected.occupyer.goTo(this)){
 				world.selected.deselect();
 				world.selected = this;
 				world.highlight.transform.position = transform.position;
 				owner = world.activePlayer;
-			}
+			}*/
 		}
 	}
 	/*public void see(){
 		gameObject.layer = 10;
 		if (occupyer != null){
 			occupyer.see();
-			Debug.Log ("seeing things");
+			//Debug.Log ("seeing things");
 		}
 	}*/
 	public void deselect(){
 		//destroy GUI
 	}
+	public void choose(){
+		//show GUI
+	}
 }
+
