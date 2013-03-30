@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public struct Path{
+public class Path{
 	public int pointsRemaining;
 	public System.Collections.Generic.List<Tile> path;
 	public Unit defender;
@@ -10,7 +10,11 @@ public struct Path{
 		path = p;
 		defender = d;
 	}
-	
+	public Path(){
+		pointsRemaining = -1;
+		path = new System.Collections.Generic.List<Tile>();
+		defender = null;
+	}
 }
 public class Tile : MonoBehaviour {
 	public Grid world;
@@ -20,7 +24,10 @@ public class Tile : MonoBehaviour {
 	public int owner = -1;
 	public bool visible;
 	public bool hasFont;
-	public bool hasRes;
+	public int resource = -1;
+	public int resourceQuantity = 2;
+	public bool hasTower;
+	public GameObject resourceModel;
 	//public Unit Selected;
 	public int pointsRequired;
 	public Unit occupyer;
@@ -29,14 +36,31 @@ public class Tile : MonoBehaviour {
 	void Start () {
 	
 	}
-	public void init(int x_, int y_, int terr, bool hasFoont_, bool hasRes_){
+	public void init(int x_, int y_, int terr, bool hasFont_, int resource_, Grid world_){
 		
+		world = world_;
 		x = x_;
 		y = y_;
 		terrain = terr;
 		pointsRequired = terr + 1;
-		hasFont = hasFoont_;
-		hasRes = hasRes_;
+		hasFont = hasFont_;
+		resource = resource_;
+		if (resource == 0){
+			resourceModel = (GameObject)Instantiate (world.arcanaResPrefab, transform.position, Quaternion.identity);
+		}
+		if (resource == 1){
+			resourceModel = (GameObject)Instantiate (world.airResPrefab, transform.position, Quaternion.identity);
+		}
+		if (resource == 2){
+			resourceModel = (GameObject)Instantiate (world.earthResPrefab, transform.position, Quaternion.identity);
+		}
+		if (resource == 3){
+			resourceModel = (GameObject)Instantiate (world.fireResPrefab, transform.position, Quaternion.identity);
+		}
+		
+		if (resource == 4){
+			resourceModel = (GameObject)Instantiate (world.waterResPrefab, transform.position, Quaternion.identity);
+		}
 	}
 	
 	// Update is called once per frame
@@ -73,7 +97,7 @@ public class Tile : MonoBehaviour {
 			if (this.occupyer != null && this.owner != world.activePlayer){
 				temp.Add (this);
 				//Debug.Log ("attacking");
-				return new Path(Mathf.Max (0, available-pointsRequired), temp, this.occupyer);
+				return new Path(Mathf.Max(0, available-pointsRequired), temp, this.occupyer);
 			}
 			if (this.occupyer != null){
 				//Debug.Log ("can't move onto own player");
@@ -239,5 +263,61 @@ public class Tile : MonoBehaviour {
 			this.occupyer.choose();
 		}
 		//show GUI
+	}
+	public void capture(int player){
+			Debug.Log ("capturing "+x+", "+y);
+			if (player != owner){
+				if(resource <=0){
+					if (owner <=0){
+						world.players[owner].resources[resource]-=resourceQuantity;
+					}
+				
+					world.players[player].resources[resource]+=resourceQuantity;
+					Destroy (resourceModel);
+					if (player == 0){
+						if (resource == 0){
+							resourceModel = (GameObject)Instantiate (world.arcanaResPrefab0, transform.position, Quaternion.identity);
+						}
+						else if (resource == 1){
+							resourceModel = (GameObject)Instantiate (world.airResPrefab0, transform.position, Quaternion.identity);
+						}
+						else if (resource == 2){
+							resourceModel = (GameObject)Instantiate (world.earthResPrefab0, transform.position, Quaternion.identity);
+						}
+						else if (resource == 3){
+							resourceModel = (GameObject)Instantiate (world.fireResPrefab0, transform.position, Quaternion.identity);
+						}
+						else if (resource == 4){
+							resourceModel = (GameObject)Instantiate (world.waterResPrefab0, transform.position, Quaternion.identity);
+						}
+					}
+					else if (player == 1){
+						if (resource == 0){
+							resourceModel = (GameObject)Instantiate (world.arcanaResPrefab0, transform.position, Quaternion.identity);
+						}
+						else if (resource == 1){
+							resourceModel = (GameObject)Instantiate (world.airResPrefab0, transform.position, Quaternion.identity);
+						}
+						else if (resource == 2){
+							resourceModel = (GameObject)Instantiate (world.earthResPrefab0, transform.position, Quaternion.identity);
+						}
+						else if (resource == 3){
+							resourceModel = (GameObject)Instantiate (world.fireResPrefab0, transform.position, Quaternion.identity);
+						}
+						else if (resource == 4){
+							resourceModel = (GameObject)Instantiate (world.waterResPrefab0, transform.position, Quaternion.identity);
+						}
+					}
+				}
+					//destroy and instantiate correct resource
+				
+				if(hasFont){
+					//destroy and instantiate correct font
+				}
+				if(hasTower){
+					//destroy and instantiate correct tower
+				}
+		}
+		owner = player;
 	}
 }

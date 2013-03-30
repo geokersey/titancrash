@@ -6,6 +6,7 @@ public class Unit : MonoBehaviour {
 	public int hp;
 	public int atk;
 	public int def;
+	public int element;
 	public int x;
 	public int y;
 	public int owner;
@@ -13,7 +14,10 @@ public class Unit : MonoBehaviour {
 	public int sight = 5;
 	public int availableMovePoints = 0;
 	public bool selected = false;
+	Path steps;
+	float dT;
 	void Start () {
+		steps = new Path();
 		//availableMovePoints = startingMovePoints;// + world.map[x,y].pointsRequired;
 //		world.map[x,y].occupyer = this;
 	
@@ -26,10 +30,41 @@ public class Unit : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (steps.path.Count >1){
+			//Debug.Log ("we have a path in the update function");
+			if (dT > 1){
+				Debug.Log ("dT should be resetting");
+				dT = 0;
+				x = steps.path[steps.path.Count -1].x;
+				y = steps.path[steps.path.Count -1].y;
+				steps.path.RemoveAt (steps.path.Count -1);
+				if(steps.path.Count == 2 && steps.defender != null){
+					//start fight animations
+					if (!fight (this, steps.defender)){
+						steps.path.RemoveAt (0);
+						//DESUSPEND REALITY HERE +++++++++
+					}
+					else{
+						steps.defender = null;
+						//DESUSPEND REALITY HERE +++++++++
+					}
+				}
+			}
+			else{
+				Debug.Log("things should be moving right now, dT = "+dT);
+				dT+= Time.deltaTime;
+				transform.position = Vector3.Lerp (steps.path[steps.path.Count-1].transform.position, steps.path[steps.path.Count-2].transform.position, dT);
+				//transform.position = steps.path[steps.path.Count-2].transform.position;
+			}
+		}
+		//else {
+		//	transform.position = world.map[x,y].transform.position;
+			//Debug.Log ("jumping to x y position");
+		//}
 		
 		if (hp <= 0){
 			world.map[x,y].occupyer = null;
-			world.players[owner].res++;
+			world.players[owner].resources[element]++;
 			Destroy (gameObject);
 		}
 		/*if (Input.GetKeyDown("a")){
@@ -56,7 +91,7 @@ public class Unit : MonoBehaviour {
 			y -= 1;
 			x -= y%2;
 		}*/
-		transform.position =  new Vector3((float)(x+(.5*y)),0f,(float)y);
+		//transform.position =  new Vector3((float)(x+(.5*y)),0f,(float)y);
 			
 	
 		
@@ -64,17 +99,25 @@ public class Unit : MonoBehaviour {
 	}
 	public void beginTurn(){
 		availableMovePoints = startingMovePoints;
+		//Debug.Log ("starting turn");
 	}
 	public Tile goTo(Tile target){
 		//Debug.Log ("in the goto func");
 		if (owner != world.activePlayer){
 			return world.map[x,y];
 		}
-		Path temp = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target, this);
+		steps = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target, this);
+		
+		///SUSPEND REALITY HERE ===================
+		
+		
 		//Debug.Log (temp.path.Count.ToString ()+" steps in path");
-		if (temp.pointsRemaining >= 0){
+		//if (steps.pointsRemaining >= 0){
 			
-			if (move (temp)){
+			//world.map[x,y].occupyer = null;
+			//move ();
+		//}
+			/*if (move (temp)){
 				world.map[x,y].occupyer = null;
 				x = temp.path[0].x;
 				y = temp.path[0].y;
@@ -107,26 +150,49 @@ public class Unit : MonoBehaviour {
 				transform.position =  new Vector3((float)(x+(.5*y)),0f,(float)y);
 				availableMovePoints = temp.pointsRemaining;
 				world.map[x,y].occupyer = this;
-			}
+			}*/
 			
 			
-		}
+		//}
 		return world.map[x,y];
 	}
-	public bool move(Path steps){
-		for (int i= 1; i<steps.path.Count; ++i){
-			steps.path[i].visible = true;
-			see (steps.path[i].x,steps.path[i].y);
-			if (steps.path[i].owner >= 0 && steps.path[i].hasRes)
-			{
-				world.players[steps.path[i].owner].res -= 2;
-			}
-			steps.path[i].owner = owner;
-			if(steps.path[i].hasRes){
-				world.players[owner].res += 2;
-			}
+	public void move(){
+		int start = steps.path.Count -2;
+		int end;
+		//float t = 0;
+		if (steps.defender == null ||fight (this, steps.defender)){
+			end = 0;
+			steps.defender = null;
 		}
-		if (steps.defender == null){
+		else{
+			end = 1;
+		}
+		for (int i= start; i>=end; --i){
+			//steps.path[i].visible = true;
+			see (steps.path[i].x,steps.path[i].y);
+			steps.path[i].capture(world.activePlayer);
+			//t = 0;
+			//while (t<= 1){
+			//	transform.position = Vector4.Lerp (steps.path[i-1].transform.position, steps.path[i].transform.position, t);
+			//	t += Time.deltaTime;
+			//}
+			
+				
+				//if (steps.path[i].owner >= 0 && steps.path[i].hasRes)
+				//{
+				//	world.players[steps.path[i].owner].res -= 2;
+				//}
+				//steps.path[i].owner = owner;
+				//if(steps.path[i].hasRes){
+				//	world.players[owner].res += 2;
+				//}
+		}
+		x = steps.path[end].x;
+		y = steps.path[end].y;
+		steps.path[end].occupyer = this;
+		availableMovePoints= steps.pointsRemaining;
+		//return true;
+		/*if (steps.defender == null){
 			//Debug.Log ("no enemy to fight");
 			return true;
 		}
@@ -135,7 +201,7 @@ public class Unit : MonoBehaviour {
 		}
 		else{
 			return false;
-		}
+		}*/
 	}
 	bool fight(Unit attacker, Unit defender)
 	{
@@ -207,6 +273,8 @@ public class Unit : MonoBehaviour {
 			return false;	
 		}
 	}
+	
+	
 	public void see(int _x, int _y){
 		if (world.activePlayer==0){
 			for (int i = -sight; i<= sight; ++i){
@@ -242,6 +310,7 @@ public class Unit : MonoBehaviour {
 	void OnGUI(){
 		if (selected){
 			GUI.Box(new Rect(0, 100, 100, 25), "Health: " + hp);
+			GUI.Box(new Rect(30, 200, 100, 25), "Action Points: " + availableMovePoints);
 			
 		}
 	}
@@ -249,7 +318,7 @@ public class Unit : MonoBehaviour {
 		if (owner == world.activePlayer){
 			selected = true;
 			world.map[x,y].inRange(availableMovePoints+world.map[x,y].pointsRequired);
-			Debug.Log ("the chosen one");
+			//Debug.Log ("the chosen one");
 		}
 	}
 	public void deselect(){

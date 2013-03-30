@@ -14,39 +14,26 @@ public class Grid : MonoBehaviour {
 	public Tile prefab1;
 	public Tile prefab2;
 	
-	public Unit tinyAirPrefab0;
-	public Unit smallAirPrefab0;
-	public Unit mediumAirPrefab0;
-	public Unit largeAirPrefab0;
-	public Unit tinyEarthPrefab0;
-	public Unit smallEarthPrefab0;
-	public Unit mediumEarthPrefab0;
-	public Unit largeEarthPrefab0;
-	public Unit tinyFirePrefab0;
-	public Unit smallFirePrefab0;
-	public Unit mediumFirePrefab0;
-	public Unit largeFirePrefab0;
-	public Unit tinyWaterPrefab0;
-	public Unit smallWaterPrefab0;
-	public Unit mediumWaterPrefab0;
-	public Unit largeWaterPrefab0;
+	public GameObject arcanaResPrefab;
+	public GameObject airResPrefab;
+	public GameObject earthResPrefab;
+	public GameObject fireResPrefab;
+	public GameObject waterResPrefab;
 	
-	public Unit tinyAirPrefab1;
-	public Unit smallAirPrefab1;
-	public Unit mediumAirPrefab1;
-	public Unit largeAirPrefab1;
-	public Unit tinyEarthPrefab1;
-	public Unit smallEarthPrefab1;
-	public Unit mediumEarthPrefab1;
-	public Unit largeEarthPrefab1;
-	public Unit tinyFirePrefab1;
-	public Unit smallFirePrefab1;
-	public Unit mediumFirePrefab1;
-	public Unit largeFirePrefab1;
-	public Unit tinyWaterPrefab1;
-	public Unit smallWaterPrefab1;
-	public Unit mediumWaterPrefab1;
-	public Unit largeWaterPrefab1;
+	public GameObject arcanaResPrefab0;
+	public GameObject airResPrefab0;
+	public GameObject earthResPrefab0;
+	public GameObject fireResPrefab0;
+	public GameObject waterResPrefab0;
+	
+	public GameObject arcanaResPrefab1;
+	public GameObject airResPrefab1;
+	public GameObject earthResPrefab1;
+	public GameObject fireResPrefab1;
+	public GameObject waterResPrefab1;
+	
+	
+	
 	
 	public SummoningFont summoningFont;
 	
@@ -64,7 +51,7 @@ public class Grid : MonoBehaviour {
 	void Awake () {
 		players = new Player[numPlayers];
 		for (int i = 0; i <numPlayers; ++i){
-			players[i] = (Player)Instantiate(playerPrefab, new Vector3(radius, radius, 0), Quaternion.Euler(0,i*180,0));
+			players[i] = (Player)Instantiate(playerPrefab, new Vector3(-10, 10, 6), Quaternion.Euler(0,i*180,0));
 			//instantiate and initialize
 		}
 		activePlayer = 0;
@@ -75,20 +62,20 @@ public class Grid : MonoBehaviour {
 			for (int j = 0; j < size; ++j){
 				if(i == x0 && j == y0){
 					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-					map[i,j].init (i,j,2, true, false);
+					map[i,j].init (i,j,2, true,-1, this);
 					map[i,j].owner = 0;
-					map[i,j].occupyer = (Unit)Instantiate (tinyAirPrefab0,map[i,j].transform.position, Quaternion.Euler(0,30,0));
-					map[i,j].occupyer.init(i,j,this);
-					map[i,j].occupyer.availableMovePoints=map[i,j].occupyer.startingMovePoints;
+//					map[i,j].occupyer = (Unit)Instantiate (tinyAirPrefab0,map[i,j].transform.position, Quaternion.Euler(0,30,0));
+//					map[i,j].occupyer.init(i,j,this);
+					//map[i,j].occupyer.availableMovePoints=map[i,j].occupyer.startingMovePoints;
 					
 				}
 				else if(i == x1 && j == y1){
 					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-					map[i,j].init (i,j,2, true, false);
+					map[i,j].init (i,j,2, true, -1, this);
 					map[i,j].owner = 1;
-					map[i,j].occupyer = (Unit)Instantiate (tinyAirPrefab1,map[i,j].transform.position, Quaternion.Euler(0,30,0));
-					map[i,j].occupyer.init(i,j,this);
-					map[i,j].occupyer.availableMovePoints=map[i,j].occupyer.startingMovePoints;
+					//map[i,j].occupyer = (Unit)Instantiate (tinyAirPrefab1,map[i,j].transform.position, Quaternion.Euler(0,30,0));
+//					map[i,j].occupyer.init(i,j,this);
+					//map[i,j].occupyer.availableMovePoints=map[i,j].occupyer.startingMovePoints;
 				}
 					else{
 					int r = Random.Range (0,3);
@@ -98,20 +85,20 @@ public class Grid : MonoBehaviour {
 					}*/
 					if (Mathf.Abs(radius - i) >= radius || Mathf.Abs(radius - j) >= radius || Mathf.Abs(radius*2 -(i+j)) >= radius){ 
 						map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,-1, false, false);
+						map[i,j].init (i,j,-1, false, -1, this);
 					}
 						
 					else if (r == 0){
 						map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,0, false, false);
+						map[i,j].init (i,j,0, false, 2, this);
 					}
 					else if (r == 1){
 						map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,1, false, true);
+						map[i,j].init (i,j,1, false, 3, this);
 					}
 					else{
 						map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,2, true, false);
+						map[i,j].init (i,j,2, true, 4, this);
 					}
 				}
 			}
@@ -147,6 +134,11 @@ public class Grid : MonoBehaviour {
 							unitsAlive = true;
 							map[i,j].occupyer.beginTurn();
 						}
+						/*if(map[i,j].occupyer!=null&&map[i,j].owner==0){
+							unitsAlive = true;
+							map[i,j].occupyer.beginTurn();
+							Debug.Log("things be backwards");
+						}*/
 						if (map[i,j].gameObject.tag == "visible1"||map[i,j].gameObject.tag == "range"){
 							map[i,j].gameObject.tag = "Untagged";
 							map[i,j].gameObject.layer = 8;
@@ -171,6 +163,11 @@ public class Grid : MonoBehaviour {
 							unitsAlive = true;
 							map[i,j].occupyer.beginTurn();
 						}
+						/*if(map[i,j].occupyer!=null&&map[i,j].owner==1){
+							unitsAlive = true;
+							map[i,j].occupyer.beginTurn();
+							Debug.Log ("things be backwards");
+						}*/
 						if (map[i,j].gameObject.tag == "visible0"||map[i,j].gameObject.tag == "range"){
 							map[i,j].gameObject.tag = "Untagged";
 							map[i,j].gameObject.layer = 8;
@@ -209,7 +206,17 @@ public class Grid : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		GUI.Box(new Rect(1250, 0, 100, 25), "Player 1: " + players[0].res);
-		GUI.Box(new Rect(1250, 30, 100, 25), "Player 2: " + players[1].res);
+		//needs fix
+		GUI.Box(new Rect(1250, 0, 100, 25), "Player 1: " + players[0].resources[0]);
+		GUI.Box(new Rect(1250, 30, 100, 25), "Player 1: " + players[0].resources[1]);
+		GUI.Box(new Rect(1250, 60, 100, 25), "Player 1: " + players[0].resources[2]);
+		GUI.Box(new Rect(1250, 90, 100, 25), "Player 1: " + players[0].resources[3]);
+		GUI.Box(new Rect(1250, 120, 100, 25), "Player 1: " + players[0].resources[4]);
+		
+		GUI.Box(new Rect(1250, 150, 100, 25), "Player 2: " + players[1].resources[0]);
+		GUI.Box(new Rect(1250, 180, 100, 25), "Player 2: " + players[1].resources[1]);
+		GUI.Box(new Rect(1250, 210, 100, 25), "Player 2: " + players[1].resources[2]);
+		GUI.Box(new Rect(1250, 240, 100, 25), "Player 2: " + players[1].resources[3]);
+		GUI.Box(new Rect(1250, 270, 100, 25), "Player 2: " + players[1].resources[4]);
 	}
 }
