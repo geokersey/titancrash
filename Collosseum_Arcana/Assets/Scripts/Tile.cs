@@ -267,12 +267,13 @@ public class Tile : MonoBehaviour {
 	public void capture(int player){
 			Debug.Log ("capturing "+x+", "+y);
 			if (player != owner){
-				if(resource <=0){
-					if (owner <=0){
+				if(resource >=0){
+					if (owner >=0){
 						world.players[owner].resources[resource]-=resourceQuantity;
 					}
 				
 					world.players[player].resources[resource]+=resourceQuantity;
+					Debug.Log ("just added "+ resourceQuantity + " of resource " + resource + " to player " +player);
 					Destroy (resourceModel);
 					if (player == 0){
 						if (resource == 0){

@@ -46,12 +46,13 @@ public class Grid : MonoBehaviour {
 	float minTurnTime = -1;
 	public GameObject cam;
 	bool unitsAlive = true;
+	public bool suspended;
 	int turn = 0;
 	// Use this for initialization
 	void Awake () {
 		players = new Player[numPlayers];
 		for (int i = 0; i <numPlayers; ++i){
-			players[i] = (Player)Instantiate(playerPrefab, new Vector3(-10, 10, 6), Quaternion.Euler(0,i*180,0));
+			players[i] = (Player)Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0,i*180,0));
 			//instantiate and initialize
 		}
 		activePlayer = 0;
@@ -116,7 +117,7 @@ public class Grid : MonoBehaviour {
 			activePlayer = (activePlayer +1)% numPlayers;
 			players[activePlayer].activate();
 			minTurnTime = 1;
-			cam.transform.position = players[activePlayer].transform.position;
+			//cam.transform.position = players[activePlayer].transform.position;
 			Debug.Log("turn ended "+turn.ToString ());
 			turn++;
 			summoningFont.hide ();
@@ -206,7 +207,10 @@ public class Grid : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		//needs fix
+		if (suspended){
+			GUI.Box (new Rect(200, 0, 250, 100), "suspended = true");
+		}
+		
 		GUI.Box(new Rect(1250, 0, 100, 25), "Player 1: " + players[0].resources[0]);
 		GUI.Box(new Rect(1250, 30, 100, 25), "Player 1: " + players[0].resources[1]);
 		GUI.Box(new Rect(1250, 60, 100, 25), "Player 1: " + players[0].resources[2]);
@@ -219,4 +223,5 @@ public class Grid : MonoBehaviour {
 		GUI.Box(new Rect(1250, 240, 100, 25), "Player 2: " + players[1].resources[3]);
 		GUI.Box(new Rect(1250, 270, 100, 25), "Player 2: " + players[1].resources[4]);
 	}
+	
 }
