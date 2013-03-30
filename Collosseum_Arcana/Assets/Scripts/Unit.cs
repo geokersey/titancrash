@@ -86,7 +86,9 @@ public class Unit : MonoBehaviour {
 		//}
 		
 		if (hp <= 0){
-			world.map[x,y].occupyer = null;
+			if (world.map[x,y].occupyer == this){
+				world.map[x,y].occupyer = null;
+			}
 			world.players[owner].resources[element]++;
 			Destroy (gameObject);
 		}
