@@ -14,6 +14,14 @@ public class Grid : MonoBehaviour {
 	public Tile prefab1;
 	public Tile prefab2;
 	
+	public GameObject fontPrefab;
+	public GameObject fontPrefab0;
+	public GameObject fontPrefab1;
+	
+	public GameObject towerPrefab;
+	public GameObject towerPrefab0;
+	public GameObject towerPrefab1;
+	
 	public GameObject arcanaResPrefab;
 	public GameObject airResPrefab;
 	public GameObject earthResPrefab;
@@ -56,77 +64,67 @@ public class Grid : MonoBehaviour {
 			//instantiate and initialize
 		}
 		activePlayer = 0;
-		players[0].activate();
+//		players[0].activate();
 		size = (radius*2)+1;
 		map = new Tile[size,size];
+		float jMult = Mathf.Sqrt (.75f);
 		for (int i = 0; i < size; ++i){
 			for (int j = 0; j < size; ++j){
 				if(i == x0 && j == y0){
-					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-					map[i,j].init (i,j,2, true,-1, this);
-					map[i,j].owner = 0;
-//					map[i,j].occupyer = (Unit)Instantiate (tinyAirPrefab0,map[i,j].transform.position, Quaternion.Euler(0,30,0));
-//					map[i,j].occupyer.init(i,j,this);
-					//map[i,j].occupyer.availableMovePoints=map[i,j].occupyer.startingMovePoints;
+					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+					map[i,j].init (i,j,2, true,false,-1, this);
 					
 				}
 				else if(i == x1 && j == y1){
-					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-					map[i,j].init (i,j,2, true, -1, this);
-					map[i,j].owner = 1;
-					//map[i,j].occupyer = (Unit)Instantiate (tinyAirPrefab1,map[i,j].transform.position, Quaternion.Euler(0,30,0));
-//					map[i,j].occupyer.init(i,j,this);
-					//map[i,j].occupyer.availableMovePoints=map[i,j].occupyer.startingMovePoints;
+					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+					map[i,j].init (i,j,2, true,false, -1, this);
+					
 				}
 					else{
 					int r = Random.Range (0,3);
-					/*if (i == 0 || j == 0 || i == size-1 || j== size-1){
-						map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j), new Quaternion (0,0,0,0));
-						map[i,j].init (i,j,-1);
-					}*/
+					
 					if (Mathf.Abs(radius - i) >= radius || Mathf.Abs(radius - j) >= radius || Mathf.Abs(radius*2 -(i+j)) >= radius){ 
-						map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,-1, false, -1, this);
+						map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+						map[i,j].init (i,j,-1, false, false, -1, this);
 					}
 						
 					else if (r == 0){
-						map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,0, false, 2, this);
+						map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+						map[i,j].init (i,j,0, false, true, -1, this);
 					}
 					else if (r == 1){
-						map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,1, false, 3, this);
+						map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+						map[i,j].init (i,j,1, false, false, 3, this);
 					}
 					else{
-						map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,2, true, 4, this);
+						map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+						map[i,j].init (i,j,2, true, false, -1, this);
 					}
 				}
 			}
+			
 		}
+		map[x0, y0].capture (0);
+		map[x1, y1].capture (1);
 		endTurn ();
 	}
 	
 	public bool endTurn(){
-		//Debug.Log ("spacebar "+minTurnTime.ToString ());
-		if (minTurnTime < 0){
+		
+		if (minTurnTime < 0 && !suspended){
 			unitsAlive = false;
 			if (selected!= null){
 				selected.deselect ();
 			}
 			activePlayer = (activePlayer +1)% numPlayers;
-			players[activePlayer].activate();
+//			players[activePlayer].activate();
 			minTurnTime = 1;
-			//cam.transform.position = players[activePlayer].transform.position;
+			
 			Debug.Log("turn ended "+turn.ToString ());
 			turn++;
 			summoningFont.hide ();
 			
-			/*for (int i = 0; i<size; ++i){
-				for (int j = 0; j<size; ++j){
-					map[i,j].gameObject.layer = 8;
-				}
-			}*/
+			
 			if(activePlayer == 0)
 			{
 				for (int i = 0; i<size; ++i){
@@ -135,11 +133,7 @@ public class Grid : MonoBehaviour {
 							unitsAlive = true;
 							map[i,j].occupyer.beginTurn();
 						}
-						/*if(map[i,j].occupyer!=null&&map[i,j].owner==0){
-							unitsAlive = true;
-							map[i,j].occupyer.beginTurn();
-							Debug.Log("things be backwards");
-						}*/
+						
 						if (map[i,j].gameObject.tag == "visible1"||map[i,j].gameObject.tag == "range"){
 							map[i,j].gameObject.tag = "Untagged";
 							map[i,j].gameObject.layer = 8;
@@ -149,7 +143,7 @@ public class Grid : MonoBehaviour {
 							map[i,j].gameObject.tag = "visible0";
 							if (map[i,j].occupyer != null){
 								map[i,j].occupyer.see(i,j);
-								//Debug.Log(activePlayer);
+								
 							}
 						}	
 							
@@ -164,11 +158,7 @@ public class Grid : MonoBehaviour {
 							unitsAlive = true;
 							map[i,j].occupyer.beginTurn();
 						}
-						/*if(map[i,j].occupyer!=null&&map[i,j].owner==1){
-							unitsAlive = true;
-							map[i,j].occupyer.beginTurn();
-							Debug.Log ("things be backwards");
-						}*/
+						
 						if (map[i,j].gameObject.tag == "visible0"||map[i,j].gameObject.tag == "range"){
 							map[i,j].gameObject.tag = "Untagged";
 							map[i,j].gameObject.layer = 8;
@@ -178,7 +168,6 @@ public class Grid : MonoBehaviour {
 							map[i,j].gameObject.tag = "visible1";
 							if (map[i,j].occupyer != null){
 								map[i,j].occupyer.see(i,j);
-								//Debug.Log(activePlayer);
 							}
 						}
 						
@@ -187,7 +176,7 @@ public class Grid : MonoBehaviour {
 				}
 			}
 			if (!unitsAlive){
-				Debug.Log ("gameOver, player "+(1-activePlayer).ToString ()+" has no more units");
+				Debug.Log ("player "+(1-activePlayer).ToString ()+" has no more units");
 			}
 			return true;	
 		}
@@ -222,6 +211,13 @@ public class Grid : MonoBehaviour {
 		GUI.Box(new Rect(1250, 210, 100, 25), "Player 2: " + players[1].resources[2]);
 		GUI.Box(new Rect(1250, 240, 100, 25), "Player 2: " + players[1].resources[3]);
 		GUI.Box(new Rect(1250, 270, 100, 25), "Player 2: " + players[1].resources[4]);
+	
+	
+		if (minTurnTime < 0 && !suspended){
+			if (GUI.Button (new Rect(1250, 500, 125, 40), "end turn")){
+			endTurn();
+			}
+		}
 	}
 	
 }
