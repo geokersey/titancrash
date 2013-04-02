@@ -38,8 +38,8 @@ public class Tile : MonoBehaviour {
 	void Start () {
 	
 	}
-	public void init(int x_, int y_, int terr, bool hasFont_, bool hasTower_, int resource_, Grid world_){
-		
+	public void init(int x_, int y_, int terr, bool hasFont_, bool hasTower_, int resource_, int resAmount, Grid world_){
+		resourceQuantity = resAmount;
 		world = world_;
 		x = x_;
 		y = y_;
@@ -76,97 +76,69 @@ public class Tile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//if (world.activePlayer==owner){
-		//	gameObject.layer = 8;
-		//}
-		//else {
-		//	gameObject.layer = 10;
-		//}
-		//badbadbad
+	
 	}
-	public Path movePoints (int available, Tile target, Unit mover){
+	public Path movePoints (int available, Tile target, Unit mover, bool zoc){
+		bool zoc2 = false;
 		System.Collections.Generic.List<Tile> temp = new System.Collections.Generic.List<Tile>();
-		//Tuple returnVal = new Tuple <int, ArrayList>();
+		
 		if (terrain == -1){
-			//return -1;
-			//Debug.Log ("terrain = -1");
+			
 			return new Path(-1,temp, null);
 		}
 		if(target != this){
 			if (available <= pointsRequired){
-				//return -1;
-				//Debug.Log ("out of move points");
+				
 				return new Path(-1,temp, null);
 			}
 			if (this.occupyer != null && this.owner != world.activePlayer && this.occupyer != mover){
-				//Debug.Log("enemy unit in the way");
+				
 				return new Path(-1,temp, null);
 			}
 			
+			
+		}
+		zoc2 = checkZOC (mover.owner);
+		if (zoc2){
+			Debug.Log (x+", "+y);
+			
+		}
+		if (zoc2 && zoc){
+			Debug.Log ("zoc violation, available points setting to 0");
+			available = 0;
 		}
 		if (target == this){
 			if (this.occupyer != null && this.owner != world.activePlayer){
 				temp.Add (this);
-				//Debug.Log ("attacking");
+				
 				return new Path(Mathf.Max(0, available-pointsRequired), temp, this.occupyer);
 			}
 			if (this.occupyer != null){
-				//Debug.Log ("can't move onto own player");
 				return new Path (-1, temp, null);
 			}
-			//Debug.Log ("moving to empty space");
 			temp.Add (this);
 			return new Path(Mathf.Max (0, available-pointsRequired), temp, null);
 		}
 		
 		
-			/*if (target == this && available < pointsRequired){
-				//return 0;
-				temp.Add (this);
-				return new Path(0,temp, false);
-			}
-			if (target == this){
-				//return available - pointsRequired;
-				temp.Add(this);
-				return new Path(available -pointsRequired,temp, false);
-				
-			}*/
-		//}
-		/*if (y%2 == 1){
-			return Mathf.Max (world.map[x-1,y].movePoints (available - pointsRequired,target),
-				world.map[x+1,y].movePoints (available - pointsRequired,target),
-				world.map[x,y+1].movePoints (available - pointsRequired,target),
-				world.map[x+1,y+1].movePoints (available - pointsRequired,target),
-				world.map[x,y-1].movePoints (available - pointsRequired,target),
-				world.map[x+1,y-1].movePoints (available - pointsRequired,target));
-		}
-		else if (y%2 == 0){
-			return Mathf.Max (world.map[x-1,y].movePoints (available - pointsRequired,target),
-				world.map[x+1,y].movePoints (available - pointsRequired,target),
-				world.map[x,y+1].movePoints (available - pointsRequired,target),
-				world.map[x-1,y+1].movePoints (available - pointsRequired,target),
-				world.map[x,y-1].movePoints (available - pointsRequired,target),
-				world.map[x-1,y-1].movePoints (available - pointsRequired,target));
-		}*/
-		
-		Path max = world.map[x-1,y].movePoints (available - pointsRequired,target, mover);
-		Path current = world.map[x+1,y].movePoints (available - pointsRequired,target, mover);
+		Path max = world.map[x-1,y].movePoints (available - pointsRequired,target, mover, zoc2);
+		Path current = world.map[x+1,y].movePoints (available - pointsRequired,target, mover, zoc2);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
-		current = world.map[x-1,y+1].movePoints (available - pointsRequired,target, mover);
+		current = world.map[x-1,y+1].movePoints (available - pointsRequired,target, mover, zoc2);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
-		current = world.map[x+1,y-1].movePoints (available - pointsRequired,target, mover);
+		current = world.map[x+1,y-1].movePoints (available - pointsRequired,target, mover, zoc2);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
-		current = world.map[x,y-1].movePoints (available - pointsRequired,target, mover);
+		current = world.map[x,y-1].movePoints (available - pointsRequired,target, mover, zoc2);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
-		current = world.map[x,y+1].movePoints (available - pointsRequired,target, mover);
+		current = world.map[x,y+1].movePoints (available - pointsRequired,target, mover, zoc2);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
@@ -223,30 +195,18 @@ public class Tile : MonoBehaviour {
 		}
 	}
 	public void inRange(int points, bool ignoreTerrain){
+		//does not take into account enemy units or zone of control
 		if ((points > maxPoints && gameObject.tag == "range")||(points>0&&gameObject.tag!="range")){
 			if (terrain < 0){
 				return;
 			}
-			//Debug
-			//Debug.Log(x+ ", "+y+":  "+points);
-			//gameObject.tag = "range";
+			
+			if (maxPoints != -1 && maxPoints > points){
+				return;
+			}
 			maxPoints = points;
-			if (world.activePlayer == 0){
-				if (gameObject.tag == "vis1" || gameObject.tag == "visBoth"){
-						gameObject.tag = "visBoth";
-					}
-					else {
-						gameObject.tag = "vis0";
-					}
-				}
-				else if (world.activePlayer == 1){
-					if (gameObject.tag == "vis0" || gameObject.tag == "visBoth"){
-						gameObject.tag = "visBoth";
-					}
-					else {
-						gameObject.tag = "vis1";
-					}
-				}
+			see (1);
+			
 			gameObject.layer = 12;
 			if(ignoreTerrain){
 				points -=1;
@@ -266,6 +226,7 @@ public class Tile : MonoBehaviour {
 		if (terrain < 0){
 				return;
 		}
+		maxPoints = -1;
 		if (gameObject.layer == 12){
 			gameObject.layer = 10 + world.activePlayer;
 			world.map[x+1,y].outRange ();
@@ -275,6 +236,15 @@ public class Tile : MonoBehaviour {
 			world.map[x,y+1].outRange ();
 			world.map[x,y-1].outRange ();
 		}
+	}
+	public bool checkZOC(int player){
+		//checks to see if the players opponent has any units in adjacent tile
+		return (world.map[x+1,y].occupyer!=null && world.map[x+1,y].owner!=player)
+				||(world.map[x-1,y].occupyer!=null && world.map[x-1,y].owner!=player)
+				||(world.map[x+1,y-1].occupyer!=null && world.map[x+1,y-1].owner!=player)
+				||(world.map[x-1,y+1].occupyer!=null && world.map[x-1,y+1].owner!=player)
+				||(world.map[x,y+1].occupyer!=null && world.map[x,y+1].owner!=player)
+				||(world.map[x,y-1].occupyer!=null && world.map[x,y-1].owner!=player);
 	}
 			
 	public void deselect(){
@@ -363,5 +333,206 @@ public class Tile : MonoBehaviour {
 			
 		}
 		owner = player;
+	}
+	public void see(int points){
+		if (terrain<0){
+			return;
+		}
+		if (points > 0){
+			show();
+			gameObject.layer = 10+world.activePlayer;
+			if(owner <=0){
+				if (world.activePlayer == 0){
+					if (gameObject.tag == "vis1" || gameObject.tag == "visBoth"){
+						gameObject.tag = "visBoth";
+					}
+					else {
+						gameObject.tag = "vis0";
+					}
+					
+				}
+				else if (world.activePlayer == 1){
+					if (gameObject.tag == "vis0" || gameObject.tag == "visBoth"){
+						gameObject.tag = "visBoth";
+					}
+					else {
+						gameObject.tag = "vis1";
+					}
+				}
+				if (owner == 0){
+					if (hasFont){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.fontPrefab0, transform.position, Quaternion.identity);
+					}
+					else if (hasTower){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.towerPrefab0, transform.position, Quaternion.identity);
+					}
+					else if (resource == 0){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.arcanaResPrefab0, transform.position, Quaternion.identity);
+					}
+					else if (resource == 1){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.airResPrefab0, transform.position, Quaternion.identity);
+					}
+					else if (resource == 2){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.earthResPrefab0, transform.position, Quaternion.identity);
+					}
+					else if (resource == 3){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.fireResPrefab0, transform.position, Quaternion.identity);
+					}
+					else if (resource == 4){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.waterResPrefab0, transform.position, Quaternion.identity);
+					}
+				}
+				if (owner == 1){
+					if (hasFont){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.fontPrefab1, transform.position, Quaternion.identity);
+					}
+					else if (hasTower){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.towerPrefab1, transform.position, Quaternion.identity);
+					}
+					else if (resource == 0){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.arcanaResPrefab1, transform.position, Quaternion.identity);
+					}
+					else if (resource == 1){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.airResPrefab1, transform.position, Quaternion.identity);
+					}
+					else if (resource == 2){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.earthResPrefab1, transform.position, Quaternion.identity);
+					}
+					else if (resource == 3){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.fireResPrefab1, transform.position, Quaternion.identity);
+					}
+					else if (resource == 4){
+						Destroy (buildingModel);
+						buildingModel = (GameObject)Instantiate (world.waterResPrefab1, transform.position, Quaternion.identity);
+					}
+				}
+			}
+			
+			points--;
+			world.map[x+1,y].see(points);
+			world.map[x-1,y].see(points);
+			world.map[x+1,y-1].see(points);
+			world.map[x-1,y+1].see(points);
+			world.map[x,y+1].see(points);
+			world.map[x,y-1].see(points);
+		}
+		
+	}
+	public void hide(){
+		if (occupyer != null){
+			occupyer.hide();
+		}
+		if (hasFont){
+			Destroy (buildingModel);
+			buildingModel = (GameObject)Instantiate (world.fontPrefab, transform.position, Quaternion.identity);
+		}
+		else if (hasTower){
+			Destroy (buildingModel);
+			buildingModel = (GameObject)Instantiate (world.towerPrefab, transform.position, Quaternion.identity);
+		}
+		else if (resource == 0){
+			Destroy (buildingModel);
+			buildingModel = (GameObject)Instantiate (world.arcanaResPrefab, transform.position, Quaternion.identity);
+		}
+		else if (resource == 1){
+			Destroy (buildingModel);
+			buildingModel = (GameObject)Instantiate (world.airResPrefab, transform.position, Quaternion.identity);
+		}
+		else if (resource == 2){
+			Destroy (buildingModel);
+			buildingModel = (GameObject)Instantiate (world.earthResPrefab, transform.position, Quaternion.identity);
+		}
+		else if (resource == 3){
+			Destroy (buildingModel);
+			buildingModel = (GameObject)Instantiate (world.fireResPrefab, transform.position, Quaternion.identity);
+		}
+		else if (resource == 4){
+			Destroy (buildingModel);
+			buildingModel = (GameObject)Instantiate (world.waterResPrefab, transform.position, Quaternion.identity);
+		}
+		
+	}
+	public void hideUnit(){
+		if (occupyer != null){
+			occupyer.hide();
+		}
+	}
+	public void show(){
+		if (occupyer != null){
+			occupyer.show ();
+		}
+		if (owner == 0){
+			if (hasFont){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.fontPrefab0, transform.position, Quaternion.identity);
+			}
+			else if (hasTower){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.towerPrefab0, transform.position, Quaternion.identity);
+			}
+			else if (resource == 0){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.arcanaResPrefab0, transform.position, Quaternion.identity);
+			}
+			else if (resource == 1){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.airResPrefab0, transform.position, Quaternion.identity);
+			}
+			else if (resource == 2){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.earthResPrefab0, transform.position, Quaternion.identity);
+			}
+			else if (resource == 3){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.fireResPrefab0, transform.position, Quaternion.identity);
+			}
+			else if (resource == 4){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.waterResPrefab0, transform.position, Quaternion.identity);
+			}
+		}
+		if (owner == 1){
+			if (hasFont){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.fontPrefab1, transform.position, Quaternion.identity);
+			}
+			else if (hasTower){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.towerPrefab1, transform.position, Quaternion.identity);
+			}
+			else if (resource == 0){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.arcanaResPrefab1, transform.position, Quaternion.identity);
+			}
+			else if (resource == 1){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.airResPrefab1, transform.position, Quaternion.identity);
+			}
+			else if (resource == 2){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.earthResPrefab1, transform.position, Quaternion.identity);
+			}
+			else if (resource == 3){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.fireResPrefab1, transform.position, Quaternion.identity);
+			}
+			else if (resource == 4){
+				Destroy (buildingModel);
+				buildingModel = (GameObject)Instantiate (world.waterResPrefab1, transform.position, Quaternion.identity);
+			}
+		}
 	}
 }

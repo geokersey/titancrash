@@ -43,6 +43,7 @@ public class Unit : MonoBehaviour {
 						Debug.Log ("lost a fight, should stop moving");
 						acting = false;
 						world.suspended = false;
+						world.map[x,y].choose ();
 					}
 					else{
 						steps.defender = null;
@@ -70,6 +71,7 @@ public class Unit : MonoBehaviour {
 			else{steps = new Path();
 			acting = false;
 			world.suspended = false;
+			world.map[x,y].choose ();
 			}
 		}
 		else{
@@ -95,14 +97,15 @@ public class Unit : MonoBehaviour {
 
 	}
 	public Tile goTo(Tile target){
-		Debug.Log ("in the goto func");
+		//Debug.Log ("in the goto func");
 		if (owner != world.activePlayer){
 			return world.map[x,y];
 		}
-		steps = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target, this);
+		steps = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target, this, false);
 		if (steps.pointsRemaining >=0){
+			world.map[x,y].outRange ();
 			acting = true;
-			Debug.Log ("suspending the world");
+			//Debug.Log ("suspending the world");
 			world.suspended = true;
 			move ();
 		}
@@ -193,56 +196,8 @@ public class Unit : MonoBehaviour {
 			return false;	
 		}
 	}
-	
-	
-	public void see(int _x, int _y){
-		//if (world.activePlayer==0){
-		for (int i = -sight; i<= sight; ++i){
-			if (i+_x>0 && i+_x<world.size){
-				for (int j = -sight; j<= sight; ++j){
-					if (j+_y>0 && j+_y<world.size){
-						if (Mathf.Abs(i+j)<=sight){
-							world.map[i+_x,j+_y].gameObject.layer = 10+world.activePlayer;
-							if (world.activePlayer == 0){
-								if (world.map[i+_x,j+_y].tag == "vis1" || world.map[i+_x,j+_y].tag == "visBoth"){
-									world.map[i+_x,j+_y].tag = "visBoth";
-								}
-								else {
-									world.map[i+_x,j+_y].tag = "vis0";
-								}
-							}
-							else if (world.activePlayer == 1){
-								if (world.map[i+_x,j+_y].tag == "vis0" || world.map[i+_x,j+_y].tag == "visBoth"){
-									world.map[i+_x,j+_y].tag = "visBoth";
-								}
-								else {
-									world.map[i+_x,j+_y].tag = "vis1";
-								}
-							}
-							
-							
-						}
-						
-					}
-				}
-			}
-		}
-		//}
-		/*if (world.activePlayer==1){
-			for (int i = -sight; i<= sight; ++i){
-				if (i+_x>0 && i+_x<world.size){
-					for (int j = -sight; j<= sight; ++j){
-						if (j+_y>0 && j+_y<world.size){
-							if (Mathf.Abs(i+j)<=sight){
-								world.map[i+_x,j+_y].gameObject.layer = 9;
-								world.map[i+_x,j+_y].gameObject.tag = "visible1";
-							}
-							
-						}
-					}
-				}
-			}
-		}	*/
+	public void see(int x_, int y_){
+		world.map[x_,y_].see (sight);
 	}
 	void OnGUI(){
 		if (selected){
@@ -261,5 +216,11 @@ public class Unit : MonoBehaviour {
 	public void deselect(){
 		selected = false;
 		
+	}
+	public void hide(){
+		renderer.enabled = false;
+	}
+	public void show(){
+		renderer.enabled = true;
 	}
 }

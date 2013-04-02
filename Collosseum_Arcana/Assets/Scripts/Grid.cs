@@ -4,6 +4,7 @@ using System.Collections;
 public class Grid : MonoBehaviour {
 	
 	public int size;
+	public int defaultQuant = 2;
 	public int numPlayers = 2;
 	public int radius = 1;
 	public int x0, y0;
@@ -72,12 +73,12 @@ public class Grid : MonoBehaviour {
 			for (int j = 0; j < size; ++j){
 				if(i == x0 && j == y0){
 					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
-					map[i,j].init (i,j,2, true,false,-1, this);
+					map[i,j].init (i,j,2, true,false,-1,defaultQuant, this);
 					
 				}
 				else if(i == x1 && j == y1){
 					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
-					map[i,j].init (i,j,2, true,false, -1, this);
+					map[i,j].init (i,j,2, true,false, -1,defaultQuant, this);
 					
 				}
 					else{
@@ -85,20 +86,20 @@ public class Grid : MonoBehaviour {
 					
 					if (Mathf.Abs(radius - i) >= radius || Mathf.Abs(radius - j) >= radius || Mathf.Abs(radius*2 -(i+j)) >= radius){ 
 						map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,-1, false, false, -1, this);
+						map[i,j].init (i,j,-1, false, false, -1, defaultQuant, this);
 					}
 						
 					else if (r == 0){
 						map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,0, false, true, -1, this);
+						map[i,j].init (i,j,0, false, true, -1,defaultQuant, this);
 					}
 					else if (r == 1){
 						map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,1, false, false, 3, this);
+						map[i,j].init (i,j,1, false, false, 3,defaultQuant, this);
 					}
 					else{
 						map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
-						map[i,j].init (i,j,2, true, false, -1, this);
+						map[i,j].init (i,j,2, true, false, -1,defaultQuant, this);
 					}
 				}
 			}
@@ -133,10 +134,13 @@ public class Grid : MonoBehaviour {
 						if (map[i,j].gameObject.tag == "vis1" || map[i,j].gameObject.tag == "visNone"){
 							//map[i,j].gameObject.tag = "Untagged";
 							map[i,j].gameObject.layer = 8;
+							map[i,j].hide ();
+							
 							//object under complete fog
 						}
 						if (map[i,j].gameObject.layer != 10 && (map[i,j].gameObject.tag == "vis0" || map[i,j].gameObject.tag == "visBoth")){
 							map[i,j].gameObject.layer = 9;
+							map[i,j].show();
 							//object under partial fog	
 							}
 					}
@@ -144,10 +148,12 @@ public class Grid : MonoBehaviour {
 						if (map[i,j].gameObject.tag == "vis0" || map[i,j].gameObject.tag == "visNone"){
 							//map[i,j].gameObject.tag = "Untagged";
 							map[i,j].gameObject.layer = 8;
+							map[i,j].hide ();
 							//object under complete fog
 						}
 						if (map[i,j].gameObject.layer != 11 && (map[i,j].gameObject.tag == "vis1" || map[i,j].gameObject.tag == "visBoth")){
 							map[i,j].gameObject.layer = 9;
+							map[i,j].show();
 							//object under partial fog	
 							}
 					}
@@ -157,39 +163,17 @@ public class Grid : MonoBehaviour {
 							map[i,j].occupyer.see (i,j);
 							map[i,j].occupyer.beginTurn ();
 						}
+						if (map[i,j].hasTower){
+							map[i,j].see (3);
+							}
 					}	
 		
 				}
 			
 			}
-			/*else if (activePlayer == 1)
-			{
-				for (int i = 0; i<size; ++i){
-					for (int j = 0; j<size; ++j){
-						if(map[i,j].occupyer!=null&&map[i,j].owner==0){
-							unitsAlive = true;
-							map[i,j].occupyer.beginTurn();
-						}
-						
-						if (map[i,j].gameObject.tag == "visible0"||map[i,j].gameObject.tag == "range"){
-							map[i,j].gameObject.tag = "Untagged";
-							map[i,j].gameObject.layer = 8;
-						}
-						if (map[i,j].gameObject.tag == "visible1"||map[i,j].owner ==activePlayer){
-							map[i,j].gameObject.layer = 9;
-							map[i,j].gameObject.tag = "visible1";
-							if (map[i,j].occupyer != null){
-								map[i,j].occupyer.see(i,j);
-							}
-						}
-						
-							
-					}
-				}
-			}*/
-			if (!unitsAlive){
-				Debug.Log ("player "+(1-activePlayer).ToString ()+" has no more units");
-			}
+			//if (!unitsAlive){
+			//	Debug.Log ("player "+(1-activePlayer).ToString ()+" has no more units");
+			//}
 			return true;	
 		}
 		return false;
