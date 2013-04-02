@@ -196,22 +196,39 @@ public class Unit : MonoBehaviour {
 	
 	
 	public void see(int _x, int _y){
-		if (world.activePlayer==0){
-			for (int i = -sight; i<= sight; ++i){
-				if (i+_x>0 && i+_x<world.size){
-					for (int j = -sight; j<= sight; ++j){
-						if (j+_y>0 && j+_y<world.size){
-							if (Mathf.Abs(i+j)<=sight){
-								world.map[i+_x,j+_y].gameObject.layer = 9;
-								world.map[i+_x,j+_y].gameObject.tag = "visible0";
+		//if (world.activePlayer==0){
+		for (int i = -sight; i<= sight; ++i){
+			if (i+_x>0 && i+_x<world.size){
+				for (int j = -sight; j<= sight; ++j){
+					if (j+_y>0 && j+_y<world.size){
+						if (Mathf.Abs(i+j)<=sight){
+							world.map[i+_x,j+_y].gameObject.layer = 10+world.activePlayer;
+							if (world.activePlayer == 0){
+								if (world.map[i+_x,j+_y].tag == "vis1" || world.map[i+_x,j+_y].tag == "visBoth"){
+									world.map[i+_x,j+_y].tag = "visBoth";
+								}
+								else {
+									world.map[i+_x,j+_y].tag = "vis0";
+								}
+							}
+							else if (world.activePlayer == 1){
+								if (world.map[i+_x,j+_y].tag == "vis0" || world.map[i+_x,j+_y].tag == "visBoth"){
+									world.map[i+_x,j+_y].tag = "visBoth";
+								}
+								else {
+									world.map[i+_x,j+_y].tag = "vis1";
+								}
 							}
 							
+							
 						}
+						
 					}
 				}
 			}
 		}
-		if (world.activePlayer==1){
+		//}
+		/*if (world.activePlayer==1){
 			for (int i = -sight; i<= sight; ++i){
 				if (i+_x>0 && i+_x<world.size){
 					for (int j = -sight; j<= sight; ++j){
@@ -225,7 +242,7 @@ public class Unit : MonoBehaviour {
 					}
 				}
 			}
-		}	
+		}	*/
 	}
 	void OnGUI(){
 		if (selected){

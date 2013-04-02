@@ -224,11 +224,30 @@ public class Tile : MonoBehaviour {
 	}
 	public void inRange(int points, bool ignoreTerrain){
 		if ((points > maxPoints && gameObject.tag == "range")||(points>0&&gameObject.tag!="range")){
+			if (terrain < 0){
+				return;
+			}
 			//Debug
-			Debug.Log(x+ ", "+y+":  "+points);
-			gameObject.tag = "range";
+			//Debug.Log(x+ ", "+y+":  "+points);
+			//gameObject.tag = "range";
 			maxPoints = points;
-			gameObject.layer = 10;
+			if (world.activePlayer == 0){
+				if (gameObject.tag == "vis1" || gameObject.tag == "visBoth"){
+						gameObject.tag = "visBoth";
+					}
+					else {
+						gameObject.tag = "vis0";
+					}
+				}
+				else if (world.activePlayer == 1){
+					if (gameObject.tag == "vis0" || gameObject.tag == "visBoth"){
+						gameObject.tag = "visBoth";
+					}
+					else {
+						gameObject.tag = "vis1";
+					}
+				}
+			gameObject.layer = 12;
 			if(ignoreTerrain){
 				points -=1;
 			}
@@ -244,14 +263,11 @@ public class Tile : MonoBehaviour {
 		}
 	}
 	public void outRange(){
-		if (gameObject.tag == "range"){
-			if (world.activePlayer == 0){
-				gameObject.tag = "visible0";
-			}
-			else if (world.activePlayer == 1){
-				gameObject.tag = "visible1";
-			}
-			gameObject.layer = 9;
+		if (terrain < 0){
+				return;
+		}
+		if (gameObject.layer == 12){
+			gameObject.layer = 10 + world.activePlayer;
 			world.map[x+1,y].outRange ();
 			world.map[x-1,y].outRange ();
 			world.map[x+1,y-1].outRange ();
@@ -273,7 +289,7 @@ public class Tile : MonoBehaviour {
 		if (this.occupyer != null){
 			this.occupyer.choose();
 		}
-		else if (hasTower){
+		else if (hasTower && owner == world.activePlayer){
 			inRange (towerRange, true);
 		}
 		//show GUI

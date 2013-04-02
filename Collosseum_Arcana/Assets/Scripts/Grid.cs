@@ -125,32 +125,44 @@ public class Grid : MonoBehaviour {
 			summoningFont.hide ();
 			
 			
-			if(activePlayer == 0)
-			{
-				for (int i = 0; i<size; ++i){
-					for (int j = 0; j<size; ++j){
-						if(map[i,j].occupyer!=null&&map[i,j].owner==1){
-							unitsAlive = true;
-							map[i,j].occupyer.beginTurn();
-						}
-						
-						if (map[i,j].gameObject.tag == "visible1"||map[i,j].gameObject.tag == "range"){
-							map[i,j].gameObject.tag = "Untagged";
+			
+			for (int i = 0; i<size; ++i){
+				for (int j = 0; j<size; ++j){
+					
+					if (activePlayer == 0){
+						if (map[i,j].gameObject.tag == "vis1" || map[i,j].gameObject.tag == "visNone"){
+							//map[i,j].gameObject.tag = "Untagged";
 							map[i,j].gameObject.layer = 8;
+							//object under complete fog
 						}
-						if (map[i,j].gameObject.tag == "visible0"||map[i,j].owner ==activePlayer){
+						if (map[i,j].gameObject.layer != 10 && (map[i,j].gameObject.tag == "vis0" || map[i,j].gameObject.tag == "visBoth")){
 							map[i,j].gameObject.layer = 9;
-							map[i,j].gameObject.tag = "visible0";
-							if (map[i,j].occupyer != null){
-								map[i,j].occupyer.see(i,j);
-								
+							//object under partial fog	
 							}
-						}	
-							
 					}
+					else if (activePlayer == 1){
+						if (map[i,j].gameObject.tag == "vis0" || map[i,j].gameObject.tag == "visNone"){
+							//map[i,j].gameObject.tag = "Untagged";
+							map[i,j].gameObject.layer = 8;
+							//object under complete fog
+						}
+						if (map[i,j].gameObject.layer != 11 && (map[i,j].gameObject.tag == "vis1" || map[i,j].gameObject.tag == "visBoth")){
+							map[i,j].gameObject.layer = 9;
+							//object under partial fog	
+							}
+					}
+					if (map[i, j].owner == activePlayer){
+						map[i,j].gameObject.layer = 10+activePlayer;
+						if (map[i, j].occupyer != null){
+							map[i,j].occupyer.see (i,j);
+							map[i,j].occupyer.beginTurn ();
+						}
+					}	
+		
 				}
+			
 			}
-			else if (activePlayer == 1)
+			/*else if (activePlayer == 1)
 			{
 				for (int i = 0; i<size; ++i){
 					for (int j = 0; j<size; ++j){
@@ -174,7 +186,7 @@ public class Grid : MonoBehaviour {
 							
 					}
 				}
-			}
+			}*/
 			if (!unitsAlive){
 				Debug.Log ("player "+(1-activePlayer).ToString ()+" has no more units");
 			}
