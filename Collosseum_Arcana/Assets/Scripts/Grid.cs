@@ -63,6 +63,7 @@ public class Grid : MonoBehaviour {
 		players = new Player[numPlayers];
 		for (int i = 0; i <numPlayers; ++i){
 			players[i] = (Player)Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0,i*180,0));
+			players[i].init ();
 			//instantiate and initialize
 		}
 		activePlayer = 0;
@@ -108,6 +109,7 @@ public class Grid : MonoBehaviour {
 		}
 		map[x0, y0].capture (0);
 		map[x1, y1].capture (1);
+		
 		endTurn ();
 	}
 	
@@ -131,7 +133,7 @@ public class Grid : MonoBehaviour {
 			
 			for (int i = 0; i<size; ++i){
 				for (int j = 0; j<size; ++j){
-					
+					map[i,j].beginTurn ();
 					if (activePlayer == 0){
 						if (map[i,j].gameObject.tag == "vis1" || map[i,j].gameObject.tag == "visNone"){
 							//map[i,j].gameObject.tag = "Untagged";

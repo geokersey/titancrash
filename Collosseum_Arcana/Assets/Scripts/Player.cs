@@ -22,7 +22,7 @@ public class Player : MonoBehaviour {
 	public System.Collections.Generic.List<ResOccupied> resO;
 	// Use this for initialization
 	void Start () {
-		resO = new System.Collections.Generic.List<ResOccupied>();
+		//resO = new System.Collections.Generic.List<ResOccupied>();
 		resources = new int[5];
 		for (int i = 0; i <5; ++i){
 			resources[i] = 0;
@@ -34,6 +34,9 @@ public class Player : MonoBehaviour {
 	void Update () {
 		
 		
+	}
+	public void init(){
+		resO = new System.Collections.Generic.List<ResOccupied>();
 	}
 	public void beginTurn(){
 		int i = 1;

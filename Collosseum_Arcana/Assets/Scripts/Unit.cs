@@ -8,8 +8,9 @@ public class Buff{
 	public int defense;
 	public int movement;
 	public int sight;
+	public int damage;
 	public Buff(){
-		health = attack = defense =  movement = sight = 0;
+		health = attack = defense =  movement = sight = damage = 0;
 	}
 	
 }
@@ -114,12 +115,13 @@ public class Unit : MonoBehaviour {
 			temp = buffs.Count-i;
 			
 			buffs[temp].turns--;
+			hp += buffs[temp].damage;
 			if (buffs[temp].turns<=0){
-				hp+=buffs[temp].health;
-				atk+=buffs[temp].attack;
-				def+=buffs[temp].defense;
-				startingMovePoints+=buffs[temp].movement;
-				sight+=buffs[temp].sight;
+				hp-=buffs[temp].health;
+				atk-=buffs[temp].attack;
+				def-=buffs[temp].defense;
+				startingMovePoints-=buffs[temp].movement;
+				sight-=buffs[temp].sight;
 				
 				buffs.RemoveAt(temp);
 			}
@@ -130,7 +132,7 @@ public class Unit : MonoBehaviour {
 
 	}
 	public Tile goTo(Tile target){
-		//Debug.Log ("in the goto func");
+		Debug.Log ("in the goto func");
 		if (owner != world.activePlayer){
 			return world.map[x,y];
 		}

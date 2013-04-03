@@ -178,8 +178,178 @@ public class SpellManager : MonoBehaviour
 			}
 		}
 		else if (spell == 6){
+			//scorched earth
+			if (target.findTower (5)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(4,2,1));
+				other.players[other.activePlayer].resources[2]-=1;
+				target.scorch = 4*2;
+				spell = -1;
+			}
+		}
+		else if (spell == 7){		
+			//fireball
+			if (target.occupyer != null && target.findTower (3)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(1,2,2));
+				other.players[other.activePlayer].resources[2]-=2;
+				
+				target.occupyer.hp-=3;
+				Buff temp = new Buff();
+				temp.damage = 1;
+				temp.turns = 5;
+				spell = -1;
+			}
+		}
+		else if (spell == 8){
+			// raging fire
+			if (target.occupyer != null && target.findTower(5)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(3,2,3));
+				other.players[other.activePlayer].resources[2]-=3;
+				
+				Buff temp = new Buff();
+				temp.attack = 3;
+				temp.turns = 3;
+				spell = -1;
+				
+			}	
+		}
+		else if (spell == 9){
+			//eruption.
+			if(target.findTower (3)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(4,2,5));
+				other.players[other.activePlayer].resources[2]-=5;
+				
+				if (target.terrain >=0){
+					target.terrain = 2; //change to whatever mountain is
+					target.pointsRequired = 3;
+					target.transformTime = 4*2;
+					//switch the model
+					other.map[target.x+1,target.y].scorch = 4;
+					other.map[target.x-1,target.y].scorch = 4;
+					other.map[target.x+1,target.y-1].scorch = 4;
+					other.map[target.x-1,target.y+1].scorch = 4;
+					other.map[target.x,target.y+1].scorch = 4;
+					other.map[target.x,target.y-1].scorch = 4;
+				}
+				spell = -1;
+			}
 			
 		}
+		else if (spell == 10){
+			//chill
+			if (target.occupyer != null && target.findTower(3)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(3,4,1));
+				other.players[other.activePlayer].resources[4]-=1;
+				
+				Buff temp = new Buff();
+				temp.turns = 3;
+				temp.movement = -1;
+				temp.attack = -1;
+				temp.defense = -1;
+				
+				target.occupyer.atk -= 1;
+				target.occupyer.def -=1;
+				target.occupyer.availableMovePoints-=1;
+				target.occupyer.startingMovePoints -=1;
+				target.occupyer.buffs.Add (temp);
+				
+				spell = -1;
+			}
+		}
+		else if (spell == 11){
+			//glacial wall
+			if(target.findTower (3)){
+				
+				other.players[other.activePlayer].resO.Add (new ResOccupied(3,4,2));
+				other.players[other.activePlayer].resources[4]-=2;
+			
+				target.terrain = 2; //change to whatever mountain is
+				target.pointsRequired = 3;
+				target.transformTime = 3*2;
+				//change model
+				
+				spell = -1;
+			}
+		}
+		else if (spell == 12){
+			//wineter's call
+			if(target.occupyer!= null && target.findTower (3)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(4,4,2));
+				other.players[other.activePlayer].resources[4]-=2;
+				//sleepxors?
+				spell = -1;
+			}
+		}
+		else if (spell == 13){
+			//frost
+			if(target.findTower (4)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(4,4,3));
+				other.players[other.activePlayer].resources[4]-=3;
+				if(target.frost <=0){
+					target.pointsRequired += 2;
+				}
+				target.frost = 4;
+				spell = -1;
+			}
+		}
+		else if (spell == 14){
+			//natures bounty
+			if(target.occupyer!=null&&target.findTower (2)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(1,3,1));
+				other.players[other.activePlayer].resources[3]-=1;
+				
+				target.occupyer.hp +=3;
+				spell = -1;				
+			}
+		}
+		else if (spell == 15){
+			//stone armor
+			if(target.occupyer!=null&&target.findTower (2)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(3,3,2));
+				other.players[other.activePlayer].resources[3]-=2;
+				
+				Buff temp = new Buff();
+				temp.defense = 3;
+				temp.turns = 3;
+				
+				target.occupyer.def += 3; 
+				target.occupyer.buffs.Add (temp);
+				spell = -1;
+			}
+		}
+		else if (spell == 16){
+			
+			//one with nature
+			//ignore for now possibly forever
+			if(target.occupyer!=null&&target.findTower (4)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(2,3,3));
+				other.players[other.activePlayer].resources[3]-=3;
+			}
+		}
+		else if (spell == 17){
+			//heaven to earth
+			//ignore for now
+			if(target.occupyer!=null&&target.findTower (2)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(3,3,3));
+				other.players[other.activePlayer].resources[3]-=3;
+			}
+		}
+		else if (spell == 18){
+			//counterspell
+			//ignore for now
+			if(target.occupyer!=null&&target.findTower (10)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(1,0,3));
+				other.players[other.activePlayer].resources[0]-=3;
+			}
+		}
+		else if (spell == 19){
+			//dispel magic
+			//ignore for now
+			if(target.occupyer!=null&&target.findTower (5)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(1,0,2));
+				other.players[other.activePlayer].resources[0]-=2;
+			}
+		}
+		
 	}
 	void IsInRange(int x, int y, int d)
 	{

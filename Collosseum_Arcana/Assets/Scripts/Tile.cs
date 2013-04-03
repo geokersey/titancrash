@@ -17,6 +17,11 @@ public class Path{
 	}
 }
 public class Tile : MonoBehaviour {
+	public int scorch = 0;
+	public int frost = -1;
+	public int oldTerrain = 0;
+	public int transformTime = -1;
+	
 	public Grid world;
 	public int x;
 	public int y;
@@ -43,7 +48,7 @@ public class Tile : MonoBehaviour {
 		world = world_;
 		x = x_;
 		y = y_;
-		terrain = terr;
+		oldTerrain = terrain = terr;
 		pointsRequired = terr + 1;
 		hasFont = hasFont_;
 		hasTower = hasTower_;
@@ -186,7 +191,7 @@ public class Tile : MonoBehaviour {
 			}
 			
 			if (Input.GetMouseButtonUp (1)){
-				if (world.spells.spell <=0){
+				if (world.spells.spell >=0){
 					world.spells.cast(this);
 						
 				}
@@ -254,6 +259,22 @@ public class Tile : MonoBehaviour {
 				||(world.map[x-1,y+1].occupyer!=null && world.map[x-1,y+1].owner!=player)
 				||(world.map[x,y+1].occupyer!=null && world.map[x,y+1].owner!=player)
 				||(world.map[x,y-1].occupyer!=null && world.map[x,y-1].owner!=player);
+	}
+	public void beginTurn(){
+		
+		scorch--;
+		transformTime --;
+		frost--;
+		if (scorch >0&&occupyer!= null&&owner != world.activePlayer){
+			occupyer.hp -= 1;
+		}
+		if (transformTime == 0){
+			terrain = oldTerrain;
+			//do model switch
+		}
+		if (frost == 0){
+			pointsRequired -= 2;
+		}
 	}
 			
 	public void deselect(){
