@@ -85,8 +85,63 @@ public class SpellManager : MonoBehaviour
 			if (GUI.Button(new Rect(100, 0, 99, 49), "hawkeye")){
 				spell = 0;
 			}
+			if (GUI.Button(new Rect(200, 0, 99, 49), "reveal")){
+				spell = 1;
+			}
+			if (GUI.Button(new Rect(300, 0, 99, 49), "tornado")){
+				spell = 2;
+			}
+			if (GUI.Button(new Rect(400, 0, 99, 49), "wind walk")){
+				spell = 4;
+			}
+			if (GUI.Button(new Rect(500, 0, 99, 49), "lightning bolt")){
+				spell = 5;
+			}
+			if (GUI.Button(new Rect(600, 0, 99, 49), "scorched earth")){
+				spell = 6;
+			}
+			if (GUI.Button(new Rect(700, 0, 99, 49), "fireball")){
+				spell = 7;
+			}
+			if (GUI.Button(new Rect(800, 0, 99, 49), "raging fire")){
+				spell = 8;
+			}
+			if (GUI.Button(new Rect(900, 0, 99, 49), "eruption")){
+				spell = 9;
+			}
+			if (GUI.Button(new Rect(1000, 0, 99, 49), "chill")){
+				spell = 10;
+			}
+			if (GUI.Button(new Rect(1100, 0, 99, 49), "glacial wall")){
+				spell = 11;
+			}
+			if (GUI.Button(new Rect(1200, 0, 99, 49), "winters call")){
+				spell = 12;
+			}
+			if (GUI.Button(new Rect(1300, 0, 99, 49), "frost")){
+				spell = 13;
+			}
+			if (GUI.Button(new Rect(1300, 50, 99, 49), "nature's bounty")){
+				spell = 14;
+			}
+			if (GUI.Button(new Rect(1200, 50, 99, 49), "stone armor")){
+				spell = 15;
+			}
+			if (GUI.Button(new Rect(1100, 50, 99, 49), "one with nature")){
+				spell = 16;
+			}
+			if (GUI.Button(new Rect(1000, 50, 99, 49), "heaven to earth")){
+				spell = 17;
+			}
+			if (GUI.Button(new Rect(900, 50, 99, 49), "counterspell")){
+				spell = 18;
+			}
+			if (GUI.Button(new Rect(800, 50, 99, 49), "dispel magic")){
+				spell = 19;
+			}
 		}
 	}
+	
 	
 	void IsCasting(bool state)
 	{
