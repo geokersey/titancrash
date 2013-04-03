@@ -117,11 +117,17 @@ public class Grid : MonoBehaviour {
 	public bool endTurn(){
 		
 		if (minTurnTime < 0 && !suspended){
-			unitsAlive = false;
+			//unitsAlive = false;
 			if (selected!= null){
 				selected.deselect ();
 			}
 			activePlayer = (activePlayer +1)% numPlayers;
+			if(activePlayer == 0 && map[x1,y1].owner==0){
+				Debug.Log ("player 0 has captured player 1's base");
+			}
+			else if(activePlayer == 1 && map[x0,y0].owner==1){
+				Debug.Log ("player 1 has captured player 0's base");
+			}	
 			techs.checkAvailability();
 			players[activePlayer].beginTurn ();
 //			players[activePlayer].activate();

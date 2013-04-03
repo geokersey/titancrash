@@ -138,7 +138,7 @@ public class techstuff : MonoBehaviour {
 				{
 					if (world.players[world.activePlayer].techAvailable[techTree[i].prereqs[j] - 1] != 2)
 					{
-						print (techTree[i].name);
+						//print (techTree[i].name);
 						b = false;
 						break;
 					}
