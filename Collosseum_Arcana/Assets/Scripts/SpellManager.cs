@@ -15,6 +15,7 @@ public class SpellManager : MonoBehaviour
 	private bool visible = true;
 	public Unit tornadoVictim;
 	public int spell;
+	
 	void Start ()
 	{
 		tornadoVictim = null;
@@ -247,11 +248,13 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,2,2));
 				other.players[other.activePlayer].resources[2]-=2;
 				
+				Instantiate(Fireball, new Vector3(target.transform.position.x, 9, target.transform.position.z), Quaternion.identity);
+				
 				target.occupyer.hp-=3;
 				Buff temp = new Buff();
 				temp.damage = 1;
 				temp.turns = 5;
-				spell = -1;
+				//spell = -1;
 			}
 		}
 		else if (spell == 8){

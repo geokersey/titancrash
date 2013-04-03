@@ -261,11 +261,11 @@ public class techstuff : MonoBehaviour {
 			}
 			else
 			{
-				if (GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Research") && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= 15)
+				if (GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Research") && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= 2)
 				{
 					world.players[world.activePlayer].techAvailable[selectedTech] = 2;
 					world.players[world.activePlayer].researched = true;
-					world.players[world.activePlayer].resources[0] -= 15;
+					world.players[world.activePlayer].resources[0] -= 2;
 					state = 0;
 				}
 			}
