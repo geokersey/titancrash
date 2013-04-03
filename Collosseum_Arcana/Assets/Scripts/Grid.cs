@@ -57,6 +57,7 @@ public class Grid : MonoBehaviour {
 	public GameObject cam;
 	bool unitsAlive = true;
 	public bool suspended;
+	public techstuff techs;
 	int turn = 0;
 	// Use this for initialization
 	void Awake () {
@@ -121,6 +122,7 @@ public class Grid : MonoBehaviour {
 				selected.deselect ();
 			}
 			activePlayer = (activePlayer +1)% numPlayers;
+			techs.checkAvailability();
 			players[activePlayer].beginTurn ();
 //			players[activePlayer].activate();
 			minTurnTime = 1;

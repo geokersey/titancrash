@@ -20,6 +20,8 @@ public class Player : MonoBehaviour {
 	public Grid world;
 	public int[] resources;
 	public System.Collections.Generic.List<ResOccupied> resO;
+	public System.Collections.Generic.List<int> techAvailable;
+	public bool researched;
 	// Use this for initialization
 	void Start () {
 		//resO = new System.Collections.Generic.List<ResOccupied>();
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour {
 			resources[i] = 0;
 		}
 		resources[0] = 3;
+		researched = false;
 	}
 	
 	// Update is called once per frame
@@ -40,6 +43,7 @@ public class Player : MonoBehaviour {
 	}
 	public void beginTurn(){
 		int i = 1;
+		researched = false;
 		while (resO.Count >0 && i <= resO.Count){
 			resO[resO.Count-i].turns--;
 			if (resO[resO.Count-i].turns<=0){
