@@ -1,5 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 
 public class Grid : MonoBehaviour {
 	
@@ -9,6 +13,7 @@ public class Grid : MonoBehaviour {
 	public int radius = 1;
 	public int x0, y0;
 	public int x1, y1;
+	public float jMult;
 	
 	public Tile prefabWall;
 	public Tile prefab0;
@@ -71,9 +76,25 @@ public class Grid : MonoBehaviour {
 //		players[0].activate();
 		size = (radius*2)+1;
 		map = new Tile[size,size];
-		float jMult = Mathf.Sqrt (.75f);
+		jMult = Mathf.Sqrt (.75f);
+		
+		
+		/////
+		TileContainer LoadedMap = LoadMap("DefaultMatch");
+		/////
+		
+		x0 = 2;
+		y0 = (size+1)/2 - 1;
+		x1 = 16;
+		y1 = (size+1)/2 - 1;
+		
+		size = 19;
+		int z = 0;
 		for (int i = 0; i < size; ++i){
 			for (int j = 0; j < size; ++j){
+				Setup(LoadedMap.Tiles[z], i, j);
+				z++;
+				/*
 				if(i == x0 && j == y0){
 					map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
 					map[i,j].init (i,j,2, true,false,-1,defaultQuant, this);
@@ -104,7 +125,7 @@ public class Grid : MonoBehaviour {
 						map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
 						map[i,j].init (i,j,2, true, false, -1,defaultQuant, this);
 					}
-				}
+				}*/
 			}
 			
 		}
@@ -139,8 +160,8 @@ public class Grid : MonoBehaviour {
 			
 			
 			
-			for (int i = 0; i<size; ++i){
-				for (int j = 0; j<size; ++j){
+			for (int i = 0; i<size; i++){
+				for (int j = 0; j<size; j++){
 					map[i,j].beginTurn ();
 					if (activePlayer == 0){
 						if (map[i,j].gameObject.tag == "vis1" || map[i,j].gameObject.tag == "visNone"){
@@ -227,5 +248,138 @@ public class Grid : MonoBehaviour {
 			}
 		}
 	}
+	public TileContainer LoadMap(string name)
+	{
+		TileContainer temp = TileContainer.Load(Application.persistentDataPath + "/" + name + ".xml");
+		Debug.Log (Application.persistentDataPath + name + ".xml");
+		int ms = temp.Tiles.Count;
+		int EdgeSize = 0;
+		if(ms == 361)
+		{
+			//Small Map: Map edge of 19
+			EdgeSize = 19;
+		}
+		else if(ms == 1521)
+		{
+			//Medium Map: Map edge of 39
+			EdgeSize = 39;
+		}
+		else if(ms == 3481)
+		{
+			//Large Map: Map edge of 59
+			EdgeSize = 59;
+		}
+		size = EdgeSize;
+		return temp;
+	}
+	public void Setup(TileBlock tile, int i, int j)
+	{
+		if(i == x0 && j == y0)
+		{
+			//player1
+			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+			map[i,j].init (i,j,2, true,false,-1,defaultQuant, this);
+		}
+		else if(i == x1 && j == y1)
+		{
+			//player2
+			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+			map[i,j].init (i,j,2, true,false, -1,defaultQuant, this);
+		}
+		else
+		{
+			bool HasFont = false;
+			bool HasTower = false;
+			int ResourceType = -1;
+			if(tile.HasFont)
+			{
+				HasFont = true;
+			}
+			if(tile.HasTower)
+			{
+				HasTower = true;
+			}
+			if(tile.Resource == "Arcana")
+			{
+				ResourceType = 0;
+			}
+			else if(tile.Resource == "Air")
+			{
+				ResourceType = 1;	
+			}
+			else if(tile.Resource == "Earth")
+			{
+				ResourceType = 2;	
+			}
+			else if(tile.Resource == "Fire")
+			{
+				ResourceType = 3;	
+			}
+			else if(tile.Resource == "Water")
+			{
+				ResourceType = 4;	
+			}
+			
+			if(tile.Name == "T1")
+			{
+				map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+				map[i,j].init (i,j,0, HasFont, HasTower, ResourceType, defaultQuant, this);
+			}
+			else if(tile.Name == "T2")
+			{
+				map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+				map[i,j].init (i,j,1, HasFont, HasTower, ResourceType, defaultQuant, this);
+			}
+			else if(tile.Name == "T3")
+			{
+				map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+				map[i,j].init (i,j,2, HasFont, HasTower, ResourceType, defaultQuant, this);
+			}
+			else
+			{
+				map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+				map[i,j].init (i,j,-1, false, false, -1, defaultQuant, this);
+			}
+		}
+	}
+}
+
+public struct TileBlock
+{
+	public string Name;
+	public bool HasFont;
+	public bool HasTower;
+	public string Resource;
+}
+
+[XmlRoot("Tiles")]
+public class TileContainer
+{
+	[XmlArray("Tiles"),XmlArrayItem("Tile")]
+	public List<TileBlock> Tiles = new List<TileBlock>();
 	
+	public void Save(string path)
+	{
+		var serializer = new XmlSerializer(typeof(TileContainer));
+		using(var stream = new FileStream(path, FileMode.Create))
+		{
+			serializer.Serialize(stream, this);
+		}
+	}
+
+	public static TileContainer Load(string path)
+	{
+		var serializer = new XmlSerializer(typeof(TileContainer));
+		using(var stream = new FileStream(path, FileMode.Open))
+		{
+			return serializer.Deserialize(stream) as TileContainer;
+		}
+	}
+
+    //Loads the xml directly from the given string. Useful in combination with www.text.
+    public static TileContainer LoadFromText(string text) 
+	{
+		var serializer = new XmlSerializer(typeof(TileContainer));
+		return serializer.Deserialize(new StringReader(text)) as TileContainer;
+	}
 }
