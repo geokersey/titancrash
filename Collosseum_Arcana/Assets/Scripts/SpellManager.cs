@@ -12,9 +12,12 @@ public class SpellManager : MonoBehaviour
 	public bool SpellCasting = false;
 	private bool found = false;
 	private bool toggleTxt = false;
-	
+	private bool visible = true;
+	public Unit tornadoVictim;
+	public int spell;
 	void Start ()
 	{
+		tornadoVictim = null;
 		other = grid.GetComponent<Grid>();
 	}
 	
@@ -78,7 +81,11 @@ public class SpellManager : MonoBehaviour
 	
 	void OnGUI()
 	{
-		toggleTxt = GUI.Toggle(new Rect(10, 10, 100, 30), toggleTxt, "Fireball Selected");
+		if(visible){
+			if (GUI.Button(new Rect(100, 0, 99, 49), "hawkeye")){
+				spell = 0;
+			}
+		}
 	}
 	
 	void IsCasting(bool state)
@@ -92,9 +99,97 @@ public class SpellManager : MonoBehaviour
 		spell = (GameObject)Instantiate(Fireball,new Vector3(target.transform.position.x, 9, target.transform.position.z), Quaternion.identity);
 		spell.SendMessage("ApplyEffect", target);
 	}
-	
+	public void cast(Tile target){
+		if (spell == 0){
+			if(target.findTower(10)){
+			//hawkeye
+				target.see (2);
+				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,1));
+				other.players[other.activePlayer].resources[1]--;
+				spell = -1;
+			}
+		}
+		
+		else if (spell == 1){
+			//reveal
+			if(target.findTower (3)){
+				target.see(2);
+				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,1));
+				other.players[other.activePlayer].resources[1]--;
+				if (target.occupyer != null){
+					//stun annd reveeall
+				}
+				spell = -1;
+			}
+				
+		}
+		else if (spell ==2){
+			//tornado
+			if(target.findTower (4)){
+				if (target.occupyer != null){
+					spell = 3;
+					tornadoVictim = target.occupyer;
+				}
+			}
+		}
+		else if (spell == 3){
+			//tornado landing
+			if(target.findTower (4)&&tornadoVictim != null && target.occupyer == null){
+				//other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,2));
+				//other.players[other.activePlayer].resources[1]-=2;
+				
+				
+				Tile old = other.map[tornadoVictim.x,tornadoVictim.y];
+				old.deselect ();
+				old.occupyer = null;
+				target.occupyer = tornadoVictim;
+				tornadoVictim.x = target.x;
+				tornadoVictim.y = target.y;
+				tornadoVictim.transform.position = target.transform.position;
+				target.capture (tornadoVictim.owner);
+				spell = -1;
+			}
+				
+		}
+		else if (spell == 4){
+			//wind walk
+			if(target.occupyer!=null && target.findTower (2)){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,2));
+				other.players[other.activePlayer].resources[1]-=2;
+				Buff temp = new Buff();
+				temp.movement = 2;
+				temp.turns = 2;
+				target.occupyer.startingMovePoints+=2;
+				target.occupyer.availableMovePoints+=2;
+				target.occupyer.buffs.Add (temp);
+				spell = -1;
+				
+			}		
+			
+		}
+		else if (spell == 5){
+			//lightning bolt
+			if (target.findTower (2)&&target.occupyer!=null){
+				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,4));
+				other.players[other.activePlayer].resources[1]-=4;
+
+				target.occupyer.hp -= 8;
+				spell =-1;
+			}
+		}
+		else if (spell == 6){
+			
+		}
+	}
 	void IsInRange(int x, int y, int d)
 	{
 		//irrelevant function
+	}
+	bool spellAvailable(){
+		if (spell == 1){
+			return true;
+		}
+		else return true;
+		
 	}
 }

@@ -170,6 +170,7 @@ public class Tile : MonoBehaviour {
 	public void OnMouseOver (){
 		if(!world.suspended){
 			if (Input.GetMouseButton (0)){
+				world.spells.spell = -1;
 				if(world.selected!=null){
 					world.selected.deselect();}
 				world.selected = this;
@@ -184,15 +185,23 @@ public class Tile : MonoBehaviour {
 				//instantiat GUI
 			}
 			
-			if (Input.GetMouseButtonUp (1)&&this!=world.selected&&world.selected.occupyer!=null){
-				Tile temp = world.selected.occupyer.goTo(this);
-				world.selected.deselect();
-				world.selected = temp;
-				world.selected.choose();
-				world.highlight.transform.position = temp.transform.position;
-				
+			if (Input.GetMouseButtonUp (1)){
+				if (world.spells.spell <=0){
+					world.spells.cast(this);
+						
+				}
+				else if(this!=world.selected&&world.selected.occupyer!=null){
+					Tile temp = world.selected.occupyer.goTo(this);
+					world.selected.deselect();
+					world.selected = temp;
+					world.selected.choose();
+					world.highlight.transform.position = temp.transform.position;
+				}
 			}
 		}
+	}
+	public bool findTower(int range){
+		return true;
 	}
 	public void inRange(int points, bool ignoreTerrain){
 		//does not take into account enemy units or zone of control
@@ -259,9 +268,9 @@ public class Tile : MonoBehaviour {
 		if (this.occupyer != null){
 			this.occupyer.choose();
 		}
-		else if (hasTower && owner == world.activePlayer){
-			inRange (towerRange, true);
-		}
+		//else if (hasTower && owner == world.activePlayer){
+		//	inRange (towerRange, true);
+		//}
 		//show GUI
 	}
 	public void capture(int player){

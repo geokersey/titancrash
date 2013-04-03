@@ -1,7 +1,20 @@
 using UnityEngine;
 using System.Collections;
 
+public class Buff{
+	public int turns;
+	public int health;
+	public int attack;
+	public int defense;
+	public int movement;
+	public int sight;
+	public Buff(){
+		health = attack = defense =  movement = sight = 0;
+	}
+	
+}
 public class Unit : MonoBehaviour {
+	public System.Collections.Generic.List<Buff> buffs;
 	public Grid world;
 	public int hp;
 	public int atk;
@@ -18,6 +31,7 @@ public class Unit : MonoBehaviour {
 	public Path steps;
 	public float dT;
 	void Start () {
+		buffs = new System.Collections.Generic.List<Buff>();
 		steps = new Path();
 		
 	}
@@ -94,6 +108,25 @@ public class Unit : MonoBehaviour {
 	}
 	public void beginTurn(){
 		availableMovePoints = startingMovePoints;
+		int i = 1;
+		int temp;
+		while (buffs.Count >0 && i <= buffs.Count){
+			temp = buffs.Count-i;
+			
+			buffs[temp].turns--;
+			if (buffs[temp].turns<=0){
+				hp+=buffs[temp].health;
+				atk+=buffs[temp].attack;
+				def+=buffs[temp].defense;
+				startingMovePoints+=buffs[temp].movement;
+				sight+=buffs[temp].sight;
+				
+				buffs.RemoveAt(temp);
+			}
+			else{
+				++i;
+			}
+		}
 
 	}
 	public Tile goTo(Tile target){

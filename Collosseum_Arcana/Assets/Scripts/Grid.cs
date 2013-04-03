@@ -51,6 +51,7 @@ public class Grid : MonoBehaviour {
 	public ParticleSystem highlight;
 	public Player playerPrefab;
 	public Player[] players;
+	public SpellManager spells;
 	public int activePlayer = 0;
 	float minTurnTime = -1;
 	public GameObject cam;
@@ -118,10 +119,11 @@ public class Grid : MonoBehaviour {
 				selected.deselect ();
 			}
 			activePlayer = (activePlayer +1)% numPlayers;
+			players[activePlayer].beginTurn ();
 //			players[activePlayer].activate();
 			minTurnTime = 1;
 			
-			Debug.Log("turn ended "+turn.ToString ());
+//			Debug.Log("turn ended "+turn.ToString ());
 			turn++;
 			summoningFont.hide ();
 			
