@@ -20,7 +20,7 @@ public class tech {
 		name = null;
 		description = null;
 		prereqs = new List<int>();
-		price = 15;
+		price = 3;
 		ttc = 1;
 	}
 	
@@ -156,7 +156,7 @@ public class techstuff : MonoBehaviour {
 	{
 		if (state == 0)
 		{
-			if (GUI.Button(new Rect(1250, 600, 125, 50), "Open Tech Tree"))
+			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Open Tech Tree"))
 			{
 				state = 1;
 			}
@@ -191,7 +191,7 @@ public class techstuff : MonoBehaviour {
 			
 			GUI.backgroundColor = Color.white;
 			
-			if (GUI.Button(new Rect(1250, 600, 125, 50), "Close Tech Tree"))
+			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree"))
 			{
 				state = 0;
 			}
@@ -244,7 +244,7 @@ public class techstuff : MonoBehaviour {
 			
 			GUI.Box(new Rect(Screen.width - 300, 0, 300, 350), techTree[selectedTech].name + "\n\n" + techTree[selectedTech].description + "\n\n" + s);
 			
-			if (GUI.Button(new Rect(1250, 600, 125, 50), "Close Tech Tree"))
+			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree"))
 			{
 				state = 0;
 			}
@@ -265,7 +265,7 @@ public class techstuff : MonoBehaviour {
 				{
 					world.players[world.activePlayer].techAvailable[selectedTech] = 2;
 					world.players[world.activePlayer].researched = true;
-					world.players[world.activePlayer].resources[0] -= 2;
+					world.players[world.activePlayer].resources[0] -= techTree[selectedTech].price;
 					state = 0;
 				}
 			}

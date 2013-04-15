@@ -83,61 +83,226 @@ public class SpellManager : MonoBehaviour
 	void OnGUI()
 	{
 		if(visible){
-			if (GUI.Button(new Rect(100, 0, 99, 49), "hawkeye")){
+						//Hawkeye
+			if (other.players[other.activePlayer].techAvailable[0] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(100, 0, 99, 49), "Hawkeye") && other.players[other.activePlayer].techAvailable[0] == 2){
 				spell = 0;
 			}
-			if (GUI.Button(new Rect(200, 0, 99, 49), "reveal")){
+			
+			//Reveal (to be removed)
+			if (GUI.Button(new Rect(200, 0, 99, 49), "Reveal")){
 				spell = 1;
 			}
-			if (GUI.Button(new Rect(300, 0, 99, 49), "tornado")){
+			
+			//Tornado
+			if (other.players[other.activePlayer].techAvailable[10] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(300, 0, 99, 49), "Tornado") && other.players[other.activePlayer].techAvailable[10] == 2){
 				spell = 2;
 			}
-			if (GUI.Button(new Rect(400, 0, 99, 49), "wind walk")){
+			
+			//Wind Walk
+			if (other.players[other.activePlayer].techAvailable[17] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(400, 0, 99, 49), "Wind Walk") && other.players[other.activePlayer].techAvailable[17] == 2){
 				spell = 4;
 			}
-			if (GUI.Button(new Rect(500, 0, 99, 49), "lightning bolt")){
+			
+			//Lightning Bolt
+			if (other.players[other.activePlayer].techAvailable[22] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(500, 0, 99, 49), "Lightning Bolt") && other.players[other.activePlayer].techAvailable[22] == 2){
 				spell = 5;
 			}
-			if (GUI.Button(new Rect(600, 0, 99, 49), "scorched earth")){
+			
+			//Scorch Earth
+			if (other.players[other.activePlayer].techAvailable[1] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(600, 0, 99, 49), "Scorch Earth") && other.players[other.activePlayer].techAvailable[1] == 2){
 				spell = 6;
 			}
-			if (GUI.Button(new Rect(700, 0, 99, 49), "fireball")){
+			
+			//Fireball
+			if (other.players[other.activePlayer].techAvailable[11] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(700, 0, 99, 49), "Fireball") && other.players[other.activePlayer].techAvailable[11] == 2){
 				spell = 7;
 			}
-			if (GUI.Button(new Rect(800, 0, 99, 49), "raging fire")){
+			
+			//Raging Fire
+			if (other.players[other.activePlayer].techAvailable[19] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(800, 0, 99, 49), "Raging Fire") && other.players[other.activePlayer].techAvailable[19] == 2){
 				spell = 8;
 			}
-			if (GUI.Button(new Rect(900, 0, 99, 49), "eruption")){
+			
+			//Eruption
+			if (other.players[other.activePlayer].techAvailable[23] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(900, 0, 99, 49), "Eruption") && other.players[other.activePlayer].techAvailable[23] == 2){
 				spell = 9;
 			}
-			if (GUI.Button(new Rect(1000, 0, 99, 49), "chill")){
+			
+			//Chill
+			if (other.players[other.activePlayer].techAvailable[2] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(1000, 0, 99, 49), "Chill") && other.players[other.activePlayer].techAvailable[2] == 2){
 				spell = 10;
 			}
-			if (GUI.Button(new Rect(1100, 0, 99, 49), "glacial wall")){
+			
+			//Glacial Wall
+			if (other.players[other.activePlayer].techAvailable[13] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(1100, 0, 99, 49), "Glacial Wall") && other.players[other.activePlayer].techAvailable[13] == 2){
 				spell = 11;
 			}
-			if (GUI.Button(new Rect(1200, 0, 99, 49), "winters call")){
+			
+			//Winter's Call
+			if (other.players[other.activePlayer].techAvailable[14] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(1200, 0, 99, 49), "Winter's Call") && other.players[other.activePlayer].techAvailable[14] == 2){
 				spell = 12;
 			}
-			if (GUI.Button(new Rect(1300, 0, 99, 49), "frost")){
+			
+			//Frost
+			if (other.players[other.activePlayer].techAvailable[15] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(1300, 0, 99, 49), "Frost") && other.players[other.activePlayer].techAvailable[15] == 2){
 				spell = 13;
 			}
-			if (GUI.Button(new Rect(1300, 50, 99, 49), "nature's bounty")){
+			
+			//Nature's Bounty
+			if (other.players[other.activePlayer].techAvailable[3] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(1300, 50, 99, 49), "Nature's Bounty") && other.players[other.activePlayer].techAvailable[3] == 2){
 				spell = 14;
 			}
-			if (GUI.Button(new Rect(1200, 50, 99, 49), "stone armor")){
+			
+			//Stone Armor
+			if (other.players[other.activePlayer].techAvailable[16] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(1200, 50, 99, 49), "Stone Armor") && other.players[other.activePlayer].techAvailable[16] == 2){
 				spell = 15;
 			}
-			if (GUI.Button(new Rect(1100, 50, 99, 49), "one with nature")){
+			
+			//One With Nature (to be removed)
+			if (GUI.Button(new Rect(1100, 50, 99, 49), "One With Nature")){
 				spell = 16;
 			}
-			if (GUI.Button(new Rect(1000, 50, 99, 49), "heaven to earth")){
+			
+			//Heaven to Earth (to be removed)
+			if (GUI.Button(new Rect(1000, 50, 99, 49), "Heaven to Earth")){
 				spell = 17;
 			}
-			if (GUI.Button(new Rect(900, 50, 99, 49), "counterspell")){
+			
+			//Counterspell
+			if (other.players[other.activePlayer].techAvailable[4] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(900, 50, 99, 49), "Counterspell") && other.players[other.activePlayer].techAvailable[4] == 2){
 				spell = 18;
 			}
-			if (GUI.Button(new Rect(800, 50, 99, 49), "dispel magic")){
+			
+			//Dispel Magic
+			if (other.players[other.activePlayer].techAvailable[5] == 2)
+			{
+				GUI.backgroundColor = Color.green;
+			}
+			else
+			{
+				GUI.backgroundColor = Color.red;
+			}
+			if (GUI.Button(new Rect(800, 50, 99, 49), "Dispel Magic") && other.players[other.activePlayer].techAvailable[5] == 2){
 				spell = 19;
 			}
 		}
