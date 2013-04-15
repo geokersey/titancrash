@@ -29,6 +29,7 @@ public class Unit : MonoBehaviour {
 	public int availableMovePoints = 0;
 	public bool selected = false;
 	public bool acting = false;
+	public int sleep = 0;
 	public Path steps;
 	public float dT;
 	void Start () {
@@ -108,7 +109,10 @@ public class Unit : MonoBehaviour {
 	
 	}
 	public void beginTurn(){
-		availableMovePoints = startingMovePoints;
+		if(sleep != hp){
+			sleep = 0;
+			availableMovePoints = startingMovePoints;
+		}
 		int i = 1;
 		int temp;
 		while (buffs.Count >0 && i <= buffs.Count){
@@ -130,6 +134,19 @@ public class Unit : MonoBehaviour {
 			}
 		}
 
+	}
+	public void dispell (){
+		for (int i = 0; i < buffs.Count; ++i){
+			hp-=buffs[i].health;
+			atk-=buffs[i].attack;
+			def-=buffs[i].defense;
+			startingMovePoints-=buffs[i].movement;
+			sight-=buffs[i].sight;
+			
+			}
+		buffs = new System.Collections.Generic.List<Buff>();
+		
+		
 	}
 	public Tile goTo(Tile target){
 		Debug.Log ("in the goto func");

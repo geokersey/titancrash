@@ -19,6 +19,7 @@ public class Grid : MonoBehaviour {
 	public Tile prefab0;
 	public Tile prefab1;
 	public Tile prefab2;
+	public GameObject mountainModelPrefab;
 	
 	public GameObject fontPrefab;
 	public GameObject fontPrefab0;

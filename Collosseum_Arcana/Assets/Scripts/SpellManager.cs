@@ -156,6 +156,7 @@ public class SpellManager : MonoBehaviour
 		spell.SendMessage("ApplyEffect", target);
 	}
 	public void cast(Tile target){
+		//Debug.Log("casting a spel");
 		if (spell == 0){
 			if(target.findTower(10)){
 			//hawkeye
@@ -166,7 +167,7 @@ public class SpellManager : MonoBehaviour
 			}
 		}
 		
-		else if (spell == 1){
+		/*else if (spell == 1){
 			//reveal
 			if(target.findTower (3)){
 				target.see(2);
@@ -178,9 +179,10 @@ public class SpellManager : MonoBehaviour
 				spell = -1;
 			}
 				
-		}
+		}*/
 		else if (spell ==2){
 			//tornado
+			//Debug.Log ("tornado takeoff");
 			if(target.findTower (4)){
 				if (target.occupyer != null){
 					spell = 3;
@@ -190,6 +192,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 3){
 			//tornado landing
+			//Debug.Log ("tornado Landing");
 			if(target.findTower (4)&&tornadoVictim != null && target.occupyer == null){
 				//other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,2));
 				//other.players[other.activePlayer].resources[1]-=2;
@@ -204,6 +207,7 @@ public class SpellManager : MonoBehaviour
 				tornadoVictim.transform.position = target.transform.position;
 				target.capture (tornadoVictim.owner);
 				spell = -1;
+				target.choose ();
 			}
 				
 		}
@@ -272,6 +276,8 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 9){
 			//eruption.
+			Debug.Log ("eruption");
+			//if(!(target.hasFont||target.hasTower||target.resourceQuantity >0)&&target.findTower (3)){
 			if(target.findTower (3)){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(4,2,5));
 				other.players[other.activePlayer].resources[2]-=5;
@@ -279,6 +285,10 @@ public class SpellManager : MonoBehaviour
 				if (target.terrain >=0){
 					target.terrain = 2; //change to whatever mountain is
 					target.pointsRequired = 3;
+					target.mountainModel = (GameObject)Instantiate (other.mountainModelPrefab,target.transform.position, Quaternion.identity);
+					//target.mountainModel.layer = 2;
+					target.renderer.enabled = false;
+					
 					target.transformTime = 4*2;
 					//switch the model
 					other.map[target.x+1,target.y].scorch = 4;
@@ -322,6 +332,11 @@ public class SpellManager : MonoBehaviour
 			
 				target.terrain = 2; //change to whatever mountain is
 				target.pointsRequired = 3;
+				target.mountainModel = (GameObject)Instantiate (other.mountainModelPrefab,target.transform.position, Quaternion.identity);
+				//target.mountainModel.layer = 2;
+				target.renderer.enabled = false;
+				
+				target.pointsRequired = 3;
 				target.transformTime = 3*2;
 				//change model
 				
@@ -329,11 +344,11 @@ public class SpellManager : MonoBehaviour
 			}
 		}
 		else if (spell == 12){
-			//wineter's call
+			//wineter's call now sleeps until hp changes.
 			if(target.occupyer!= null && target.findTower (3)){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(4,4,2));
 				other.players[other.activePlayer].resources[4]-=2;
-				//sleepxors?
+				target.occupyer.sleep = target.occupyer.hp;
 				spell = -1;
 			}
 		}
@@ -374,7 +389,7 @@ public class SpellManager : MonoBehaviour
 				spell = -1;
 			}
 		}
-		else if (spell == 16){
+		/*else if (spell == 16){
 			
 			//one with nature
 			//ignore for now possibly forever
@@ -382,29 +397,31 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resO.Add (new ResOccupied(2,3,3));
 				other.players[other.activePlayer].resources[3]-=3;
 			}
-		}
-		else if (spell == 17){
+		}*/
+		/*else if (spell == 17){
 			//heaven to earth
 			//ignore for now
 			if(target.occupyer!=null&&target.findTower (2)){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(3,3,3));
 				other.players[other.activePlayer].resources[3]-=3;
 			}
-		}
+		}*/
 		else if (spell == 18){
 			//counterspell
 			//ignore for now
-			if(target.occupyer!=null&&target.findTower (10)){
+			if(target.findTower (10)){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,0,3));
 				other.players[other.activePlayer].resources[0]-=3;
+				target.owner += 1*4;
+				
 			}
 		}
 		else if (spell == 19){
 			//dispel magic
-			//ignore for now
-			if(target.occupyer!=null&&target.findTower (5)){
+			if(target.findTower (5)){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,0,2));
 				other.players[other.activePlayer].resources[0]-=2;
+				target.dispell();
 			}
 		}
 		

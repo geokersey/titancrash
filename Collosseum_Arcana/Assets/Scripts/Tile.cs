@@ -33,6 +33,7 @@ public class Tile : MonoBehaviour {
 	public int resourceQuantity = 2;
 	public bool hasTower;
 	public GameObject buildingModel;
+	public GameObject mountainModel;
 	//public Unit Selected;
 	public int pointsRequired;
 	public Unit occupyer;
@@ -173,7 +174,8 @@ public class Tile : MonoBehaviour {
 		
 	}
 	public void OnMouseOver (){
-		if(!world.suspended){
+		//Debug.Log ("mouse is over" + x + ","+y);
+		if(!world.suspended&&terrain>=0){
 			if (Input.GetMouseButton (0)){
 				world.spells.spell = -1;
 				if(world.selected!=null){
@@ -265,16 +267,42 @@ public class Tile : MonoBehaviour {
 		scorch--;
 		transformTime --;
 		frost--;
+		if (owner > 1){
+			owner -= 2;
+		}
 		if (scorch >0&&occupyer!= null&&owner != world.activePlayer){
 			occupyer.hp -= 1;
 		}
 		if (transformTime == 0){
 			terrain = oldTerrain;
+			pointsRequired = terrain + 1;
+			Destroy(mountainModel);
+			renderer.enabled = true;
+			
 			//do model switch
 		}
 		if (frost == 0){
 			pointsRequired -= 2;
 		}
+	}
+	public void dispell(){
+		//deal with visuals
+		if(occupyer != null){
+			occupyer.dispell();
+		}
+		scorch = 0;
+		if (transformTime >0){
+			terrain = oldTerrain;
+			pointsRequired = terrain + 1;
+			Destroy(mountainModel);
+			renderer.enabled = true;
+			transformTime = 0;
+		}
+		if (frost > 0){
+			pointsRequired -= 2;
+			frost =0;
+		}
+			
 	}
 			
 	public void deselect(){
