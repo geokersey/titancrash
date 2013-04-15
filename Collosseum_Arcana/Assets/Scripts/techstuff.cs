@@ -263,9 +263,24 @@ public class techstuff : MonoBehaviour {
 			{
 				if (GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Research") && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= 2)
 				{
+					if (world.players[world.activePlayer].techAvailable[27] == 2)
+					{
+						int x = techTree[selectedTech].price * 3 / 5;
+						world.players[world.activePlayer].resources[0] -= x;
+					}
+					else if (world.players[world.activePlayer].techAvailable[26] == 2)
+					{
+						int x = techTree[selectedTech].price * 4 / 5;
+						world.players[world.activePlayer].resources[0] -= x;
+					}
+					else
+					{
+						world.players[world.activePlayer].resources[0] -= techTree[selectedTech].price;
+					}
+					
 					world.players[world.activePlayer].techAvailable[selectedTech] = 2;
 					world.players[world.activePlayer].researched = true;
-					world.players[world.activePlayer].resources[0] -= techTree[selectedTech].price;
+					
 					state = 0;
 				}
 			}

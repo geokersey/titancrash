@@ -29,6 +29,7 @@ public class Unit : MonoBehaviour {
 	public int availableMovePoints = 0;
 	public bool selected = false;
 	public bool acting = false;
+	public bool flyer = false;
 	public int sleep = 0;
 	public Path steps;
 	public float dT;
@@ -41,6 +42,23 @@ public class Unit : MonoBehaviour {
 		x = x_;
 		y = y_;
 		world = world_;
+		
+		if (world.players[owner].techAvailable[24] == 2)
+		{
+			availableMovePoints = startingMovePoints;
+		}
+		else if (world.players[owner].techAvailable[20] == 2)
+		{
+			int z = startingMovePoints / 2;
+			if (z < 1)
+			{
+				availableMovePoints = 1;
+			}
+			else
+			{
+				availableMovePoints = z;
+			}
+		}
 	}
 	
 	// Update is called once per frame
@@ -112,6 +130,10 @@ public class Unit : MonoBehaviour {
 		if(sleep != hp){
 			sleep = 0;
 			availableMovePoints = startingMovePoints;
+			if (flyer && world.players[owner].techAvailable[18] == 2)
+			{
+				availableMovePoints++;
+			}
 		}
 		int i = 1;
 		int temp;
