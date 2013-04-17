@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\ZoomCamera.cs" />
      <Compile Include="Assets\Scripts\techstuff.cs" />
      <None Include="Assets\Other fun things\techs.txt" />
+     <None Include="Assets\DefaultMatch.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -81,7 +82,19 @@ public class Grid : MonoBehaviour {
 		
 		
 		/////
-		TileContainer LoadedMap = LoadMap("DefaultMatch");
+		if(!Directory.Exists("C:/ProgramFiles/ElementalFury/Maps"))
+		{
+			Debug.Log ("Created a directory!");
+			Directory.CreateDirectory("C:/ProgramFiles/ElementalFury/Maps");
+		}
+		if(!File.Exists("C:/ProgramFiles/ElementalFury/Maps/DefaultMatch.xml"))
+		{
+			Debug.Log ("Couldn't find default map. Copying from install");
+			FileUtil.CopyFileOrDirectory ("Assets/DefaultMatch.xml", "C:/ProgramFiles/ElementalFury/Maps/DefaultMatch.xml");
+		}
+		//Debug.Log ("Normal: " + Application.dataPath);
+		//Debug.Log ("Persistent: " + Application.persistentDataPath);
+		TileContainer LoadedMap = LoadMap("DefaultMatch.xml");
 		/////
 		
 		x0 = 2;
@@ -251,8 +264,8 @@ public class Grid : MonoBehaviour {
 	}
 	public TileContainer LoadMap(string name)
 	{
-		TileContainer temp = TileContainer.Load(Application.persistentDataPath + "/" + name + ".xml");
-		Debug.Log (Application.persistentDataPath + name + ".xml");
+		TileContainer temp = TileContainer.Load("C:/ProgramFiles/ElementalFury/Maps/" + name);
+		//Debug.Log ("C:/ProgramFiles/ElementalFury/Maps/" + name);
 		int ms = temp.Tiles.Count;
 		int EdgeSize = 0;
 		if(ms == 361)
