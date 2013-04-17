@@ -95,11 +95,12 @@ public class Unit : MonoBehaviour {
 					dT = 0;
 					steps.path.RemoveAt (steps.path.Count -1);
 					
+					
 				}
 				else if (steps.path.Count > 1){
 					dT+= Time.deltaTime;
 					transform.position = Vector3.Lerp (steps.path[steps.path.Count-1].transform.position, steps.path[steps.path.Count-2].transform.position, dT);
-				
+					transform.LookAt (steps.path[steps.path.Count-2].transform.position);
 				}
 			}
 			else{steps = new Path();
@@ -127,6 +128,7 @@ public class Unit : MonoBehaviour {
 	
 	}
 	public void beginTurn(){
+		Debug.Log ("unit  begin turn");
 		if(sleep != hp){
 			sleep = 0;
 			availableMovePoints = startingMovePoints;
@@ -175,7 +177,12 @@ public class Unit : MonoBehaviour {
 		if (owner != world.activePlayer){
 			return world.map[x,y];
 		}
-		steps = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target, this, false);
+		if(flyer){
+			steps = world.map[x,y].movePoints(availableMovePoints + 1, target, this, false, flyer);
+		}
+		else{
+			steps = world.map[x,y].movePoints(availableMovePoints + world.map[x,y].pointsRequired, target, this, false, flyer);
+		}
 		if (steps.pointsRemaining >=0){
 			world.map[x,y].outRange ();
 			acting = true;
@@ -283,7 +290,12 @@ public class Unit : MonoBehaviour {
 	public void choose(){
 		if (owner == world.activePlayer){
 			selected = true;
-			world.map[x,y].inRange(availableMovePoints+world.map[x,y].pointsRequired, false);
+			if(!flyer){
+				world.map[x,y].inRange(availableMovePoints+world.map[x,y].pointsRequired, flyer);
+			}
+			else{
+				world.map[x,y].inRange(availableMovePoints+1, flyer);
+			}
 			
 		}
 	}

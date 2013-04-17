@@ -84,16 +84,21 @@ public class Tile : MonoBehaviour {
 	void Update () {
 	
 	}
-	public Path movePoints (int available, Tile target, Unit mover, bool zoc){
+	public Path movePoints (int available, Tile target, Unit mover, bool zoc, bool fly){
 		bool zoc2 = false;
 		System.Collections.Generic.List<Tile> temp = new System.Collections.Generic.List<Tile>();
-		
+		if(fly){
+			available -=1;
+		}
+		else {
+			available -= pointsRequired;
+		}
 		if (terrain == -1){
 			
 			return new Path(-1,temp, null);
 		}
 		if(target != this){
-			if (available <= pointsRequired){
+			if (available <= 0){
 				
 				return new Path(-1,temp, null);
 			}
@@ -109,42 +114,43 @@ public class Tile : MonoBehaviour {
 			Debug.Log (x+", "+y);
 			
 		}
-		if (zoc2 && zoc){
+		if (zoc2 && zoc&&!fly){
 			Debug.Log ("zoc violation, available points setting to 0");
 			available = 0;
 		}
+		
 		if (target == this){
 			if (this.occupyer != null && this.owner != world.activePlayer){
 				temp.Add (this);
 				
-				return new Path(Mathf.Max(0, available-pointsRequired), temp, this.occupyer);
+				return new Path(Mathf.Max(0, available), temp, this.occupyer);
 			}
 			if (this.occupyer != null){
 				return new Path (-1, temp, null);
 			}
 			temp.Add (this);
-			return new Path(Mathf.Max (0, available-pointsRequired), temp, null);
+			return new Path(Mathf.Max (0, available), temp, null);
 		}
 		
 		
-		Path max = world.map[x-1,y].movePoints (available - pointsRequired,target, mover, zoc2);
-		Path current = world.map[x+1,y].movePoints (available - pointsRequired,target, mover, zoc2);
+		Path max = world.map[x-1,y].movePoints (available,target, mover, zoc2, fly);
+		Path current = world.map[x+1,y].movePoints (available,target, mover, zoc2, fly);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
-		current = world.map[x-1,y+1].movePoints (available - pointsRequired,target, mover, zoc2);
+		current = world.map[x-1,y+1].movePoints (available,target, mover, zoc2, fly);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
-		current = world.map[x+1,y-1].movePoints (available - pointsRequired,target, mover, zoc2);
+		current = world.map[x+1,y-1].movePoints (available,target, mover, zoc2, fly);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
-		current = world.map[x,y-1].movePoints (available - pointsRequired,target, mover, zoc2);
+		current = world.map[x,y-1].movePoints (available,target, mover, zoc2, fly);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
-		current = world.map[x,y+1].movePoints (available - pointsRequired,target, mover, zoc2);
+		current = world.map[x,y+1].movePoints (available,target, mover, zoc2, fly);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
@@ -194,6 +200,7 @@ public class Tile : MonoBehaviour {
 			
 			if (Input.GetMouseButtonUp (1)){
 				if (world.spells.spell >=0){
+					outRange ();
 					world.spells.cast(this);
 						
 				}
@@ -207,8 +214,25 @@ public class Tile : MonoBehaviour {
 			}
 		}
 	}
+	public void onMouseEnter(){
+		if(world.spells.spell <=0){
+			//range depending on spell
+		}
+	}
+	public void onMouseExit(){
+		if(world.spells.spell <=0){
+			outRange ();
+		}
+	}
 	public bool findTower(int range){
-		return true;
+		for(int i = Mathf.Max (x-range,0); i<Mathf.Min (x+range, world.map.Length); ++i){
+			for(int j = Mathf.Max (x-range,0); j<Mathf.Min (x+range, world.map.Length); ++j){
+				if (world.map[i,j].hasTower&&world.map[i,j].owner == world.activePlayer &&Mathf.Abs (-i-j-range)<range){
+					return true;
+				}
+			}	
+		}
+		return false;
 	}
 	public void inRange(int points, bool ignoreTerrain){
 		//does not take into account enemy units or zone of control
@@ -263,6 +287,7 @@ public class Tile : MonoBehaviour {
 				||(world.map[x,y-1].occupyer!=null && world.map[x,y-1].owner!=player);
 	}
 	public void beginTurn(){
+		Debug.Log ("tile begining turn");
 		
 		scorch--;
 		transformTime --;

@@ -163,6 +163,7 @@ public class Grid : MonoBehaviour {
 			else if(activePlayer == 1 && map[x0,y0].owner==1){
 				Debug.Log ("player 1 has captured player 0's base");
 			}	
+			Debug.Log ("1");
 			techs.checkAvailability();
 			players[activePlayer].beginTurn ();
 //			players[activePlayer].activate();
@@ -173,7 +174,7 @@ public class Grid : MonoBehaviour {
 			summoningFont.hide ();
 			
 			
-			
+			Debug.Log ("2");
 			for (int i = 0; i<size; i++){
 				for (int j = 0; j<size; j++){
 					map[i,j].beginTurn ();

@@ -84,7 +84,7 @@ public class SpellManager : MonoBehaviour
 	{
 		if(visible){
 						//Hawkeye
-			if (other.players[other.activePlayer].techAvailable[0] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>0&&other.players[other.activePlayer].techAvailable[0] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -97,12 +97,12 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Reveal (to be removed)
-			if (GUI.Button(new Rect(200, 0, 99, 49), "Reveal")){
-				spell = 1;
-			}
+			//if (GUI.Button(new Rect(200, 0, 99, 49), "Reveal")){
+			//	spell = 1;
+			//}
 			
 			//Tornado
-			if (other.players[other.activePlayer].techAvailable[10] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>10&&other.players[other.activePlayer].techAvailable[10] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -115,7 +115,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Wind Walk
-			if (other.players[other.activePlayer].techAvailable[17] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>17&&other.players[other.activePlayer].techAvailable[17] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -128,7 +128,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Lightning Bolt
-			if (other.players[other.activePlayer].techAvailable[22] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>22&&other.players[other.activePlayer].techAvailable[22] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -141,7 +141,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Scorch Earth
-			if (other.players[other.activePlayer].techAvailable[1] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>1&&other.players[other.activePlayer].techAvailable[1] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -154,7 +154,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Fireball
-			if (other.players[other.activePlayer].techAvailable[11] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>11&&other.players[other.activePlayer].techAvailable[11] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -167,7 +167,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Raging Fire
-			if (other.players[other.activePlayer].techAvailable[19] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>19&&other.players[other.activePlayer].techAvailable[19] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -180,7 +180,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Eruption
-			if (other.players[other.activePlayer].techAvailable[23] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>23&&other.players[other.activePlayer].techAvailable[23] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -193,7 +193,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Chill
-			if (other.players[other.activePlayer].techAvailable[2] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>2&&other.players[other.activePlayer].techAvailable[2] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -206,7 +206,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Glacial Wall
-			if (other.players[other.activePlayer].techAvailable[13] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>13&&other.players[other.activePlayer].techAvailable[13] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -219,7 +219,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Winter's Call
-			if (other.players[other.activePlayer].techAvailable[14] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>14&&other.players[other.activePlayer].techAvailable[14] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -232,7 +232,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Frost
-			if (other.players[other.activePlayer].techAvailable[15] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>15&&other.players[other.activePlayer].techAvailable[15] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -245,7 +245,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Nature's Bounty
-			if (other.players[other.activePlayer].techAvailable[3] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>3&&other.players[other.activePlayer].techAvailable[3] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -258,7 +258,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Stone Armor
-			if (other.players[other.activePlayer].techAvailable[16] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>16&&other.players[other.activePlayer].techAvailable[16] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -271,17 +271,17 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//One With Nature (to be removed)
-			if (GUI.Button(new Rect(1100, 50, 99, 49), "One With Nature")){
-				spell = 16;
-			}
+			//if (GUI.Button(new Rect(1100, 50, 99, 49), "One With Nature")){
+			//	spell = 16;
+			//}
 			
 			//Heaven to Earth (to be removed)
-			if (GUI.Button(new Rect(1000, 50, 99, 49), "Heaven to Earth")){
-				spell = 17;
-			}
+			//if (GUI.Button(new Rect(1000, 50, 99, 49), "Heaven to Earth")){
+			//	spell = 17;
+			//}
 			
 			//Counterspell
-			if (other.players[other.activePlayer].techAvailable[4] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>4&&other.players[other.activePlayer].techAvailable[4] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -294,7 +294,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Dispel Magic
-			if (other.players[other.activePlayer].techAvailable[5] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>5&&other.players[other.activePlayer].techAvailable[5] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
