@@ -29,9 +29,9 @@ public class MoveCamera : MonoBehaviour
 		}
 		MousePosx = Input.mousePosition.x;
 		MousePosy = Input.mousePosition.y;
-		if (MousePosx < (Screen.width * .08))
+		if (MousePosx < (Screen.width * .01))
 		{
-			if (MousePosx < (Screen.width * .04))
+			if (MousePosx < (Screen.width * .01))
 			{
 				transform.Translate(Vector3.right * -MaxScrollSpeed * Time.deltaTime * 30);
 			}
@@ -40,9 +40,9 @@ public class MoveCamera : MonoBehaviour
 				transform.Translate(Vector3.right * -MaxScrollSpeed * Time.deltaTime * 15);
 			}
 		}
-		if (MousePosx >= Screen.width-(Screen.width * .08)) 
+		if (MousePosx >= Screen.width-(Screen.width * .01)) 
 		{
-			if (MousePosx >= Screen.width-(Screen.width * .04))
+			if (MousePosx >= Screen.width-(Screen.width * .01))
 			{
 				transform.Translate(Vector3.right * MaxScrollSpeed * Time.deltaTime * 30);
 			}
@@ -51,9 +51,9 @@ public class MoveCamera : MonoBehaviour
 				transform.Translate(Vector3.right * MaxScrollSpeed * Time.deltaTime * 15);
 			}
 		}
-		if (MousePosy < (Screen.height * .08))
+		if (MousePosy < (Screen.height * .01))
 		{
-			if (MousePosy < (Screen.height * .04))
+			if (MousePosy < (Screen.height * .01))
 			{
 				transform.Translate(Vector3.forward * -MaxScrollSpeed * Time.deltaTime * 30);
 			}
@@ -62,9 +62,9 @@ public class MoveCamera : MonoBehaviour
 				transform.Translate(Vector3.forward * -MaxScrollSpeed * Time.deltaTime * 15);
 			}
 		}	
-		if (MousePosy >= Screen.height-(Screen.height * .08))
+		if (MousePosy >= Screen.height-(Screen.height * .01))
 		{
-			if (MousePosy >= Screen.height-(Screen.height * .04))
+			if (MousePosy >= Screen.height-(Screen.height * .01))
 			{
 				transform.Translate(Vector3.forward * MaxScrollSpeed * Time.deltaTime * 30);
 			}
