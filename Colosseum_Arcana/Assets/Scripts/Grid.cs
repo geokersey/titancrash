@@ -48,8 +48,8 @@ public class Grid : MonoBehaviour {
 	public GameObject fireResPrefab1;
 	public GameObject waterResPrefab1;
 	
-	
-	
+	public GameObject TileOutline;
+	private List<GameObject> OutlineTiles = new List<GameObject>();
 	
 	public SummoningFont summoningFont;
 	
@@ -76,33 +76,36 @@ public class Grid : MonoBehaviour {
 		}
 		activePlayer = 0;
 //		players[0].activate();
-		size = (radius*2)+1;
-		map = new Tile[size,size];
-		jMult = Mathf.Sqrt (.75f);
+		//size = (radius*2)+1;
+		
 		
 		
 		/////
-		if(!Directory.Exists("C:/ProgramFiles/ElementalFury/Maps"))
+		if(!Directory.Exists("C:/ElementalFury/Maps"))
 		{
 			Debug.Log ("Created a directory!");
-			Directory.CreateDirectory("C:/ProgramFiles/ElementalFury/Maps");
+			Directory.CreateDirectory("C:/ElementalFury/Maps");
 		}
-		if(!File.Exists("C:/ProgramFiles/ElementalFury/Maps/DefaultMatch.xml"))
+		if(!File.Exists("C:/ElementalFury/Maps/DefaultMatch.xml"))
 		{
 			Debug.Log ("Couldn't find default map. Copying from install");
-			FileUtil.CopyFileOrDirectory ("Assets/DefaultMatch.xml", "C:/ProgramFiles/ElementalFury/Maps/DefaultMatch.xml");
+			FileUtil.CopyFileOrDirectory ("Assets/DefaultMatch.xml", "C:/ElementalFury/Maps/DefaultMatch.xml");
 		}
 		//Debug.Log ("Normal: " + Application.dataPath);
 		//Debug.Log ("Persistent: " + Application.persistentDataPath);
 		TileContainer LoadedMap = LoadMap("DefaultMatch.xml");
 		/////
 		
+		radius = (size-1)/2;
+		map = new Tile[size,size];
+		jMult = Mathf.Sqrt (.75f);
+		/*
 		x0 = 2;
 		y0 = (size+1)/2 - 1;
 		x1 = 16;
-		y1 = (size+1)/2 - 1;
+		y1 = (size+1)/2 - 1;*/
 		
-		size = 19;
+		//size = 19;
 		int z = 0;
 		for (int i = 0; i < size; ++i){
 			for (int j = 0; j < size; ++j){
@@ -265,7 +268,7 @@ public class Grid : MonoBehaviour {
 	}
 	public TileContainer LoadMap(string name)
 	{
-		TileContainer temp = TileContainer.Load("C:/ProgramFiles/ElementalFury/Maps/" + name);
+		TileContainer temp = TileContainer.Load("C:/ElementalFury/Maps/" + name);
 		//Debug.Log ("C:/ProgramFiles/ElementalFury/Maps/" + name);
 		int ms = temp.Tiles.Count;
 		int EdgeSize = 0;
@@ -289,17 +292,25 @@ public class Grid : MonoBehaviour {
 	}
 	public void Setup(TileBlock tile, int i, int j)
 	{
-		if(i == x0 && j == y0)
+		if(tile.Name == "Player1Start(Clone)")
 		{
 			//player1
-			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+			x0 = i;
+			y0 = j;
+			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 			map[i,j].init (i,j,2, true,false,-1,defaultQuant, this);
+			GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
+			OutlineTiles.Add (Outline);
 		}
-		else if(i == x1 && j == y1)
+		else if(tile.Name == "Player2Start(Clone)")
 		{
 			//player2
-			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+			x1 = i;
+			y1 = j;
+			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 			map[i,j].init (i,j,2, true,false, -1,defaultQuant, this);
+			GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
+			OutlineTiles.Add (Outline);
 		}
 		else
 		{
@@ -337,22 +348,28 @@ public class Grid : MonoBehaviour {
 			
 			if(tile.Name == "T1")
 			{
-				map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+				map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 				map[i,j].init (i,j,0, HasFont, HasTower, ResourceType, defaultQuant, this);
+				GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
+				OutlineTiles.Add (Outline);
 			}
 			else if(tile.Name == "T2")
 			{
-				map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+				map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 				map[i,j].init (i,j,1, HasFont, HasTower, ResourceType, defaultQuant, this);
+				GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
+				OutlineTiles.Add (Outline);
 			}
 			else if(tile.Name == "T3")
 			{
-				map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+				map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 				map[i,j].init (i,j,2, HasFont, HasTower, ResourceType, defaultQuant, this);
+				GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
+				OutlineTiles.Add (Outline);
 			}
 			else
 			{
-				map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j)),0f,(float)j*jMult), Quaternion.Euler(0,30,0));
+				map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j) - (1.5f*radius) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 				map[i,j].init (i,j,-1, false, false, -1, defaultQuant, this);
 			}
 		}

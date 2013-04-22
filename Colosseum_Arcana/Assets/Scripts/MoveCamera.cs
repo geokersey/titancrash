@@ -17,7 +17,7 @@ public class MoveCamera : MonoBehaviour
 	
 	void Start()
 	{
-		StartPosition = new Vector3(18,10,20);
+		StartPosition = new Vector3(0,10,10);
 		this.transform.position = StartPosition;
 	}
 	
