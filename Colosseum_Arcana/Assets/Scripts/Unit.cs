@@ -17,6 +17,7 @@ public class Buff{
 public class Unit : MonoBehaviour {
 	public System.Collections.Generic.List<Buff> buffs;
 	public Grid world;
+	public int startHP;
 	public int hp;
 	public int atk;
 	public int def;
@@ -31,11 +32,14 @@ public class Unit : MonoBehaviour {
 	public bool acting = false;
 	public bool flyer = false;
 	public int sleep = 0;
+	public int sleepTime = 0;
 	public Path steps;
 	public float dT;
 	void Start () {
 		buffs = new System.Collections.Generic.List<Buff>();
 		steps = new Path();
+		int temp = Mathf.Max (startHP, hp);
+		startHP = hp = temp;
 		
 	}
 	public void init(int x_, int y_, Grid world_){
@@ -130,7 +134,11 @@ public class Unit : MonoBehaviour {
 	}
 	public void beginTurn(){
 		Debug.Log ("unit  begin turn");
-		if(sleep != hp){
+		sleepTime --;
+		if(hp>startHP){
+			hp--;
+		}
+		if(sleep != hp ||sleepTime <= 0){
 			sleep = 0;
 			availableMovePoints = startingMovePoints;
 			if (flyer && world.players[owner].techAvailable[18] == 2)

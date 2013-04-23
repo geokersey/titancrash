@@ -407,7 +407,7 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resources[1]-=2;
 				Buff temp = new Buff();
 				temp.movement = 2;
-				temp.turns = 2;
+				temp.turns = 1;
 				target.occupyer.startingMovePoints+=2;
 				target.occupyer.availableMovePoints+=2;
 				target.occupyer.buffs.Add (temp);
@@ -447,7 +447,9 @@ public class SpellManager : MonoBehaviour
 				Buff temp = new Buff();
 				temp.damage = 1;
 				temp.turns = 5;
-				//spell = -1;
+				target.occupyer.buffs.Add (temp);
+				
+				spell = -1;
 			}
 		}
 		else if (spell == 8){
@@ -459,6 +461,7 @@ public class SpellManager : MonoBehaviour
 				Buff temp = new Buff();
 				temp.attack = 3;
 				temp.turns = 3;
+				target.occupyer.buffs.Add (temp);
 				spell = -1;
 				
 			}	
@@ -538,6 +541,8 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resO.Add (new ResOccupied(4,4,2));
 				other.players[other.activePlayer].resources[4]-=2;
 				target.occupyer.sleep = target.occupyer.hp;
+				target.occupyer.availableMovePoints = 0;
+				target.occupyer.sleepTime = 4;
 				spell = -1;
 			}
 		}
@@ -546,10 +551,8 @@ public class SpellManager : MonoBehaviour
 			if(target.findTower (4)){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(4,4,3));
 				other.players[other.activePlayer].resources[4]-=3;
-				if(target.frost <=0){
-					target.pointsRequired += 2;
-				}
-				target.frost = 4;
+				target.freeze(1, 4);
+				
 				spell = -1;
 			}
 		}
@@ -560,6 +563,7 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resources[3]-=1;
 				
 				target.occupyer.hp +=3;
+				//if (target.occupyer.hp >target.occupyer. max
 				spell = -1;				
 			}
 		}
@@ -598,7 +602,7 @@ public class SpellManager : MonoBehaviour
 		else if (spell == 18){
 			//counterspell
 			//ignore for now
-			if(!((target.x==other.x0&&target.y==other.y0)||(target.x==other.x0&&target.y==other.y0))&&target.findTower (spellRanges[18])){
+			if(!((target.x==other.x0&&target.y==other.y0)||(target.x==other.x0&&target.y==other.y0))&&target.occupyer==null&&target.findTower (spellRanges[18])){
 				
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,0,3));
 				other.players[other.activePlayer].resources[0]-=3;

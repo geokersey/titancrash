@@ -550,6 +550,15 @@ public class Tile : MonoBehaviour {
 		}
 		
 	}
+	public void freeze(int range, int turns){
+		if(terrain < 0 || range < 0 || frost == turns){
+			return;
+		}
+		if(frost <=0){
+			pointsRequired += 2;
+		}
+		frost = turns*2;
+	}
 	public void hide(){
 		if (occupyer != null){
 			occupyer.hide();
