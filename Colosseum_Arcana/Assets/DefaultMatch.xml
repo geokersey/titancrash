@@ -173,109 +173,19 @@
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Air</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Fire</Resource>
+      <Resource>Air</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Water</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>true</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Air</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -287,7 +197,115 @@
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
+      <Resource>Fire</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
       <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Arcana</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Arcana</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Earth</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -300,24 +318,6 @@
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Water</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>true</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -395,13 +395,31 @@
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Earth</Resource>
+      <Resource>Arcana</Resource>
+    </Tile>
+    <Tile>
+      <Name>Player2Start(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Arcana</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Earth</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -417,24 +435,6 @@
     </Tile>
     <Tile>
       <Name>T1</Name>
-      <HasFont>true</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Empty</Resource>
@@ -492,6 +492,24 @@
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Earth</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Arcana</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -510,12 +528,6 @@
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Earth</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -531,18 +543,6 @@
     </Tile>
     <Tile>
       <Name>T1</Name>
-      <HasFont>true</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Empty</Resource>
@@ -605,13 +605,25 @@
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Fire</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Arcana</Resource>
+      <Resource>Earth</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -624,12 +636,6 @@
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Earth</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>true</HasTower>
-      <Resource>Empty</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -645,12 +651,6 @@
     </Tile>
     <Tile>
       <Name>T1</Name>
-      <HasFont>true</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Empty</Resource>
@@ -713,25 +713,13 @@
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Water</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Arcana</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Air</Resource>
+      <Resource>Fire</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -740,463 +728,37 @@
       <Resource>Earth</Resource>
     </Tile>
     <Tile>
-      <Name>T2</Name>
+      <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Earth</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Earth</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Earth</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Fire</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Arcana</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Air</Resource>
+      <Resource>Water</Resource>
     </Tile>
     <Tile>
       <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Arcana</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T3</Name>
-      <HasFont>false</HasFont>
-      <HasTower>true</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T3</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>true</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>BlankTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T3</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T3</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T3</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>BlankTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>true</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T3</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T3</Name>
       <HasFont>false</HasFont>
       <HasTower>true</HasTower>
       <Resource>Empty</Resource>
@@ -1215,18 +777,6 @@
     </Tile>
     <Tile>
       <Name>T1</Name>
-      <HasFont>true</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Empty</Resource>
@@ -1256,67 +806,19 @@
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
       <Name>EdgeTile(Clone)</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
-      <Name>BlankTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
       <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Empty</Resource>
@@ -1329,105 +831,27 @@
     </Tile>
     <Tile>
       <Name>T1</Name>
-      <HasFont>true</HasFont>
+      <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Fire</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Fire</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Fire</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>BlankTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T2</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Fire</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -1442,100 +866,214 @@
       <Resource>Water</Resource>
     </Tile>
     <Tile>
+      <Name>T2</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T3</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T2</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T2</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T2</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T2</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
       <Name>T1</Name>
       <HasFont>true</HasFont>
       <HasTower>false</HasTower>
       <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>BlankTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Arcana</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Air</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Earth</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -1547,127 +1085,13 @@
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Fire</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Water</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>true</HasFont>
-      <HasTower>false</HasTower>
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
+      <HasTower>true</HasTower>
       <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EdgeTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>BlankTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Arcana</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Air</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Earth</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Fire</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Water</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -1676,6 +1100,258 @@
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T3</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T3</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T3</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T3</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T2</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T3</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Fire</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Fire</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Fire</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Fire</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Fire</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
       <Name>EdgeTile(Clone)</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
@@ -1694,36 +1370,12 @@
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
       <Name>EdgeTile(Clone)</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
-      <Name>BlankTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
@@ -1742,22 +1394,34 @@
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
-      <Name>T1</Name>
+      <Name>T3</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T3</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T3</Name>
+      <HasFont>false</HasFont>
+      <HasTower>true</HasTower>
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Arcana</Resource>
+      <Resource>Water</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Air</Resource>
+      <Resource>Fire</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -1769,7 +1433,19 @@
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
+      <Resource>Earth</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Earth</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Earth</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -1808,36 +1484,12 @@
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
-      <Name>EmptyTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
       <Name>EdgeTile(Clone)</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
-      <Name>BlankTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
@@ -1865,7 +1517,37 @@
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
-      <Resource>Arcana</Resource>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Fire</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Earth</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -1878,12 +1560,6 @@
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Earth</Resource>
-    </Tile>
-    <Tile>
-      <Name>T1</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
     </Tile>
     <Tile>
       <Name>T1</Name>
@@ -1922,6 +1598,102 @@
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Fire</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Earth</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Arcana</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Arcana</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Earth</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
       <Name>EmptyTile(Clone)</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
@@ -1946,12 +1718,6 @@
       <Resource>Empty</Resource>
     </Tile>
     <Tile>
-      <Name>BlankTile(Clone)</Name>
-      <HasFont>false</HasFont>
-      <HasTower>false</HasTower>
-      <Resource>Empty</Resource>
-    </Tile>
-    <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
@@ -1971,6 +1737,36 @@
     </Tile>
     <Tile>
       <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Fire</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Earth</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Arcana</Resource>
+    </Tile>
+    <Tile>
+      <Name>Player1Start(Clone)</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
       <Resource>Empty</Resource>
@@ -1988,6 +1784,84 @@
       <Resource>Air</Resource>
     </Tile>
     <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Fire</Resource>
+    </Tile>
+    <Tile>
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
@@ -1997,7 +1871,133 @@
       <Name>T1</Name>
       <HasFont>false</HasFont>
       <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Arcana</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Arcana</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
       <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EmptyTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>EdgeTile(Clone)</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Empty</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Water</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Fire</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Earth</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
+    </Tile>
+    <Tile>
+      <Name>T1</Name>
+      <HasFont>false</HasFont>
+      <HasTower>false</HasTower>
+      <Resource>Air</Resource>
     </Tile>
     <Tile>
       <Name>EdgeTile(Clone)</Name>
