@@ -459,6 +459,7 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resources[2]-=3;
 				
 				Buff temp = new Buff();
+				target.occupyer.atk +=3;
 				temp.attack = 3;
 				temp.turns = 3;
 				target.occupyer.buffs.Add (temp);
@@ -496,6 +497,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 10){
 			//chill
+			
 			if (target.occupyer != null && target.findTower(spellRanges[10])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(3,4,1));
 				other.players[other.activePlayer].resources[4]-=1;

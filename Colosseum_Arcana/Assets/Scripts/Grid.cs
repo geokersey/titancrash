@@ -58,7 +58,8 @@ public class Grid : MonoBehaviour {
 	
 	public Tile[,] map;
 	public Tile selected;
-	public ParticleSystem highlight;
+	public GameObject highlight;
+	public GameObject hiModel;
 	public Player playerPrefab;
 	public Player[] players;
 	public SpellManager spells;
@@ -75,6 +76,8 @@ public class Grid : MonoBehaviour {
 	
 	// Use this for initialization
 	void Awake () {
+		highlight = (GameObject) Instantiate (hiModel);
+		//highlight.transform.
 		players = new Player[numPlayers];
 		for (int i = 0; i <numPlayers; ++i){
 			players[i] = (Player)Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0,i*180,0));

@@ -558,6 +558,13 @@ public class Tile : MonoBehaviour {
 			pointsRequired += 2;
 		}
 		frost = turns*2;
+		range--;
+		world.map[x+1,y].freeze (range, turns);
+		world.map[x-1,y].freeze (range, turns);
+		world.map[x+1,y-1].freeze (range, turns);
+		world.map[x-1,y+1].freeze (range, turns);
+		world.map[x,y+1].freeze (range, turns);
+		world.map[x,y-1].freeze (range, turns);
 	}
 	public void hide(){
 		if (occupyer != null){
