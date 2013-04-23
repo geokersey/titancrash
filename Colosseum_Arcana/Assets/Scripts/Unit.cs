@@ -94,6 +94,7 @@ public class Unit : MonoBehaviour {
 				if (dT > 1){
 					dT = 0;
 					steps.path.RemoveAt (steps.path.Count -1);
+					//see (steps.path[steps.path.Count-1].x,steps.path[steps.path.Count-1].y);
 					
 					
 				}
@@ -278,6 +279,7 @@ public class Unit : MonoBehaviour {
 		}
 	}
 	public void see(int x_, int y_){
+		Debug.Log ("unit "+x+","+y+" seeing "+ sight+" tiles");
 		world.map[x_,y_].see (sight);
 	}
 	void OnGUI(){

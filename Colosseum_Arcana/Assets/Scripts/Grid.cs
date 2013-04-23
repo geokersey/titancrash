@@ -224,6 +224,7 @@ public class Grid : MonoBehaviour {
 					}
 					if (map[i, j].owner == activePlayer){
 						map[i,j].gameObject.layer = 10+activePlayer;
+						map[i,j].show ();
 						if (map[i, j].occupyer != null){
 							map[i,j].occupyer.see (i,j);
 							map[i,j].occupyer.beginTurn ();

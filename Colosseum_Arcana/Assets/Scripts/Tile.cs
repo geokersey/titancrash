@@ -46,9 +46,9 @@ public class Tile : MonoBehaviour {
 	
 	}
 	public void init(int x_, int y_, int terr, bool hasFont_, bool hasTower_, bool wiz_, int resource_, int resAmount, Grid world_){
-		if (wiz_){
+		/*if (wiz_){
 			Debug.Log ("we have a wizard tower");
-		}
+		}*/
 		resourceQuantity = resAmount;
 		world = world_;
 		x = x_;
@@ -60,7 +60,7 @@ public class Tile : MonoBehaviour {
 		resource = resource_;
 		wiz = wiz_;
 		if (wiz){
-			Debug.Log ("we really do");
+//			Debug.Log ("we really do");
 			return;
 			//buildingModel = (GameObject)Instantiate (world.fontPrefab, transform.position, Quaternion.identity);
 		}	
@@ -322,7 +322,7 @@ public class Tile : MonoBehaviour {
 		if (owner > 1){
 			owner -= 2;
 		}
-		if (scorch >0&&occupyer!= null&&owner != world.activePlayer){
+		if (scorch >=0&&occupyer!= null&&owner != world.activePlayer){
 			occupyer.hp -= 1;
 		}
 		if (transformTime == 0){
@@ -448,7 +448,7 @@ public class Tile : MonoBehaviour {
 		owner = player;
 	}
 	public void see(int points){
-		if (terrain<0||gameObject.layer>=10){
+		if (terrain<0){
 			return;
 		}
 		if (points > 0){
@@ -633,7 +633,7 @@ public class Tile : MonoBehaviour {
 			if (wiz){
 				//do nothing
 			}
-			if (hasFont){
+			else if (hasFont){
 				Destroy (buildingModel);
 				buildingModel = (GameObject)Instantiate (world.fontPrefab1, transform.position, Quaternion.identity);
 			}
