@@ -22,6 +22,9 @@ public class Grid : MonoBehaviour {
 	public Tile prefab2;
 	public GameObject mountainModelPrefab;
 	
+	public GameObject wizTowerPrefab0;
+	public GameObject wizTowerPrefab1;
+	
 	public GameObject fontPrefab;
 	public GameObject fontPrefab0;
 	public GameObject fontPrefab1;
@@ -78,6 +81,7 @@ public class Grid : MonoBehaviour {
 			players[i].init ();
 			//instantiate and initialize
 		}
+		techs.init();
 		activePlayer = 0;
 //		players[0].activate();
 		//size = (radius*2)+1;
@@ -170,7 +174,7 @@ public class Grid : MonoBehaviour {
 			else if(activePlayer == 1 && map[x0,y0].owner==1){
 				Debug.Log ("player 1 has captured player 0's base");
 			}	
-			Debug.Log ("1");
+			//Debug.Log ("1");
 			techs.checkAvailability();
 			players[activePlayer].beginTurn ();
 //			players[activePlayer].activate();
@@ -188,7 +192,7 @@ public class Grid : MonoBehaviour {
 					if (activePlayer == 0){
 						if (map[i,j].gameObject.tag == "vis1" || map[i,j].gameObject.tag == "visNone"){
 							//map[i,j].gameObject.tag = "Untagged";
-							map[i,j].gameObject.layer = 8;
+							map[i,j].gameObject.layer = 9;
 							map[i,j].hide ();
 							
 							//object under complete fog
@@ -196,19 +200,21 @@ public class Grid : MonoBehaviour {
 						if (map[i,j].gameObject.layer != 10 && (map[i,j].gameObject.tag == "vis0" || map[i,j].gameObject.tag == "visBoth")){
 							map[i,j].gameObject.layer = 9;
 							map[i,j].show();
+							map[i,j].hideUnit();
 							//object under partial fog	
 							}
 					}
 					else if (activePlayer == 1){
 						if (map[i,j].gameObject.tag == "vis0" || map[i,j].gameObject.tag == "visNone"){
 							//map[i,j].gameObject.tag = "Untagged";
-							map[i,j].gameObject.layer = 8;
+							map[i,j].gameObject.layer = 9;
 							map[i,j].hide ();
 							//object under complete fog
 						}
 						if (map[i,j].gameObject.layer != 11 && (map[i,j].gameObject.tag == "vis1" || map[i,j].gameObject.tag == "visBoth")){
 							map[i,j].gameObject.layer = 9;
 							map[i,j].show();
+							map[i,j].hideUnit ();
 							//object under partial fog	
 							}
 					}
@@ -298,21 +304,23 @@ public class Grid : MonoBehaviour {
 	{
 		if(tile.Name == "Player1Start(Clone)")
 		{
-			//player1
+			//player0
 			x0 = i;
 			y0 = j;
 			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
-			map[i,j].init (i,j,2, true,false,-1,defaultQuant, this);
+			map[i,j].init (i,j,2, true,true,true,-1,defaultQuant, this);
+			map[i,j].buildingModel = (GameObject)Instantiate(wizTowerPrefab0, map[i,j].transform.position, Quaternion.identity);
 			GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 			OutlineTiles.Add (Outline);
 		}
 		else if(tile.Name == "Player2Start(Clone)")
 		{
-			//player2
+			//player1
 			x1 = i;
 			y1 = j;
 			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
-			map[i,j].init (i,j,2, true,false, -1,defaultQuant, this);
+			map[i,j].init (i,j,2, true,true,true, -1,defaultQuant, this);
+			map[i,j].buildingModel = (GameObject)Instantiate(wizTowerPrefab1, map[i,j].transform.position, Quaternion.identity);
 			GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 			OutlineTiles.Add (Outline);
 		}
@@ -353,28 +361,28 @@ public class Grid : MonoBehaviour {
 			if(tile.Name == "T1")
 			{
 				map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
-				map[i,j].init (i,j,0, HasFont, HasTower, ResourceType, defaultQuant, this);
+				map[i,j].init (i,j,0, HasFont, HasTower,false, ResourceType, defaultQuant, this);
 				GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 				OutlineTiles.Add (Outline);
 			}
 			else if(tile.Name == "T2")
 			{
 				map[i,j] = (Tile)Instantiate (prefab1, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
-				map[i,j].init (i,j,1, HasFont, HasTower, ResourceType, defaultQuant, this);
+				map[i,j].init (i,j,1, HasFont, HasTower,false, ResourceType, defaultQuant, this);
 				GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 				OutlineTiles.Add (Outline);
 			}
 			else if(tile.Name == "T3")
 			{
 				map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
-				map[i,j].init (i,j,2, HasFont, HasTower, ResourceType, defaultQuant, this);
+				map[i,j].init (i,j,2, HasFont, HasTower,false, ResourceType, defaultQuant, this);
 				GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 				OutlineTiles.Add (Outline);
 			}
 			else
 			{
 				map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j) - (1.5f*radius) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
-				map[i,j].init (i,j,-1, false, false, -1, defaultQuant, this);
+				map[i,j].init (i,j,-1, false, false, false, -1, defaultQuant, this);
 			}
 		}
 	}

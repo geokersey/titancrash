@@ -32,6 +32,7 @@ public class Tile : MonoBehaviour {
 	public int resource = -1;
 	public int resourceQuantity = 2;
 	public bool hasTower;
+	public bool wiz;
 	public GameObject buildingModel;
 	public GameObject mountainModel;
 	//public Unit Selected;
@@ -44,7 +45,7 @@ public class Tile : MonoBehaviour {
 	void Start () {
 	
 	}
-	public void init(int x_, int y_, int terr, bool hasFont_, bool hasTower_, int resource_, int resAmount, Grid world_){
+	public void init(int x_, int y_, int terr, bool hasFont_, bool hasTower_, bool wiz_, int resource_, int resAmount, Grid world_){
 		resourceQuantity = resAmount;
 		world = world_;
 		x = x_;
@@ -54,7 +55,12 @@ public class Tile : MonoBehaviour {
 		hasFont = hasFont_;
 		hasTower = hasTower_;
 		resource = resource_;
-		if (hasFont){
+		wiz = wiz_;
+		if (wiz){
+			//do nothing
+			//buildingModel = (GameObject)Instantiate (world.fontPrefab, transform.position, Quaternion.identity);
+		}	
+		else if (hasFont){
 			buildingModel = (GameObject)Instantiate (world.fontPrefab, transform.position, Quaternion.identity);
 		}
 		else if (hasTower){
@@ -214,20 +220,20 @@ public class Tile : MonoBehaviour {
 			}
 		}
 	}
-	public void onMouseEnter(){
-		if(world.spells.spell <=0){
-			//range depending on spell
+	public void OnMouseEnter(){
+		if(world.spells.spell >=0){
+			inRange (world.spells.spellRanges[world.spells.spell], true);
 		}
 	}
-	public void onMouseExit(){
-		if(world.spells.spell <=0){
+	public void OnMouseExit(){
+		if(world.spells.spell >=0){
 			outRange ();
 		}
 	}
 	public bool findTower(int range){
-		for(int i = Mathf.Max (x-range,0); i<Mathf.Min (x+range, world.map.Length); ++i){
-			for(int j = Mathf.Max (x-range,0); j<Mathf.Min (x+range, world.map.Length); ++j){
-				if (world.map[i,j].hasTower&&world.map[i,j].owner == world.activePlayer &&Mathf.Abs (-i-j-range)<range){
+		for(int i = Mathf.Max (x-range,0); i<Mathf.Min (x+range, world.size); ++i){
+			for(int j = Mathf.Max (x-range,0); j<Mathf.Min (x+range, world.size); ++j){
+				if (world.map[i,j].hasTower&&world.map[i,j].owner == world.activePlayer &&Mathf.Abs (-i-j+x+y)<range){
 					return true;
 				}
 			}	
@@ -236,7 +242,7 @@ public class Tile : MonoBehaviour {
 	}
 	public void inRange(int points, bool ignoreTerrain){
 		//does not take into account enemy units or zone of control
-		if ((points > maxPoints && gameObject.tag == "range")||(points>0&&gameObject.tag!="range")){
+		if ((points > maxPoints && gameObject.layer >=12)||(points>0&&gameObject.layer<12)){
 			if (terrain < 0){
 				return;
 			}
@@ -245,9 +251,14 @@ public class Tile : MonoBehaviour {
 				return;
 			}
 			maxPoints = points;
-			see (1);
+			//see (1);
 			
-			gameObject.layer = 12;
+			if (gameObject.layer == 11 || gameObject.layer == 10){
+				gameObject.layer = 12;
+			}
+			else{
+				gameObject.layer = 13;
+			}
 			if(ignoreTerrain){
 				points -=1;
 			}
@@ -276,6 +287,16 @@ public class Tile : MonoBehaviour {
 			world.map[x,y+1].outRange ();
 			world.map[x,y-1].outRange ();
 		}
+		if (gameObject.layer == 13){
+			gameObject.layer = 9;
+			world.map[x+1,y].outRange ();
+			world.map[x-1,y].outRange ();
+			world.map[x+1,y-1].outRange ();
+			world.map[x-1,y+1].outRange ();
+			world.map[x,y+1].outRange ();
+			world.map[x,y-1].outRange ();
+		}
+		
 	}
 	public bool checkZOC(int player){
 		//checks to see if the players opponent has any units in adjacent tile
@@ -349,7 +370,10 @@ public class Tile : MonoBehaviour {
 	}
 	public void capture(int player){
 		if (player != owner){
-			if(hasFont){
+			if(wiz){
+				//do nothing
+			}
+			else if(hasFont){
 				Destroy (buildingModel);
 				if (player == 0){
 					buildingModel = (GameObject)Instantiate (world.fontPrefab0, transform.position, Quaternion.identity);
@@ -443,7 +467,10 @@ public class Tile : MonoBehaviour {
 					}
 				}
 				if (owner == 0){
-					if (hasFont){
+					if(wiz){
+						//do nothing
+					}
+					else if (hasFont){
 						Destroy (buildingModel);
 						buildingModel = (GameObject)Instantiate (world.fontPrefab0, transform.position, Quaternion.identity);
 					}
@@ -473,7 +500,10 @@ public class Tile : MonoBehaviour {
 					}
 				}
 				if (owner == 1){
-					if (hasFont){
+					if(wiz){
+						//do nothing
+					}
+					else if (hasFont){
 						Destroy (buildingModel);
 						buildingModel = (GameObject)Instantiate (world.fontPrefab1, transform.position, Quaternion.identity);
 					}
@@ -518,7 +548,10 @@ public class Tile : MonoBehaviour {
 		if (occupyer != null){
 			occupyer.hide();
 		}
-		if (hasFont){
+		if (wiz){
+			//do nothing
+		}
+		else if (hasFont){
 			Destroy (buildingModel);
 			buildingModel = (GameObject)Instantiate (world.fontPrefab, transform.position, Quaternion.identity);
 		}
@@ -558,7 +591,10 @@ public class Tile : MonoBehaviour {
 			occupyer.show ();
 		}
 		if (owner == 0){
-			if (hasFont){
+			if(wiz){
+				//do nothing
+			}
+			else if (hasFont){
 				Destroy (buildingModel);
 				buildingModel = (GameObject)Instantiate (world.fontPrefab0, transform.position, Quaternion.identity);
 			}
@@ -588,6 +624,9 @@ public class Tile : MonoBehaviour {
 			}
 		}
 		if (owner == 1){
+			if (wiz){
+				//do nothing
+			}
 			if (hasFont){
 				Destroy (buildingModel);
 				buildingModel = (GameObject)Instantiate (world.fontPrefab1, transform.position, Quaternion.identity);

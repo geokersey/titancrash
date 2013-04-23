@@ -14,12 +14,34 @@ public class SpellManager : MonoBehaviour
 	private bool toggleTxt = false;
 	private bool visible = true;
 	public Unit tornadoVictim;
-	public int spell;
+	public int spell = -1;
+	public int[] spellRanges;
 	
 	void Start ()
 	{
 		tornadoVictim = null;
 		other = grid.GetComponent<Grid>();
+		spellRanges = new int[20];
+		spellRanges[0] = 10; //hawkeye
+		spellRanges[1] = 0; //reveal X
+		spellRanges[2] = 4; //Tornado1
+		spellRanges[3] = 4; // Tornado2
+		spellRanges[4] = 2; // wind walk
+		spellRanges[5] = 2; // lightning bolt
+		spellRanges[6] = 5; // scorched earth
+		spellRanges[7] = 3; // fireball
+		spellRanges[8] = 5; // raging fire
+		spellRanges[9] = 3; // eruption
+		spellRanges[10] = 3; //chill
+		spellRanges[11] = 3; // glacial wall
+		spellRanges[12] = 3; // winters call
+		spellRanges[13] = 4; //frost
+		spellRanges[14] = 2; // nature's bounty
+		spellRanges[15] = 2; // stone armor
+		spellRanges[16] = 0; // one with nature X
+		spellRanges[17] = 0; // heaven to earth X
+		spellRanges[18] = 10; // counterspell
+		spellRanges[19] = 5; // dispel
 	}
 	
 	void Update () 
@@ -325,7 +347,7 @@ public class SpellManager : MonoBehaviour
 		if (spell == 0){
 			if(target.findTower(10)){
 			//hawkeye
-				target.see (2);
+				target.see (spellRanges[0]);
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,1));
 				other.players[other.activePlayer].resources[1]--;
 				spell = -1;
@@ -348,7 +370,7 @@ public class SpellManager : MonoBehaviour
 		else if (spell ==2){
 			//tornado
 			//Debug.Log ("tornado takeoff");
-			if(target.findTower (4)){
+			if(target.findTower (spellRanges[2])){
 				if (target.occupyer != null){
 					spell = 3;
 					tornadoVictim = target.occupyer;
@@ -358,7 +380,7 @@ public class SpellManager : MonoBehaviour
 		else if (spell == 3){
 			//tornado landing
 			//Debug.Log ("tornado Landing");
-			if(target.findTower (4)&&tornadoVictim != null && target.occupyer == null){
+			if(target.findTower (spellRanges[3])&&tornadoVictim != null && target.occupyer == null){
 				//other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,2));
 				//other.players[other.activePlayer].resources[1]-=2;
 				
@@ -378,7 +400,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 4){
 			//wind walk
-			if(target.occupyer!=null && target.findTower (2)){
+			if(target.occupyer!=null && target.findTower (spellRanges[4])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,2));
 				other.players[other.activePlayer].resources[1]-=2;
 				Buff temp = new Buff();
@@ -394,7 +416,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 5){
 			//lightning bolt
-			if (target.findTower (2)&&target.occupyer!=null){
+			if (target.findTower (spellRanges[5])&&target.occupyer!=null){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,4));
 				other.players[other.activePlayer].resources[1]-=4;
 
@@ -404,7 +426,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 6){
 			//scorched earth
-			if (target.findTower (5)){
+			if (target.findTower (spellRanges[6])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(4,2,1));
 				other.players[other.activePlayer].resources[2]-=1;
 				target.scorch = 4*2;
@@ -413,7 +435,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 7){		
 			//fireball
-			if (target.occupyer != null && target.findTower (3)){
+			if (target.occupyer != null && target.findTower (spellRanges[7])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,2,2));
 				other.players[other.activePlayer].resources[2]-=2;
 				
@@ -428,7 +450,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 8){
 			// raging fire
-			if (target.occupyer != null && target.findTower(5)){
+			if (target.occupyer != null && target.findTower(spellRanges[8])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(3,2,3));
 				other.players[other.activePlayer].resources[2]-=3;
 				
@@ -443,7 +465,7 @@ public class SpellManager : MonoBehaviour
 			//eruption.
 			Debug.Log ("eruption");
 			//if(!(target.hasFont||target.hasTower||target.resourceQuantity >0)&&target.findTower (3)){
-			if(target.findTower (3)){
+			if(target.findTower (spellRanges[9])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(4,2,5));
 				other.players[other.activePlayer].resources[2]-=5;
 				
@@ -469,7 +491,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 10){
 			//chill
-			if (target.occupyer != null && target.findTower(3)){
+			if (target.occupyer != null && target.findTower(spellRanges[10])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(3,4,1));
 				other.players[other.activePlayer].resources[4]-=1;
 				
@@ -490,7 +512,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 11){
 			//glacial wall
-			if(target.findTower (3)){
+			if(target.findTower (spellRanges[11])){
 				
 				other.players[other.activePlayer].resO.Add (new ResOccupied(3,4,2));
 				other.players[other.activePlayer].resources[4]-=2;
@@ -510,7 +532,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 12){
 			//wineter's call now sleeps until hp changes.
-			if(target.occupyer!= null && target.findTower (3)){
+			if(target.occupyer!= null && target.findTower (spellRanges[12])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(4,4,2));
 				other.players[other.activePlayer].resources[4]-=2;
 				target.occupyer.sleep = target.occupyer.hp;
@@ -531,7 +553,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 14){
 			//natures bounty
-			if(target.occupyer!=null&&target.findTower (2)){
+			if(target.occupyer!=null&&target.findTower (spellRanges[14])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,3,1));
 				other.players[other.activePlayer].resources[3]-=1;
 				
@@ -541,7 +563,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 15){
 			//stone armor
-			if(target.occupyer!=null&&target.findTower (2)){
+			if(target.occupyer!=null&&target.findTower (spellRanges[15])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(3,3,2));
 				other.players[other.activePlayer].resources[3]-=2;
 				
@@ -574,7 +596,7 @@ public class SpellManager : MonoBehaviour
 		else if (spell == 18){
 			//counterspell
 			//ignore for now
-			if(target.findTower (10)){
+			if(target.findTower (spellRanges[18])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,0,3));
 				other.players[other.activePlayer].resources[0]-=3;
 				target.owner += 1*4;
@@ -583,7 +605,7 @@ public class SpellManager : MonoBehaviour
 		}
 		else if (spell == 19){
 			//dispel magic
-			if(target.findTower (5)){
+			if(target.findTower (spellRanges[19])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,0,2));
 				other.players[other.activePlayer].resources[0]-=2;
 				target.dispell();

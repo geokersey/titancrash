@@ -50,6 +50,8 @@ public class techstuff : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+	}
+	public void init(){
 		techs = new FileInfo("Assets/Otherfunthings/techs.txt");
 		sr = techs.OpenText();
 		techTree = new List<tech>();
