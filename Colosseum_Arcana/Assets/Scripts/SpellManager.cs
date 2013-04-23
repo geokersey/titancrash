@@ -345,9 +345,11 @@ public class SpellManager : MonoBehaviour
 	public void cast(Tile target){
 		//Debug.Log("casting a spel");
 		if (spell == 0){
-			if(target.findTower(10)){
+			Debug.Log ("spell casting");
+			if(target.findTower(spellRanges[0])){
+				Debug.Log ("tower found");
 			//hawkeye
-				target.see (spellRanges[0]);
+				target.see (3);
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,1));
 				other.players[other.activePlayer].resources[1]--;
 				spell = -1;
@@ -596,7 +598,8 @@ public class SpellManager : MonoBehaviour
 		else if (spell == 18){
 			//counterspell
 			//ignore for now
-			if(target.findTower (spellRanges[18])){
+			if(!((target.x==other.x0&&target.y==other.y0)||(target.x==other.x0&&target.y==other.y0))&&target.findTower (spellRanges[18])){
+				
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,0,3));
 				other.players[other.activePlayer].resources[0]-=3;
 				target.owner += 1*4;

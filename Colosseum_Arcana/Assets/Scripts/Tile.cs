@@ -46,6 +46,9 @@ public class Tile : MonoBehaviour {
 	
 	}
 	public void init(int x_, int y_, int terr, bool hasFont_, bool hasTower_, bool wiz_, int resource_, int resAmount, Grid world_){
+		if (wiz_){
+			Debug.Log ("we have a wizard tower");
+		}
 		resourceQuantity = resAmount;
 		world = world_;
 		x = x_;
@@ -57,7 +60,8 @@ public class Tile : MonoBehaviour {
 		resource = resource_;
 		wiz = wiz_;
 		if (wiz){
-			//do nothing
+			Debug.Log ("we really do");
+			return;
 			//buildingModel = (GameObject)Instantiate (world.fontPrefab, transform.position, Quaternion.identity);
 		}	
 		else if (hasFont){
@@ -117,11 +121,11 @@ public class Tile : MonoBehaviour {
 		}
 		zoc2 = checkZOC (mover.owner);
 		if (zoc2){
-			Debug.Log (x+", "+y);
+			//Debug.Log (x+", "+y);
 			
 		}
 		if (zoc2 && zoc&&!fly){
-			Debug.Log ("zoc violation, available points setting to 0");
+			//Debug.Log ("zoc violation, available points setting to 0");
 			available = 0;
 		}
 		
@@ -206,7 +210,9 @@ public class Tile : MonoBehaviour {
 			
 			if (Input.GetMouseButtonUp (1)){
 				if (world.spells.spell >=0){
+					Debug.Log ("clicking with a spell");
 					outRange ();
+					Debug.Log ("outRangeComplete");
 					world.spells.cast(this);
 						
 				}
@@ -253,7 +259,7 @@ public class Tile : MonoBehaviour {
 			maxPoints = points;
 			//see (1);
 			
-			if (gameObject.layer == 11 || gameObject.layer == 10){
+			if (gameObject.layer == 11 || gameObject.layer == 10||gameObject.layer == 12){
 				gameObject.layer = 12;
 			}
 			else{
@@ -308,7 +314,7 @@ public class Tile : MonoBehaviour {
 				||(world.map[x,y-1].occupyer!=null && world.map[x,y-1].owner!=player);
 	}
 	public void beginTurn(){
-		Debug.Log ("tile begining turn");
+		//Debug.Log ("tile begining turn");
 		
 		scorch--;
 		transformTime --;
@@ -442,7 +448,7 @@ public class Tile : MonoBehaviour {
 		owner = player;
 	}
 	public void see(int points){
-		if (terrain<0){
+		if (terrain<0||gameObject.layer>=10){
 			return;
 		}
 		if (points > 0){

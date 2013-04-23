@@ -155,7 +155,9 @@ public class Grid : MonoBehaviour {
 			
 		}
 		map[x0, y0].capture (0);
+		map[x0, y0].gameObject.tag = "visBoth";
 		map[x1, y1].capture (1);
+		map[x1, y1].gameObject.tag = "visBoth";
 		
 		endTurn ();
 	}
@@ -185,7 +187,7 @@ public class Grid : MonoBehaviour {
 			summoningFont.hide ();
 			
 			
-			Debug.Log ("2");
+			//Debug.Log ("2");
 			for (int i = 0; i<size; i++){
 				for (int j = 0; j<size; j++){
 					map[i,j].beginTurn ();
@@ -194,6 +196,7 @@ public class Grid : MonoBehaviour {
 							//map[i,j].gameObject.tag = "Untagged";
 							map[i,j].gameObject.layer = 9;
 							map[i,j].hide ();
+							map[i,j].hideUnit ();
 							
 							//object under complete fog
 						}
@@ -209,6 +212,7 @@ public class Grid : MonoBehaviour {
 							//map[i,j].gameObject.tag = "Untagged";
 							map[i,j].gameObject.layer = 9;
 							map[i,j].hide ();
+							map[i,j].hideUnit ();
 							//object under complete fog
 						}
 						if (map[i,j].gameObject.layer != 11 && (map[i,j].gameObject.tag == "vis1" || map[i,j].gameObject.tag == "visBoth")){
@@ -304,6 +308,7 @@ public class Grid : MonoBehaviour {
 	{
 		if(tile.Name == "Player1Start(Clone)")
 		{
+			Debug.Log ("player 0 start");
 			//player0
 			x0 = i;
 			y0 = j;
@@ -316,6 +321,7 @@ public class Grid : MonoBehaviour {
 		else if(tile.Name == "Player2Start(Clone)")
 		{
 			//player1
+			Debug.Log ("player 1 start");
 			x1 = i;
 			y1 = j;
 			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));

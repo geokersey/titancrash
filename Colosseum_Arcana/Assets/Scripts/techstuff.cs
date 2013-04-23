@@ -55,23 +55,23 @@ public class techstuff : MonoBehaviour {
 		techs = new FileInfo("Assets/Otherfunthings/techs.txt");
 		sr = techs.OpenText();
 		techTree = new List<tech>();
-		Debug.Log ("we have a tech tree");
+		//Debug.Log ("we have a tech tree");
 		
 		string l = sr.ReadLine();
-		Debug.Log ("line = "+l);
+		//Debug.Log ("line = "+l);
 		
 		while(l != null)
 		{
 			if(l==""){
 				l = sr.ReadLine();
-				Debug.Log ("line = "+l);
+				//Debug.Log ("line = "+l);
 				continue;
 			}
 			tech t = new tech();
 			string[] s = l.Split(','); //splits the line into <techname>, <description> and <prereqs>
 			t.name = s[0];
 			for (int i = 0; i<s.Length; ++i){
-				Debug.Log (i +":  "+s[i]);
+				//Debug.Log (i +":  "+s[i]);
 			}
 				
 			
@@ -99,7 +99,7 @@ public class techstuff : MonoBehaviour {
 			world.players[1].techAvailable.Add(0);
 			
 			l = sr.ReadLine();
-			Debug.Log ("line = "+l);
+			//Debug.Log ("line = "+l);
 			//l = sr.ReadLine ();//because raisins
 			//Debug.Log ("line = "+l);
 		}
