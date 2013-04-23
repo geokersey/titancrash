@@ -46,6 +46,7 @@ public class techstuff : MonoBehaviour {
 	int state = 0;
 	int selectedTech = 0;
 	public Grid world;
+	private bool visible;
 	
 	// Use this for initialization
 	void Start () {
@@ -169,139 +170,148 @@ public class techstuff : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		if (state == 0)
+		if(visible)
 		{
-			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Open Tech Tree"))
+			if (state == 0)
 			{
-				state = 1;
-			}
-		}
-		else if (state == 1)
-		{
-			for (int i = 0; i < techTree.Count; i++)
-			{
-				if (world.players[world.activePlayer].techAvailable[i] == 0)
+				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Open Tech Tree"))
 				{
-					GUI.backgroundColor = Color.red;
-				}
-				else if (world.players[world.activePlayer].techAvailable[i] == 1)
-				{
-					GUI.backgroundColor = Color.blue;
-				}
-				else if (world.players[world.activePlayer].techAvailable[i] == 2)
-				{
-					GUI.backgroundColor = Color.green;
-				}
-				else
-				{
-					GUI.backgroundColor = Color.white;
-				}
-				
-				if (GUI.Button(new Rect((155 * (i % 5)) + 50, (50 * (i / 5)) + 50, 155, 50), techTree[i].name))
-				{
-					selectedTech = i;
-					state = 2;
+					state = 1;
 				}
 			}
-			
-			GUI.backgroundColor = Color.white;
-			
-			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree"))
+			else if (state == 1)
 			{
-				state = 0;
-			}
-		}
-		else if (state == 2)
-		{
-			string s = "Requirements\n";
-			
-			for (int i = 0; i < techTree.Count; i++)
-			{
-				if (world.players[world.activePlayer].techAvailable[i] == 0)
+				for (int i = 0; i < techTree.Count; i++)
 				{
-					GUI.backgroundColor = Color.red;
-				}
-				else if (world.players[world.activePlayer].techAvailable[i] == 1)
-				{
-					GUI.backgroundColor = Color.blue;
-				}
-				else if (world.players[world.activePlayer].techAvailable[i] == 2)
-				{
-					GUI.backgroundColor = Color.green;
-				}
-				else
-				{
-					GUI.backgroundColor = Color.white;
-				}
-				
-				if (GUI.Button(new Rect((155 * (i % 5)) + 50, (50 * (i / 5)) + 50, 155, 50), techTree[i].name))
-				{
-					selectedTech = i;
-				}
-			}
-			
-			GUI.backgroundColor = Color.white;
-			
-			if (techTree[selectedTech].prereqs[0] != 0)
-			{
-				s += techTree[techTree[selectedTech].prereqs[0] - 1].name;
-				
-				for (int i = 1; i < techTree[selectedTech].prereqs.Count; i++)
-				{
-					s += "\n";
-					s += techTree[techTree[selectedTech].prereqs[i] - 1].name;
-				}
-			}
-			else
-			{
-				s += "None";
-			}
-			
-			GUI.Box(new Rect(Screen.width - 300, 0, 300, 350), techTree[selectedTech].name + "\n\n" + techTree[selectedTech].description + "\n\n" + s);
-			
-			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree"))
-			{
-				state = 0;
-			}
-			
-			if (world.players[world.activePlayer].techAvailable[selectedTech] == 0)
-			{
-				GUI.backgroundColor = Color.red;
-				GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Unavailable");
-			}
-			else if (world.players[world.activePlayer].techAvailable[selectedTech] == 2)
-			{
-				GUI.backgroundColor = Color.green;
-				GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Researched");
-			}
-			else
-			{
-				if (GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Research") && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= 2)
-				{
-					if (world.players[world.activePlayer].techAvailable[27] == 2)
+					if (world.players[world.activePlayer].techAvailable[i] == 0)
 					{
-						int x = techTree[selectedTech].price * 3 / 5;
-						world.players[world.activePlayer].resources[0] -= x;
+						GUI.backgroundColor = Color.red;
 					}
-					else if (world.players[world.activePlayer].techAvailable[26] == 2)
+					else if (world.players[world.activePlayer].techAvailable[i] == 1)
 					{
-						int x = techTree[selectedTech].price * 4 / 5;
-						world.players[world.activePlayer].resources[0] -= x;
+						GUI.backgroundColor = Color.blue;
+					}
+					else if (world.players[world.activePlayer].techAvailable[i] == 2)
+					{
+						GUI.backgroundColor = Color.green;
 					}
 					else
 					{
-						world.players[world.activePlayer].resources[0] -= techTree[selectedTech].price;
+						GUI.backgroundColor = Color.white;
 					}
 					
-					world.players[world.activePlayer].techAvailable[selectedTech] = 2;
-					world.players[world.activePlayer].researched = true;
-					
+					if (GUI.Button(new Rect((155 * (i % 5)) + 50, (50 * (i / 5)) + 50, 155, 50), techTree[i].name))
+					{
+						selectedTech = i;
+						state = 2;
+					}
+				}
+				
+				GUI.backgroundColor = Color.white;
+				
+				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree"))
+				{
 					state = 0;
 				}
 			}
-			
-			
+			else if (state == 2)
+			{
+				string s = "Requirements\n";
+				
+				for (int i = 0; i < techTree.Count; i++)
+				{
+					if (world.players[world.activePlayer].techAvailable[i] == 0)
+					{
+						GUI.backgroundColor = Color.red;
+					}
+					else if (world.players[world.activePlayer].techAvailable[i] == 1)
+					{
+						GUI.backgroundColor = Color.blue;
+					}
+					else if (world.players[world.activePlayer].techAvailable[i] == 2)
+					{
+						GUI.backgroundColor = Color.green;
+					}
+					else
+					{
+						GUI.backgroundColor = Color.white;
+					}
+					
+					if (GUI.Button(new Rect((155 * (i % 5)) + 50, (50 * (i / 5)) + 50, 155, 50), techTree[i].name))
+					{
+						selectedTech = i;
+					}
+				}
+				
+				GUI.backgroundColor = Color.white;
+				
+				if (techTree[selectedTech].prereqs[0] != 0)
+				{
+					s += techTree[techTree[selectedTech].prereqs[0] - 1].name;
+					
+					for (int i = 1; i < techTree[selectedTech].prereqs.Count; i++)
+					{
+						s += "\n";
+						s += techTree[techTree[selectedTech].prereqs[i] - 1].name;
+					}
+				}
+				else
+				{
+					s += "None";
+				}
+				
+				GUI.Box(new Rect(Screen.width - 300, 0, 300, 350), techTree[selectedTech].name + "\n\n" + techTree[selectedTech].description + "\n\n" + s);
+				
+				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree"))
+				{
+					state = 0;
+				}
+				
+				if (world.players[world.activePlayer].techAvailable[selectedTech] == 0)
+				{
+					GUI.backgroundColor = Color.red;
+					GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Unavailable");
+				}
+				else if (world.players[world.activePlayer].techAvailable[selectedTech] == 2)
+				{
+					GUI.backgroundColor = Color.green;
+					GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Researched");
+				}
+				else
+				{
+					if (GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Research") && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= 2)
+					{
+						if (world.players[world.activePlayer].techAvailable[27] == 2)
+						{
+							int x = techTree[selectedTech].price * 3 / 5;
+							world.players[world.activePlayer].resources[0] -= x;
+						}
+						else if (world.players[world.activePlayer].techAvailable[26] == 2)
+						{
+							int x = techTree[selectedTech].price * 4 / 5;
+							world.players[world.activePlayer].resources[0] -= x;
+						}
+						else
+						{
+							world.players[world.activePlayer].resources[0] -= techTree[selectedTech].price;
+						}
+						
+						world.players[world.activePlayer].techAvailable[selectedTech] = 2;
+						world.players[world.activePlayer].researched = true;
+						
+						state = 0;
+					}
+				}
+				
+				
+			}
 		}
+	}
+	public void show(){
+		visible = true;
+	}
+	public void hide(){
+		visible = false;
 	}
 }
 

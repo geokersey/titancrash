@@ -47,8 +47,10 @@
      <Compile Include="Assets\Scripts\Fireball.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
      <Compile Include="Assets\Scripts\MoveCamera.cs" />
+     <Compile Include="Assets\Scripts\PauseManager.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\SpellManager.cs" />
+     <Compile Include="Assets\Scripts\StartScreen.cs" />
      <Compile Include="Assets\Scripts\SummoningFont.cs" />
      <Compile Include="Assets\Scripts\Tile.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />

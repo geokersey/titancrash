@@ -602,4 +602,10 @@ public class SpellManager : MonoBehaviour
 		else return true;
 		
 	}
+	public void show(){
+		visible = true;
+	}
+	public void hide(){
+		visible = false;
+	}
 }

@@ -66,6 +66,10 @@ public class Grid : MonoBehaviour {
 	public bool suspended;
 	public techstuff techs;
 	int turn = 0;
+	
+	private string MapName = StartScreen.LevelName;
+	
+	
 	// Use this for initialization
 	void Awake () {
 		players = new Player[numPlayers];
@@ -93,7 +97,7 @@ public class Grid : MonoBehaviour {
 		}
 		//Debug.Log ("Normal: " + Application.dataPath);
 		//Debug.Log ("Persistent: " + Application.persistentDataPath);
-		TileContainer LoadedMap = LoadMap("DefaultMatch.xml");
+		TileContainer LoadedMap = LoadMap(MapName + ".xml");
 		/////
 		
 		radius = (size-1)/2;
