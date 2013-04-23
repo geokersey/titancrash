@@ -116,28 +116,7 @@ public class techstuff : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		/*for (int i = 0; i < techTree.Count; i++)
-		{
-			if (techTree[i].available)
-			{
-				continue;
-			}
-			else
-			{
-				bool b = true;
-				
-				for (int j = 0; j < techTree[i].prereqs.Count; j++)
-				{
-					if (!researched[techTree[i].prereqs[j] - 1])
-					{
-						b = false;
-						break;
-					}
-				}
-				
-				techTree[i].available = b;
-			}
-		}*/
+	
 	}
 	
 	public void checkAvailability()
@@ -281,27 +260,60 @@ public class techstuff : MonoBehaviour {
 				}
 				else
 				{
-					if (GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Research") && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= 2)
+					if (GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Research") && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= techTree[selectedTech].price)
 					{
-						if (world.players[world.activePlayer].techAvailable[27] == 2)
+						print("summoned this turn, cannot research");
+					}
+					else
+					{
+						if (world.players[world.activePlayer].summoned && world.players[world.activePlayer].techAvailable[27] != 2)
 						{
-							int x = techTree[selectedTech].price * 3 / 5;
-							world.players[world.activePlayer].resources[0] -= x;
-						}
-						else if (world.players[world.activePlayer].techAvailable[26] == 2)
-						{
-							int x = techTree[selectedTech].price * 4 / 5;
-							world.players[world.activePlayer].resources[0] -= x;
-						}
-						else
-						{
-							world.players[world.activePlayer].resources[0] -= techTree[selectedTech].price;
-						}
+							if (world.players[world.activePlayer].techAvailable[26] == 2)
+							{
+								int x = techTree[selectedTech].price * 3 / 5;
+								world.players[world.activePlayer].resources[0] -= x;
+							}
+							else if (world.players[world.activePlayer].techAvailable[25] == 2)
+							{
+								int x = techTree[selectedTech].price * 4 / 5;
+								world.players[world.activePlayer].resources[0] -= x;
+							}
+							else
+							{
+								world.players[world.activePlayer].resources[0] -= techTree[selectedTech].price;
+							}
+							
+							world.players[world.activePlayer].techAvailable[selectedTech] = 2;
+							world.players[world.activePlayer].researched = true;
 						
-						world.players[world.activePlayer].techAvailable[selectedTech] = 2;
-						world.players[world.activePlayer].researched = true;
+							switch(selectedTech)
+							{
+							case 6:
+								world.players[world.activePlayer].resourceTech(3);
+								break;
+							
+							case 7:
+								world.players[world.activePlayer].resourceTech(2);
+								break;
+							
+							case 8:
+								world.players[world.activePlayer].resourceTech(1);
+								break;
+							
+							case 9:
+								world.players[world.activePlayer].resourceTech(4);
+								break;
+							
+							case 20:
+								world.players[world.activePlayer].resourceTech(0);
+								break;
+							
+							default:
+								break;
+							}
 						
-						state = 0;
+							state = 0;
+						}
 					}
 				}
 				

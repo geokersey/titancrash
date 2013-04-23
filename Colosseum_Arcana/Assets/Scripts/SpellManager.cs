@@ -137,7 +137,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Wind Walk
-			if (other.players[other.activePlayer].techAvailable.Count>17&&other.players[other.activePlayer].techAvailable[17] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>17&&other.players[other.activePlayer].techAvailable[16] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -145,12 +145,12 @@ public class SpellManager : MonoBehaviour
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(400, 0, 99, 49), "Wind Walk") && other.players[other.activePlayer].techAvailable[17] == 2){
+			if (GUI.Button(new Rect(400, 0, 99, 49), "Wind Walk") && other.players[other.activePlayer].techAvailable[16] == 2){
 				spell = 4;
 			}
 			
 			//Lightning Bolt
-			if (other.players[other.activePlayer].techAvailable.Count>22&&other.players[other.activePlayer].techAvailable[22] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>22&&other.players[other.activePlayer].techAvailable[21] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -158,7 +158,7 @@ public class SpellManager : MonoBehaviour
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(500, 0, 99, 49), "Lightning Bolt") && other.players[other.activePlayer].techAvailable[22] == 2){
+			if (GUI.Button(new Rect(500, 0, 99, 49), "Lightning Bolt") && other.players[other.activePlayer].techAvailable[21] == 2){
 				spell = 5;
 			}
 			
@@ -189,7 +189,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Raging Fire
-			if (other.players[other.activePlayer].techAvailable.Count>19&&other.players[other.activePlayer].techAvailable[19] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>19&&other.players[other.activePlayer].techAvailable[18] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -197,12 +197,12 @@ public class SpellManager : MonoBehaviour
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(800, 0, 99, 49), "Raging Fire") && other.players[other.activePlayer].techAvailable[19] == 2){
+			if (GUI.Button(new Rect(800, 0, 99, 49), "Raging Fire") && other.players[other.activePlayer].techAvailable[18] == 2){
 				spell = 8;
 			}
 			
 			//Eruption
-			if (other.players[other.activePlayer].techAvailable.Count>23&&other.players[other.activePlayer].techAvailable[23] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>23&&other.players[other.activePlayer].techAvailable[22] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -210,7 +210,7 @@ public class SpellManager : MonoBehaviour
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(900, 0, 99, 49), "Eruption") && other.players[other.activePlayer].techAvailable[23] == 2){
+			if (GUI.Button(new Rect(900, 0, 99, 49), "Eruption") && other.players[other.activePlayer].techAvailable[22] == 2){
 				spell = 9;
 			}
 			
@@ -228,7 +228,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Glacial Wall
-			if (other.players[other.activePlayer].techAvailable.Count>13&&other.players[other.activePlayer].techAvailable[13] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>13&&other.players[other.activePlayer].techAvailable[12] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -236,12 +236,12 @@ public class SpellManager : MonoBehaviour
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(1100, 0, 99, 49), "Glacial Wall") && other.players[other.activePlayer].techAvailable[13] == 2){
+			if (GUI.Button(new Rect(1100, 0, 99, 49), "Glacial Wall") && other.players[other.activePlayer].techAvailable[12] == 2){
 				spell = 11;
 			}
 			
 			//Winter's Call
-			if (other.players[other.activePlayer].techAvailable.Count>14&&other.players[other.activePlayer].techAvailable[14] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>14&&other.players[other.activePlayer].techAvailable[13] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -249,12 +249,12 @@ public class SpellManager : MonoBehaviour
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(1200, 0, 99, 49), "Winter's Call") && other.players[other.activePlayer].techAvailable[14] == 2){
+			if (GUI.Button(new Rect(1200, 0, 99, 49), "Winter's Call") && other.players[other.activePlayer].techAvailable[13] == 2){
 				spell = 12;
 			}
 			
 			//Frost
-			if (other.players[other.activePlayer].techAvailable.Count>15&&other.players[other.activePlayer].techAvailable[15] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>15&&other.players[other.activePlayer].techAvailable[14] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -262,7 +262,7 @@ public class SpellManager : MonoBehaviour
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(1300, 0, 99, 49), "Frost") && other.players[other.activePlayer].techAvailable[15] == 2){
+			if (GUI.Button(new Rect(1300, 0, 99, 49), "Frost") && other.players[other.activePlayer].techAvailable[14] == 2){
 				spell = 13;
 			}
 			
@@ -280,7 +280,7 @@ public class SpellManager : MonoBehaviour
 			}
 			
 			//Stone Armor
-			if (other.players[other.activePlayer].techAvailable.Count>16&&other.players[other.activePlayer].techAvailable[16] == 2)
+			if (other.players[other.activePlayer].techAvailable.Count>16&&other.players[other.activePlayer].techAvailable[15] == 2)
 			{
 				GUI.backgroundColor = Color.green;
 			}
@@ -288,7 +288,7 @@ public class SpellManager : MonoBehaviour
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(1200, 50, 99, 49), "Stone Armor") && other.players[other.activePlayer].techAvailable[16] == 2){
+			if (GUI.Button(new Rect(1200, 50, 99, 49), "Stone Armor") && other.players[other.activePlayer].techAvailable[15] == 2){
 				spell = 15;
 			}
 			

@@ -398,11 +398,109 @@ public class Tile : MonoBehaviour {
 				}
 			}
 			if(resource >=0){
+				bool hasTech = false; //Check double resource techs
+				
 				if (owner >=0){
 					world.players[owner].resources[resource]-=resourceQuantity;
+					
+					switch (resource)
+					{
+					case 0:
+						if (world.players[owner].techAvailable[20] == 2) //Arcana
+						{
+							hasTech = true;
+						}
+						break;
+						
+					case 1:
+						if (world.players[owner].techAvailable[8] == 2) //Air
+						{
+							hasTech = true;
+						}
+						break;
+						
+					case 2:
+						if (world.players[owner].techAvailable[7] == 2) //Earth
+						{
+							hasTech = true;
+						}
+						break;
+						
+					case 3:
+						if (world.players[owner].techAvailable[6] == 2) //Fire
+						{
+							hasTech = true;
+						}
+						break;
+						
+					case 4:
+						if (world.players[owner].techAvailable[9] == 2) //Water
+						{
+							hasTech = true;
+						}
+						break;
+						
+					default:
+						break;
+					}
+					
+					if (hasTech)
+					{
+						world.players[owner].resources[resource] -= 2;
+						hasTech = false;
+					}
+					
+					world.players[owner].resSpots[resource] -= 1;
 				}
 			
 				world.players[player].resources[resource]+=resourceQuantity;
+				
+				switch (resource)
+				{
+				case 0:
+					if (world.players[player].techAvailable[20] == 2) //Arcana
+					{
+						hasTech = true;
+					}
+					break;
+						
+				case 1:
+					if (world.players[player].techAvailable[8] == 2) //Air
+					{
+						hasTech = true;
+					}
+					break;
+						
+				case 2:
+					if (world.players[player].techAvailable[7] == 2) //Earth
+					{
+						hasTech = true;
+					}
+					break;
+						
+				case 3:
+					if (world.players[player].techAvailable[6] == 2) //Fire
+					{
+						hasTech = true;
+					}
+					break;
+						
+				case 4:
+					if (world.players[player].techAvailable[9] == 2) //Water
+					{
+						hasTech = true;
+					}
+					break;
+						
+				default:
+					break;
+				}
+				
+				if (hasTech)
+				{
+					world.players[player].resources[resource] += 2;
+				}
+				world.players[player].resSpots[resource] += 1;
 				//Debug.Log ("just added "+ resourceQuantity + " of resource " + resource + " to player " +player);
 				Destroy (buildingModel);
 				if (player == 0){
