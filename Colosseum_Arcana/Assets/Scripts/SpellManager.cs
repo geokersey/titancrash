@@ -105,211 +105,211 @@ public class SpellManager : MonoBehaviour
 	void OnGUI()
 	{
 		if(visible){
-						//Hawkeye
+			//Hawkeye
 			if (other.players[other.activePlayer].techAvailable.Count>0&&other.players[other.activePlayer].techAvailable[0] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(100, 0, 99, 49), "Hawkeye") && other.players[other.activePlayer].techAvailable[0] == 2){
+			if (GUI.Button(new Rect(50, 0, 99, 49), "Hawkeye", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[0] == 2){
 				spell = 0;
 			}
 			
 			//Tornado
 			if (other.players[other.activePlayer].techAvailable.Count>10&&other.players[other.activePlayer].techAvailable[10] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(200, 0, 99, 49), "Tornado") && other.players[other.activePlayer].techAvailable[10] == 2){
+			if (GUI.Button(new Rect(145, 0, 99, 49), "Tornado", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[10] == 2){
 				spell = 2;
 			}
 			
 			//Wind Walk
 			if (other.players[other.activePlayer].techAvailable.Count>17&&other.players[other.activePlayer].techAvailable[16] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(300, 0, 99, 49), "Wind Walk") && other.players[other.activePlayer].techAvailable[16] == 2){
+			if (GUI.Button(new Rect(240, 0, 99, 49), "Wind Walk", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[16] == 2){
 				spell = 4;
 			}
 			
 			//Lightning Bolt
 			if (other.players[other.activePlayer].techAvailable.Count>22&&other.players[other.activePlayer].techAvailable[21] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(400, 0, 99, 49), "Lightning Bolt") && other.players[other.activePlayer].techAvailable[21] == 2){
+			if (GUI.Button(new Rect(335, 0, 99, 49), "Lightning Bolt", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[21] == 2){
 				spell = 5;
 			}
 			
 			//Scorch Earth
 			if (other.players[other.activePlayer].techAvailable.Count>1&&other.players[other.activePlayer].techAvailable[1] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(500, 0, 99, 49), "Scorch Earth") && other.players[other.activePlayer].techAvailable[1] == 2){
+			if (GUI.Button(new Rect(430, 0, 99, 49), "Scorch Earth", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[1] == 2){
 				spell = 6;
 			}
 			
 			//Fireball
 			if (other.players[other.activePlayer].techAvailable.Count>11&&other.players[other.activePlayer].techAvailable[11] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(600, 0, 99, 49), "Fireball") && other.players[other.activePlayer].techAvailable[11] == 2){
+			if (GUI.Button(new Rect(525, 0, 99, 49), "Fireball", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[11] == 2){
 				spell = 7;
 			}
 			
 			//Raging Fire
 			if (other.players[other.activePlayer].techAvailable.Count>19&&other.players[other.activePlayer].techAvailable[18] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(700, 0, 99, 49), "Raging Fire") && other.players[other.activePlayer].techAvailable[18] == 2){
+			if (GUI.Button(new Rect(620, 0, 99, 49), "Raging Fire", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[18] == 2){
 				spell = 8;
 			}
 			
 			//Eruption
 			if (other.players[other.activePlayer].techAvailable.Count>23&&other.players[other.activePlayer].techAvailable[22] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(800, 0, 99, 49), "Eruption") && other.players[other.activePlayer].techAvailable[22] == 2){
+			if (GUI.Button(new Rect(715, 0, 99, 49), "Eruption", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[22] == 2){
 				spell = 9;
 			}
 			
 			//Chill
 			if (other.players[other.activePlayer].techAvailable.Count>2&&other.players[other.activePlayer].techAvailable[2] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(100, 50, 99, 49), "Chill") && other.players[other.activePlayer].techAvailable[2] == 2){
+			if (GUI.Button(new Rect(50, 45, 99, 49), "Chill", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[2] == 2){
 				spell = 10;
 			}
 			
 			//Glacial Wall
 			if (other.players[other.activePlayer].techAvailable.Count>13&&other.players[other.activePlayer].techAvailable[12] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(200, 50, 99, 49), "Glacial Wall") && other.players[other.activePlayer].techAvailable[12] == 2){
+			if (GUI.Button(new Rect(145, 45, 99, 49), "Glacial Wall", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[12] == 2){
 				spell = 11;
 			}
 			
 			//Winter's Call
 			if (other.players[other.activePlayer].techAvailable.Count>14&&other.players[other.activePlayer].techAvailable[13] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(300, 50, 99, 49), "Winter's Call") && other.players[other.activePlayer].techAvailable[13] == 2){
+			if (GUI.Button(new Rect(240, 45, 99, 49), "Winter's Call", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[13] == 2){
 				spell = 12;
 			}
 			
 			//Frost
 			if (other.players[other.activePlayer].techAvailable.Count>15&&other.players[other.activePlayer].techAvailable[14] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(400, 50, 99, 49), "Frost") && other.players[other.activePlayer].techAvailable[14] == 2){
+			if (GUI.Button(new Rect(335, 45, 99, 49), "Frost", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[14] == 2){
 				spell = 13;
 			}
 			
 			//Nature's Bounty
 			if (other.players[other.activePlayer].techAvailable.Count>3&&other.players[other.activePlayer].techAvailable[3] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(500, 50, 99, 49), "Nature's Bounty") && other.players[other.activePlayer].techAvailable[3] == 2){
+			if (GUI.Button(new Rect(430, 45, 99, 49), "Nature's Bounty", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[3] == 2){
 				spell = 14;
 			}
 			
 			//Stone Armor
 			if (other.players[other.activePlayer].techAvailable.Count>16&&other.players[other.activePlayer].techAvailable[15] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(600, 50, 99, 49), "Stone Armor") && other.players[other.activePlayer].techAvailable[15] == 2){
+			if (GUI.Button(new Rect(525, 45, 99, 49), "Stone Armor", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[15] == 2){
 				spell = 15;
 			}
 			
 			//Counterspell
 			if (other.players[other.activePlayer].techAvailable.Count>4&&other.players[other.activePlayer].techAvailable[4] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(700, 50, 99, 49), "Counterspell") && other.players[other.activePlayer].techAvailable[4] == 2){
+			if (GUI.Button(new Rect(620, 45, 99, 49), "Counterspell", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[4] == 2){
 				spell = 18;
 			}
 			
 			//Dispel Magic
 			if (other.players[other.activePlayer].techAvailable.Count>5&&other.players[other.activePlayer].techAvailable[5] == 2)
 			{
-				GUI.backgroundColor = Color.green;
+				GUI.backgroundColor = Color.white;
 			}
 			else
 			{
 				GUI.backgroundColor = Color.red;
 			}
-			if (GUI.Button(new Rect(800, 50, 99, 49), "Dispel Magic") && other.players[other.activePlayer].techAvailable[5] == 2){
+			if (GUI.Button(new Rect(715, 45, 99, 49), "Dispel Magic", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[5] == 2){
 				spell = 19;
 			}
 		}

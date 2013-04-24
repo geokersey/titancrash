@@ -153,7 +153,7 @@ public class techstuff : MonoBehaviour {
 	{
 		if (world.GUIstate != 2)
 		{
-			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Open Tech Tree"))
+			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Open Tech Tree", world.GUIfunstuff.button))
 			{
 				state = 1;
 				world.GUIstate = 2;
@@ -172,7 +172,7 @@ public class techstuff : MonoBehaviour {
 					}
 					else if (world.players[world.activePlayer].techAvailable[i] == 1)
 					{
-						GUI.backgroundColor = Color.blue;
+						GUI.backgroundColor = Color.white;
 					}
 					else if (world.players[world.activePlayer].techAvailable[i] == 2)
 					{
@@ -183,7 +183,7 @@ public class techstuff : MonoBehaviour {
 						GUI.backgroundColor = Color.white;
 					}
 					
-					if (GUI.Button(new Rect((155 * (i % 5)) + 50, (50 * (i / 5)) + 50, 155, 50), techTree[i].name))
+					if (GUI.Button(new Rect((150 * (i % 5)) + 50, (45 * (i / 5)) + 95, 155, 50), techTree[i].name, world.GUIfunstuff.button))
 					{
 						selectedTech = i;
 						state = 2;
@@ -192,7 +192,7 @@ public class techstuff : MonoBehaviour {
 				
 				GUI.backgroundColor = Color.white;
 				
-				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree"))
+				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree", world.GUIfunstuff.button))
 				{
 					state = 0;
 					world.GUIstate = 0;
@@ -210,7 +210,7 @@ public class techstuff : MonoBehaviour {
 					}
 					else if (world.players[world.activePlayer].techAvailable[i] == 1)
 					{
-						GUI.backgroundColor = Color.blue;
+						GUI.backgroundColor = Color.white;
 					}
 					else if (world.players[world.activePlayer].techAvailable[i] == 2)
 					{
@@ -221,7 +221,7 @@ public class techstuff : MonoBehaviour {
 						GUI.backgroundColor = Color.white;
 					}
 					
-					if (GUI.Button(new Rect((155 * (i % 5)) + 50, (50 * (i / 5)) + 50, 155, 50), techTree[i].name))
+					if (GUI.Button(new Rect((150 * (i % 5)) + 50, (45 * (i / 5)) + 95, 155, 50), techTree[i].name, world.GUIfunstuff.button))
 					{
 						selectedTech = i;
 					}
@@ -244,9 +244,9 @@ public class techstuff : MonoBehaviour {
 					s += "None";
 				}
 				
-				GUI.Box(new Rect(Screen.width - 300, 0, 300, 350), techTree[selectedTech].name + "\n\n" + techTree[selectedTech].description + "\n\n" + s);
+				GUI.Box(new Rect(800, 75, 300, 400), "\n\n\n\n" + techTree[selectedTech].name + "\n\n" + techTree[selectedTech].description + "\n\n" + s, world.GUIfunstuff.box);
 				
-				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree"))
+				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree", world.GUIfunstuff.button))
 				{
 					state = 0;
 					world.GUIstate = 0;
@@ -255,22 +255,22 @@ public class techstuff : MonoBehaviour {
 				if (world.players[world.activePlayer].techAvailable[selectedTech] == 0)
 				{
 					GUI.backgroundColor = Color.red;
-					GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Unavailable");
+					GUI.Button(new Rect(900, 450, 100, 75), "Unavailable", world.GUIfunstuff.button);
 				}
 				else if (world.players[world.activePlayer].techAvailable[selectedTech] == 2)
 				{
 					GUI.backgroundColor = Color.green;
-					GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Researched");
+					GUI.Button(new Rect(900, 450, 100, 75), "Researched", world.GUIfunstuff.button);
 				}
 				else
 				{
-					if (GUI.Button(new Rect(Screen.width - 200, 350, 100, 75), "Research") && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= techTree[selectedTech].price)
-					{
-						print("summoned this turn, cannot research");
-					}
-					else
+					if (GUI.Button(new Rect(900, 450, 100, 75), "Research", world.GUIfunstuff.button) && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= techTree[selectedTech].price)
 					{
 						if (world.players[world.activePlayer].summoned && world.players[world.activePlayer].techAvailable[27] != 2)
+						{
+							print("summoned this turn, cannot research");
+						}
+						else
 						{
 							if (world.players[world.activePlayer].techAvailable[26] == 2)
 							{
@@ -295,11 +295,11 @@ public class techstuff : MonoBehaviour {
 							case 6:
 								world.players[world.activePlayer].resourceTech(3);
 								break;
-							
+								
 							case 7:
 								world.players[world.activePlayer].resourceTech(2);
 								break;
-							
+								
 							case 8:
 								world.players[world.activePlayer].resourceTech(1);
 								break;
@@ -307,15 +307,15 @@ public class techstuff : MonoBehaviour {
 							case 9:
 								world.players[world.activePlayer].resourceTech(4);
 								break;
-							
+								
 							case 20:
 								world.players[world.activePlayer].resourceTech(0);
 								break;
-							
+								
 							default:
 								break;
 							}
-						
+							
 							state = 0;
 							world.GUIstate = 0;
 						}

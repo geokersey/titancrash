@@ -71,7 +71,7 @@ public class SummoningFont : MonoBehaviour {
 		if(world.GUIstate == 1){
 			
 			
-			if (GUI.Button(new Rect(0, 0, 99, 49), "basic unit"))
+			if (GUI.Button(new Rect(100, Screen.height - 150, 99, 49), "basic unit", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[0] < 1)
@@ -115,7 +115,7 @@ public class SummoningFont : MonoBehaviour {
 				
 			}
 			
-			if (GUI.Button(new Rect(0, 50, 99, 49), "Small Air"))
+			if (GUI.Button(new Rect(100, Screen.height - 105, 99, 49), "Small Air", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[1] < 1)
@@ -158,7 +158,7 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(0, 100, 99, 49), "Large Air"))
+			if (GUI.Button(new Rect(100, Screen.height - 60, 99, 49), "Large Air", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[1] < 1)
@@ -201,7 +201,7 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(100, 50, 99, 49), "Small Earth"))
+			if (GUI.Button(new Rect(195, Screen.height - 105, 99, 49), "Small Earth", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[2] < 1)
@@ -244,7 +244,7 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(100, 100, 99, 49), "Large Earth"))
+			if (GUI.Button(new Rect(195, Screen.height - 60, 99, 49), "Large Earth", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[2] < 1)
@@ -287,7 +287,7 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(200, 50, 99, 49), "Small Fire"))
+			if (GUI.Button(new Rect(290, Screen.height - 105, 99, 49), "Small Fire", world.GUIfunstuff.button))
 			{
 				
 				if (world.activePlayer == 0){
@@ -331,7 +331,7 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(200, 100, 99, 49), "Large Fire"))
+			if (GUI.Button(new Rect(290, Screen.height - 60, 99, 49), "Large Fire", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[3] < 1)
@@ -374,7 +374,7 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(300, 50, 99, 49), "Small Water"))
+			if (GUI.Button(new Rect(385, Screen.height - 105, 99, 49), "Small Water", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[4] < 1)
@@ -417,7 +417,7 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(300, 100, 99, 49), "Large Water"))
+			if (GUI.Button(new Rect(385, Screen.height - 60, 99, 49), "Large Water", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[4] < 1)

@@ -54,6 +54,8 @@ public class Grid : MonoBehaviour {
 	public GameObject TileOutline;
 	private List<GameObject> OutlineTiles = new List<GameObject>();
 	
+	public GUISkin GUIfunstuff;
+	
 	public SummoningFont summoningFont;
 	
 	public Tile[,] map;
@@ -265,12 +267,12 @@ public class Grid : MonoBehaviour {
 		if (suspended){
 			GUI.Box (new Rect(200, 0, 250, 100), "suspended = true");
 		}
-		GUI.Box (new Rect(0, 500, 100, 25), "Player "+activePlayer);
-		GUI.Box(new Rect(0, 525, 100, 25), "arcana: " + players[activePlayer].resources[0]);
-		GUI.Box(new Rect(0, 550, 100, 25), "air: " + players[activePlayer].resources[1]);
-		GUI.Box(new Rect(0, 575, 100, 25), "earth: " + players[activePlayer].resources[2]);
-		GUI.Box(new Rect(0, 600, 100, 25), "fire: " + players[activePlayer].resources[3]);
-		GUI.Box(new Rect(0, 625, 100, 25), "water: " + players[activePlayer].resources[4]);
+		GUI.Box (new Rect(0, 500, 100, 25), "Player "+activePlayer, GUIfunstuff.box);
+		GUI.Box(new Rect(0, 525, 100, 25), "Arcana: " + players[activePlayer].resources[0], GUIfunstuff.box);
+		GUI.Box(new Rect(0, 550, 100, 25), "Air: " + players[activePlayer].resources[1], GUIfunstuff.box);
+		GUI.Box(new Rect(0, 575, 100, 25), "Earth: " + players[activePlayer].resources[2], GUIfunstuff.box);
+		GUI.Box(new Rect(0, 600, 100, 25), "Fire: " + players[activePlayer].resources[3], GUIfunstuff.box);
+		GUI.Box(new Rect(0, 625, 100, 25), "Water: " + players[activePlayer].resources[4], GUIfunstuff.box);
 		/*
 		GUI.Box(new Rect(1250, 150, 100, 25), "Player 2: " + players[1].resources[0]);
 		GUI.Box(new Rect(1250, 180, 100, 25), "Player 2: " + players[1].resources[1]);
@@ -280,7 +282,7 @@ public class Grid : MonoBehaviour {
 	
 	*/
 		if (minTurnTime < 0 && !suspended){
-			if (GUI.Button (new Rect(1250, 500, 125, 40), "end turn")){
+			if (GUI.Button (new Rect(1250, 500, 125, 40), "End turn", GUIfunstuff.button)){
 			endTurn();
 			}
 		}
