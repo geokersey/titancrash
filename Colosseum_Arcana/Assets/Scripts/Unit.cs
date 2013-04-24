@@ -301,10 +301,10 @@ public class Unit : MonoBehaviour {
 		if (owner == world.activePlayer){
 			selected = true;
 			if(!flyer){
-				world.map[x,y].inRange(availableMovePoints+world.map[x,y].pointsRequired, flyer);
+				world.map[x,y].inRange(availableMovePoints+world.map[x,y].pointsRequired, flyer, flyer, false);
 			}
 			else{
-				world.map[x,y].inRange(availableMovePoints+1, flyer);
+				world.map[x,y].inRange(availableMovePoints+1, flyer, flyer, false);
 			}
 			
 		}

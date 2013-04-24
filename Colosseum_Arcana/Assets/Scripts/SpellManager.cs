@@ -368,8 +368,8 @@ public class SpellManager : MonoBehaviour
 			//tornado landing
 			//Debug.Log ("tornado Landing");
 			if(target.findTower (spellRanges[3])&&tornadoVictim != null && target.occupyer == null){
-				//other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,2));
-				//other.players[other.activePlayer].resources[1]-=2;
+				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,2));
+				other.players[other.activePlayer].resources[1]-=2;
 				
 				
 				Tile old = other.map[tornadoVictim.x,tornadoVictim.y];

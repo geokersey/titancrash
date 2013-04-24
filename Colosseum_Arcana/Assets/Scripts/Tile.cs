@@ -148,20 +148,35 @@ public class Tile : MonoBehaviour {
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
+		else if(current.pointsRemaining == max.pointsRemaining && current.path.Count < max.path.Count){
+			max = current;
+		}
 		current = world.map[x-1,y+1].movePoints (available,target, mover, zoc2, fly);
 		if(current.pointsRemaining>max.pointsRemaining){
+			max = current;
+		}
+		else if(current.pointsRemaining == max.pointsRemaining && current.path.Count < max.path.Count){
 			max = current;
 		}
 		current = world.map[x+1,y-1].movePoints (available,target, mover, zoc2, fly);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
+		else if(current.pointsRemaining == max.pointsRemaining && current.path.Count < max.path.Count){
+			max = current;
+		}
 		current = world.map[x,y-1].movePoints (available,target, mover, zoc2, fly);
 		if(current.pointsRemaining>max.pointsRemaining){
 			max = current;
 		}
+		else if(current.pointsRemaining == max.pointsRemaining && current.path.Count < max.path.Count){
+			max = current;
+		}
 		current = world.map[x,y+1].movePoints (available,target, mover, zoc2, fly);
 		if(current.pointsRemaining>max.pointsRemaining){
+			max = current;
+		}
+		else if(current.pointsRemaining == max.pointsRemaining && current.path.Count < max.path.Count){
 			max = current;
 		}
 		if (max.defender != null && max.path.Count == 1 && this.occupyer != null && this.occupyer != mover){
@@ -228,7 +243,7 @@ public class Tile : MonoBehaviour {
 	}
 	public void OnMouseEnter(){
 		if(world.spells.spell >=0){
-			inRange (world.spells.spellRanges[world.spells.spell], true);
+			inRange (world.spells.spellRanges[world.spells.spell], true, true, false);
 		}
 	}
 	public void OnMouseExit(){
@@ -238,7 +253,7 @@ public class Tile : MonoBehaviour {
 	}
 	public bool findTower(int range){
 		for(int i = Mathf.Max (x-range,0); i<Mathf.Min (x+range, world.size); ++i){
-			for(int j = Mathf.Max (x-range,0); j<Mathf.Min (x+range, world.size); ++j){
+			for(int j = Mathf.Max (y-range,0); j<Mathf.Min (7+range, world.size); ++j){
 				if (world.map[i,j].hasTower&&world.map[i,j].owner == world.activePlayer &&Mathf.Abs (-i-j+x+y)<range){
 					return true;
 				}
@@ -246,7 +261,7 @@ public class Tile : MonoBehaviour {
 		}
 		return false;
 	}
-	public void inRange(int points, bool ignoreTerrain){
+	public void inRange(int points, bool ignoreTerrain, bool fly, bool ZOC){
 		//does not take into account enemy units or zone of control
 		if ((points > maxPoints && gameObject.layer >=12)||(points>0&&gameObject.layer<12)){
 			if (terrain < 0){
@@ -256,6 +271,7 @@ public class Tile : MonoBehaviour {
 			if (maxPoints != -1 && maxPoints > points){
 				return;
 			}
+		
 			maxPoints = points;
 			//see (1);
 			
@@ -265,18 +281,26 @@ public class Tile : MonoBehaviour {
 			else{
 				gameObject.layer = 13;
 			}
+			bool ZOC2 = checkZOC (world.activePlayer);
+			if(ZOC && ZOC2 && !ignoreTerrain && !fly){
+				Debug.Log ("ZOC violation detected");
+				return;
+			}
+			if(occupyer != null && occupyer.owner != world.activePlayer && !ignoreTerrain){
+				return;
+			}
 			if(ignoreTerrain){
 				points -=1;
 			}
 			else{
 				points -= pointsRequired;
 			}
-			world.map[x+1,y].inRange (points, ignoreTerrain);
-			world.map[x-1,y].inRange (points, ignoreTerrain);
-			world.map[x+1,y-1].inRange (points, ignoreTerrain);
-			world.map[x-1,y+1].inRange (points, ignoreTerrain);
-			world.map[x,y+1].inRange (points, ignoreTerrain);
-			world.map[x,y-1].inRange (points, ignoreTerrain);
+			world.map[x+1,y].inRange (points, ignoreTerrain, fly, ZOC2);
+			world.map[x-1,y].inRange (points, ignoreTerrain, fly, ZOC2);
+			world.map[x+1,y-1].inRange (points, ignoreTerrain, fly, ZOC2);
+			world.map[x-1,y+1].inRange (points, ignoreTerrain, fly, ZOC2);
+			world.map[x,y+1].inRange (points, ignoreTerrain, fly, ZOC2);
+			world.map[x,y-1].inRange (points, ignoreTerrain, fly, ZOC2);
 		}
 	}
 	public void outRange(){
