@@ -47,6 +47,7 @@ public class Player : MonoBehaviour {
 	}
 	public void beginTurn(){
 		int i = 1;
+		summoned = false;
 		researched = false;
 		while (resO.Count >0 && i <= resO.Count){
 			resO[resO.Count-i].turns--;

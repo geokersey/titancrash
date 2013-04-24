@@ -478,7 +478,7 @@ public class SpellManager : MonoBehaviour
 				if (target.terrain >=0){
 					target.terrain = 2; //change to whatever mountain is
 					target.pointsRequired = 3;
-					target.mountainModel = (GameObject)Instantiate (other.mountainModelPrefab,target.transform.position, Quaternion.identity);
+					target.mountainModel = (GameObject)Instantiate (other.mountainModelPrefab,new Vector3(target.transform.position.x,target.transform.position.y + .1f,target.transform.position.z), Quaternion.Euler(0,30 + (60*Random.Range (0,10)),0));
 					//target.mountainModel.layer = 2;
 					target.renderer.enabled = false;
 					
@@ -526,7 +526,7 @@ public class SpellManager : MonoBehaviour
 			
 				target.terrain = 2; //change to whatever mountain is
 				target.pointsRequired = 3;
-				target.mountainModel = (GameObject)Instantiate (other.mountainModelPrefab,target.transform.position, Quaternion.identity);
+				target.mountainModel = (GameObject)Instantiate (other.mountainModelPrefab,new Vector3(target.transform.position.x,target.transform.position.y + .1f,target.transform.position.z), Quaternion.Euler(0,30 + (60*Random.Range (0,10)),0));
 				//target.mountainModel.layer = 2;
 				target.renderer.enabled = false;
 				
