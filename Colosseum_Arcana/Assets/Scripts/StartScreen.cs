@@ -15,9 +15,11 @@ public class StartScreen : MonoBehaviour
 	private bool LoadError = false;
 	private string ErrorLevel = "null";
 	public GUISkin GUIstuff;
+	public GUIStyle temp;
 	
 	void Awake()
 	{
+		temp = GUIstuff.label;
 		LevelName = "DefaultMatch";
 		if(!Directory.Exists("C:/ElementalFury/Maps"))
 		{
@@ -33,26 +35,27 @@ public class StartScreen : MonoBehaviour
 	
 	void OnGUI()
 	{
+		GUI.Label(new Rect(Screen.width*.5f - 175,10,450, 100), "Elemental Fury", temp);
 		if(!PlayGame && !EnterEditor && !QuitGame)
 		{
-			if(GUI.Button(new Rect(100,100,100,30), "Play Game", GUIstuff.button))
+			if(GUI.Button(new Rect(Screen.width *.5f - 50,100,100,30), "Play Game", GUIstuff.button))
 			{
 				PlayGame = true;
 			}
-			if(GUI.Button(new Rect(100,200,100,30), "Map Editor", GUIstuff.button))
+			if(GUI.Button(new Rect(Screen.width *.5f - 45,200,100,30), "Map Editor", GUIstuff.button))
 			{
 				EnterEditor = true;
 			}
-			if(GUI.Button(new Rect(100,300,100,30), "Quit", GUIstuff.button))
+			if(GUI.Button(new Rect(Screen.width *.5f - 45,300,100,30), "Quit", GUIstuff.button))
 			{
 				QuitGame = true;
 			}
 		}
 		if(PlayGame)
 		{
-			GUI.Label(new Rect(100,100,300,30), "Load the default map or load a saved map", GUIstuff.label);
-			LevelName = GUI.TextField(new Rect(100,200,100,30), LevelName, GUIstuff.textField);
-			if(GUI.Button(new Rect(100,250,100,30), "Play", GUIstuff.button))
+			GUI.Label(new Rect(Screen.width *.5f - 45,100,300,30), "Load the default map or load a saved map", GUIstuff.label);
+			LevelName = GUI.TextField(new Rect(Screen.width *.5f - 45,200,100,30), LevelName, GUIstuff.textField);
+			if(GUI.Button(new Rect(Screen.width *.5f - 50,250,100,30), "Play", GUIstuff.button))
 			{
 				if(File.Exists("C:/ElementalFury/Maps/" + LevelName + ".xml"))
 				{
@@ -68,9 +71,9 @@ public class StartScreen : MonoBehaviour
 			}
 			if(LoadError)
 				{
-					GUI.Label(new Rect(100,150,300,30), "Map '" + ErrorLevel + "' does not exist.", GUIstuff.label);
+					GUI.Label(new Rect(Screen.width *.5f - 150,150,300,30), "Map '" + ErrorLevel + "' does not exist.", GUIstuff.label);
 				}
-			if(GUI.Button(new Rect(100,300,100,30), "Return", GUIstuff.button))
+			if(GUI.Button(new Rect(Screen.width *.5f - 50,300,100,30), "Return", GUIstuff.button))
 			{
 				PlayGame = false;
 				LoadError = false;
@@ -80,26 +83,26 @@ public class StartScreen : MonoBehaviour
 		if(EnterEditor)
 		{
 			GUI.Label(new Rect(100,100,300,30), "Are you sure you want to start the editor?", GUIstuff.label);
-			if(GUI.Button(new Rect(100,200,100,30), "Start Editor", GUIstuff.button))
+			if(GUI.Button(new Rect(Screen.width *.5f - 50,200,100,30), "Start Editor", GUIstuff.button))
 			{
 				//Load Map Editor
 				Application.LoadLevel("Builder");
 			}
 				
-			if(GUI.Button(new Rect(100,300,100,30), "Return", GUIstuff.button))
+			if(GUI.Button(new Rect(Screen.width *.5f - 50,300,100,30), "Return", GUIstuff.button))
 			{
 				EnterEditor = false;
 			}
 		}
 		if(QuitGame)
 		{
-			GUI.Label(new Rect(100,100,300,30), "Are you sure you want to quit?", GUIstuff.label);
-			if(GUI.Button(new Rect(100,200,100,30), "Yes", GUIstuff.button))
+			GUI.Label(new Rect(Screen.width *.5f - 150,100,300,30), "Are you sure you want to quit?", GUIstuff.label);
+			if(GUI.Button(new Rect(Screen.width *.5f - 50,200,100,30), "Yes", GUIstuff.button))
 			{
 				Application.Quit();
 			}
 				
-			if(GUI.Button(new Rect(100,300,100,30), "No", GUIstuff.button))
+			if(GUI.Button(new Rect(Screen.width *.5f - 50,300,100,30), "No", GUIstuff.button))
 			{
 				QuitGame = false;
 			}

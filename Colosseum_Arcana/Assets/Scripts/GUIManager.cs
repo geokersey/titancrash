@@ -86,22 +86,22 @@ public class GUIManager : MonoBehaviour
 		//Map size selection
 		if(!SelectedMap)
 		{
-			if(GUI.Button (new Rect (10,10,90,75), "Small Map", GUIstuff.button)) 
+			if(GUI.Button (new Rect (Screen.width *.5f - 45,10,90,75), "Small Map", GUIstuff.button)) 
 			{
 				SelectedMap = true;
 				this.transform.gameObject.GetComponent<GenerateMap>().Generate (10);
 			}
-			else if(GUI.Button (new Rect (10,90,90,75), "Medium Map", GUIstuff.button)) 
+			else if(GUI.Button (new Rect (Screen.width *.5f - 45,90,90,75), "Medium Map", GUIstuff.button)) 
 			{
 				SelectedMap = true;
 				this.transform.gameObject.GetComponent<GenerateMap>().Generate (20);
 			}
-			else if(GUI.Button (new Rect (10,170,90,75), "Large Map", GUIstuff.button)) 
+			else if(GUI.Button (new Rect (Screen.width *.5f - 45,170,90,75), "Large Map", GUIstuff.button)) 
 			{
 				SelectedMap = true;
 				this.transform.gameObject.GetComponent<GenerateMap>().Generate (30);
 			}
-			else if(GUI.Button (new Rect (10,250,90,75), "Close Editor", GUIstuff.button)) 
+			else if(GUI.Button (new Rect (Screen.width *.5f - 45,250,90,75), "Close Editor", GUIstuff.button)) 
 			{
 				Application.LoadLevel("StartingScreen");
 			}
@@ -352,7 +352,8 @@ public class GUIManager : MonoBehaviour
 				}
 				else
 				{
-					GUI.Box(new Rect(Screen.width * .5f - 65f, Screen.height * .5f - 105f, 130,210), "Editor Menu", GUIstuff.box);
+					GUI.Box(new Rect(Screen.width * .5f - 65f, Screen.height * .5f - 145f, 130,250), " ", GUIstuff.box);
+					GUI.Label(new Rect(Screen.width * .5f - 65f, Screen.height * .5f - 115f, 130,250), "Menu", GUIstuff.label);
 					//Display Hotkey list
 					if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f - 75f, 100, 30), "Hotkeys", GUIstuff.button)) 
 					{

@@ -105,7 +105,7 @@ public class Unit : MonoBehaviour {
 					
 				}
 				else if (steps.path.Count > 1){
-					dT+= Time.deltaTime;
+					dT+= Time.deltaTime*3f;
 					transform.position = Vector3.Lerp (steps.path[steps.path.Count-1].transform.position, steps.path[steps.path.Count-2].transform.position, dT);
 					transform.LookAt (steps.path[steps.path.Count-2].transform.position);
 				}
