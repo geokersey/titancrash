@@ -65,26 +65,26 @@ public class Tile : MonoBehaviour {
 			//buildingModel = (GameObject)Instantiate (world.fontPrefab, transform.position, Quaternion.identity);
 		}	
 		else if (hasFont){
-			buildingModel = (GameObject)Instantiate (world.fontPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.fontPrefab, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 		}
 		else if (hasTower){
-			buildingModel = (GameObject)Instantiate (world.towerPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.towerPrefab, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 		}
 		else if (resource == 0){
 			buildingModel = (GameObject)Instantiate (world.arcanaResPrefab, transform.position, Quaternion.identity);
 		}
 		else if (resource == 1){
-			buildingModel = (GameObject)Instantiate (world.airResPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.airResPrefab, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 		}
 		else if (resource == 2){
-			buildingModel = (GameObject)Instantiate (world.earthResPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.earthResPrefab, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 		}
 		else if (resource == 3){
-			buildingModel = (GameObject)Instantiate (world.fireResPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.fireResPrefab, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Quaternion.identity);
 		}
 		
 		else if (resource == 4){
-			buildingModel = (GameObject)Instantiate (world.waterResPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.waterResPrefab, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 		}
 		
 			
@@ -406,19 +406,19 @@ public class Tile : MonoBehaviour {
 			else if(hasFont){
 				Destroy (buildingModel);
 				if (player == 0){
-					buildingModel = (GameObject)Instantiate (world.fontPrefab0, transform.position, Quaternion.identity);
+					buildingModel = (GameObject)Instantiate (world.fontPrefab0, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 				}
 				else if (player == 1){
-					buildingModel = (GameObject)Instantiate (world.fontPrefab1, transform.position, Quaternion.identity);
+					buildingModel = (GameObject)Instantiate (world.fontPrefab1, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 				}
 			}
 			else if(hasTower){
 				Destroy (buildingModel);
 				if (player == 0){
-					buildingModel = (GameObject)Instantiate (world.towerPrefab0, transform.position, Quaternion.identity);
+					buildingModel = (GameObject)Instantiate (world.towerPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 				}
 				else if (player == 1){
-					buildingModel = (GameObject)Instantiate (world.towerPrefab1, transform.position, Quaternion.identity);
+					buildingModel = (GameObject)Instantiate (world.towerPrefab1, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 				}
 			}
 			if(resource >=0){
@@ -532,16 +532,16 @@ public class Tile : MonoBehaviour {
 						buildingModel = (GameObject)Instantiate (world.arcanaResPrefab0, transform.position, Quaternion.identity);
 					}
 					else if (resource == 1){
-						buildingModel = (GameObject)Instantiate (world.airResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.airResPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 2){
-						buildingModel = (GameObject)Instantiate (world.earthResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.earthResPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 3){
-						buildingModel = (GameObject)Instantiate (world.fireResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.fireResPrefab0, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 4){
-						buildingModel = (GameObject)Instantiate (world.waterResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.waterResPrefab0, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 					}
 				}
 				else if (player == 1){
@@ -549,16 +549,16 @@ public class Tile : MonoBehaviour {
 						buildingModel = (GameObject)Instantiate (world.arcanaResPrefab0, transform.position, Quaternion.identity);
 					}
 					else if (resource == 1){
-						buildingModel = (GameObject)Instantiate (world.airResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.airResPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 2){
-						buildingModel = (GameObject)Instantiate (world.earthResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.earthResPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 3){
-						buildingModel = (GameObject)Instantiate (world.fireResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.fireResPrefab0, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 4){
-						buildingModel = (GameObject)Instantiate (world.waterResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.waterResPrefab0, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 					}
 				}
 			}
@@ -600,11 +600,11 @@ public class Tile : MonoBehaviour {
 					}
 					else if (hasFont){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.fontPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.fontPrefab0, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 					}
 					else if (hasTower){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.towerPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.towerPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 0){
 						Destroy (buildingModel);
@@ -612,19 +612,19 @@ public class Tile : MonoBehaviour {
 					}
 					else if (resource == 1){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.airResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.airResPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 2){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.earthResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.earthResPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 3){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.fireResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.fireResPrefab0, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 4){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.waterResPrefab0, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.waterResPrefab0, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 					}
 				}
 				if (owner == 1){
@@ -633,11 +633,11 @@ public class Tile : MonoBehaviour {
 					}
 					else if (hasFont){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.fontPrefab1, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.fontPrefab1, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 					}
 					else if (hasTower){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.towerPrefab1, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.towerPrefab1, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 0){
 						Destroy (buildingModel);
@@ -645,19 +645,19 @@ public class Tile : MonoBehaviour {
 					}
 					else if (resource == 1){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.airResPrefab1, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.airResPrefab1, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 2){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.earthResPrefab1, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.earthResPrefab1, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 3){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.fireResPrefab1, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.fireResPrefab1, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Quaternion.identity);
 					}
 					else if (resource == 4){
 						Destroy (buildingModel);
-						buildingModel = (GameObject)Instantiate (world.waterResPrefab1, transform.position, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.waterResPrefab1, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 					}
 				}
 			}
@@ -697,11 +697,11 @@ public class Tile : MonoBehaviour {
 		}
 		else if (hasFont){
 			Destroy (buildingModel);
-			buildingModel = (GameObject)Instantiate (world.fontPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.fontPrefab, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 		}
 		else if (hasTower){
 			Destroy (buildingModel);
-			buildingModel = (GameObject)Instantiate (world.towerPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.towerPrefab, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 		}
 		else if (resource == 0){
 			Destroy (buildingModel);
@@ -709,19 +709,19 @@ public class Tile : MonoBehaviour {
 		}
 		else if (resource == 1){
 			Destroy (buildingModel);
-			buildingModel = (GameObject)Instantiate (world.airResPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.airResPrefab, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 		}
 		else if (resource == 2){
 			Destroy (buildingModel);
-			buildingModel = (GameObject)Instantiate (world.earthResPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.earthResPrefab, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 		}
 		else if (resource == 3){
 			Destroy (buildingModel);
-			buildingModel = (GameObject)Instantiate (world.fireResPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.fireResPrefab, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Quaternion.identity);
 		}
 		else if (resource == 4){
 			Destroy (buildingModel);
-			buildingModel = (GameObject)Instantiate (world.waterResPrefab, transform.position, Quaternion.identity);
+			buildingModel = (GameObject)Instantiate (world.waterResPrefab, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 		}
 		
 	}
@@ -740,11 +740,11 @@ public class Tile : MonoBehaviour {
 			}
 			else if (hasFont){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.fontPrefab0, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.fontPrefab0, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 			}
 			else if (hasTower){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.towerPrefab0, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.towerPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 			}
 			else if (resource == 0){
 				Destroy (buildingModel);
@@ -752,19 +752,19 @@ public class Tile : MonoBehaviour {
 			}
 			else if (resource == 1){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.airResPrefab0, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.airResPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 			}
 			else if (resource == 2){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.earthResPrefab0, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.earthResPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 			}
 			else if (resource == 3){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.fireResPrefab0, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.fireResPrefab0, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Quaternion.identity);
 			}
 			else if (resource == 4){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.waterResPrefab0, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.waterResPrefab0, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 			}
 		}
 		if (owner == 1){
@@ -773,11 +773,11 @@ public class Tile : MonoBehaviour {
 			}
 			else if (hasFont){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.fontPrefab1, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.fontPrefab1, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 			}
 			else if (hasTower){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.towerPrefab1, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.towerPrefab1, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 			}
 			else if (resource == 0){
 				Destroy (buildingModel);
@@ -785,19 +785,19 @@ public class Tile : MonoBehaviour {
 			}
 			else if (resource == 1){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.airResPrefab1, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.airResPrefab1, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 			}
 			else if (resource == 2){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.earthResPrefab1, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.earthResPrefab1, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z), Quaternion.identity);
 			}
 			else if (resource == 3){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.fireResPrefab1, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.fireResPrefab1, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Quaternion.identity);
 			}
 			else if (resource == 4){
 				Destroy (buildingModel);
-				buildingModel = (GameObject)Instantiate (world.waterResPrefab1, transform.position, Quaternion.identity);
+				buildingModel = (GameObject)Instantiate (world.waterResPrefab1, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z), Quaternion.identity);
 			}
 		}
 	}
