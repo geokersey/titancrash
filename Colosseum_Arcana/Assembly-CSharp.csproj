@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\MoveCamera1.cs" />
      <Compile Include="Assets\Scripts\PauseManager.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\SetHeight.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
      <Compile Include="Assets\Scripts\SpellManager.cs" />
      <Compile Include="Assets\Scripts\SpellTargeting.cs" />
