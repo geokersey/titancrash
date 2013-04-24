@@ -16,6 +16,7 @@ public class GUIManager : MonoBehaviour
 	private bool Quitting = false;
 	private string CurrentTileSelection = "T1_With_None";
 	private bool Overwrite = false;
+	public GUISkin GUIstuff;
 	
 	private string HelpTooltip1 = "Keybindings:\n" +
 		"1 = T1_With_None\n" +
@@ -85,22 +86,22 @@ public class GUIManager : MonoBehaviour
 		//Map size selection
 		if(!SelectedMap)
 		{
-			if(GUI.Button (new Rect (10,10,90,75), "Small Map")) 
+			if(GUI.Button (new Rect (10,10,90,75), "Small Map", GUIstuff.button)) 
 			{
 				SelectedMap = true;
 				this.transform.gameObject.GetComponent<GenerateMap>().Generate (10);
 			}
-			else if(GUI.Button (new Rect (10,90,90,75), "Medium Map")) 
+			else if(GUI.Button (new Rect (10,90,90,75), "Medium Map", GUIstuff.button)) 
 			{
 				SelectedMap = true;
 				this.transform.gameObject.GetComponent<GenerateMap>().Generate (20);
 			}
-			else if(GUI.Button (new Rect (10,170,90,75), "Large Map")) 
+			else if(GUI.Button (new Rect (10,170,90,75), "Large Map", GUIstuff.button)) 
 			{
 				SelectedMap = true;
 				this.transform.gameObject.GetComponent<GenerateMap>().Generate (30);
 			}
-			else if(GUI.Button (new Rect (10,250,90,75), "Close Editor")) 
+			else if(GUI.Button (new Rect (10,250,90,75), "Close Editor", GUIstuff.button)) 
 			{
 				Application.LoadLevel("StartingScreen");
 			}
@@ -108,8 +109,8 @@ public class GUIManager : MonoBehaviour
 		else
 		{
 			//Current Tile Selection
-			GUI.Box(new Rect(Screen.width * .7f, 20, 150,60), "Current Tile Selection");
-			GUI.Label (new Rect (Screen.width * .7f + 20f, 50, 100, 30), CurrentTileSelection);
+			GUI.Box(new Rect(Screen.width * .7f, 20, 150,60), "\nCurrent Tile Selection", GUIstuff.box);
+			GUI.Label (new Rect (Screen.width * .7f + 20f, 50, 100, 30), CurrentTileSelection, GUIstuff.label);
 			
 			//If no menus are currently open
 			if(!OpenMenu)
@@ -267,7 +268,7 @@ public class GUIManager : MonoBehaviour
 					if(Loading)
 					{
 						LoadFilename = GUI.TextField (new Rect (Screen.width * .5f - 50f, Screen.height * .5f - 40f, 100, 30), LoadFilename);
-						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f, 100, 30), "Load"))
+						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f, 100, 30), "Load", GUIstuff.button))
 						{
 							//CHECK IF FILE EXISTS
 							if(File.Exists("C:/ElementalFury/Maps/" + LoadFilename + ".xml"))
@@ -282,7 +283,7 @@ public class GUIManager : MonoBehaviour
 								Debug.Log ("WE AINT FOUND SHIT");
 							}
 						}
-						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f + 50f, 100, 30), "Cancel"))
+						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f + 50f, 100, 30), "Cancel", GUIstuff.button))
 						{
 							Loading = false;
 						}
@@ -290,7 +291,7 @@ public class GUIManager : MonoBehaviour
 					else if(Saving)
 					{
 						SaveFilename = GUI.TextField (new Rect (Screen.width * .5f - 50f, Screen.height * .5f - 40f, 100, 30), SaveFilename);
-						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f, 100, 30), "Save"))
+						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f, 100, 30), "Save", GUIstuff.button))
 						{
 							//CHECK FOR OVERWRITING A SAVED FILE
 							if(!File.Exists("C:/ElementalFury/Maps/" + SaveFilename + ".xml"))
@@ -305,13 +306,13 @@ public class GUIManager : MonoBehaviour
 								Debug.Log ("SHIT SON YOU FUCKED UP");	
 							}
 						}
-						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f + 50f, 100, 30), "Cancel"))
+						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f + 50f, 100, 30), "Cancel", GUIstuff.button))
 						{
 							Saving = false;
 						}
 						if(Overwrite)
 						{
-							if(GUI.Button(new Rect(Screen.width * .5f - 75f, Screen.height*.5f - 90, 150, 30), "Overwrite save file?"))
+							if(GUI.Button(new Rect(Screen.width * .5f - 75f, Screen.height*.5f - 90, 150, 30), "Overwrite save file?", GUIstuff.button))
 							{
 								Overwrite = false;
 								this.transform.gameObject.GetComponent<MapSaveLoad>().Save(SaveFilename);
@@ -321,17 +322,17 @@ public class GUIManager : MonoBehaviour
 					}
 					else if(Hotkeys)
 					{
-						GUI.Label(new Rect(50,50, 500,500), HelpTooltip1);
-						GUI.Label(new Rect(250,50, 500,500), HelpTooltip2);
-						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .8f - 35f, 100, 30), "Return")) 
+						GUI.Label(new Rect(50,50, 500,500), HelpTooltip1, GUIstuff.label);
+						GUI.Label(new Rect(250,50, 500,500), HelpTooltip2, GUIstuff.label);
+						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .8f - 35f, 100, 30), "Return", GUIstuff.button)) 
 						{
 							Hotkeys = false;
 						}
 					}
 					else if(Quitting)
 					{
-						GUI.Box(new Rect(Screen.width * .5f - 75f,Screen.height * .5f - 75f,150,75), "Are you sure?");
-						if (GUI.Button (new Rect (Screen.width * .5f - 65f, Screen.height * .5f - 35f, 50, 30), "Yes"))
+						GUI.Box(new Rect(Screen.width * .5f - 75f,Screen.height * .5f - 75f,150,75), "Are you sure?", GUIstuff.box);
+						if (GUI.Button (new Rect (Screen.width * .5f - 65f, Screen.height * .5f - 35f, 50, 30), "Yes", GUIstuff.button))
 						{
 							//Application.Quit ();
 							//Debug.Log ("Quitting Application");
@@ -343,7 +344,7 @@ public class GUIManager : MonoBehaviour
 							Tab = false;
 							this.gameObject.GetComponent<GenerateMap>().DestroyMap();
 						}
-						if (GUI.Button (new Rect (Screen.width * .5f + 15f, Screen.height * .5f - 35f, 50, 30), "No")) 
+						if (GUI.Button (new Rect (Screen.width * .5f + 15f, Screen.height * .5f - 35f, 50, 30), "No", GUIstuff.button)) 
 						{
 							Quitting = false;
 						}
@@ -351,31 +352,31 @@ public class GUIManager : MonoBehaviour
 				}
 				else
 				{
-					GUI.Box(new Rect(Screen.width * .5f - 65f, Screen.height * .5f - 105f, 130,210), "Editor Menu");
+					GUI.Box(new Rect(Screen.width * .5f - 65f, Screen.height * .5f - 105f, 130,210), "Editor Menu", GUIstuff.box);
 					//Display Hotkey list
-					if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f - 75f, 100, 30), "Hotkeys")) 
+					if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f - 75f, 100, 30), "Hotkeys", GUIstuff.button)) 
 					{
 						Hotkeys = true;
 						//Display popup
 					}
 					//Save map
-					else if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f - 35f, 100, 30), "Save")) 
+					else if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f - 35f, 100, 30), "Save", GUIstuff.button)) 
 					{
 						Saving = true;
 					}
 					//Load map
-					else if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f + 5f, 100, 30), "Load")) 
+					else if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f + 5f, 100, 30), "Load", GUIstuff.button)) 
 					{
 						Loading = true;
 					}
 					//Quit Application
-					else if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f + 45f, 100, 30), "Quit")) 
+					else if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f + 45f, 100, 30), "Quit", GUIstuff.button)) 
 					{
 						Quitting = true;
 						//Display "Are you sure? popup"
 					}
 					//Escape to quit menu and return
-					else if (GUI.Button (new Rect (Screen.width * .5f + 40f, Screen.height * .5f - 100f, 20, 20), "x")) 
+					else if (GUI.Button (new Rect (Screen.width * .5f + 40f, Screen.height * .5f - 100f, 20, 20), "x", GUIstuff.button)) 
 					{
 						Tab = false;
 						OpenMenu = false;

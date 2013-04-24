@@ -153,7 +153,7 @@ public class techstuff : MonoBehaviour {
 	{
 		if (world.GUIstate != 2)
 		{
-			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Open Tech Tree", world.GUIfunstuff.button))
+			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f - 40, 125, 40), "Open Tech Tree", world.GUIfunstuff.button))
 			{
 				state = 1;
 				world.GUIstate = 2;
@@ -192,7 +192,7 @@ public class techstuff : MonoBehaviour {
 				
 				GUI.backgroundColor = Color.white;
 				
-				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree", world.GUIfunstuff.button))
+				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f - 40, 125, 40), "Close Tech Tree", world.GUIfunstuff.button))
 				{
 					state = 0;
 					world.GUIstate = 0;
@@ -246,7 +246,7 @@ public class techstuff : MonoBehaviour {
 				
 				GUI.Box(new Rect(800, 75, 300, 400), "\n\n\n\n" + techTree[selectedTech].name + "\n\n" + techTree[selectedTech].description + "\n\n" + s, world.GUIfunstuff.box);
 				
-				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree", world.GUIfunstuff.button))
+				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f - 40, 125, 40), "Close Tech Tree", world.GUIfunstuff.button))
 				{
 					state = 0;
 					world.GUIstate = 0;
@@ -276,15 +276,18 @@ public class techstuff : MonoBehaviour {
 							{
 								int x = techTree[selectedTech].price * 3 / 5;
 								world.players[world.activePlayer].resources[0] -= x;
+								world.players[world.activePlayer].techRes = x;
 							}
 							else if (world.players[world.activePlayer].techAvailable[25] == 2)
 							{
 								int x = techTree[selectedTech].price * 4 / 5;
 								world.players[world.activePlayer].resources[0] -= x;
+								world.players[world.activePlayer].techRes = x;
 							}
 							else
 							{
 								world.players[world.activePlayer].resources[0] -= techTree[selectedTech].price;
+								world.players[world.activePlayer].techRes = techTree[selectedTech].price;
 							}
 							
 							world.players[world.activePlayer].techAvailable[selectedTech] = 2;

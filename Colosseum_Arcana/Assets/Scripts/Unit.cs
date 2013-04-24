@@ -20,7 +20,9 @@ public class Unit : MonoBehaviour {
 	public int startHP;
 	public int hp;
 	public int atk;
+	public int startAtk;
 	public int def;
+	public int startDef;
 	public int element;
 	public int x;
 	public int y;
@@ -292,8 +294,10 @@ public class Unit : MonoBehaviour {
 	}
 	void OnGUI(){
 		if (selected){
-			GUI.Box(new Rect(0, 100, 100, 25), "Health: " + hp);
-			GUI.Box(new Rect(0, 200, 150, 25), "Action Points: " + availableMovePoints);
+			GUI.Box(new Rect(0, 100, 125, 25), "Health: " + hp + "/10", world.GUIfunstuff.box);
+			GUI.Box(new Rect(0, 125, 125, 25), "Attack: " + atk, world.GUIfunstuff.box);
+			GUI.Box(new Rect(0, 150, 125, 25), "Defense: " + def, world.GUIfunstuff.box);
+			GUI.Box(new Rect(0, 175, 125, 25), "Action Points: " + availableMovePoints + "/" + startingMovePoints, world.GUIfunstuff.box);
 			
 		}
 	}

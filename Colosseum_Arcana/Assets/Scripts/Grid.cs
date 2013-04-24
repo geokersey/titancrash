@@ -266,24 +266,24 @@ public class Grid : MonoBehaviour {
 	void OnGUI()
 	{
 		if (suspended){
-			GUI.Box (new Rect(200, 0, 250, 100), "suspended = true");
+			GUI.Box (new Rect(200, 0, 250, 100), "suspended = true", GUIfunstuff.box);
 		}
-		GUI.Box (new Rect(0, 500, 100, 25), "Player "+activePlayer, GUIfunstuff.box);
+		GUI.Box(new Rect(Screen.width - 150, 0, 100, 25), "Player "+activePlayer, GUIfunstuff.box);
+		GUI.Box(new Rect(0, 500, 100, 25), "Resources", GUIfunstuff.box);
 		GUI.Box(new Rect(0, 525, 100, 25), "Arcana: " + players[activePlayer].resources[0], GUIfunstuff.box);
 		GUI.Box(new Rect(0, 550, 100, 25), "Air: " + players[activePlayer].resources[1], GUIfunstuff.box);
 		GUI.Box(new Rect(0, 575, 100, 25), "Earth: " + players[activePlayer].resources[2], GUIfunstuff.box);
 		GUI.Box(new Rect(0, 600, 100, 25), "Fire: " + players[activePlayer].resources[3], GUIfunstuff.box);
 		GUI.Box(new Rect(0, 625, 100, 25), "Water: " + players[activePlayer].resources[4], GUIfunstuff.box);
-		/*
-		GUI.Box(new Rect(1250, 150, 100, 25), "Player 2: " + players[1].resources[0]);
+		
+		/*GUI.Box(new Rect(1250, 150, 100, 25), "Player 2: " + players[1].resources[0]);
 		GUI.Box(new Rect(1250, 180, 100, 25), "Player 2: " + players[1].resources[1]);
 		GUI.Box(new Rect(1250, 210, 100, 25), "Player 2: " + players[1].resources[2]);
 		GUI.Box(new Rect(1250, 240, 100, 25), "Player 2: " + players[1].resources[3]);
-		GUI.Box(new Rect(1250, 270, 100, 25), "Player 2: " + players[1].resources[4]);
-	
-	*/
+		GUI.Box(new Rect(1250, 270, 100, 25), "Player 2: " + players[1].resources[4]);*/
+		
 		if (minTurnTime < 0 && !suspended){
-			if (GUI.Button (new Rect(1250, 500, 125, 40), "End turn", GUIfunstuff.button)){
+			if (GUI.Button (new Rect(Screen.width * 0.85f, Screen.height * 0.85f, 125, 40), "End turn", GUIfunstuff.button)){
 			endTurn();
 			}
 		}

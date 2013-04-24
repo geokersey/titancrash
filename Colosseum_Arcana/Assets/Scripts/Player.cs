@@ -23,6 +23,7 @@ public class Player : MonoBehaviour {
 	public System.Collections.Generic.List<ResOccupied> resO;
 	public System.Collections.Generic.List<int> techAvailable;
 	public bool researched, summoned;
+	public int techRes;
 	// Use this for initialization
 	void Start () {
 		//resO = new System.Collections.Generic.List<ResOccupied>();
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour {
 		resources[0] = 3;
 		researched = false;
 		summoned = false;
+		techRes = 0;
 	}
 	
 	// Update is called once per frame
@@ -47,6 +49,13 @@ public class Player : MonoBehaviour {
 	}
 	public void beginTurn(){
 		int i = 1;
+		
+		if (researched)
+		{
+			resources[0] += techRes;
+			techRes = 0;
+		}
+		
 		summoned = false;
 		researched = false;
 		while (resO.Count >0 && i <= resO.Count){
