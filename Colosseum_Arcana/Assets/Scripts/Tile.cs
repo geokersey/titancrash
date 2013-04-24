@@ -204,7 +204,7 @@ public class Tile : MonoBehaviour {
 				else{
 					world.summoningFont.hide ();
 				}
-				world.highlight.transform.position = transform.position;
+				world.highlight.transform.position = new Vector3(transform.position.x,transform.position.y + .2f, transform.position.z);
 				//instantiat GUI
 			}
 			
@@ -221,7 +221,7 @@ public class Tile : MonoBehaviour {
 					world.selected.deselect();
 					world.selected = temp;
 					world.selected.choose();
-					world.highlight.transform.position = temp.transform.position;
+					world.highlight.transform.position = new Vector3(temp.transform.position.x,temp.transform.position.y + .2f, temp.transform.position.z);
 				}
 			}
 		}
