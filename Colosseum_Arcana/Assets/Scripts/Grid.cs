@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -103,7 +103,8 @@ public class Grid : MonoBehaviour {
 		if(!File.Exists("C:/ElementalFury/Maps/DefaultMatch.xml"))
 		{
 			Debug.Log ("Couldn't find default map. Copying from install");
-			FileUtil.CopyFileOrDirectory ("Assets/DefaultMatch.xml", "C:/ElementalFury/Maps/DefaultMatch.xml");
+			File.Copy("Assets/DefaultMatch.xml", "C:/ElementalFury/Maps/DefaultMatch.xml");
+			//FileUtil.CopyFileOrDirectory ("Assets/DefaultMatch.xml", "C:/ElementalFury/Maps/DefaultMatch.xml");
 		}
 		//Debug.Log ("Normal: " + Application.dataPath);
 		//Debug.Log ("Persistent: " + Application.persistentDataPath);

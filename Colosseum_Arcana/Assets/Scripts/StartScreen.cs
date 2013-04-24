@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 //using System.Collections;
 //using System.Collections.Generic;
 //using System.Xml;
@@ -26,7 +26,7 @@ public class StartScreen : MonoBehaviour
 		if(!File.Exists("C:/ElementalFury/Maps/DefaultMatch.xml"))
 		{
 			Debug.Log ("Couldn't find default map. Copying from install");
-			FileUtil.CopyFileOrDirectory ("Assets/DefaultMatch.xml", "C:/ElementalFury/Maps/DefaultMatch.xml");
+			File.Copy("Assets/DefaultMatch.xml", "C:/ElementalFury/Maps/DefaultMatch.xml");
 		}
 	}
 	
@@ -82,6 +82,7 @@ public class StartScreen : MonoBehaviour
 			if(GUI.Button(new Rect(100,200,100,30), "Start Editor"))
 			{
 				//Load Map Editor
+				Application.LoadLevel("Builder");
 			}
 				
 			if(GUI.Button(new Rect(100,300,100,30), "Return"))

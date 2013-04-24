@@ -44,20 +44,28 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ChangeTile.cs" />
      <Compile Include="Assets\Scripts\Fireball.cs" />
+     <Compile Include="Assets\Scripts\GUIManager.cs" />
+     <Compile Include="Assets\Scripts\GenerateMap.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
+     <Compile Include="Assets\Scripts\MapSaveLoad.cs" />
      <Compile Include="Assets\Scripts\MoveCamera.cs" />
+     <Compile Include="Assets\Scripts\MoveCamera1.cs" />
      <Compile Include="Assets\Scripts\PauseManager.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
      <Compile Include="Assets\Scripts\SpellManager.cs" />
+     <Compile Include="Assets\Scripts\SpellTargeting.cs" />
      <Compile Include="Assets\Scripts\StartScreen.cs" />
      <Compile Include="Assets\Scripts\SummoningFont.cs" />
      <Compile Include="Assets\Scripts\Tile.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />
      <Compile Include="Assets\Scripts\ZoomCamera.cs" />
+     <Compile Include="Assets\Scripts\ZoomCamera1.cs" />
      <Compile Include="Assets\Scripts\techstuff.cs" />
      <None Include="Assets\Otherfunthings\techs.txt" />
+     <None Include="Assets\SaveData.xml" />
      <None Include="Assets\DefaultMatch.xml" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>

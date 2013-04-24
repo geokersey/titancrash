@@ -37,6 +37,12 @@ public class PauseManager : MonoBehaviour
 			{
 				IsPaused = false;
 			}
+			
+			if(GUI.Button(new Rect(100,300,100,30), "Quit"))
+			{
+				IsPaused = false;
+				Application.LoadLevel("StartingScreen");
+			}
 		}
 		else
 		{

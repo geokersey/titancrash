@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
      <None Include="Assets\Otherfunthings\techs.txt" />
+     <None Include="Assets\SaveData.xml" />
      <None Include="Assets\DefaultMatch.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
