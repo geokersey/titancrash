@@ -38,6 +38,7 @@ ModelImporter:
     4300008: polySurface25
     7400000: Take 001
     9500000: //RootNode
+    11100000: //RootNode
     13700000: polySurface21
     13700002: polySurface22
     13700004: polySurface23
@@ -91,5 +92,5 @@ ModelImporter:
     rootMotionBoneName: Master_control
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   additionalBone: 1
-  animationType: 2
+  animationType: 1
   userData: 
