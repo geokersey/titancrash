@@ -1,16 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\techstuff.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Unit.cs">
     <Files>
-      <File FileName="Assets\Scripts\techstuff.cs" Line="267" Column="31" />
-      <File FileName="Assets\Scripts\GUIManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Unit.cs" Line="321" Column="15" />
       <File FileName="Assets\Scripts\Grid.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\techstuff.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUIManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MoveCamera1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Unit.cs" Line="108" Column="27" />
       <File FileName="Assets\Scripts\SummoningFont.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Tile.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SetHeight.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\StartScreen.cs" Line="1" Column="1" />
+      <File FileName="Assets\AnimationExampleScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

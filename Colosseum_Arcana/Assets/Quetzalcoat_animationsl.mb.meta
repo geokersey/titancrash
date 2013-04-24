@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: 78d0a572bad403d4bacabd1407b7e459
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Body
+    100002: Feathers
+    100004: Head
+    100006: Head 1
+    100008: Head_Control
+    100010: ikHandle1
+    100012: L_Ear
+    100014: L_Wing
+    100016: L_Wing_arm
+    100018: L_Wing_bone1
+    100020: L_wing_control
+    100022: L_Wing_tip
+    100024: L_wingiK
+    100026: Lower_body
+    100028: Lower_body_Control
+    100030: Lower_bodyiK
+    100032: Master_Control
+    100034: Mid_body
+    100036: Mid_body_Control
+    100038: Mid_bodyiK
+    100040: Nose
+    100042: quetz_low_poly1:Mesh
+    100044: //RootNode
+    100046: R_Ear
+    100048: R_Wing
+    100050: R_Wing_arm
+    100052: R_Wing_bone1
+    100054: R_wing_control
+    100056: R_Wing_tip
+    100058: R_wingiK
+    100060: Secondary_control
+    100062: Tail
+    100064: Tail_base
+    100066: Tail_Control
+    100068: Tail_end
+    100070: Tail_mid
+    100072: Tail_tip
+    100074: Tail_tip_Control
+    100076: Tail_tipiK
+    100078: TailiK
+    100080: Upper_body
+    400000: Body
+    400002: Feathers
+    400004: Head
+    400006: Head 1
+    400008: Head_Control
+    400010: ikHandle1
+    400012: L_Ear
+    400014: L_Wing
+    400016: L_Wing_arm
+    400018: L_Wing_bone1
+    400020: L_wing_control
+    400022: L_Wing_tip
+    400024: L_wingiK
+    400026: Lower_body
+    400028: Lower_body_Control
+    400030: Lower_bodyiK
+    400032: Master_Control
+    400034: Mid_body
+    400036: Mid_body_Control
+    400038: Mid_bodyiK
+    400040: Nose
+    400042: quetz_low_poly1:Mesh
+    400044: //RootNode
+    400046: R_Ear
+    400048: R_Wing
+    400050: R_Wing_arm
+    400052: R_Wing_bone1
+    400054: R_wing_control
+    400056: R_Wing_tip
+    400058: R_wingiK
+    400060: Secondary_control
+    400062: Tail
+    400064: Tail_base
+    400066: Tail_Control
+    400068: Tail_end
+    400070: Tail_mid
+    400072: Tail_tip
+    400074: Tail_tip_Control
+    400076: Tail_tipiK
+    400078: TailiK
+    400080: Upper_body
+    4300000: quetz_low_poly1:Mesh
+    7400000: jump
+    7400002: fly
+    7400004: attack
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: quetz_low_poly1:Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 1
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations:
+    - name: jump
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 81
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    - name: fly
+      takeName: Take 001
+      firstFrame: 82
+      lastFrame: 108
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    - name: attack
+      takeName: Take 001
+      firstFrame: 115
+      lastFrame: 149
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 1
+  userData: 

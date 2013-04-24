@@ -37,12 +37,18 @@ public class Unit : MonoBehaviour {
 	public int sleepTime = 0;
 	public Path steps;
 	public float dT;
+	
+	
+	private Renderer[] meshRenderers;
+	private bool anim;
+	
 	void Start () {
 		buffs = new System.Collections.Generic.List<Buff>();
 		steps = new Path();
 		int temp = Mathf.Max (startHP, hp);
 		startHP = hp = temp;
-		
+		meshRenderers = GetComponentsInChildren<Renderer>();
+		anim = null!= GetComponent<Animation>();
 	}
 	public void init(int x_, int y_, Grid world_){
 		x = x_;
@@ -96,6 +102,9 @@ public class Unit : MonoBehaviour {
 						Debug.Log ("won a fight to capture "+ x +", " +y);
 						
 					}
+					if(anim){
+						animation.CrossFade ("attack", .1f);
+					}
 				}
 				if (dT > 1){
 					dT = 0;
@@ -110,10 +119,14 @@ public class Unit : MonoBehaviour {
 					transform.LookAt (steps.path[steps.path.Count-2].transform.position);
 				}
 			}
-			else{steps = new Path();
-			acting = false;
-			world.suspended = false;
-			world.map[x,y].choose ();
+			else{
+				steps = new Path();
+				acting = false;
+				world.suspended = false;
+				world.map[x,y].choose ();
+				if (anim){
+					animation.CrossFade ("attack", .2f);
+				}
 			}
 		}
 		else{
@@ -303,7 +316,16 @@ public class Unit : MonoBehaviour {
 	}
 	public void choose(){
 		if (owner == world.activePlayer){
-			selected = true;
+			
+			if (!selected){
+				if (anim){
+					animation.Play ("jump");
+					//animation.PlayQueued ("fly");
+					animation.CrossFadeQueued("fly", .1f);
+				}
+				//PLAYSOUND select
+				selected = true;
+			}
 			if(!flyer){
 				world.map[x,y].inRange(availableMovePoints+world.map[x,y].pointsRequired, flyer, flyer, false);
 			}
@@ -314,13 +336,22 @@ public class Unit : MonoBehaviour {
 		}
 	}
 	public void deselect(){
+		if(selected&&anim){
+			animation.CrossFade ("attack", .1f);
+		}
 		selected = false;
 		
 	}
 	public void hide(){
-		renderer.enabled = false;
+		foreach (Renderer r in meshRenderers){
+			
+			r.enabled = false;
+		}
 	}
 	public void show(){
-		renderer.enabled = true;
+		foreach (Renderer r in meshRenderers){
+			
+			r.enabled = true;
+		}
 	}
 }
