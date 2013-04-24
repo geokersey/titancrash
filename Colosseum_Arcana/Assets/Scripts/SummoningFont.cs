@@ -50,10 +50,10 @@ public class SummoningFont : MonoBehaviour {
 	
 	}
 	public void show(){
-		shown = true;
+		world.GUIstate = 1;
 	}
 	public void hide(){
-		shown = false;
+		world.GUIstate = 0;
 	}
 	
 	
@@ -68,7 +68,7 @@ public class SummoningFont : MonoBehaviour {
 	void OnGUI()
 	
 	{
-		if(shown){
+		if(world.GUIstate == 1){
 			
 			
 			if (GUI.Button(new Rect(0, 0, 99, 49), "basic unit"))

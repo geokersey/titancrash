@@ -70,6 +70,7 @@ public class Grid : MonoBehaviour {
 	public bool suspended;
 	public techstuff techs;
 	int turn = 0;
+	public int GUIstate = 0;
 	
 	private string MapName = StartScreen.LevelName;
 	

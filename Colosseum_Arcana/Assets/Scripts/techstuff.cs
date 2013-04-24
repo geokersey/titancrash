@@ -151,16 +151,18 @@ public class techstuff : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		if(visible)
+		if (world.GUIstate != 2)
 		{
-			if (state == 0)
+			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Open Tech Tree"))
 			{
-				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Open Tech Tree"))
-				{
-					state = 1;
-				}
+				state = 1;
+				world.GUIstate = 2;
 			}
-			else if (state == 1)
+		}
+			
+		if(world.GUIstate == 2)
+		{
+			if (state == 1)
 			{
 				for (int i = 0; i < techTree.Count; i++)
 				{
@@ -193,6 +195,7 @@ public class techstuff : MonoBehaviour {
 				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree"))
 				{
 					state = 0;
+					world.GUIstate = 0;
 				}
 			}
 			else if (state == 2)
@@ -246,6 +249,7 @@ public class techstuff : MonoBehaviour {
 				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f, 105, 50), "Close Tech Tree"))
 				{
 					state = 0;
+					world.GUIstate = 0;
 				}
 				
 				if (world.players[world.activePlayer].techAvailable[selectedTech] == 0)
@@ -313,6 +317,7 @@ public class techstuff : MonoBehaviour {
 							}
 						
 							state = 0;
+							world.GUIstate = 0;
 						}
 					}
 				}
