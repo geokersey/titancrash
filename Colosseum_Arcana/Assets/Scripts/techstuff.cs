@@ -244,7 +244,7 @@ public class techstuff : MonoBehaviour {
 					s += "None";
 				}
 				
-				GUI.Box(new Rect(800, 75, 300, 400), "\n\n\n\n" + techTree[selectedTech].name + "\n\n" + techTree[selectedTech].description + "\n\n" + s, world.GUIfunstuff.box);
+				GUI.Box(new Rect(100, 350, 300, 400), "\n\n\n\n" + techTree[selectedTech].name + "\n\n" + techTree[selectedTech].description + "\n\n" + s, world.GUIfunstuff.box);
 				
 				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f - 40, 125, 40), "Close Tech Tree", world.GUIfunstuff.button))
 				{
@@ -255,16 +255,16 @@ public class techstuff : MonoBehaviour {
 				if (world.players[world.activePlayer].techAvailable[selectedTech] == 0)
 				{
 					GUI.backgroundColor = Color.red;
-					GUI.Button(new Rect(900, 450, 100, 75), "Unavailable", world.GUIfunstuff.button);
+					GUI.Button(new Rect(400, 450, 100, 75), "Unavailable", world.GUIfunstuff.button);
 				}
 				else if (world.players[world.activePlayer].techAvailable[selectedTech] == 2)
 				{
 					GUI.backgroundColor = Color.green;
-					GUI.Button(new Rect(900, 450, 100, 75), "Researched", world.GUIfunstuff.button);
+					GUI.Button(new Rect(400, 450, 100, 75), "Researched", world.GUIfunstuff.button);
 				}
 				else
 				{
-					if (GUI.Button(new Rect(900, 450, 100, 75), "Research", world.GUIfunstuff.button) && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= techTree[selectedTech].price)
+					if (GUI.Button(new Rect(400, 450, 100, 75), "Research", world.GUIfunstuff.button) && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= techTree[selectedTech].price)
 					{
 						if (world.players[world.activePlayer].summoned && world.players[world.activePlayer].techAvailable[27] != 2)
 						{
