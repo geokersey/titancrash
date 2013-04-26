@@ -352,7 +352,7 @@ public class Grid : MonoBehaviour {
 			//player0
 			x0 = i;
 			y0 = j;
-			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j) - (1.5f*radius)),.1f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30 + (60*Random.Range (0,10)),0));
+			map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30 + (60*Random.Range (0,10)),0));
 			map[i,j].init (i,j,2, true,true,true,-1,defaultQuant, this);
 			map[i,j].buildingModel = (GameObject)Instantiate(wizTowerPrefab0, map[i,j].transform.position+offset, Quaternion.Euler(0,90,0));
 			GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
@@ -364,7 +364,7 @@ public class Grid : MonoBehaviour {
 			Debug.Log ("player 1 start");
 			x1 = i;
 			y1 = j;
-			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j) - (1.5f*radius)),.1f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30 + (60*Random.Range (0,10)),0));
+			map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30 + (60*Random.Range (0,10)),0));
 			map[i,j].init (i,j,2, true,true,true, -1,defaultQuant, this);
 			map[i,j].buildingModel = (GameObject)Instantiate(wizTowerPrefab1, map[i,j].transform.position+offset, Quaternion.Euler(0,90,0));
 			GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
