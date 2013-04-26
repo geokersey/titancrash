@@ -115,7 +115,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(50, 0, 99, 49), "Hawkeye", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[0] == 2){
+				if (other.players[other.activePlayer].resources[1] >= 1)
+				{
 				spell = 0;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Tornado
@@ -128,7 +138,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(145, 0, 99, 49), "Tornado", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[10] == 2){
-				spell = 2;
+				if (other.players[other.activePlayer].resources[1] >= 2)
+				{
+					spell = 2;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}	
 			}
 			
 			//Wind Walk
@@ -141,7 +161,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(240, 0, 99, 49), "Wind Walk", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[16] == 2){
-				spell = 4;
+				if (other.players[other.activePlayer].resources[1] >= 2)
+				{
+					spell = 4;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Lightning Bolt
@@ -154,7 +184,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(335, 0, 99, 49), "Lightning Bolt", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[21] == 2){
-				spell = 5;
+				if (other.players[other.activePlayer].resources[1] >= 4)
+				{
+					spell = 5;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Scorch Earth
@@ -167,7 +207,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(430, 0, 99, 49), "Scorch Earth", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[1] == 2){
+				if (other.players[other.activePlayer].resources[2] >= 1)
+				{
 				spell = 6;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Fireball
@@ -180,7 +230,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(525, 0, 99, 49), "Fireball", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[11] == 2){
-				spell = 7;
+				if (other.players[other.activePlayer].resources[2] >= 2)
+				{
+					spell = 7;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Raging Fire
@@ -193,7 +253,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(620, 0, 99, 49), "Raging Fire", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[18] == 2){
-				spell = 8;
+				if (other.players[other.activePlayer].resources[2] >= 3)
+				{
+					spell = 8;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Eruption
@@ -206,7 +276,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(715, 0, 99, 49), "Eruption", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[22] == 2){
-				spell = 9;
+				if (other.players[other.activePlayer].resources[2] >= 5)
+				{
+					spell = 9;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Chill
@@ -219,7 +299,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(50, 45, 99, 49), "Chill", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[2] == 2){
-				spell = 10;
+				if (other.players[other.activePlayer].resources[4] >= 1)
+				{
+					spell = 10;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Glacial Wall
@@ -232,7 +322,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(145, 45, 99, 49), "Glacial Wall", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[12] == 2){
-				spell = 11;
+				if (other.players[other.activePlayer].resources[4] >= 2)
+				{
+					spell = 11;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Winter's Call
@@ -245,7 +345,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(240, 45, 99, 49), "Winter's Call", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[13] == 2){
-				spell = 12;
+				if (other.players[other.activePlayer].resources[4] >= 2)
+				{
+					spell = 12;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Frost
@@ -258,8 +368,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(335, 45, 99, 49), "Frost", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[14] == 2){
-				spell = 13;
-			}
+				if (other.players[other.activePlayer].resources[4] >= 3)
+				{
+					spell = 13;
+				}
+			}else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			
 			//Nature's Bounty
 			if (other.players[other.activePlayer].techAvailable.Count>3&&other.players[other.activePlayer].techAvailable[3] == 2)
@@ -271,7 +390,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(430, 45, 99, 49), "Nature's Bounty", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[3] == 2){
-				spell = 14;
+				if (other.players[other.activePlayer].resources[3] >= 1)
+				{
+					spell = 14;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Stone Armor
@@ -284,7 +413,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(525, 45, 99, 49), "Stone Armor", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[15] == 2){
-				spell = 15;
+				if (other.players[other.activePlayer].resources[3] >= 2)
+				{
+					spell = 15;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Counterspell
@@ -297,7 +436,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(620, 45, 99, 49), "Counterspell", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[4] == 2){
-				spell = 18;
+				if (other.players[other.activePlayer].resources[0] >= 1)
+				{
+					spell = 18;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 			
 			//Dispel Magic
@@ -310,7 +459,17 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(715, 45, 99, 49), "Dispel Magic", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[5] == 2){
-				spell = 19;
+				if (other.players[other.activePlayer].resources[0] >= 2)
+				{
+					spell = 19;
+				}
+				else
+				{
+					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+					{
+						spell = -1;
+					}
+				}
 			}
 		}
 	}
