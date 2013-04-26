@@ -76,6 +76,12 @@ public class Grid : MonoBehaviour {
 	
 	private string MapName = StartScreen.LevelName;
 	
+	public AudioClip EarthMusic;
+	public AudioClip WindMusic;
+	public AudioClip WaterMusic;
+	public AudioClip FireMusic;
+	public int song = 3;
+	
 	
 	// Use this for initialization
 	void Awake () {
@@ -261,6 +267,30 @@ public class Grid : MonoBehaviour {
 			endTurn();
 		}
 	
+		//if old song ends, start new song
+		if (audio.isPlaying == false)
+		{
+			if (song == 3)
+				song = 0;
+			else
+				song++;
+			switch(song)
+			{
+			case 0:
+				audio.clip = EarthMusic;
+				break;
+			case 1:
+				audio.clip = WindMusic;
+				break;
+			case 2:
+				audio.clip = WaterMusic;
+				break;
+			case 3:
+				audio.clip = FireMusic;
+				break;
+			}
+			audio.Play();
+		}
 	}
 	
 	void OnGUI()

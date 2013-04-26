@@ -37,6 +37,9 @@ public class Unit : MonoBehaviour {
 	public int sleepTime = 0;
 	public Path steps;
 	public float dT;
+	public AudioClip selectsound;
+	public AudioClip deathsound;
+	public AudioClip attacksound;
 	
 	
 	private Renderer[] meshRenderers;
@@ -245,7 +248,8 @@ public class Unit : MonoBehaviour {
 	}
 	bool fight(Unit attacker, Unit defender)
 	{
-		
+		attacker.audio.clip = attacker.attacksound;
+		attacker.audio.Play();
 		double atkdmg = 1.5 * attacker.atk - defender.def;
 		
 		if (atkdmg < 1)
@@ -283,8 +287,11 @@ public class Unit : MonoBehaviour {
 			attacker.hp -= temp;
 		}
 		if (defender.hp <=0){
+			defender.audio.clip = defender.deathsound;
+			defender.audio.Play();
 			if(attacker.hp <=0){
-				
+				attacker.audio.clip = attacker.deathsound;
+				attacker.audio.Play();
 				return false;
 				
 			}
@@ -294,7 +301,8 @@ public class Unit : MonoBehaviour {
 			}
 		}
 		if (attacker.hp <=0){
-			
+			attacker.audio.clip = attacker.deathsound;
+			attacker.audio.Play();
 			return false;
 		}
 		else{
@@ -316,14 +324,15 @@ public class Unit : MonoBehaviour {
 	}
 	public void choose(){
 		if (owner == world.activePlayer){
-			
+					
 			if (!selected){
+				audio.clip = selectsound;
+				audio.Play();
 				if (anim){
 					animation.Play ("jump");
 					//animation.PlayQueued ("fly");
 					animation.CrossFadeQueued("fly", .1f);
 				}
-				//PLAYSOUND select
 				selected = true;
 			}
 			if(!flyer){
