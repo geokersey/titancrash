@@ -51,6 +51,7 @@ public class Grid : MonoBehaviour {
 	public GameObject fireResPrefab1;
 	public GameObject waterResPrefab1;
 	
+	public Vector3 offset;
 	public GameObject TileOutline;
 	private List<GameObject> OutlineTiles = new List<GameObject>();
 	
@@ -85,6 +86,7 @@ public class Grid : MonoBehaviour {
 	
 	// Use this for initialization
 	void Awake () {
+		offset = new Vector3 (0f, 0f, -.25f);
 		highlight = (GameObject) Instantiate (hiModel);
 		//highlight.transform.
 		players = new Player[numPlayers];
@@ -352,7 +354,7 @@ public class Grid : MonoBehaviour {
 			y0 = j;
 			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j) - (1.5f*radius)),.1f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30 + (60*Random.Range (0,10)),0));
 			map[i,j].init (i,j,2, true,true,true,-1,defaultQuant, this);
-			map[i,j].buildingModel = (GameObject)Instantiate(wizTowerPrefab0, map[i,j].transform.position, Quaternion.identity);
+			map[i,j].buildingModel = (GameObject)Instantiate(wizTowerPrefab0, map[i,j].transform.position+offset, Quaternion.Euler(0,90,0));
 			GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 			OutlineTiles.Add (Outline);
 		}
@@ -364,7 +366,7 @@ public class Grid : MonoBehaviour {
 			y1 = j;
 			map[i,j] = (Tile)Instantiate (prefab2, new Vector3((float)(i+(.5*j) - (1.5f*radius)),.1f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30 + (60*Random.Range (0,10)),0));
 			map[i,j].init (i,j,2, true,true,true, -1,defaultQuant, this);
-			map[i,j].buildingModel = (GameObject)Instantiate(wizTowerPrefab1, map[i,j].transform.position, Quaternion.identity);
+			map[i,j].buildingModel = (GameObject)Instantiate(wizTowerPrefab1, map[i,j].transform.position+offset, Quaternion.Euler(0,90,0));
 			GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 			OutlineTiles.Add (Outline);
 		}
@@ -428,8 +430,11 @@ public class Grid : MonoBehaviour {
 				map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j) - (1.5f*radius) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 				map[i,j].init (i,j,-1, false, false, false, -1, defaultQuant, this);
 			}
+			Debug.Log ("startup loop");
 		}
+		Debug.Log ("end of startup");
 	}
+	
 }
 
 public struct TileBlock
