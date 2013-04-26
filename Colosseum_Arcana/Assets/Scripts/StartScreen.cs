@@ -35,25 +35,25 @@ public class StartScreen : MonoBehaviour
 	
 	void OnGUI()
 	{
-		GUI.Label(new Rect(Screen.width*.5f - 175,10,450, 100), "Elemental Fury", temp);
+		GUI.Label(new Rect(Screen.width*.5f - 175,10,450, 100), "\n\t\t\t\t\t\t\t\tElemental Fury", GUIstuff.textArea);
 		if(!PlayGame && !EnterEditor && !QuitGame)
 		{
-			if(GUI.Button(new Rect(Screen.width *.5f - 50,100,100,30), "Play Game", GUIstuff.button))
+			if(GUI.Button(new Rect(Screen.width *.5f - 45,110,100,30), "Play Game", GUIstuff.button))
 			{
 				PlayGame = true;
 			}
-			if(GUI.Button(new Rect(Screen.width *.5f - 45,200,100,30), "Map Editor", GUIstuff.button))
+			if(GUI.Button(new Rect(Screen.width *.5f - 45,210,100,30), "Map Editor", GUIstuff.button))
 			{
 				EnterEditor = true;
 			}
-			if(GUI.Button(new Rect(Screen.width *.5f - 45,300,100,30), "Quit", GUIstuff.button))
+			if(GUI.Button(new Rect(Screen.width *.5f - 45,310,100,30), "Quit", GUIstuff.button))
 			{
 				QuitGame = true;
 			}
 		}
 		if(PlayGame)
 		{
-			GUI.Label(new Rect(Screen.width *.5f - 45,100,300,30), "Load the default map or load a saved map", GUIstuff.label);
+			GUI.Label(new Rect(Screen.width *.5f - 100,115,300,30), "\t\tLoad the default map or load a saved map", GUIstuff.label);
 			LevelName = GUI.TextField(new Rect(Screen.width *.5f - 45,200,100,30), LevelName, GUIstuff.textField);
 			if(GUI.Button(new Rect(Screen.width *.5f - 50,250,100,30), "Play", GUIstuff.button))
 			{

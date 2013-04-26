@@ -110,7 +110,7 @@ public class GUIManager : MonoBehaviour
 		{
 			//Current Tile Selection
 			GUI.Box(new Rect(Screen.width * .7f, 20, 150,60), "\nCurrent Tile Selection", GUIstuff.box);
-			GUI.Label (new Rect (Screen.width * .7f + 20f, 50, 100, 30), CurrentTileSelection, GUIstuff.label);
+			GUI.Label (new Rect (Screen.width * .7f + 20f, 90, 100, 30), "\t" + CurrentTileSelection, GUIstuff.label);
 			
 			//If no menus are currently open
 			if(!OpenMenu)
