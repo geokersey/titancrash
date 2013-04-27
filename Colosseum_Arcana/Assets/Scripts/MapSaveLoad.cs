@@ -99,11 +99,11 @@ public class MapSaveLoad : MonoBehaviour
 					{
 						temp.Name = "T3";
 					}
-					else if(temp.Name == "Player1Start")
+					else if(temp.Name == "Player1Start(Clone)")
 					{
 						temp.Name = "P1";
 					}
-					else if(temp.Name == "Player2Start")
+					else if(temp.Name == "Player2Start(Clone)")
 					{
 						temp.Name = "P2";
 					}

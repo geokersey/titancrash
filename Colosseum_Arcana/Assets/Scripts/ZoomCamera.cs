@@ -25,6 +25,7 @@ public class ZoomCamera : MonoBehaviour
 			}
 			if(CurrentZoom < MaxZoom)
 			{
+				//CurrentZoomSpeed += 1;
 				CurrentZoomSpeed += ZoomAcceleration * Time.deltaTime;
 			}
 		}

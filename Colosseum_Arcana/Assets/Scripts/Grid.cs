@@ -346,9 +346,9 @@ public class Grid : MonoBehaviour {
 	}
 	public void Setup(TileBlock tile, int i, int j)
 	{
-		if(tile.Name == "Player1Start(Clone)")
+		if(tile.Name == "P1" || tile.Name == "Player1Start(Clone)")
 		{
-			Debug.Log ("player 0 start");
+			Debug.Log ("P1");
 			//player0
 			x0 = i;
 			y0 = j;
@@ -358,7 +358,7 @@ public class Grid : MonoBehaviour {
 			GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 			OutlineTiles.Add (Outline);
 		}
-		else if(tile.Name == "Player2Start(Clone)")
+		else if(tile.Name == "P2" || tile.Name == "Player2Start(Clone)")
 		{
 			//player1
 			Debug.Log ("player 1 start");

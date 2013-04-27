@@ -23,7 +23,7 @@ public class MoveCamera1 : MonoBehaviour
 	void Start()
 	{
 		Manager = GameObject.FindGameObjectWithTag("Manager");
-		StartPosition = new Vector3(0,15,15);
+		StartPosition = new Vector3(0,15,10);
 		this.transform.position = StartPosition;
 	}
 	
@@ -55,7 +55,7 @@ public class MoveCamera1 : MonoBehaviour
 		}
 		MousePosx = Input.mousePosition.x;
 		MousePosy = Input.mousePosition.y;
-
+		/*
 			if (transform.position.x < MapXLimit && MousePosx < (Screen.width * .01))
 			{
 				transform.Translate(Vector3.right * MaxScrollSpeed * Time.deltaTime * 30);
@@ -75,7 +75,47 @@ public class MoveCamera1 : MonoBehaviour
 			{
 				transform.Translate(Vector3.forward * -MaxScrollSpeed * Time.deltaTime * 30);
 			}
+		*/
 		
+		if (transform.position.x < MapXLimit && MousePosx < (Screen.width * .01))
+			{
+				if(LRCurrentScrollSpeed > 0)
+				{
+					LRCurrentScrollSpeed = 0;
+				}
+				LRCurrentScrollSpeed += ScrollAcceleration * Time.deltaTime;
+				//transform.Translate(Vector3.right * -MaxScrollSpeed * Time.deltaTime * 15);
+			}
+
+			if (transform.position.x > -MapXLimit && MousePosx >= Screen.width-(Screen.width * .01))
+			{
+				if(LRCurrentScrollSpeed < 0)
+				{
+					LRCurrentScrollSpeed = 0;
+				}
+				LRCurrentScrollSpeed -= ScrollAcceleration * Time.deltaTime;
+				//transform.Translate(Vector3.right * MaxScrollSpeed * Time.deltaTime * 15);
+			}
+
+			if (transform.position.z < 5 + MapYLimit && MousePosy < (Screen.height * .01))
+			{
+				if(UDCurrentScrollSpeed > 0)
+				{
+					UDCurrentScrollSpeed = 0;
+				}
+				UDCurrentScrollSpeed += ScrollAcceleration * Time.deltaTime;
+				//transform.Translate(Vector3.forward * -MaxScrollSpeed * Time.deltaTime * 15);
+			}
+		
+			if (transform.position.z > 5 - MapYLimit && MousePosy >= Screen.height-(Screen.height * .01))
+			{
+				if(UDCurrentScrollSpeed < 0)
+				{
+					UDCurrentScrollSpeed = 0;
+				}
+				UDCurrentScrollSpeed -= ScrollAcceleration * Time.deltaTime;
+				//transform.Translate(Vector3.forward * MaxScrollSpeed * Time.deltaTime * 15);
+			}
 		
 		//Speed Limiters
 		if(LRCurrentScrollSpeed > 0 && LRCurrentScrollSpeed > MaxScrollSpeed)
@@ -99,15 +139,23 @@ public class MoveCamera1 : MonoBehaviour
 		transform.Translate (LRCurrentScrollSpeed,0,UDCurrentScrollSpeed);
 		
 		//Key Acceleration
-		if(transform.position.z < 11.5f + MapYLimit && Input.GetKey("down") && !Input.GetKey("up"))
+		if(transform.position.z <= 5+MapYLimit && Input.GetKey("down") && !Input.GetKey("up"))
 		{
+			if(UDCurrentScrollSpeed < 0)
+			{
+				UDCurrentScrollSpeed = 0;
+			}
 			UDCurrentScrollSpeed += ScrollAcceleration * Time.deltaTime;
 		}
-		else if(transform.position.z > 11.5f - MapYLimit && Input.GetKey("up") && !Input.GetKey("down"))
+		else if(transform.position.z >= 5-MapYLimit && Input.GetKey("up") && !Input.GetKey("down"))
 		{
+			if(UDCurrentScrollSpeed > 0)
+			{
+				UDCurrentScrollSpeed = 0;
+			}
 			UDCurrentScrollSpeed -= ScrollAcceleration * Time.deltaTime;
 		}
-		else
+		else if(MousePosy >= (Screen.height * .01) && MousePosy < Screen.height-(Screen.height * .01))
 		{
 			if(Mathf.Abs (UDCurrentScrollSpeed) < .25f)
 			{
@@ -121,25 +169,34 @@ public class MoveCamera1 : MonoBehaviour
 			{
 				UDCurrentScrollSpeed -= ScrollAcceleration * 1f * Time.deltaTime;	
 			}
-			if(transform.position.z > 11.5f + MapYLimit)
-			{
-				transform.position = new Vector3(transform.position.x,transform.position.y,11.5f + MapYLimit);
-			}
-			if(transform.position.z < 11.5f - MapYLimit)
-			{
-				transform.position = new Vector3(transform.position.x,transform.position.y,11.5f - MapYLimit);
-			}
+			
 		}
+		if(transform.position.z > 5+MapYLimit)
+			{
+				transform.position = new Vector3(transform.position.x,transform.position.y,5+MapYLimit);
+			}
+			if(transform.position.z < 5-MapYLimit)
+			{
+				transform.position = new Vector3(transform.position.x,transform.position.y,5-MapYLimit);
+			}
 		
-		if(transform.position.x < MapXLimit && Input.GetKey("left") && !Input.GetKey ("right"))
+		if(transform.position.x <= MapXLimit && Input.GetKey("left") && !Input.GetKey ("right"))
 		{
+			if(LRCurrentScrollSpeed < 0)
+			{
+				LRCurrentScrollSpeed = 0;
+			}
 			LRCurrentScrollSpeed += ScrollAcceleration * Time.deltaTime;
 		}
-		else if(transform.position.x > -MapXLimit && Input.GetKey("right") && !Input.GetKey ("left"))
+		else if(transform.position.x >= -MapXLimit && Input.GetKey("right") && !Input.GetKey ("left"))
 		{
+			if(LRCurrentScrollSpeed > 0)
+			{
+				LRCurrentScrollSpeed = 0;
+			}
 			LRCurrentScrollSpeed -= ScrollAcceleration * Time.deltaTime;
 		}
-		else
+		else if(MousePosx > (Screen.width * .01) && MousePosx < Screen.width-(Screen.width * .01))
 		{
 			if(Mathf.Abs (LRCurrentScrollSpeed) < .25f)
 			{
@@ -153,7 +210,9 @@ public class MoveCamera1 : MonoBehaviour
 			{
 				LRCurrentScrollSpeed -= ScrollAcceleration * 1f * Time.deltaTime;	
 			}
-			if(transform.position.x > MapXLimit)
+			
+		}
+		if(transform.position.x > MapXLimit)
 			{
 				transform.position = new Vector3(MapXLimit,transform.position.y,transform.position.z);
 			}
@@ -161,6 +220,5 @@ public class MoveCamera1 : MonoBehaviour
 			{
 				transform.position = new Vector3(-MapXLimit,transform.position.y,transform.position.z);
 			}
-		}
 	}
 }
