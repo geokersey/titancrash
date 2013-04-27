@@ -3,51 +3,38 @@ using System.Collections;
 
 public class ZoomCamera : MonoBehaviour 
 {
-	private float MaxZoom = 29f;
+	private float MaxZoom = 25f;
 	private float MinZoom = 10f;
 	public float CurrentZoom = 20f;
 	
-	private float ZoomAcceleration = 2.5f;
+	public float ZoomAcceleration = 2.5f;
 	private float MaxZoomSpeed = 5.0f;
-	private float CurrentZoomSpeed = 0.0f;
+	public float CurrentZoomSpeed = 0.0f;
 	
 	void FixedUpdate () 
 	{
-		//Speed Limiters
-		if(CurrentZoom < MinZoom)// || CurrentZoom > MaxZoom)
-		{
-			CurrentZoomSpeed = 0;
-			CurrentZoom = MinZoom;
-		}
-		if(CurrentZoom > MaxZoom)
-		{
-			CurrentZoomSpeed = 0;
-			CurrentZoom = MaxZoom;
-		}
 		
-		if(CurrentZoomSpeed > 0 && CurrentZoomSpeed > MaxZoomSpeed)
-		{
-			CurrentZoomSpeed = MaxZoomSpeed;	
-		}
-		if(CurrentZoomSpeed < 0 && CurrentZoomSpeed < (MaxZoomSpeed * -1f))
-		{
-			CurrentZoomSpeed = MaxZoomSpeed * -1;
-		}
-		//Move Camera
-		CurrentZoom += CurrentZoomSpeed;
-		transform.Translate (0,0,CurrentZoomSpeed);
+		//Move Camera		
 		
-		if(Input.GetKey("z"))
+		if(Input.GetAxis("Mouse ScrollWheel") > 0)
 		{
 			//Zoom in
+			if(CurrentZoomSpeed < 0)
+			{
+				CurrentZoomSpeed = 0;	
+			}
 			if(CurrentZoom < MaxZoom)
 			{
 				CurrentZoomSpeed += ZoomAcceleration * Time.deltaTime;
 			}
 		}
-		else if(Input.GetKey("x"))
+		else if(Input.GetAxis("Mouse ScrollWheel") < 0)
 		{
 			//Zoom out
+			if(CurrentZoomSpeed > 0)
+			{
+				CurrentZoomSpeed = 0;	
+			}
 			if(CurrentZoom > MinZoom)
 			{
 				CurrentZoomSpeed -= ZoomAcceleration * Time.deltaTime;
@@ -68,5 +55,30 @@ public class ZoomCamera : MonoBehaviour
 				CurrentZoomSpeed -= ZoomAcceleration * 1f * Time.deltaTime;	
 			}
 		}
+		
+		//Speed Limiters
+		if(CurrentZoom < MinZoom)// || CurrentZoom > MaxZoom)
+		{
+			CurrentZoomSpeed = 0;
+			CurrentZoom = MinZoom;
+		}
+		if(CurrentZoom > MaxZoom)
+		{
+			CurrentZoomSpeed = 0;
+			CurrentZoom = MaxZoom;
+		}
+		
+		if(CurrentZoomSpeed > 0 && CurrentZoomSpeed > MaxZoomSpeed)
+		{
+			CurrentZoomSpeed = MaxZoomSpeed;	
+		}
+		if(CurrentZoomSpeed < 0 && CurrentZoomSpeed < (MaxZoomSpeed * -1f))
+		{
+			CurrentZoomSpeed = MaxZoomSpeed * -1;
+		}
+		
+		CurrentZoom += CurrentZoomSpeed;
+		CurrentZoom = Mathf.Round(CurrentZoom);
+		transform.Translate (0,0,CurrentZoomSpeed);
 	}
 }
