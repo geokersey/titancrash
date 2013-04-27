@@ -119,13 +119,13 @@ public class SpellManager : MonoBehaviour
 				{
 				spell = 0;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Tornado
@@ -142,13 +142,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 2;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}	
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Wind Walk
@@ -165,13 +165,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 4;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Lightning Bolt
@@ -188,13 +188,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 5;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Scorch Earth
@@ -211,13 +211,13 @@ public class SpellManager : MonoBehaviour
 				{
 				spell = 6;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Fireball
@@ -234,13 +234,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 7;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Raging Fire
@@ -257,13 +257,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 8;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Eruption
@@ -280,13 +280,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 9;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Chill
@@ -303,13 +303,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 10;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Glacial Wall
@@ -326,13 +326,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 11;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Winter's Call
@@ -349,13 +349,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 12;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Frost
@@ -372,13 +372,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 13;
 				}
-			}else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			
 			//Nature's Bounty
 			if (other.players[other.activePlayer].techAvailable.Count>3&&other.players[other.activePlayer].techAvailable[3] == 2)
@@ -394,13 +394,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 14;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Stone Armor
@@ -417,13 +417,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 15;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Counterspell
@@ -440,13 +440,13 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 18;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 			
 			//Dispel Magic
@@ -463,15 +463,16 @@ public class SpellManager : MonoBehaviour
 				{
 					spell = 19;
 				}
-				else
-				{
-					if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
-					{
-						spell = -1;
-					}
-				}
+				//else
+				//{
+				//	if (GUI.Button(new Rect(200, 200, 100, 50), "Not enough Resources", other.GUIfunstuff.button))
+				//	{
+				//		spell = -1;
+				//	}
+				//}
 			}
 		}
+	}
 	}
 	
 	
