@@ -16,20 +16,24 @@ public class MoveCamera : MonoBehaviour
 	private float MousePosy;
 	
 	//private string size;
-	private GameObject Manager;
+	private Grid Manager;
 	private float MapXLimit = 0;
 	private float MapYLimit = 0;
 	
 	void Start()
 	{
-		Manager = GameObject.Find("grid");
+		Manager = GameObject.Find("grid").GetComponent<Grid>();
 		StartPosition = new Vector3(0,15,10);
 		this.transform.position = StartPosition;
 	}
 	
 	void FixedUpdate () 
 	{
-		int s = Manager.GetComponent<Grid>().map.GetLength(0);
+		int s = Manager.map.GetLength(0);
+		if(s == null)
+		{
+			s= 19;
+		}
 		string size = "Small";
 		if(s == 39)
 		{

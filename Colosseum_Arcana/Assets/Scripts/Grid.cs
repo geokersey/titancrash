@@ -59,7 +59,7 @@ public class Grid : MonoBehaviour {
 	
 	public SummoningFont summoningFont;
 	
-	public Tile[,] map;
+	public Tile[,] map = new Tile[0,0];
 	public Tile selected;
 	public GameObject highlight;
 	public GameObject hiModel;
@@ -346,9 +346,9 @@ public class Grid : MonoBehaviour {
 	}
 	public void Setup(TileBlock tile, int i, int j)
 	{
-		if(tile.Name == "P1" || tile.Name == "Player1Start(Clone)")
+		if(tile.Name == "P1")
 		{
-			Debug.Log ("P1");
+			//Debug.Log ("P1");
 			//player0
 			x0 = i;
 			y0 = j;
@@ -358,10 +358,10 @@ public class Grid : MonoBehaviour {
 			GameObject Outline = (GameObject)Instantiate (TileOutline, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 			OutlineTiles.Add (Outline);
 		}
-		else if(tile.Name == "P2" || tile.Name == "Player2Start(Clone)")
+		else if(tile.Name == "P2")
 		{
 			//player1
-			Debug.Log ("player 1 start");
+			//Debug.Log ("player 1 start");
 			x1 = i;
 			y1 = j;
 			map[i,j] = (Tile)Instantiate (prefab0, new Vector3((float)(i+(.5*j) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30 + (60*Random.Range (0,10)),0));

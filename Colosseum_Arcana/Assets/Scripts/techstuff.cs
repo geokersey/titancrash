@@ -55,7 +55,7 @@ public class techstuff : MonoBehaviour {
 	void Start () {
 	}
 	public void init(){
-		techs = new FileInfo("Assets/Otherfunthings/techs.txt");
+		techs = new FileInfo("C:/ElementalFury/Maps/techs.txt");
 		sr = techs.OpenText();
 		techTree = new List<tech>();
 		//Debug.Log ("we have a tech tree");

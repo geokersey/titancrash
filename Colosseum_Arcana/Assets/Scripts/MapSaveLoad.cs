@@ -40,6 +40,18 @@ public class MapSaveLoad : MonoBehaviour
 				{
 					TileBlock temp;
 					temp.Name = GridTiles[i,j].name;
+					if(temp.Name == "EmptyTile(Clone)")
+					{
+						temp.Name = "Empty";
+					}
+					else if(temp.Name == "EdgeTile(Clone)")
+					{
+						temp.Name = "Edge";
+					}
+					else if(temp.Name == "BlankTile(Clone)")
+					{
+						temp.Name = "Blank";
+					}
 					if(temp.Name == "T1_With_Font(Clone)" || temp.Name == "T2_With_Font(Clone)" || temp.Name == "T3_With_Font(Clone)")
 					{
 						temp.HasFont = true;

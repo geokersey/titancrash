@@ -104,15 +104,15 @@ public class GenerateMap : MonoBehaviour
 		string[] Name_Library = this.transform.gameObject.GetComponent<ChangeTile>().Name_Library;
 		GameObject[] Tile_Library = this.transform.gameObject.GetComponent<ChangeTile>().Tile_Library;
 		
-		if(tile.Name == "EmptyTile(Clone)")
+		if(tile.Name == "Empty")
 		{
 			TileName = "Empty";
 		}
-		else if(tile.Name == "EdgeTile(Clone)")
+		else if(tile.Name == "Edge")
 		{
 			TileName = "Edge";
 		}
-		else if(tile.Name == "BlankTile(Clone)")
+		else if(tile.Name == "Blank")
 		{
 			TileName = "Blank";
 		}
