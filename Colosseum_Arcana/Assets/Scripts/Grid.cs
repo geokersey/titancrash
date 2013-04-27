@@ -298,7 +298,7 @@ public class Grid : MonoBehaviour {
 	void OnGUI()
 	{
 		if (suspended){
-			GUI.Box (new Rect(200, 0, 250, 100), "suspended = true", GUIfunstuff.box);
+			//GUI.Box (new Rect(200, 0, 250, 100), "suspended = true", GUIfunstuff.box);
 		}
 		GUI.Box(new Rect(Screen.width - 150, 0, 100, 25), "Player "+activePlayer, GUIfunstuff.box);
 		GUI.Box(new Rect(0, 500, 100, 25), "Resources", GUIfunstuff.box);

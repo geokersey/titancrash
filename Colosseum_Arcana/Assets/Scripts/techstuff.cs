@@ -11,8 +11,11 @@ public class tech {
 	public List<int> prereqs;
 	public int price, ttc; //Research cost in resources and turns, respectively
 	
+	
+	
 	// Use this for initialization
 	void Start () {
+		
 	}
 	
 	public tech()
@@ -47,7 +50,7 @@ public class techstuff : MonoBehaviour {
 	int selectedTech = 0;
 	public Grid world;
 	private bool visible;
-	
+	public PauseManager PMan;
 	// Use this for initialization
 	void Start () {
 	}
@@ -151,7 +154,7 @@ public class techstuff : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		if (world.GUIstate != 2)
+		if (world.GUIstate != 2 && !PMan.IsPaused)
 		{
 			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f - 40, 125, 40), "Open Tech Tree", world.GUIfunstuff.button))
 			{
@@ -160,7 +163,7 @@ public class techstuff : MonoBehaviour {
 			}
 		}
 			
-		if(world.GUIstate == 2)
+		if(world.GUIstate == 2 && !PMan.IsPaused)
 		{
 			if (state == 1)
 			{
