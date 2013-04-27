@@ -1,0 +1,40 @@
+Initialize engine version: 4.1.2f1 (911c7369eeac)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 8.17.12.6824]
+    Renderer: NVIDIA NVS 3100M
+    Vendor:   NVIDIA
+    VRAM:     2265 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Andrew\Desktop\WorkingBuildNoSpells6_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Andrew\Desktop\WorkingBuildNoSpells6_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Andrew\Desktop\WorkingBuildNoSpells6_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Andrew\Desktop\WorkingBuildNoSpells6_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Andrew\Desktop\WorkingBuildNoSpells6_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\Andrew\Desktop\WorkingBuildNoSpells6_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+- Completed reload, in  0.132 seconds
+desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Andrew\Desktop\WorkingBuildNoSpells6_Data\Managed\System.Xml.dll (this message is harmless)
+Platform assembly: C:\Users\Andrew\Desktop\WorkingBuildNoSpells6_Data\Managed\System.dll (this message is harmless)
+ArgumentException: Encoding name 'Windows-1252' not supported
+Parameter name: name
+  at System.Text.Encoding.GetEncoding (System.String name) [0x00000] in <filename unknown>:0 
+  at System.Xml.XmlInputStream.Initialize (System.IO.Stream stream) [0x00000] in <filename unknown>:0 
+  at System.Xml.XmlInputStream..ctor (System.IO.Stream stream) [0x00000] in <filename unknown>:0 
+  at System.Xml.XmlStreamReader..ctor (System.IO.Stream input) [0x00000] in <filename unknown>:0 
+  at System.Xml.XmlTextReader..ctor (System.IO.Stream input) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlSerializer.Deserialize (System.IO.Stream stream) [0x00000] in <filename unknown>:0 
+  at TileContainer.Load (System.String path) [0x00000] in <filename unknown>:0 
+  at Grid.LoadMap (System.String name) [0x00000] in <filename unknown>:0 
+  at Grid.Awake () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 1621.
+Total: 2.795954 ms (FindLiveObjects: 0.118726 ms CreateObjectMapping: 0.056324 ms MarkObjects: 1.507789 ms  DeleteObjects: 0.154790 ms)
+
