@@ -1,10 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MoveCamera1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUIManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Grid.cs" Line="361" Column="45" />
-      <File FileName="Assets\Scripts\MoveCamera.cs" Line="15" Column="26" />
-      <File FileName="Assets\Scripts\MoveCamera1.cs" Line="26" Column="38" />
+      <File FileName="Assets\Scripts\GUIManager.cs" Line="318" Column="27" />
+      <File FileName="Assets\Scripts\PauseManager.cs" Line="30" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

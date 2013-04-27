@@ -18,7 +18,7 @@ public class GUIManager : MonoBehaviour
 	private bool Overwrite = false;
 	public GUISkin GUIstuff;
 	
-	private string HelpTooltip1 = "Keybindings:\n" +
+	private string HelpTooltip1 = "\n\n\n\n" +
 		"1 = T1_With_None\n" +
 		"2 = T2_With_None\n" +
 		"3 = T3_With_None\n" +
@@ -31,7 +31,7 @@ public class GUIManager : MonoBehaviour
 		"t = T1_With_R5\n" +
 		"y = T1_With_Font\n" +
 		"u = T1_With_Tower\n";
-	private string HelpTooltip2 = "\n" +
+	private string HelpTooltip2 = "\n\n\n\n" +
 		"a = T2_With_R1\n" +
 		"s = T2_With_R2\n" +
 		"d = T2_With_R3\n" +
@@ -267,7 +267,7 @@ public class GUIManager : MonoBehaviour
 				{
 					if(Loading)
 					{
-						LoadFilename = GUI.TextField (new Rect (Screen.width * .5f - 50f, Screen.height * .5f - 40f, 100, 30), LoadFilename);
+						LoadFilename = GUI.TextField (new Rect (Screen.width * .5f - 100f, Screen.height * .5f - 60f, 200, 40), LoadFilename, GUIstuff.textField);
 						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f, 100, 30), "Load", GUIstuff.button))
 						{
 							//CHECK IF FILE EXISTS
@@ -290,7 +290,7 @@ public class GUIManager : MonoBehaviour
 					}
 					else if(Saving)
 					{
-						SaveFilename = GUI.TextField (new Rect (Screen.width * .5f - 50f, Screen.height * .5f - 40f, 100, 30), SaveFilename);
+						SaveFilename = GUI.TextField (new Rect (Screen.width * .5f - 100f, Screen.height * .5f - 60f, 200, 40), SaveFilename, GUIstuff.textField);
 						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f, 100, 30), "Save", GUIstuff.button))
 						{
 							//CHECK FOR OVERWRITING A SAVED FILE
@@ -312,7 +312,8 @@ public class GUIManager : MonoBehaviour
 						}
 						if(Overwrite)
 						{
-							if(GUI.Button(new Rect(Screen.width * .5f - 75f, Screen.height*.5f - 90, 150, 30), "Overwrite save file?", GUIstuff.button))
+							GUI.Box(new Rect(Screen.width * .5f - 75f, Screen.height*.5f - 150, 150, 30), "Overwrite save file?", GUIstuff.box);
+							if(GUI.Button(new Rect(Screen.width * .5f - 50f, Screen.height*.5f - 100, 100, 30), "Yes", GUIstuff.button))
 							{
 								Overwrite = false;
 								this.transform.gameObject.GetComponent<MapSaveLoad>().Save(SaveFilename);
@@ -322,8 +323,8 @@ public class GUIManager : MonoBehaviour
 					}
 					else if(Hotkeys)
 					{
-						GUI.Label(new Rect(50,50, 500,500), HelpTooltip1, GUIstuff.label);
-						GUI.Label(new Rect(250,50, 500,500), HelpTooltip2, GUIstuff.label);
+						GUI.Box(new Rect(Screen.width*.3f,Screen.height*.3f, Screen.width*.2f,400), HelpTooltip1, GUIstuff.box);
+						GUI.Box(new Rect(Screen.width*.5f,Screen.height*.3f, Screen.width*.2f,400), HelpTooltip2, GUIstuff.box);
 						if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .8f - 35f, 100, 30), "Return", GUIstuff.button)) 
 						{
 							Hotkeys = false;
@@ -331,8 +332,8 @@ public class GUIManager : MonoBehaviour
 					}
 					else if(Quitting)
 					{
-						GUI.Box(new Rect(Screen.width * .5f - 75f,Screen.height * .5f - 75f,150,75), "Are you sure?", GUIstuff.box);
-						if (GUI.Button (new Rect (Screen.width * .5f - 65f, Screen.height * .5f - 35f, 50, 30), "Yes", GUIstuff.button))
+						GUI.Box(new Rect(Screen.width * .5f - 75f,Screen.height * .5f - 130f,150,130), "\nAre you sure?", GUIstuff.box);
+						if (GUI.Button (new Rect (Screen.width * .5f - 65f, Screen.height * .5f - 60f, 50, 30), "Yes", GUIstuff.button))
 						{
 							//Application.Quit ();
 							//Debug.Log ("Quitting Application");
@@ -344,7 +345,7 @@ public class GUIManager : MonoBehaviour
 							Tab = false;
 							this.gameObject.GetComponent<GenerateMap>().DestroyMap();
 						}
-						if (GUI.Button (new Rect (Screen.width * .5f + 15f, Screen.height * .5f - 35f, 50, 30), "No", GUIstuff.button)) 
+						if (GUI.Button (new Rect (Screen.width * .5f + 15f, Screen.height * .5f - 60f, 50, 30), "No", GUIstuff.button)) 
 						{
 							Quitting = false;
 						}
@@ -352,8 +353,8 @@ public class GUIManager : MonoBehaviour
 				}
 				else
 				{
-					GUI.Box(new Rect(Screen.width * .5f - 65f, Screen.height * .5f - 145f, 130,250), " ", GUIstuff.box);
-					GUI.Label(new Rect(Screen.width * .5f - 65f, Screen.height * .5f - 115f, 130,250), "Menu", GUIstuff.label);
+					//GUI.Box(new Rect(Screen.width * .5f - 65f, Screen.height * .5f - 145f, 130,250), " ", GUIstuff.box);
+					GUI.Box(new Rect(Screen.width * .5f - 65f, Screen.height * .5f - 150f, 130,300), "\n\n\nMenu", GUIstuff.box);
 					//Display Hotkey list
 					if (GUI.Button (new Rect (Screen.width * .5f - 50f, Screen.height * .5f - 75f, 100, 30), "Hotkeys", GUIstuff.button)) 
 					{
