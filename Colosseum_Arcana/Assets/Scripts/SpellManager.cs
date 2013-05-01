@@ -207,7 +207,7 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(430, 0, 99, 49), "Scorch Earth", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[1] == 2){
-				if (other.players[other.activePlayer].resources[2] >= 1)
+				if (other.players[other.activePlayer].resources[3] >= 1)
 				{
 				spell = 6;
 				}
@@ -230,7 +230,7 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(525, 0, 99, 49), "Fireball", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[11] == 2){
-				if (other.players[other.activePlayer].resources[2] >= 2)
+				if (other.players[other.activePlayer].resources[3] >= 2)
 				{
 					spell = 7;
 				}
@@ -253,7 +253,7 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(620, 0, 99, 49), "Raging Fire", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[18] == 2){
-				if (other.players[other.activePlayer].resources[2] >= 3)
+				if (other.players[other.activePlayer].resources[3] >= 3)
 				{
 					spell = 8;
 				}
@@ -276,7 +276,7 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(715, 0, 99, 49), "Eruption", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[22] == 2){
-				if (other.players[other.activePlayer].resources[2] >= 5)
+				if (other.players[other.activePlayer].resources[3] >= 5)
 				{
 					spell = 9;
 				}
@@ -390,7 +390,7 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(430, 45, 99, 49), "Nature's Bounty", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[3] == 2){
-				if (other.players[other.activePlayer].resources[3] >= 1)
+				if (other.players[other.activePlayer].resources[2] >= 1)
 				{
 					spell = 14;
 				}
@@ -413,7 +413,7 @@ public class SpellManager : MonoBehaviour
 				GUI.backgroundColor = Color.red;
 			}
 			if (GUI.Button(new Rect(525, 45, 99, 49), "Stone Armor", other.GUIfunstuff.button) && other.players[other.activePlayer].techAvailable[15] == 2){
-				if (other.players[other.activePlayer].resources[3] >= 2)
+				if (other.players[other.activePlayer].resources[2] >= 2)
 				{
 					spell = 15;
 				}
