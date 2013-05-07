@@ -42,7 +42,7 @@ public class Unit : MonoBehaviour {
 	public AudioClip selectsound;
 	public AudioClip deathsound;
 	public AudioClip attacksound;
-	
+	//GameObject id;
 	
 	private Renderer[] meshRenderers;
 	private bool anim;
@@ -80,6 +80,16 @@ public class Unit : MonoBehaviour {
 				availableMovePoints = z;
 			}
 		}
+		/*if (owner == 0){
+			id = (GameObject)Instantiate (world.id0prefab, transform.position, Quaternion.identity);
+			id.transform.localScale = new Vector3(1,1,1);
+			id.transform.parent = transform;
+		}
+		if (owner == 1){
+			id = (GameObject)Instantiate (world.id1prefab, transform.position, Quaternion.identity);
+			id.transform.localScale = new Vector3(1,1,1);
+			id.transform.parent = transform;
+		}*/
 	}
 	
 	// Update is called once per frame

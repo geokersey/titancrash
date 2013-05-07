@@ -381,6 +381,7 @@ public class SpellManager : MonoBehaviour
 				//}
 			
 			//Nature's Bounty
+			}
 			if (other.players[other.activePlayer].techAvailable.Count>3&&other.players[other.activePlayer].techAvailable[3] == 2)
 			{
 				GUI.backgroundColor = Color.white;
@@ -473,7 +474,7 @@ public class SpellManager : MonoBehaviour
 			}
 		}
 	}
-	}
+	
 	
 	
 	void IsCasting(bool state)

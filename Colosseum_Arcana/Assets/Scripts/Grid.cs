@@ -63,6 +63,9 @@ public class Grid : MonoBehaviour {
 	public Tile selected;
 	public GameObject highlight;
 	public GameObject hiModel;
+	//public GameObject id0prefab;
+	//public GameObject id1prefab;
+	
 	public Player playerPrefab;
 	public Player[] players;
 	public SpellManager spells;
