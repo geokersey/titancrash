@@ -15,19 +15,21 @@ public class Buff{
 	
 }
 public class Unit : MonoBehaviour {
+	public string name;
 	public System.Collections.Generic.List<Buff> buffs;
 	public Grid world;
-	public int startHP;
+	int startHP;
 	public int hp;
 	public int atk;
-	public int startAtk;
+	int startAtk;
 	public int def;
-	public int startDef;
+	int startDef;
 	public int element;
 	public int x;
 	public int y;
 	public int owner;
 	public int startingMovePoints = 3;
+	int origMovePoints;
 	public int sight = 5;
 	public int availableMovePoints = 0;
 	public bool selected = false;
@@ -52,6 +54,10 @@ public class Unit : MonoBehaviour {
 		startHP = hp = temp;
 		meshRenderers = GetComponentsInChildren<Renderer>();
 		anim = null!= GetComponent<Animation>();
+		origMovePoints = startingMovePoints;
+		startAtk = atk;
+		startDef = def;
+		startHP = hp;
 	}
 	public void init(int x_, int y_, Grid world_){
 		x = x_;
@@ -315,7 +321,7 @@ public class Unit : MonoBehaviour {
 	}
 	void OnGUI(){
 		if (selected){
-			GUI.Box(new Rect(0, 100, 125, 25), "Health: " + hp + "/10", world.GUIfunstuff.box);
+			GUI.Box(new Rect(0, 100, 125, 25), "Health: " + hp + "/"+startHP, world.GUIfunstuff.box);
 			GUI.Box(new Rect(0, 125, 125, 25), "Attack: " + atk, world.GUIfunstuff.box);
 			GUI.Box(new Rect(0, 150, 125, 25), "Defense: " + def, world.GUIfunstuff.box);
 			GUI.Box(new Rect(0, 175, 125, 25), "Action Points: " + availableMovePoints + "/" + startingMovePoints, world.GUIfunstuff.box);
@@ -362,5 +368,9 @@ public class Unit : MonoBehaviour {
 			
 			r.enabled = true;
 		}
+	}
+	public string summary(){
+		return name+"\nhealth: "+hp+"/"+startHP+"\nattack: "+atk+"("+startAtk+")\ndefence: "+def+"("+startDef+")\nmovement: "+availableMovePoints+"/"+startingMovePoints+"("+origMovePoints+")\n";
+		//return "to be filled out with unit specific details and formatted for GUI";
 	}
 }

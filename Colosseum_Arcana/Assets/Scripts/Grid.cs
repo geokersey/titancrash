@@ -74,6 +74,8 @@ public class Grid : MonoBehaviour {
 	public techstuff techs;
 	int turn = 0;
 	public int GUIstate = 0;
+	int winner = -1;
+	//bool gameOver = false;
 	
 	private string MapName = StartScreen.LevelName;
 	
@@ -185,12 +187,19 @@ public class Grid : MonoBehaviour {
 				selected.deselect ();
 			}
 			activePlayer = (activePlayer +1)% numPlayers;
-			if(activePlayer == 0 && map[x1,y1].owner==0){
-				Debug.Log ("player 0 has captured player 1's base");
+			if(activePlayer == map[x1,y1].owner&&activePlayer == map[x0,y0].owner){
+				Debug.Log ("player "+activePlayer+" is victorious");
+				winner = activePlayer;
 			}
-			else if(activePlayer == 1 && map[x0,y0].owner==1){
-				Debug.Log ("player 1 has captured player 0's base");
-			}	
+			/*if(activePlayer == 0 && map[x1,y1].owner==0 && map[x0,y0].owner ==0){
+				Debug.Log ("player 0 has captured player both bases");
+				GUIstate = 2;
+				
+			}
+			else if(activePlayer == 1 && map[x0,y0].owner==1 && map[x1,y1].owner == 1){
+				Debug.Log ("player 1 has captured both bases");
+				GUIstate = 2;
+			}*/	
 			//Debug.Log ("1");
 			techs.checkAvailability();
 			players[activePlayer].beginTurn ();
@@ -297,6 +306,18 @@ public class Grid : MonoBehaviour {
 	
 	void OnGUI()
 	{
+		if (winner == 0){
+			if (GUI.Button (new Rect((Screen.width/2)-250, (Screen.height/2)-100, 500, 200),"congratulations player 2, you are victorious")){
+				Application.LoadLevel("StartingScreen");
+			}
+			
+		}
+		else if (winner == 1){
+			if (GUI.Button (new Rect((Screen.width/2)-250, (Screen.height/2)-100, 500, 200),"congratulations player 1, you are victorious")){
+				Application.LoadLevel("StartingScreen");
+			}
+			
+		}
 		if (suspended){
 			//GUI.Box (new Rect(200, 0, 250, 100), "suspended = true", GUIfunstuff.box);
 		}

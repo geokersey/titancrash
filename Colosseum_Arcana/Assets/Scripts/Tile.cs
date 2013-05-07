@@ -40,7 +40,9 @@ public class Tile : MonoBehaviour {
 	public Unit occupyer;
 	public int towerRange = 5;
 	public int maxPoints;
-	
+	bool toolTip = false;
+	string terName;
+	string resName;
 	// Use this for initialization
 	void Start () {
 	
@@ -61,31 +63,43 @@ public class Tile : MonoBehaviour {
 		wiz = wiz_;
 		if (wiz){
 //			Debug.Log ("we really do");
+			resName = "no";
 			return;
 			//buildingModel = (GameObject)Instantiate (world.fontPrefab, transform.position, Quaternion.identity);
 		}	
 		else if (hasFont){
 			buildingModel = (GameObject)Instantiate (world.fontPrefab, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z)+world.offset, Quaternion.identity);
+			resName = "no";
 		}
 		else if (hasTower){
 			buildingModel = (GameObject)Instantiate (world.towerPrefab, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z)+world.offset, Quaternion.identity);
+			resName = "no";
 		}
 		else if (resource == 0){
 			buildingModel = (GameObject)Instantiate (world.arcanaResPrefab, transform.position+world.offset, Quaternion.identity);
+			resName = "arcana";
 		}
 		else if (resource == 1){
 			buildingModel = (GameObject)Instantiate (world.airResPrefab, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z)+world.offset, Quaternion.identity);
+			resName = "air";
 		}
 		else if (resource == 2){
 			buildingModel = (GameObject)Instantiate (world.earthResPrefab, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z)+world.offset, Quaternion.identity);
+			resName = "earth";
 		}
 		else if (resource == 3){
 			buildingModel = (GameObject)Instantiate (world.fireResPrefab, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z)+world.offset, Quaternion.identity);
+			resName = "fire";
 		}
 		
 		else if (resource == 4){
 			buildingModel = (GameObject)Instantiate (world.waterResPrefab, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z)+world.offset, Quaternion.identity);
+			resName = "water";
 		}
+		else{
+			resName = "no";
+		}
+
 		
 			
 	}
@@ -206,6 +220,11 @@ public class Tile : MonoBehaviour {
 	}
 	public void OnMouseOver (){
 		//Debug.Log ("mouse is over" + x + ","+y);
+		/*Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+		if (gameObject.layer >= 10){
+			//occupyer tooltip
+			GUI.Box (new Rect(screenPos.x, screenPos.y, 15,15), "blar");
+		}*/
 		if(!world.suspended&&terrain>=0){
 			if (Input.GetMouseButton (0)){
 				world.spells.spell = -1;
@@ -242,13 +261,78 @@ public class Tile : MonoBehaviour {
 		}
 	}
 	public void OnMouseEnter(){
+		toolTip = true;
 		if(world.spells.spell >=0){
 			inRange (world.spells.spellRanges[world.spells.spell], true, true, false);
 		}
+		
 	}
 	public void OnMouseExit(){
+		toolTip = false;
 		if(world.spells.spell >=0){
 			outRange ();
+		}
+	}
+	public void OnGUI(){
+		if (toolTip){
+			Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position+new Vector3(0f,0f, .578f));//the bottom point of the hex
+			Vector3 screenPos2 = Camera.main.WorldToScreenPoint(transform.position+new Vector3(-.8f,0f, .289f));//the right side of the hex
+			float width1 = 345; //terrain info box size
+			float height1 = 70;
+			float width2 = 125;//unit info box size
+			float height2 = 100;
+			
+			if (terrain == 0){
+				terName = "flatland";
+			}
+			else if (terrain == 1){
+				terName = "hills";
+			}
+			else if (terrain == 2){
+				terName = "mountain";
+			}
+			else {
+				terName = "unkown terrain";
+			}
+			string message = terName+", "+resName+" resources";
+			if (wiz){
+				message+= "\nWizard tower: summoning font and focus tower combined\nhold both at the begining of a turn to win";
+			}
+			else if (hasFont){
+				message += "\nsummoning font: use to create units";
+			}
+			else if (hasTower){
+				message += "\nfocus tower: spells can only be cast within range of a focus tower";
+			}
+			if (gameObject.layer >= 10){
+				
+				if (owner == 0){
+					GUI.contentColor = Color.yellow;
+					if (occupyer != null){
+						GUI.Box (new Rect(screenPos2.x, (Screen.height-screenPos2.y)-height2, width2,height2), occupyer.summary ());
+					}
+					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+					//Debug.Log ("owner = 0");
+				}
+				else if (owner == 1){
+					GUI.contentColor = Color.magenta;
+					if (occupyer != null){
+						GUI.Box (new Rect(screenPos2.x, (Screen.height-screenPos2.y)-height2, width2,height2), occupyer.summary ());
+					}
+					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+					//Debug.Log ("owner = 1");
+				}
+				else{
+					//GUI.contentColor = Color.blue;
+					
+					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height2), message);
+				}
+				//GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width,50), "blar");
+			}
+			// else if (seen previously but not currently visible){display with color but not unit);
+			else{
+				GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+			}
 		}
 	}
 	public bool findTower(int range){
@@ -546,16 +630,16 @@ public class Tile : MonoBehaviour {
 				}
 				else if (player == 1){
 					if (resource == 0){
-						buildingModel = (GameObject)Instantiate (world.arcanaResPrefab0, transform.position+world.offset, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.arcanaResPrefab1, transform.position+world.offset, Quaternion.identity);
 					}
 					else if (resource == 1){
-						buildingModel = (GameObject)Instantiate (world.airResPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z)+world.offset, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.airResPrefab1, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z)+world.offset, Quaternion.identity);
 					}
 					else if (resource == 2){
-						buildingModel = (GameObject)Instantiate (world.earthResPrefab0, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z)+world.offset, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.earthResPrefab1, new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z)+world.offset, Quaternion.identity);
 					}
 					else if (resource == 3){
-						buildingModel = (GameObject)Instantiate (world.fireResPrefab0, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z)+world.offset, Quaternion.identity);
+						buildingModel = (GameObject)Instantiate (world.fireResPrefab1, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z)+world.offset, Quaternion.identity);
 					}
 					else if (resource == 4){
 						buildingModel = (GameObject)Instantiate (world.waterResPrefab0, new Vector3(transform.position.x, transform.position.y + .085f, transform.position.z)+world.offset, Quaternion.identity);
