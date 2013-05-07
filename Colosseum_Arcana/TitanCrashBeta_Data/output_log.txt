@@ -1,0 +1,85 @@
+Initialize engine version: 4.1.2f1 (911c7369eeac)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 8.17.12.6824]
+    Renderer: NVIDIA NVS 3100M
+    Vendor:   NVIDIA
+    VRAM:     1334 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\kerseg\Documents\GitHub\titancrash\Colosseum_Arcana\TitanCrashBeta_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\kerseg\Documents\GitHub\titancrash\Colosseum_Arcana\TitanCrashBeta_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\kerseg\Documents\GitHub\titancrash\Colosseum_Arcana\TitanCrashBeta_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\kerseg\Documents\GitHub\titancrash\Colosseum_Arcana\TitanCrashBeta_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\kerseg\Documents\GitHub\titancrash\Colosseum_Arcana\TitanCrashBeta_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\kerseg\Documents\GitHub\titancrash\Colosseum_Arcana\TitanCrashBeta_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+- Completed reload, in  0.232 seconds
+desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 543.
+Total: 0.899987 ms (FindLiveObjects: 0.017829 ms CreateObjectMapping: 0.021881 ms MarkObjects: 0.342003 ms  DeleteObjects: 0.110219 ms)
+
+Platform assembly: C:\Users\kerseg\Documents\GitHub\titancrash\Colosseum_Arcana\TitanCrashBeta_Data\Managed\System.Xml.dll (this message is harmless)
+Platform assembly: C:\Users\kerseg\Documents\GitHub\titancrash\Colosseum_Arcana\TitanCrashBeta_Data\Managed\System.dll (this message is harmless)
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 411 unused Assets to reduce memory usage. Loaded Objects now: 140.
+Total: 1.291832 ms (FindLiveObjects: 0.017424 ms CreateObjectMapping: 0.017424 ms MarkObjects: 0.267038 ms  DeleteObjects: 0.633759 ms)
+
+IsolatedStorageException: Could not find file "C:\ElementalFury\Maps\techs.txt".
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] in <filename unknown>:0 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.Open (FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.Open (FileMode mode, FileAccess access) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.OpenText () [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo:OpenText ()
+  at techstuff.init () [0x00000] in <filename unknown>:0 
+  at Grid.Awake () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1621.
+Total: 1.300747 ms (FindLiveObjects: 0.082259 ms CreateObjectMapping: 0.030796 ms MarkObjects: 0.694137 ms  DeleteObjects: 0.103330 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1441 unused Assets to reduce memory usage. Loaded Objects now: 169.
+Total: 9.269343 ms (FindLiveObjects: 0.051867 ms CreateObjectMapping: 0.036064 ms MarkObjects: 0.316474 ms  DeleteObjects: 8.418793 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 552.
+Total: 0.979815 ms (FindLiveObjects: 0.016208 ms CreateObjectMapping: 0.021881 ms MarkObjects: 0.467215 ms  DeleteObjects: 0.086311 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 411 unused Assets to reduce memory usage. Loaded Objects now: 149.
+Total: 1.310067 ms (FindLiveObjects: 0.019045 ms CreateObjectMapping: 0.018234 ms MarkObjects: 0.289325 ms  DeleteObjects: 0.600126 ms)
+
+IsolatedStorageException: Could not find file "C:\ElementalFury\Maps\techs.txt".
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] in <filename unknown>:0 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.Open (FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.Open (FileMode mode, FileAccess access) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.OpenText () [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo:OpenText ()
+  at techstuff.init () [0x00000] in <filename unknown>:0 
+  at Grid.Awake () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1621.
+Total: 1.342484 ms (FindLiveObjects: 0.059972 ms CreateObjectMapping: 0.032012 ms MarkObjects: 0.707914 ms  DeleteObjects: 0.094010 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1441 unused Assets to reduce memory usage. Loaded Objects now: 169.
+Total: 9.897026 ms (FindLiveObjects: 0.043358 ms CreateObjectMapping: 0.029986 ms MarkObjects: 0.393465 ms  DeleteObjects: 8.928556 ms)
+
