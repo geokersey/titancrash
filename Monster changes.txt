@@ -1,0 +1,6 @@
+Dragon - 7-4 (A/D)			 5 cost
+Fish - 2-3 (A/D) 4 move +Health regen.   2 cost
+Treant - 3-6 (A/D)			 3 cost
+Quetz - 				 2 cost
+
+
