@@ -42,6 +42,11 @@ public class Unit : MonoBehaviour {
 	public AudioClip selectsound;
 	public AudioClip deathsound;
 	public AudioClip attacksound;
+	public float rotSpeed = 15;
+	GameObject id;
+	public float damageNumTime;
+	public int damageNum;
+	public Rect damageNumRect;
 	//GameObject id;
 	
 	private Renderer[] meshRenderers;
@@ -58,6 +63,12 @@ public class Unit : MonoBehaviour {
 		startAtk = atk;
 		startDef = def;
 		startHP = hp;
+		foreach(Transform obj in transform){
+			if (obj.gameObject.tag == "id"){
+				id = obj.gameObject;
+			}
+		}
+		//id = GameObject.FindGameObjectWithTag("id");
 	}
 	public void init(int x_, int y_, Grid world_){
 		x = x_;
@@ -94,6 +105,11 @@ public class Unit : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		damageNumTime -= Time.deltaTime;
+		if (id!=null&&world.activePlayer == owner){
+			//Debug.Log ("id should be rotating");
+			id.transform.Rotate (0, availableMovePoints*rotSpeed*Time.deltaTime, 0);
+		}
 		if (acting){
 			world.suspended = true;
 			
@@ -271,6 +287,8 @@ public class Unit : MonoBehaviour {
 		if (atkdmg < 1)
 		{
 			defender.hp--;
+			
+			defender.damageNum =1;
 		}
 		else
 		{
@@ -283,8 +301,12 @@ public class Unit : MonoBehaviour {
 			}
 			
 			defender.hp -= temp;
+			
+			defender.damageNum =temp;
 		}
 		
+		defender.damageNumTime = 2;
+		defender.damageNumRect = new Rect(Camera.main.WorldToScreenPoint(defender.transform.position).x, Screen.height-Camera.main.WorldToScreenPoint(defender.transform.position).y, 30,30);
 		double defdmg = 0.75 * defender.def - 0.25 * attacker.def;
 		
 		if (defdmg < 1)
@@ -301,6 +323,9 @@ public class Unit : MonoBehaviour {
 				temp++;
 			}
 			attacker.hp -= temp;
+			attacker.damageNum = temp;
+			attacker.damageNumTime = 2;
+			attacker.damageNumRect = new Rect(Camera.main.WorldToScreenPoint(attacker.transform.position).x, Screen.height-Camera.main.WorldToScreenPoint(attacker.transform.position).y, 30,30);
 		}
 		if (defender.hp <=0){
 			defender.audio.clip = defender.deathsound;
@@ -330,6 +355,9 @@ public class Unit : MonoBehaviour {
 		world.map[x_,y_].see (sight);
 	}
 	void OnGUI(){
+		if (damageNumTime >=0){
+				GUI.Box (damageNumRect, "-"+damageNum);
+			}
 		if (selected){
 			GUI.Box(new Rect(0, 100, 125, 25), "Health: " + hp + "/"+startHP, world.GUIfunstuff.box);
 			GUI.Box(new Rect(0, 125, 125, 25), "Attack: " + atk, world.GUIfunstuff.box);

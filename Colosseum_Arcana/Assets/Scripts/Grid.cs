@@ -15,6 +15,8 @@ public class Grid : MonoBehaviour {
 	public int x0, y0;
 	public int x1, y1;
 	public float jMult;
+	public int p1as = -1;
+	public int p2as = -1;
 	
 	public Tile prefabWall;
 	public Tile prefab0;
@@ -212,7 +214,20 @@ public class Grid : MonoBehaviour {
 //			Debug.Log("turn ended "+turn.ToString ());
 			turn++;
 			summoningFont.hide ();
-			
+			if(map[x0,y0].owner == 1){
+				p2as = -1;
+			}
+			if(map[x1,y1].owner == 0){
+				p1as = -1;
+			}
+			p2as--;
+			p1as--;
+			if(p2as == 0){
+				winner = 0;
+			}
+			if(p1as == 0){
+				winner = 1;
+			}
 			
 			//Debug.Log ("2");
 			for (int i = 0; i<size; i++){
@@ -310,14 +325,22 @@ public class Grid : MonoBehaviour {
 	
 	void OnGUI()
 	{
+		if(p1as > 0){
+			GUI.Box(new Rect(Screen.width - 325, 55, 300, 75), "\nPlayer 1 has begun the Archmagus Spectacle,\n"+p1as/2+" unipterupted turns to win", GUIfunstuff.box);
+		}
+		if(p2as > 0){
+			GUI.Box(new Rect(Screen.width - 325, 130, 300, 75),"\nPlayer 2 has begun the Archmagus Spectacle,\n"+p2as/2+" unipterupted turns to win", GUIfunstuff.box);
+		}
+		//	GUI.Box (new Rect);
+		
 		if (winner == 0){
-			if (GUI.Button (new Rect((Screen.width/2)-250, (Screen.height/2)-100, 500, 200),"congratulations player 2, you are victorious")){
+			if (GUI.Button (new Rect((Screen.width/2)-250, (Screen.height/2)-100, 500, 200),"\n\n\n\ncongratulations player 2, you are victorious", GUIfunstuff.box)){
 				Application.LoadLevel("StartingScreen");
 			}
 			
 		}
 		else if (winner == 1){
-			if (GUI.Button (new Rect((Screen.width/2)-250, (Screen.height/2)-100, 500, 200),"congratulations player 1, you are victorious")){
+			if (GUI.Button (new Rect((Screen.width/2)-250, (Screen.height/2)-100, 500, 200),"\n\n\n\ncongratulations player 1, you are victorious", GUIfunstuff.box)){
 				Application.LoadLevel("StartingScreen");
 			}
 			
@@ -325,7 +348,12 @@ public class Grid : MonoBehaviour {
 		if (suspended){
 			//GUI.Box (new Rect(200, 0, 250, 100), "suspended = true", GUIfunstuff.box);
 		}
-		GUI.Box(new Rect(Screen.width - 150, 0, 100, 25), "Player "+activePlayer, GUIfunstuff.box);
+		if (activePlayer == 0){
+			GUI.Box(new Rect(Screen.width - 150, 0, 125, 55), "\nPlayer 2", GUIfunstuff.box);
+		}
+		else{
+			GUI.Box(new Rect(Screen.width - 150, 0, 125, 55), "\nPlayer "+activePlayer, GUIfunstuff.box);
+		}
 		GUI.Box(new Rect(0, 500, 100, 25), "Resources", GUIfunstuff.box);
 		GUI.Box(new Rect(0, 525, 100, 25), "Arcana: " + players[activePlayer].resources[0], GUIfunstuff.box);
 		GUI.Box(new Rect(0, 550, 100, 25), "Air: " + players[activePlayer].resources[1], GUIfunstuff.box);

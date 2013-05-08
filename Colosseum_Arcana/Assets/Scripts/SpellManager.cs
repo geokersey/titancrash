@@ -105,6 +105,17 @@ public class SpellManager : MonoBehaviour
 	void OnGUI()
 	{
 		if(visible){
+			//win spell
+			if (other.players[other.activePlayer].techAvailable.Count>0&&other.players[other.activePlayer].techAvailable[28] == 2){
+				if (GUI.Button(new Rect(850, 0, 99, 94), "Archmagus\nSpectacle", other.GUIfunstuff.button)){
+					if(other.activePlayer == 0){
+						other.p2as = 10;
+					}
+					else{
+						other.p1as = 10;
+					}
+				}
+			}
 			//Hawkeye
 			if (other.players[other.activePlayer].techAvailable.Count>0&&other.players[other.activePlayer].techAvailable[0] == 2)
 			{
