@@ -19,6 +19,10 @@ public class Path{
 public class Tile : MonoBehaviour {
 	public int scorch = 0;
 	public int frost = -1;
+	public GameObject FrostPrefab;
+	private GameObject Frost = null;
+	public GameObject ScorchPrefab;
+	private GameObject Scorch = null;
 	public int oldTerrain = 0;
 	public int transformTime = -1;
 	
@@ -108,7 +112,32 @@ public class Tile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+	if(Frost)
+		{
+			Frost.transform.position = new Vector3(transform.position.x, Frost.transform.position.y, transform.position.z);	
+		}
+		if(frost > 0 && Frost == null)
+		{
+			Frost = (GameObject)Instantiate(FrostPrefab, new Vector3(transform.position.x, .1f, transform.position.z), Quaternion.Euler(-90,0,0));
+		}
+		else if(frost <= 0 && Frost != null)
+		{
+			Destroy (Frost);
+			Frost = null;
+		}
+		if(Scorch)
+		{
+			Scorch.transform.position = new Vector3(transform.position.x, Scorch.transform.position.y, transform.position.z);	
+		}
+		if(scorch > 0 && Scorch == null)
+		{
+			Scorch = (GameObject)Instantiate(ScorchPrefab, new Vector3(transform.position.x, .1f, transform.position.z), Quaternion.Euler(-90,0,0));
+		}
+		else if(scorch <= 0 && Scorch != null)
+		{
+			Destroy (Scorch);
+			Scorch = null;
+		}
 	}
 	public Path movePoints (int available, Tile target, Unit mover, bool zoc, bool fly){
 		bool zoc2 = false;

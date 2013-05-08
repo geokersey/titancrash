@@ -8,6 +8,17 @@ public class SpellManager : MonoBehaviour
 	public GameObject grid;
 	Grid other;
 	public GameObject Fireball;
+	public GameObject Lightningbolt;
+	public GameObject Tornado;
+	public GameObject RagingFire;
+	public GameObject NaturesBounty;
+	public GameObject StoneArmor;
+	public GameObject Windwalk;
+	public GameObject Chill;
+	public GameObject Hawkeye;
+	public GameObject Counterspell;
+	public GameObject Dispel;
+	public SoundManager Sounds;
 	//other variables
 	public bool SpellCasting = false;
 	private bool found = false;
@@ -26,8 +37,8 @@ public class SpellManager : MonoBehaviour
 		spellRanges[1] = 0; //reveal X
 		spellRanges[2] = 4; //Tornado1
 		spellRanges[3] = 4; // Tornado2
-		spellRanges[4] = 2; // wind walk
-		spellRanges[5] = 2; // lightning bolt
+		spellRanges[4] = 3;//2; // wind walk
+		spellRanges[5] = 3;//2; // lightning bolt
 		spellRanges[6] = 5; // scorched earth
 		spellRanges[7] = 3; // fireball
 		spellRanges[8] = 5; // raging fire
@@ -36,8 +47,8 @@ public class SpellManager : MonoBehaviour
 		spellRanges[11] = 3; // glacial wall
 		spellRanges[12] = 3; // winters call
 		spellRanges[13] = 4; //frost
-		spellRanges[14] = 2; // nature's bounty
-		spellRanges[15] = 2; // stone armor
+		spellRanges[14] = 3;//2; // nature's bounty
+		spellRanges[15] = 3;//2; // stone armor
 		spellRanges[16] = 0; // one with nature X
 		spellRanges[17] = 0; // heaven to earth X
 		spellRanges[18] = 10; // counterspell
@@ -483,6 +494,7 @@ public class SpellManager : MonoBehaviour
 				//	}
 				//}
 			}
+			Debug.Log ("Spell selected: " + spell);
 		}
 	}
 	
@@ -510,6 +522,9 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,1));
 				other.players[other.activePlayer].resources[1]--;
 				spell = -1;
+				GameObject thisObj = (GameObject)Instantiate(Hawkeye, new Vector3(target.transform.position.x, 2, target.transform.position.z), Quaternion.identity);
+				Sounds.Play(0);
+				Destroy (thisObj, 1f);
 			}
 		}
 		
@@ -540,20 +555,7 @@ public class SpellManager : MonoBehaviour
 			//tornado landing
 			//Debug.Log ("tornado Landing");
 			if(target.findTower (spellRanges[3])&&tornadoVictim != null && target.occupyer == null){
-				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,2));
-				other.players[other.activePlayer].resources[1]-=2;
-				
-				
-				Tile old = other.map[tornadoVictim.x,tornadoVictim.y];
-				old.deselect ();
-				old.occupyer = null;
-				target.occupyer = tornadoVictim;
-				tornadoVictim.x = target.x;
-				tornadoVictim.y = target.y;
-				tornadoVictim.transform.position = target.transform.position;
-				target.capture (tornadoVictim.owner);
-				spell = -1;
-				target.choose ();
+				StartCoroutine("tornado", target);
 			}
 				
 		}
@@ -567,20 +569,24 @@ public class SpellManager : MonoBehaviour
 				temp.turns = 1;
 				target.occupyer.startingMovePoints+=2;
 				target.occupyer.availableMovePoints+=2;
+				
+				temp.Buffeffect = (GameObject)Instantiate(Windwalk, new Vector3(target.occupyer.transform.position.x, .5f, target.occupyer.transform.position.z), Quaternion.identity);
+				temp.Buffeffect.transform.parent = target.occupyer.transform;
+				//target.occupyer.buffs.Add (temp);
+				target.occupyer.RenewRenderer();
+				
 				target.occupyer.buffs.Add (temp);
 				spell = -1;
-				
+				Debug.Log ("WindWalkCast");
 			}		
 			
 		}
 		else if (spell == 5){
 			//lightning bolt
 			if (target.findTower (spellRanges[5])&&target.occupyer!=null){
-				other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,4));
-				other.players[other.activePlayer].resources[1]-=4;
-
-				target.occupyer.hp -= 8;
-				spell =-1;
+				StartCoroutine("LightningBolt", target);
+				Sounds.Play(5);
+				Debug.Log ("LightningCast");
 			}
 		}
 		else if (spell == 6){
@@ -590,23 +596,14 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resources[2]-=1;
 				target.scorch = 4*2;
 				spell = -1;
+				Sounds.Play(6);
 			}
 		}
 		else if (spell == 7){		
 			//fireball
 			if (target.occupyer != null && target.findTower (spellRanges[7])){
-				other.players[other.activePlayer].resO.Add (new ResOccupied(1,2,2));
-				other.players[other.activePlayer].resources[2]-=2;
-				
-				Instantiate(Fireball, new Vector3(target.transform.position.x, 9, target.transform.position.z), Quaternion.identity);
-				
-				target.occupyer.hp-=3;
-				Buff temp = new Buff();
-				temp.damage = 1;
-				temp.turns = 5;
-				target.occupyer.buffs.Add (temp);
-				
-				spell = -1;
+				Sounds.Play(7);
+				StartCoroutine("FireBall", target);
 			}
 		}
 		else if (spell == 8){
@@ -619,8 +616,12 @@ public class SpellManager : MonoBehaviour
 				target.occupyer.atk +=3;
 				temp.attack = 3;
 				temp.turns = 3;
+				temp.Buffeffect = (GameObject)Instantiate(RagingFire, new Vector3(target.occupyer.transform.position.x, .5f, target.occupyer.transform.position.z), Quaternion.identity);
+				temp.Buffeffect.transform.parent = target.occupyer.transform;
 				target.occupyer.buffs.Add (temp);
+				target.occupyer.RenewRenderer();
 				spell = -1;
+				Sounds.Play(8);
 				
 			}	
 		}
@@ -669,9 +670,16 @@ public class SpellManager : MonoBehaviour
 				target.occupyer.def -=1;
 				target.occupyer.availableMovePoints-=1;
 				target.occupyer.startingMovePoints -=1;
+				
+				temp.Buffeffect = (GameObject)Instantiate(Chill, new Vector3(target.occupyer.transform.position.x, .5f, target.occupyer.transform.position.z), Quaternion.identity);
+				temp.Buffeffect.transform.parent = target.occupyer.transform;
+				//target.occupyer.buffs.Add (temp);
+				target.occupyer.RenewRenderer();
+				
 				target.occupyer.buffs.Add (temp);
 				
 				spell = -1;
+				Sounds.Play(10);
 			}
 		}
 		else if (spell == 11){
@@ -703,6 +711,7 @@ public class SpellManager : MonoBehaviour
 				target.occupyer.availableMovePoints = 0;
 				target.occupyer.sleepTime = 4;
 				spell = -1;
+				Sounds.Play(12);
 			}
 		}
 		else if (spell == 13){
@@ -711,7 +720,7 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resO.Add (new ResOccupied(4,4,3));
 				other.players[other.activePlayer].resources[4]-=3;
 				target.freeze(1, 4);
-				
+				Sounds.Play(13);
 				spell = -1;
 			}
 		}
@@ -720,10 +729,13 @@ public class SpellManager : MonoBehaviour
 			if(target.occupyer!=null&&target.findTower (spellRanges[14])){
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,3,1));
 				other.players[other.activePlayer].resources[3]-=1;
-				
+				Sounds.Play(14);
+				GameObject thisObj = (GameObject)Instantiate(NaturesBounty, new Vector3(target.transform.position.x, 2f, target.transform.position.z), Quaternion.identity);
+				Destroy (thisObj, 1f);
 				target.occupyer.hp +=3;
 				//if (target.occupyer.hp >target.occupyer. max
-				spell = -1;				
+				spell = -1;	
+				Debug.Log ("NaturesCast");
 			}
 		}
 		else if (spell == 15){
@@ -735,10 +747,15 @@ public class SpellManager : MonoBehaviour
 				Buff temp = new Buff();
 				temp.defense = 3;
 				temp.turns = 3;
+				Sounds.Play(15);
+				temp.Buffeffect = (GameObject)Instantiate(StoneArmor, new Vector3(target.occupyer.transform.position.x, .5f, target.occupyer.transform.position.z), Quaternion.identity);
+				temp.Buffeffect.transform.parent = target.occupyer.transform;
+				target.occupyer.RenewRenderer();
 				
 				target.occupyer.def += 3; 
 				target.occupyer.buffs.Add (temp);
 				spell = -1;
+				Debug.Log ("StoneCast");
 			}
 		}
 		/*else if (spell == 16){
@@ -766,6 +783,9 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,0,3));
 				other.players[other.activePlayer].resources[0]-=3;
 				target.owner += 1*4;
+				GameObject thisObj = (GameObject)Instantiate(Counterspell, new Vector3(target.transform.position.x, .2f, target.transform.position.z), Quaternion.Euler(-90,0,0));
+				Sounds.Play(18);
+				Destroy (thisObj, 1f);
 				
 			}
 		}
@@ -775,6 +795,9 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resO.Add (new ResOccupied(1,0,2));
 				other.players[other.activePlayer].resources[0]-=2;
 				target.dispell();
+				GameObject thisObj = (GameObject)Instantiate(Dispel, new Vector3(target.transform.position.x, .2f, target.transform.position.z), Quaternion.identity);
+			
+				Destroy (thisObj, 1.5f);
 			}
 		}
 		
@@ -795,5 +818,49 @@ public class SpellManager : MonoBehaviour
 	}
 	public void hide(){
 		visible = false;
+	}
+	IEnumerator tornado (Tile target)
+	{
+		other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,2));
+		other.players[other.activePlayer].resources[1]-=2;
+		GameObject thisObj = (GameObject)Instantiate(Tornado, new Vector3(tornadoVictim.transform.position.x, .2f, tornadoVictim.transform.position.z), Quaternion.Euler(-90,0,0));
+		yield return new WaitForSeconds(.5f);
+		Destroy (thisObj, .75f);
+		Tile old = other.map[tornadoVictim.x,tornadoVictim.y];
+		old.deselect ();
+		old.occupyer = null;
+		target.occupyer = tornadoVictim;
+		tornadoVictim.x = target.x;
+		tornadoVictim.y = target.y;
+		tornadoVictim.transform.position = target.transform.position;
+		target.capture (tornadoVictim.owner);
+		spell = -1;
+		target.choose ();
+	}
+	IEnumerator LightningBolt (Tile target)
+	{
+		Debug.Log ("Ligtning");
+		other.players[other.activePlayer].resO.Add (new ResOccupied(1,1,4));
+		other.players[other.activePlayer].resources[1]-=4;
+		GameObject thisObj = (GameObject)Instantiate(Lightningbolt, new Vector3(target.transform.position.x, 1.5f, target.transform.position.z), Quaternion.Euler(-90,0,0));
+		yield return new WaitForSeconds(1.25f);
+		Destroy(thisObj);
+		target.occupyer.hp -= 8;
+		spell =-1;
+	}
+	
+	IEnumerator FireBall(Tile target)
+	{
+		other.players[other.activePlayer].resO.Add (new ResOccupied(1,2,2));
+		other.players[other.activePlayer].resources[2]-=2;		
+		GameObject thisObj = (GameObject)Instantiate(Fireball, new Vector3(target.transform.position.x, 9, target.transform.position.z), Quaternion.identity);
+		yield return new WaitForSeconds(2);
+		Destroy (thisObj);
+		target.occupyer.hp-=3;
+		Buff temp = new Buff();
+		temp.damage = 1;
+		temp.turns = 5;
+		target.occupyer.buffs.Add (temp);
+		spell = -1;
 	}
 }

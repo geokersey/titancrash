@@ -9,10 +9,17 @@ public class Buff{
 	public int movement;
 	public int sight;
 	public int damage;
+	public GameObject Buffeffect;
 	public Buff(){
 		health = attack = defense =  movement = sight = damage = 0;
 	}
-	
+	public void Update(Vector3 thisObj)
+	{
+		if(Buffeffect != null)
+		{
+		Buffeffect.transform.position = new Vector3(thisObj.x, Buffeffect.transform.position.y, thisObj.z);
+		}
+	}
 }
 public class Unit : MonoBehaviour {
 	public string name;
@@ -48,6 +55,9 @@ public class Unit : MonoBehaviour {
 	public int damageNum;
 	public Rect damageNumRect;
 	//GameObject id;
+	private bool IsSleeping = false;
+	public GameObject WintersCall;
+	private GameObject Sleeper = null;
 	
 	private Renderer[] meshRenderers;
 	private bool anim;
@@ -105,6 +115,24 @@ public class Unit : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(sleep > 0 && !IsSleeping)
+		{
+			Sleeper = (GameObject)Instantiate(WintersCall, new Vector3(transform.position.x, 1f, transform.position.z), Quaternion.identity);
+			Sleeper.transform.parent = transform;
+			IsSleeping = true;
+			RenewRenderer();
+		}
+		else if(sleep <= 0 && IsSleeping)
+		{
+			Destroy(Sleeper);
+			Sleeper = null;
+			IsSleeping = false;
+			RenewRenderer();
+		}
+		foreach(Buff b in buffs)
+		{
+			b.Update(transform.position);	
+		}
 		damageNumTime -= Time.deltaTime;
 		if (id!=null&&world.activePlayer == owner){
 			//Debug.Log ("id should be rotating");
@@ -406,6 +434,10 @@ public class Unit : MonoBehaviour {
 			
 			r.enabled = true;
 		}
+	}
+	public void RenewRenderer()
+	{
+		meshRenderers = GetComponentsInChildren<Renderer>();
 	}
 	public string summary(){
 		return name+"\nhealth: "+hp+"/"+startHP+"\nattack: "+atk+"("+startAtk+")\ndefence: "+def+"("+startDef+")\nmovement: "+availableMovePoints+"/"+startingMovePoints+"("+origMovePoints+")\n";
