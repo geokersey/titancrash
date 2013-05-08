@@ -105,20 +105,20 @@ public class Unit : MonoBehaviour {
 					
 					if (!fight (this, steps.defender)){
 						steps = new Path();
-						Debug.Log ("lost a fight, should stop moving");
+						//Debug.Log ("lost a fight, should stop moving");
 						acting = false;
 						world.suspended = false;
 						world.map[x,y].choose ();
 					}
 					else{
 						steps.defender = null;
-						Debug.Log ("won a fight, should keep moving");
+						//Debug.Log ("won a fight, should keep moving");
 						steps.path[1].occupyer = null;
 						x = steps.path[0].x;
 						y = steps.path[0].y;
 						world.map[x,y].occupyer = this;
 						world.map[x,y].capture (owner);
-						Debug.Log ("won a fight to capture "+ x +", " +y);
+						//Debug.Log ("won a fight to capture "+ x +", " +y);
 						
 					}
 					if(anim){
@@ -167,7 +167,7 @@ public class Unit : MonoBehaviour {
 	
 	}
 	public void beginTurn(){
-		Debug.Log ("unit  begin turn");
+		//Debug.Log ("unit  begin turn");
 		sleepTime --;
 		if(hp>startHP){
 			hp--;
@@ -216,7 +216,7 @@ public class Unit : MonoBehaviour {
 		
 	}
 	public Tile goTo(Tile target){
-		Debug.Log ("in the goto func");
+		//Debug.Log ("in the goto func");
 		if (owner != world.activePlayer){
 			return world.map[x,y];
 		}
@@ -326,7 +326,7 @@ public class Unit : MonoBehaviour {
 		}
 	}
 	public void see(int x_, int y_){
-		Debug.Log ("unit "+x+","+y+" seeing "+ sight+" tiles");
+		//Debug.Log ("unit "+x+","+y+" seeing "+ sight+" tiles");
 		world.map[x_,y_].see (sight);
 	}
 	void OnGUI(){

@@ -110,12 +110,12 @@ public class Grid : MonoBehaviour {
 		/////
 		if(!Directory.Exists("C:/ElementalFury/Maps"))
 		{
-			Debug.Log ("Created a directory!");
+			//Debug.Log ("Created a directory!");
 			Directory.CreateDirectory("C:/ElementalFury/Maps");
 		}
 		if(!File.Exists("C:/ElementalFury/Maps/DefaultMatch.xml"))
 		{
-			Debug.Log ("Couldn't find default map. Copying from install");
+			//Debug.Log ("Couldn't find default map. Copying from install");
 			File.Copy("Assets/DefaultMatch.xml", "C:/ElementalFury/Maps/DefaultMatch.xml");
 			//FileUtil.CopyFileOrDirectory ("Assets/DefaultMatch.xml", "C:/ElementalFury/Maps/DefaultMatch.xml");
 		}
@@ -191,7 +191,7 @@ public class Grid : MonoBehaviour {
 			}
 			activePlayer = (activePlayer +1)% numPlayers;
 			if(activePlayer == map[x1,y1].owner&&activePlayer == map[x0,y0].owner){
-				Debug.Log ("player "+activePlayer+" is victorious");
+				//Debug.Log ("player "+activePlayer+" is victorious");
 				winner = activePlayer;
 			}
 			/*if(activePlayer == 0 && map[x1,y1].owner==0 && map[x0,y0].owner ==0){
@@ -219,7 +219,7 @@ public class Grid : MonoBehaviour {
 				for (int j = 0; j<size; j++){
 					map[i,j].beginTurn ();
 					if (activePlayer == 0){
-						if (map[i,j].gameObject.tag == "vis1" || map[i,j].gameObject.tag == "visNone"){
+						if ((map[i,j].gameObject.tag == "vis1" || map[i,j].gameObject.tag == "visNone")&&map[i,j].gameObject.layer != 10){
 							//map[i,j].gameObject.tag = "Untagged";
 							map[i,j].gameObject.layer = 9;
 							map[i,j].hide ();
@@ -235,7 +235,7 @@ public class Grid : MonoBehaviour {
 							}
 					}
 					else if (activePlayer == 1){
-						if (map[i,j].gameObject.tag == "vis0" || map[i,j].gameObject.tag == "visNone"){
+						if ((map[i,j].gameObject.tag == "vis0" || map[i,j].gameObject.tag == "visNone")&&map[i,j].gameObject.layer != 11){
 							//map[i,j].gameObject.tag = "Untagged";
 							map[i,j].gameObject.layer = 9;
 							map[i,j].hide ();
@@ -257,6 +257,7 @@ public class Grid : MonoBehaviour {
 							map[i,j].occupyer.beginTurn ();
 						}
 						if (map[i,j].hasTower){
+							//Debug.Log ("tower seeing");
 							map[i,j].see (3);
 							}
 					}	
@@ -454,9 +455,9 @@ public class Grid : MonoBehaviour {
 				map[i,j] = (Tile)Instantiate (prefabWall, new Vector3((float)(i+(.5*j) - (1.5f*radius) - (1.5f*radius)),0f,(float)j*jMult - radius*jMult), Quaternion.Euler(0,30,0));
 				map[i,j].init (i,j,-1, false, false, false, -1, defaultQuant, this);
 			}
-			Debug.Log ("startup loop");
+			//Debug.Log ("startup loop");
 		}
-		Debug.Log ("end of startup");
+		//Debug.Log ("end of startup");
 	}
 	
 }

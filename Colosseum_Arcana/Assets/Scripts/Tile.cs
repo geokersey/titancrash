@@ -40,7 +40,9 @@ public class Tile : MonoBehaviour {
 	public Unit occupyer;
 	public int towerRange = 5;
 	public int maxPoints;
-	bool toolTip = false;
+	float toolTip = 0f;
+	float tttime = .5f;
+	
 	string terName;
 	string resName;
 	// Use this for initialization
@@ -225,6 +227,7 @@ public class Tile : MonoBehaviour {
 			//occupyer tooltip
 			GUI.Box (new Rect(screenPos.x, screenPos.y, 15,15), "blar");
 		}*/
+		toolTip += Time.deltaTime;
 		if(!world.suspended&&terrain>=0){
 			if (Input.GetMouseButton (0)){
 				world.spells.spell = -1;
@@ -244,9 +247,9 @@ public class Tile : MonoBehaviour {
 			
 			if (Input.GetMouseButtonUp (1)){
 				if (world.spells.spell >=0){
-					Debug.Log ("clicking with a spell");
+					//Debug.Log ("clicking with a spell");
 					outRange ();
-					Debug.Log ("outRangeComplete");
+					//Debug.Log ("outRangeComplete");
 					world.spells.cast(this);
 						
 				}
@@ -261,20 +264,20 @@ public class Tile : MonoBehaviour {
 		}
 	}
 	public void OnMouseEnter(){
-		toolTip = true;
+		toolTip = 0f;
 		if(world.spells.spell >=0){
 			inRange (world.spells.spellRanges[world.spells.spell], true, true, false);
 		}
 		
 	}
 	public void OnMouseExit(){
-		toolTip = false;
+		toolTip = 0f;
 		if(world.spells.spell >=0){
 			outRange ();
 		}
 	}
 	public void OnGUI(){
-		if (toolTip){
+		if (toolTip > tttime){
 			Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position+new Vector3(0f,0f, .578f));//the bottom point of the hex
 			Vector3 screenPos2 = Camera.main.WorldToScreenPoint(transform.position+new Vector3(-.8f,0f, .289f));//the right side of the hex
 			float width1 = 345; //terrain info box size
@@ -305,7 +308,6 @@ public class Tile : MonoBehaviour {
 				message += "\nfocus tower: spells can only be cast within range of a focus tower";
 			}
 			if (gameObject.layer >= 10){
-				
 				if (owner == 0){
 					GUI.contentColor = Color.yellow;
 					if (occupyer != null){
@@ -323,15 +325,45 @@ public class Tile : MonoBehaviour {
 					//Debug.Log ("owner = 1");
 				}
 				else{
-					//GUI.contentColor = Color.blue;
 					
 					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height2), message);
 				}
-				//GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width,50), "blar");
 			}
+				//GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width,50), "blar");
+
 			// else if (seen previously but not currently visible){display with color but not unit);
 			else{
-				GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+			//GUI.contentColor = Color.blue;
+				if (world.activePlayer ==0 && (gameObject.tag == "visBoth" || gameObject.tag == "vis0")){
+					if (owner == 0){
+						GUI.contentColor = Color.yellow;
+						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+						//Debug.Log ("owner = 0");
+					}
+					else if (owner == 1){
+						GUI.contentColor = Color.magenta;
+						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+						//Debug.Log ("owner = 1");
+					}
+					
+				}
+				else if (world.activePlayer ==1 && (gameObject.tag == "visBoth" || gameObject.tag == "vis1")){
+					if (owner == 0){
+						GUI.contentColor = Color.yellow;
+						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+						//Debug.Log ("owner = 0");
+						}
+					else if (owner == 1){
+						GUI.contentColor = Color.magenta;
+						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+						//Debug.Log ("owner = 1");
+					}
+					
+				}
+				else{
+					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+				}
+			
 			}
 		}
 	}
@@ -367,7 +399,7 @@ public class Tile : MonoBehaviour {
 			}
 			bool ZOC2 = checkZOC (world.activePlayer);
 			if(ZOC && ZOC2 && !ignoreTerrain && !fly){
-				Debug.Log ("ZOC violation detected");
+				//Debug.Log ("ZOC violation detected");
 				return;
 			}
 			if(occupyer != null && occupyer.owner != world.activePlayer && !ignoreTerrain){
@@ -388,6 +420,7 @@ public class Tile : MonoBehaviour {
 		}
 	}
 	public void outRange(){
+		//Debug.Log ("outrange function");
 		if (terrain < 0){
 				return;
 		}
@@ -654,19 +687,23 @@ public class Tile : MonoBehaviour {
 		owner = player;
 	}
 	public void see(int points){
+		
 		if (terrain<0){
 			return;
 		}
 		if (points > 0){
+			//Debug.Log (x+", "+y+"points = "+ points);
 			show();
 			gameObject.layer = 10+world.activePlayer;
-			if(owner <=0){
+			if(owner >=0){
 				if (world.activePlayer == 0){
 					if (gameObject.tag == "vis1" || gameObject.tag == "visBoth"){
 						gameObject.tag = "visBoth";
+						//Debug.Log("vis both active = 0");
 					}
 					else {
 						gameObject.tag = "vis0";
+						//Debug.Log("vis 0 active = 0");
 					}
 					
 				}
