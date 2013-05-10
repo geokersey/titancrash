@@ -62,6 +62,11 @@ public class Unit : MonoBehaviour {
 	private Renderer[] meshRenderers;
 	private bool anim;
 	
+	public bool IsFish = false;
+	public int ResReturn = 1;
+	public bool Large = true;
+	
+	
 	void Start () {
 		buffs = new System.Collections.Generic.List<Buff>();
 		steps = new Path();
@@ -203,7 +208,11 @@ public class Unit : MonoBehaviour {
 			if (world.map[x,y].occupyer == this){
 				world.map[x,y].occupyer = null;
 			}
-			world.players[owner].resources[element]++;
+			world.players[owner].resources[element] += ResReturn;
+			if(Large)
+			{
+				world.players[owner].resources[0] += 1;
+			}
 			Destroy (gameObject);
 		}
 		
@@ -215,6 +224,10 @@ public class Unit : MonoBehaviour {
 		sleepTime --;
 		if(hp>startHP){
 			hp--;
+		}
+		if(IsFish && hp<startHP)
+		{
+			hp++;
 		}
 		if(sleep != hp ||sleepTime <= 0){
 			sleep = 0;
@@ -230,7 +243,7 @@ public class Unit : MonoBehaviour {
 			temp = buffs.Count-i;
 			
 			buffs[temp].turns--;
-			hp += buffs[temp].damage;
+			hp -= buffs[temp].damage;
 			if (buffs[temp].turns<=0){
 				hp-=buffs[temp].health;
 				atk-=buffs[temp].attack;

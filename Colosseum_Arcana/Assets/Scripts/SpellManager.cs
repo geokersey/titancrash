@@ -592,8 +592,8 @@ public class SpellManager : MonoBehaviour
 		else if (spell == 6){
 			//scorched earth
 			if (target.findTower (spellRanges[6])){
-				other.players[other.activePlayer].resO.Add (new ResOccupied(4,2,1));
-				other.players[other.activePlayer].resources[2]-=1;
+				other.players[other.activePlayer].resO.Add (new ResOccupied(4,3,1));
+				other.players[other.activePlayer].resources[3]-=1;
 				target.scorch = 4*2;
 				spell = -1;
 				Sounds.Play(6);
@@ -609,8 +609,8 @@ public class SpellManager : MonoBehaviour
 		else if (spell == 8){
 			// raging fire
 			if (target.occupyer != null && target.findTower(spellRanges[8])){
-				other.players[other.activePlayer].resO.Add (new ResOccupied(3,2,3));
-				other.players[other.activePlayer].resources[2]-=3;
+				other.players[other.activePlayer].resO.Add (new ResOccupied(3,3,3));
+				other.players[other.activePlayer].resources[3]-=3;
 				
 				Buff temp = new Buff();
 				target.occupyer.atk +=3;
@@ -630,8 +630,8 @@ public class SpellManager : MonoBehaviour
 			Debug.Log ("eruption");
 			//if(!(target.hasFont||target.hasTower||target.resourceQuantity >0)&&target.findTower (3)){
 			if(target.findTower (spellRanges[9])){
-				other.players[other.activePlayer].resO.Add (new ResOccupied(4,2,5));
-				other.players[other.activePlayer].resources[2]-=5;
+				other.players[other.activePlayer].resO.Add (new ResOccupied(4,3,5));
+				other.players[other.activePlayer].resources[3]-=5;
 				
 				if (target.terrain >=0){
 					target.terrain = 2; //change to whatever mountain is
@@ -727,8 +727,8 @@ public class SpellManager : MonoBehaviour
 		else if (spell == 14){
 			//natures bounty
 			if(target.occupyer!=null&&target.findTower (spellRanges[14])){
-				other.players[other.activePlayer].resO.Add (new ResOccupied(1,3,1));
-				other.players[other.activePlayer].resources[3]-=1;
+				other.players[other.activePlayer].resO.Add (new ResOccupied(1,2,1));
+				other.players[other.activePlayer].resources[2]-=1;
 				Sounds.Play(14);
 				GameObject thisObj = (GameObject)Instantiate(NaturesBounty, new Vector3(target.transform.position.x, 2f, target.transform.position.z), Quaternion.identity);
 				Destroy (thisObj, 1f);
@@ -741,8 +741,8 @@ public class SpellManager : MonoBehaviour
 		else if (spell == 15){
 			//stone armor
 			if(target.occupyer!=null&&target.findTower (spellRanges[15])){
-				other.players[other.activePlayer].resO.Add (new ResOccupied(3,3,2));
-				other.players[other.activePlayer].resources[3]-=2;
+				other.players[other.activePlayer].resO.Add (new ResOccupied(3,2,2));
+				other.players[other.activePlayer].resources[2]-=2;
 				
 				Buff temp = new Buff();
 				temp.defense = 3;
@@ -786,7 +786,7 @@ public class SpellManager : MonoBehaviour
 				GameObject thisObj = (GameObject)Instantiate(Counterspell, new Vector3(target.transform.position.x, .2f, target.transform.position.z), Quaternion.Euler(-90,0,0));
 				Sounds.Play(18);
 				Destroy (thisObj, 1f);
-				
+				spell = -1;
 			}
 		}
 		else if (spell == 19){
@@ -796,7 +796,7 @@ public class SpellManager : MonoBehaviour
 				other.players[other.activePlayer].resources[0]-=2;
 				target.dispell();
 				GameObject thisObj = (GameObject)Instantiate(Dispel, new Vector3(target.transform.position.x, .2f, target.transform.position.z), Quaternion.identity);
-			
+				spell = -1;
 				Destroy (thisObj, 1.5f);
 			}
 		}
@@ -851,8 +851,8 @@ public class SpellManager : MonoBehaviour
 	
 	IEnumerator FireBall(Tile target)
 	{
-		other.players[other.activePlayer].resO.Add (new ResOccupied(1,2,2));
-		other.players[other.activePlayer].resources[2]-=2;		
+		other.players[other.activePlayer].resO.Add (new ResOccupied(1,3,2));
+		other.players[other.activePlayer].resources[3]-=2;		
 		GameObject thisObj = (GameObject)Instantiate(Fireball, new Vector3(target.transform.position.x, 9, target.transform.position.z), Quaternion.identity);
 		yield return new WaitForSeconds(2);
 		Destroy (thisObj);

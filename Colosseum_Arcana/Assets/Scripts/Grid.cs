@@ -68,6 +68,7 @@ public class Grid : MonoBehaviour {
 	//public GameObject id0prefab;
 	//public GameObject id1prefab;
 	
+	//public bool IsPaused = false;
 	public Player playerPrefab;
 	public Player[] players;
 	public SpellManager spells;
@@ -325,11 +326,11 @@ public class Grid : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		if(p1as > 0){
-			GUI.Box(new Rect(Screen.width - 325, 55, 300, 75), "\nPlayer 1 has begun the Archmagus Spectacle,\n"+p1as/2+" unipterupted turns to win", GUIfunstuff.box);
+		if(p1as > 0 && techs.world.GUIstate != 2 && !suspended){//p1as > 0){
+			GUI.Box(new Rect(Screen.width*.5f - 325, 110, 300, 75), "\nPlayer 1 has begun the Archmagus Spectacle,\n"+p1as/2+" uninterrupted turns to win", GUIfunstuff.box);
 		}
-		if(p2as > 0){
-			GUI.Box(new Rect(Screen.width - 325, 130, 300, 75),"\nPlayer 2 has begun the Archmagus Spectacle,\n"+p2as/2+" unipterupted turns to win", GUIfunstuff.box);
+		if(p2as > 0 && techs.world.GUIstate != 2 && !suspended){//p2as > 0){
+			GUI.Box(new Rect(Screen.width*.5f + 25, 110, 300, 75),"\nPlayer 2 has begun the Archmagus Spectacle,\n"+p2as/2+" uninterrupted turns to win", GUIfunstuff.box);
 		}
 		//	GUI.Box (new Rect);
 		
@@ -349,10 +350,10 @@ public class Grid : MonoBehaviour {
 			//GUI.Box (new Rect(200, 0, 250, 100), "suspended = true", GUIfunstuff.box);
 		}
 		if (activePlayer == 0){
-			GUI.Box(new Rect(Screen.width - 150, 0, 125, 55), "\nPlayer 2", GUIfunstuff.box);
+			GUI.Box(new Rect(Screen.width - 150, 200, 125, 55), "\nPlayer 2", GUIfunstuff.box);
 		}
 		else{
-			GUI.Box(new Rect(Screen.width - 150, 0, 125, 55), "\nPlayer "+activePlayer, GUIfunstuff.box);
+			GUI.Box(new Rect(Screen.width - 150, 200, 125, 55), "\nPlayer "+activePlayer, GUIfunstuff.box);
 		}
 		GUI.Box(new Rect(0, 500, 100, 25), "Resources", GUIfunstuff.box);
 		GUI.Box(new Rect(0, 525, 100, 25), "Arcana: " + players[activePlayer].resources[0], GUIfunstuff.box);
@@ -368,7 +369,7 @@ public class Grid : MonoBehaviour {
 		GUI.Box(new Rect(1250, 270, 100, 25), "Player 2: " + players[1].resources[4]);*/
 		
 		if (minTurnTime < 0 && !suspended){
-			if (GUI.Button (new Rect(Screen.width * 0.85f, Screen.height * 0.85f, 125, 40), "End turn", GUIfunstuff.button)){
+			if (GUI.Button (new Rect(Screen.width * 0.85f, Screen.height - 200, 125, 40), "End turn", GUIfunstuff.button)){
 			endTurn();
 			}
 		}

@@ -71,7 +71,7 @@ public class SummoningFont : MonoBehaviour {
 		if(world.GUIstate == 1){
 			
 			
-			if (GUI.Button(new Rect(100, Screen.height - 150, 105, 49), "arcana wisp (1)", world.GUIfunstuff.button))
+			if (GUI.Button(new Rect(100, Screen.height - 150, 200, 49), "Arcana wisp (1 Arcana)", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[0] < 1)
@@ -115,7 +115,7 @@ public class SummoningFont : MonoBehaviour {
 				
 			}
 			
-			if (GUI.Button(new Rect(100, Screen.height - 105, 105, 49), "air wisp (1)", world.GUIfunstuff.button))
+			if (GUI.Button(new Rect(100, Screen.height - 105, 200, 49), "Air wisp (1 Air)", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[1] < 1)
@@ -158,10 +158,10 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(100, Screen.height - 60, 105, 49), "Quetzalcoatl (1)", world.GUIfunstuff.button))
+			if (GUI.Button(new Rect(100, Screen.height - 60, 200, 49), "Quetzalcoatl (2 Air, 1 Arcana)", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
-					if (world.players[0].resources[1] < 1)
+					if (world.players[0].resources[1] < 2 || world.players[0].resources[0] < 1)
 					{
 						print("Not enough resources");
 						return;
@@ -173,12 +173,13 @@ public class SummoningFont : MonoBehaviour {
 					else
 					{
 						world.selected.occupyer = (Unit)Instantiate (largeAirPrefab0, world.selected.transform.position, Quaternion.identity);
-						world.players[0].resources[1]--;
+						world.players[0].resources[1] -= 2;
+						world.players[0].resources[0] -= 1;
 						world.players[world.activePlayer].summoned = true;
 					}
 				}
 				if (world.activePlayer == 1){
-					if (world.players[1].resources[1] < 1)
+					if (world.players[1].resources[1] < 2 || world.players[1].resources[0] < 1)
 					{
 						print("Not enough resources");
 						return;
@@ -190,7 +191,8 @@ public class SummoningFont : MonoBehaviour {
 					else
 					{
 						world.selected.occupyer = (Unit)Instantiate (largeAirPrefab1, world.selected.transform.position, Quaternion.identity);
-						world.players[1].resources[1]--;
+						world.players[1].resources[1] -= 2;
+						world.players[1].resources[0] -= 1;
 						world.players[world.activePlayer].summoned = true;
 					}
 				}
@@ -201,7 +203,7 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(200, Screen.height - 105, 105, 49), "earth wisp (1)", world.GUIfunstuff.button))
+			if (GUI.Button(new Rect(300, Screen.height - 105, 200, 49), "Earth wisp (1 Earth)", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[2] < 1)
@@ -244,10 +246,10 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(200, Screen.height - 60, 105, 49), "Ent (1)", world.GUIfunstuff.button))
+			if (GUI.Button(new Rect(300, Screen.height - 60, 200, 49), "Ent (3 Earth, 1 Arcana)", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
-					if (world.players[0].resources[2] < 1)
+					if (world.players[0].resources[2] < 3 || world.players[0].resources[0] < 1)
 					{
 						print("Not enough resources");
 						return;
@@ -259,12 +261,13 @@ public class SummoningFont : MonoBehaviour {
 					else
 					{
 						world.selected.occupyer = (Unit)Instantiate (largeEarthPrefab0, world.selected.transform.position, Quaternion.identity);
-						world.players[0].resources[2]--;
+						world.players[0].resources[2] -= 3;
+						world.players[0].resources[0] -= 1;
 						world.players[world.activePlayer].summoned = true;
 					}
 				}
 				if (world.activePlayer == 1){
-					if (world.players[1].resources[2] < 1)
+					if (world.players[1].resources[2] < 3 || world.players[1].resources[0] < 1)
 					{
 						print("Not enough resources");
 						return;
@@ -276,7 +279,8 @@ public class SummoningFont : MonoBehaviour {
 					else
 					{
 						world.selected.occupyer = (Unit)Instantiate (largeEarthPrefab1, world.selected.transform.position, Quaternion.identity);
-						world.players[1].resources[2]--;
+						world.players[1].resources[2] -= 3;
+						world.players[1].resources[0] -= 1;
 						world.players[world.activePlayer].summoned = true;
 					}
 				}
@@ -287,7 +291,7 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(295, Screen.height - 105, 105, 49), "fire wisp (1)", world.GUIfunstuff.button))
+			if (GUI.Button(new Rect(500, Screen.height - 105, 200, 49), "Fire wisp (1 Fire)", world.GUIfunstuff.button))
 			{
 				
 				if (world.activePlayer == 0){
@@ -331,10 +335,10 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(295, Screen.height - 60, 105, 49), "Dragon (1)", world.GUIfunstuff.button))
+			if (GUI.Button(new Rect(500, Screen.height - 60, 200, 49), "Dragon (5 Fire, 1 Arcana)", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
-					if (world.players[0].resources[3] < 1)
+					if (world.players[0].resources[3] < 5 || world.players[0].resources[0] < 1)
 					{
 						print("Not enough resources");
 						return;
@@ -346,12 +350,13 @@ public class SummoningFont : MonoBehaviour {
 					else
 					{
 						world.selected.occupyer = (Unit)Instantiate (largeFirePrefab0, world.selected.transform.position, Quaternion.identity);
-						world.players[0].resources[3]--;
+						world.players[0].resources[3] -= 5;
+						world.players[0].resources[0] -= 1;
 						world.players[world.activePlayer].summoned = true;
 					}
 				}
 				if (world.activePlayer == 1){
-					if (world.players[1].resources[3] < 1)
+					if (world.players[1].resources[3] < 5 || world.players[1].resources[0] < 1)
 					{
 						print("Not enough resources");
 						return;
@@ -363,7 +368,8 @@ public class SummoningFont : MonoBehaviour {
 					else
 					{
 						world.selected.occupyer = (Unit)Instantiate (largeFirePrefab1, world.selected.transform.position, Quaternion.identity);
-						world.players[1].resources[3]--;
+						world.players[1].resources[3] -= 5;
+						world.players[1].resources[0] -= 1;
 						world.players[world.activePlayer].summoned = true;
 					}
 				}
@@ -374,7 +380,7 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(390, Screen.height - 105, 105, 49), "water wisp (1)", world.GUIfunstuff.button))
+			if (GUI.Button(new Rect(700, Screen.height - 105, 200, 49), "Water wisp (1 Water)", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
 					if (world.players[0].resources[4] < 1)
@@ -417,10 +423,10 @@ public class SummoningFont : MonoBehaviour {
 				hide();
 			}
 			
-			if (GUI.Button(new Rect(390, Screen.height - 60, 105, 49), "Leviathan (1)", world.GUIfunstuff.button))
+			if (GUI.Button(new Rect(700, Screen.height - 60, 200, 49), "Leviathan (2 Water, 1 Arcana)", world.GUIfunstuff.button))
 			{
 				if (world.activePlayer == 0){
-					if (world.players[0].resources[4] < 1)
+					if (world.players[0].resources[4] < 2 || world.players[0].resources[0] < 1)
 					{
 						print("Not enough resources");
 						return;
@@ -432,12 +438,13 @@ public class SummoningFont : MonoBehaviour {
 					else
 					{
 						world.selected.occupyer = (Unit)Instantiate (largeWaterPrefab0, world.selected.transform.position, Quaternion.identity);
-						world.players[0].resources[4]--;
+						world.players[0].resources[4] -= 2;
+						world.players[0].resources[0] -= 1;
 						world.players[world.activePlayer].summoned = true;
 					}
 				}
 				if (world.activePlayer == 1){
-					if (world.players[1].resources[4] < 1)
+					if (world.players[1].resources[4] < 2 || world.players[1].resources[0] < 1)
 					{
 						print("Not enough resources");
 						return;
@@ -449,7 +456,8 @@ public class SummoningFont : MonoBehaviour {
 					else
 					{
 						world.selected.occupyer = (Unit)Instantiate (largeWaterPrefab1, world.selected.transform.position, Quaternion.identity);
-						world.players[1].resources[4]--;
+						world.players[1].resources[4] -= 2;
+						world.players[1].resources[0] -= 1;
 						world.players[world.activePlayer].summoned = true;
 					}
 				}

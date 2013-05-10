@@ -45,9 +45,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
-     <None Include="Assets\Otherfunthings\techs.txt" />
+     <None Include="Assets\StreamingAssets\techs.txt" />
      <None Include="Assets\SaveData.xml" />
-     <None Include="Assets\DefaultMatch.xml" />
+     <None Include="Assets\StreamingAssets\DefaultMatch.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

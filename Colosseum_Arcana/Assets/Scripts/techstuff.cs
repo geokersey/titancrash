@@ -156,7 +156,7 @@ public class techstuff : MonoBehaviour {
 	{
 		if (world.GUIstate != 2 && !PMan.IsPaused)
 		{
-			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f - 40, 125, 40), "Open Tech Tree", world.GUIfunstuff.button))
+			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height - 250, 125, 40), "Open Tech Tree", world.GUIfunstuff.button))
 			{
 				state = 1;
 				world.GUIstate = 2;
@@ -186,7 +186,7 @@ public class techstuff : MonoBehaviour {
 						GUI.backgroundColor = Color.white;
 					}
 					
-					if (GUI.Button(new Rect((150 * (i % 5)) + 50, (45 * (i / 5)) + 95, 155, 50), techTree[i].name, world.GUIfunstuff.button))
+					if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height - 250, 125, 40), techTree[i].name, world.GUIfunstuff.button))
 					{
 						selectedTech = i;
 						state = 2;
@@ -195,7 +195,7 @@ public class techstuff : MonoBehaviour {
 				
 				GUI.backgroundColor = Color.white;
 				
-				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f - 40, 125, 40), "Close Tech Tree", world.GUIfunstuff.button))
+				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height - 250, 125, 40), "Close Tech Tree", world.GUIfunstuff.button))
 				{
 					state = 0;
 					world.GUIstate = 0;
@@ -249,7 +249,7 @@ public class techstuff : MonoBehaviour {
 				
 				GUI.Box(new Rect(100, 350, 300, 400), "\n\n\n\n" + techTree[selectedTech].name + "\n\n" + techTree[selectedTech].description + "\n\n" + s, world.GUIfunstuff.box);
 				
-				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height * 0.85f - 40, 125, 40), "Close Tech Tree", world.GUIfunstuff.button))
+				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height - 250, 125, 40), "Close Tech Tree", world.GUIfunstuff.button))
 				{
 					state = 0;
 					world.GUIstate = 0;

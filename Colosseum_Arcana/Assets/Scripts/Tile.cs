@@ -398,7 +398,7 @@ public class Tile : MonoBehaviour {
 	}
 	public bool findTower(int range){
 		for(int i = Mathf.Max (x-range,0); i<Mathf.Min (x+range, world.size); ++i){
-			for(int j = Mathf.Max (y-range,0); j<Mathf.Min (7+range, world.size); ++j){
+			for(int j = Mathf.Max (y-range,0); j<Mathf.Min (y+range, world.size); ++j){
 				if (world.map[i,j].hasTower&&world.map[i,j].owner == world.activePlayer &&Mathf.Abs (-i-j+x+y)<range){
 					return true;
 				}

@@ -5,6 +5,7 @@ using UnityEngine;
 //using System.Xml;
 //using System.Xml.Serialization;
 using System.IO;
+//using System.Xml;
 
 public class StartScreen : MonoBehaviour 
 {
@@ -16,6 +17,8 @@ public class StartScreen : MonoBehaviour
 	private string ErrorLevel = "null";
 	public GUISkin GUIstuff;
 	public GUIStyle temp;
+	
+	//public XmlDocument Default;
 	
 	void Awake()
 	{
@@ -29,7 +32,12 @@ public class StartScreen : MonoBehaviour
 		if(!File.Exists("C:/ElementalFury/Maps/DefaultMatch.xml"))
 		{
 			Debug.Log ("Couldn't find default map. Copying from install");
-			File.Copy("Assets/DefaultMatch.xml", "C:/ElementalFury/Maps/DefaultMatch.xml");
+			File.Copy(Application.streamingAssetsPath+ "/DefaultMatch.xml", "C:/ElementalFury/Maps/DefaultMatch.xml");
+		}
+		if(!File.Exists("C:/ElementalFury/Maps/techs.txt"))
+		{
+			Debug.Log ("Couldn't find techs. Copying from install");
+			File.Copy(Application.streamingAssetsPath+ "/techs.txt", "C:/ElementalFury/Maps/techs.txt");
 		}
 	}
 	
