@@ -397,7 +397,7 @@ public class Unit : MonoBehaviour {
 	}
 	void OnGUI(){
 		if (damageNumTime >=0){
-				GUI.Box (damageNumRect, "-"+damageNum);
+				GUI.Box (damageNumRect, "-"+damageNum, world.GUI2.label);
 			}
 		if (selected){
 			GUI.Box(new Rect(0, 100, 125, 25), "Health: " + hp + "/"+startHP, world.GUIfunstuff.box);

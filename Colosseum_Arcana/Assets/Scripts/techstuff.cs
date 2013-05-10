@@ -154,181 +154,184 @@ public class techstuff : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		if (world.GUIstate != 2 && !PMan.IsPaused)
+		if (!PMan.IsPaused)
 		{
-			if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height - 250, 125, 40), "Open Tech Tree", world.GUIfunstuff.button))
+			if (world.GUIstate != 2)
 			{
-				state = 1;
-				world.GUIstate = 2;
-			}
-		}
-			
-		if(world.GUIstate == 2 && !PMan.IsPaused)
-		{
-			if (state == 1)
-			{
-				for (int i = 0; i < techTree.Count; i++)
+				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height - 250, 125, 40), "Open Tech Tree", world.GUIfunstuff.button))
 				{
-					if (world.players[world.activePlayer].techAvailable[i] == 0)
-					{
-						GUI.backgroundColor = Color.red;
-					}
-					else if (world.players[world.activePlayer].techAvailable[i] == 1)
-					{
-						GUI.backgroundColor = Color.white;
-					}
-					else if (world.players[world.activePlayer].techAvailable[i] == 2)
-					{
-						GUI.backgroundColor = Color.green;
-					}
-					else
-					{
-						GUI.backgroundColor = Color.white;
-					}
-					
-					if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height - 250, 125, 40), techTree[i].name, world.GUIfunstuff.button))
-					{
-						selectedTech = i;
-						state = 2;
-					}
-				}
-				
-				GUI.backgroundColor = Color.white;
-				
-				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height - 250, 125, 40), "Close Tech Tree", world.GUIfunstuff.button))
-				{
-					state = 0;
-					world.GUIstate = 0;
+					state = 1;
+					world.GUIstate = 2;
 				}
 			}
-			else if (state == 2)
+				
+			if(world.GUIstate == 2)
 			{
-				string s = "Requirements\n";
-				
-				for (int i = 0; i < techTree.Count; i++)
+				if (state == 1)
 				{
-					if (world.players[world.activePlayer].techAvailable[i] == 0)
+					for (int i = 0; i < techTree.Count; i++)
 					{
-						GUI.backgroundColor = Color.red;
-					}
-					else if (world.players[world.activePlayer].techAvailable[i] == 1)
-					{
-						GUI.backgroundColor = Color.white;
-					}
-					else if (world.players[world.activePlayer].techAvailable[i] == 2)
-					{
-						GUI.backgroundColor = Color.green;
-					}
-					else
-					{
-						GUI.backgroundColor = Color.white;
-					}
-					
-					if (GUI.Button(new Rect((150 * (i % 5)) + 50, (45 * (i / 5)) + 95, 155, 50), techTree[i].name, world.GUIfunstuff.button))
-					{
-						selectedTech = i;
-					}
-				}
-				
-				GUI.backgroundColor = Color.white;
-				
-				if (techTree[selectedTech].prereqs[0] != 0)
-				{
-					s += techTree[techTree[selectedTech].prereqs[0] - 1].name;
-					
-					for (int i = 1; i < techTree[selectedTech].prereqs.Count; i++)
-					{
-						s += "\n";
-						s += techTree[techTree[selectedTech].prereqs[i] - 1].name;
-					}
-				}
-				else
-				{
-					s += "None";
-				}
-				
-				GUI.Box(new Rect(100, 350, 300, 400), "\n\n\n\n" + techTree[selectedTech].name + "\n\n" + techTree[selectedTech].description + "\n\n" + s, world.GUIfunstuff.box);
-				
-				if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height - 250, 125, 40), "Close Tech Tree", world.GUIfunstuff.button))
-				{
-					state = 0;
-					world.GUIstate = 0;
-				}
-				
-				if (world.players[world.activePlayer].techAvailable[selectedTech] == 0)
-				{
-					GUI.backgroundColor = Color.red;
-					GUI.Button(new Rect(400, 450, 100, 75), "Unavailable", world.GUIfunstuff.button);
-				}
-				else if (world.players[world.activePlayer].techAvailable[selectedTech] == 2)
-				{
-					GUI.backgroundColor = Color.green;
-					GUI.Button(new Rect(400, 450, 100, 75), "Researched", world.GUIfunstuff.button);
-				}
-				else
-				{
-					if (GUI.Button(new Rect(400, 450, 100, 75), "Research", world.GUIfunstuff.button) && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= techTree[selectedTech].price)
-					{
-						if (world.players[world.activePlayer].summoned && world.players[world.activePlayer].techAvailable[27] != 2)
+						if (world.players[world.activePlayer].techAvailable[i] == 0)
 						{
-							print("summoned this turn, cannot research");
+							GUI.backgroundColor = Color.red;
+						}
+						else if (world.players[world.activePlayer].techAvailable[i] == 1)
+						{
+							GUI.backgroundColor = Color.white;
+						}
+						else if (world.players[world.activePlayer].techAvailable[i] == 2)
+						{
+							GUI.backgroundColor = Color.green;
 						}
 						else
 						{
-							if (world.players[world.activePlayer].techAvailable[26] == 2)
+							GUI.backgroundColor = Color.white;
+						}
+						
+						if (GUI.Button(new Rect((150 * (i % 5)) + 50, (45 * (i / 5)) + 95, 155, 50), techTree[i].name, world.GUIfunstuff.button))
+						{
+							selectedTech = i;
+							state = 2;
+						}
+					}
+					
+					GUI.backgroundColor = Color.white;
+					
+					if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height - 250, 125, 40), "Close Tech Tree", world.GUIfunstuff.button))
+					{
+						state = 0;
+						world.GUIstate = 0;
+					}
+				}
+				else if (state == 2)
+				{
+					string s = "Requirements\n";
+					
+					for (int i = 0; i < techTree.Count; i++)
+					{
+						if (world.players[world.activePlayer].techAvailable[i] == 0)
+						{
+							GUI.backgroundColor = Color.red;
+						}
+						else if (world.players[world.activePlayer].techAvailable[i] == 1)
+						{
+							GUI.backgroundColor = Color.white;
+						}
+						else if (world.players[world.activePlayer].techAvailable[i] == 2)
+						{
+							GUI.backgroundColor = Color.green;
+						}
+						else
+						{
+							GUI.backgroundColor = Color.white;
+						}
+						
+						if (GUI.Button(new Rect((150 * (i % 5)) + 50, (45 * (i / 5)) + 95, 155, 50), techTree[i].name, world.GUIfunstuff.button))
+						{
+							selectedTech = i;
+						}
+					}
+					
+					GUI.backgroundColor = Color.white;
+					
+					if (techTree[selectedTech].prereqs[0] != 0)
+					{
+						s += techTree[techTree[selectedTech].prereqs[0] - 1].name;
+						
+						for (int i = 1; i < techTree[selectedTech].prereqs.Count; i++)
+						{
+							s += "\n";
+							s += techTree[techTree[selectedTech].prereqs[i] - 1].name;
+						}
+					}
+					else
+					{
+						s += "None";
+					}
+					
+					GUI.Box(new Rect(100, 350, 300, 400), "\n\n\n\n" + techTree[selectedTech].name + "\n\n" + techTree[selectedTech].description + "\n\n" + s, world.GUIfunstuff.box);
+					
+					if (GUI.Button(new Rect((float)Screen.width * 0.85f, (float)Screen.height - 250, 125, 40), "Close Tech Tree", world.GUIfunstuff.button))
+					{
+						state = 0;
+						world.GUIstate = 0;
+					}
+					
+					if (world.players[world.activePlayer].techAvailable[selectedTech] == 0)
+					{
+						GUI.backgroundColor = Color.red;
+						GUI.Button(new Rect(400, 450, 100, 75), "Unavailable", world.GUIfunstuff.button);
+					}
+					else if (world.players[world.activePlayer].techAvailable[selectedTech] == 2)
+					{
+						GUI.backgroundColor = Color.green;
+						GUI.Button(new Rect(400, 450, 100, 75), "Researched", world.GUIfunstuff.button);
+					}
+					else
+					{
+						if (GUI.Button(new Rect(400, 450, 100, 75), "Research", world.GUIfunstuff.button) && world.players[world.activePlayer].researched == false && world.players[world.activePlayer].resources[0] >= techTree[selectedTech].price)
+						{
+							if (world.players[world.activePlayer].summoned && world.players[world.activePlayer].techAvailable[27] != 2)
 							{
-								int x = techTree[selectedTech].price * 3 / 5;
-								world.players[world.activePlayer].resources[0] -= x;
-								world.players[world.activePlayer].techRes = x;
-							}
-							else if (world.players[world.activePlayer].techAvailable[25] == 2)
-							{
-								int x = techTree[selectedTech].price * 4 / 5;
-								world.players[world.activePlayer].resources[0] -= x;
-								world.players[world.activePlayer].techRes = x;
+								print("summoned this turn, cannot research");
 							}
 							else
 							{
-								world.players[world.activePlayer].resources[0] -= techTree[selectedTech].price;
-								world.players[world.activePlayer].techRes = techTree[selectedTech].price;
+								if (world.players[world.activePlayer].techAvailable[26] == 2)
+								{
+									int x = techTree[selectedTech].price * 3 / 5;
+									world.players[world.activePlayer].resources[0] -= x;
+									world.players[world.activePlayer].techRes = x;
+								}
+								else if (world.players[world.activePlayer].techAvailable[25] == 2)
+								{
+									int x = techTree[selectedTech].price * 4 / 5;
+									world.players[world.activePlayer].resources[0] -= x;
+									world.players[world.activePlayer].techRes = x;
+								}
+								else
+								{
+									world.players[world.activePlayer].resources[0] -= techTree[selectedTech].price;
+									world.players[world.activePlayer].techRes = techTree[selectedTech].price;
+								}
+								
+								world.players[world.activePlayer].techAvailable[selectedTech] = 2;
+								world.players[world.activePlayer].researched = true;
+							
+								switch(selectedTech)
+								{
+								case 6:
+									world.players[world.activePlayer].resourceTech(3);
+									break;
+									
+								case 7:
+									world.players[world.activePlayer].resourceTech(2);
+									break;
+									
+								case 8:
+									world.players[world.activePlayer].resourceTech(1);
+									break;
+								
+								case 9:
+									world.players[world.activePlayer].resourceTech(4);
+									break;
+									
+								case 20:
+									world.players[world.activePlayer].resourceTech(0);
+									break;
+									
+								default:
+									break;
+								}
+								
+								state = 0;
+								world.GUIstate = 0;
 							}
-							
-							world.players[world.activePlayer].techAvailable[selectedTech] = 2;
-							world.players[world.activePlayer].researched = true;
-						
-							switch(selectedTech)
-							{
-							case 6:
-								world.players[world.activePlayer].resourceTech(3);
-								break;
-								
-							case 7:
-								world.players[world.activePlayer].resourceTech(2);
-								break;
-								
-							case 8:
-								world.players[world.activePlayer].resourceTech(1);
-								break;
-							
-							case 9:
-								world.players[world.activePlayer].resourceTech(4);
-								break;
-								
-							case 20:
-								world.players[world.activePlayer].resourceTech(0);
-								break;
-								
-							default:
-								break;
-							}
-							
-							state = 0;
-							world.GUIstate = 0;
 						}
 					}
+					
+					
 				}
-				
-				
 			}
 		}
 	}

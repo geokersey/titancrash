@@ -58,6 +58,7 @@ public class Grid : MonoBehaviour {
 	private List<GameObject> OutlineTiles = new List<GameObject>();
 	
 	public GUISkin GUIfunstuff;
+	public GUISkin GUI2;
 	
 	public SummoningFont summoningFont;
 	

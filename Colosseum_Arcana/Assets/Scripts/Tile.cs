@@ -310,9 +310,9 @@ public class Tile : MonoBehaviour {
 			Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position+new Vector3(0f,0f, .578f));//the bottom point of the hex
 			Vector3 screenPos2 = Camera.main.WorldToScreenPoint(transform.position+new Vector3(-.8f,0f, .289f));//the right side of the hex
 			float width1 = 345; //terrain info box size
-			float height1 = 70;
+			float height1 = 100;
 			float width2 = 125;//unit info box size
-			float height2 = 100;
+			float height2 = 150;
 			
 			if (terrain == 0){
 				terName = "flatland";
@@ -328,35 +328,35 @@ public class Tile : MonoBehaviour {
 			}
 			string message = terName+", "+resName+" resources";
 			if (wiz){
-				message+= "\nWizard tower: summoning font and focus tower combined\nhold both at the begining of a turn to win";
+				message+= "\nWizard tower: Summoning font and focus tower combined. Hold both at the begining of a turn to win";
 			}
 			else if (hasFont){
-				message += "\nsummoning font: use to create units";
+				message += "\nSummoning font: Use to create units";
 			}
 			else if (hasTower){
-				message += "\nfocus tower: spells can only be cast within range of a focus tower";
+				message += "\nFocus tower: Spells can only be cast within range of a focus tower";
 			}
 			if (gameObject.layer >= 10){
 				if (owner == 0){
 					GUI.contentColor = Color.yellow;
 					if (occupyer != null){
-						GUI.Box (new Rect(screenPos2.x, (Screen.height-screenPos2.y)-height2, width2,height2), occupyer.summary ());
+						GUI.Box (new Rect(screenPos2.x, (Screen.height-screenPos2.y)-height2, width2,height2), occupyer.summary (), world.GUI2.label);
 					}
-					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message, world.GUI2.label);
 					//Debug.Log ("owner = 0");
 				}
 				else if (owner == 1){
 					GUI.contentColor = Color.magenta;
 					if (occupyer != null){
-						GUI.Box (new Rect(screenPos2.x, (Screen.height-screenPos2.y)-height2, width2,height2), occupyer.summary ());
+						GUI.Box (new Rect(screenPos2.x, (Screen.height-screenPos2.y)-height2, width2,height2), occupyer.summary (), world.GUI2.label);
 					}
-					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message, world.GUI2.label);
 					//Debug.Log ("owner = 1");
 				}
 				else{
 					
-					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height2), message);
-				}
+					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height2), message, world.GUI2.label);
+				} 
 			}
 				//GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width,50), "blar");
 
@@ -366,12 +366,12 @@ public class Tile : MonoBehaviour {
 				if (world.activePlayer ==0 && (gameObject.tag == "visBoth" || gameObject.tag == "vis0")){
 					if (owner == 0){
 						GUI.contentColor = Color.yellow;
-						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message, world.GUI2.label);
 						//Debug.Log ("owner = 0");
 					}
 					else if (owner == 1){
 						GUI.contentColor = Color.magenta;
-						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message, world.GUI2.label);
 						//Debug.Log ("owner = 1");
 					}
 					
@@ -379,18 +379,18 @@ public class Tile : MonoBehaviour {
 				else if (world.activePlayer ==1 && (gameObject.tag == "visBoth" || gameObject.tag == "vis1")){
 					if (owner == 0){
 						GUI.contentColor = Color.yellow;
-						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message, world.GUI2.label);
 						//Debug.Log ("owner = 0");
 						}
 					else if (owner == 1){
 						GUI.contentColor = Color.magenta;
-						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+						GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message, world.GUI2.label);
 						//Debug.Log ("owner = 1");
 					}
 					
 				}
 				else{
-					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message);
+					GUI.Box (new Rect(screenPos.x - (width1/2), Screen.height-screenPos.y, width1,height1), message, world.GUI2.label);
 				}
 			
 			}
